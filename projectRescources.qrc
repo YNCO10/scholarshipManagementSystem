@@ -1,12 +1,11 @@
 <RCC>
   <qresource>
-    <file>icons/hideWhite.png</file>
-    <file>icons/seeWhiteIcon.png</file>
     <file>icons/activity.svg</file>
     <file>icons/dashboard.png</file>
     <file>icons/delete.png</file>
     <file>icons/gear.png</file>
     <file>icons/hideIcon.png</file>
+    <file>icons/hideWhite.png</file>
     <file>icons/home.png</file>
     <file>icons/key.png</file>
     <file>icons/manageScholarship.png</file>
@@ -16,6 +15,7 @@
     <file>icons/report.png</file>
     <file>icons/search.png</file>
     <file>icons/seeIcon.png</file>
+    <file>icons/seeWhiteIcon.png</file>
     <file>icons/SMsysIcon.png</file>
     <file>icons/user.png</file>
   </qresource>

@@ -1,10 +1,9 @@
 import sys
 
-
 from PyQt6.QtWidgets import QApplication
-from myMainDisplay import Dash
+from registrationCode import SignUpPage
 
 app = QApplication(sys.argv)
-win = Dash()
+win = SignUpPage()
 win.show()
 app.exec()
