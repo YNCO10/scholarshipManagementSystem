@@ -24,6 +24,7 @@ class Dash(QMainWindow, Ui_MainWindow):
 
         # NAV BAR BTN CLICKS
         self.BtnClicks()
+        self.readOnlyLineEdit()
 
     #BTN CLICKS
     def BtnClicks(self):
@@ -66,6 +67,14 @@ class Dash(QMainWindow, Ui_MainWindow):
         else:
             self.passTxt.setEchoMode(QLineEdit.EchoMode.Normal)
             self.showPassBtn.setIcon(QIcon("icons/hideWhite.png"))
+
+
+
+    def readOnlyLineEdit(self):
+        self.usernameTxt.setReadOnly(True)
+        self.passTxt.setReadOnly(True)
+        self.emailTxt.setReadOnly(True)
+
 
 
     # PAGE SWITCHING
