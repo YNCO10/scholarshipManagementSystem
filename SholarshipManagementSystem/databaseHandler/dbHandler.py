@@ -15,8 +15,8 @@ class databaseHandler:
             )
 
             self.cursor = self.myConn.cursor()
-            print("Connection Successful")
-            self.msgBox("Successful", "Database Connection Successful")
+            # print("Connection Successful")
+            # self.msgBox("Successful", "Database Connection Successful")
         except Error as e:
             self.myConn = None
             self.cursor = None
@@ -42,7 +42,30 @@ class databaseHandler:
                 self.msgBox("Failed", f"Insert Failed: {e}")
 
         else:
+            print("Insert failed: No database connection.")
+            self.msgBox("Con Failed", "No database connection.")
 
+
+
+    def checkEmailExists(self, query, values=None):
+        if self.myConn:
+
+            try:
+
+                self.cursor.execute(query, values or ())
+                result = self.cursor.fetchone()
+
+                if result:
+                    return True
+                else:
+                    return False
+
+            except Error as e:
+
+                self.msgBox("Error!", f"Exception Error: {e}")
+                print(f"Email doesn't exist. {e}")
+
+        else:
             print("Insert failed: No database connection.")
             self.msgBox("Con Failed", "No database connection.")
 
@@ -55,7 +78,7 @@ class databaseHandler:
 
                 self.cursor.execute(query, values or ())
                 result = self.cursor.fetchall()
-                self.msgBox("Successful", "Select Successful")
+                # self.msgBox("Successful", "Select Successful")
                 return result
 
             except Error as e:

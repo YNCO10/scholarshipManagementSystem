@@ -1,5 +1,7 @@
 <RCC>
   <qresource>
+    <file>icons/whiteHomeIcon.png</file>
+    <file>icons/whiteManageScholarshipIcon.png</file>
     <file>icons/activity.svg</file>
     <file>icons/dashboard.png</file>
     <file>icons/delete.png</file>

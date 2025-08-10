@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Form</class>
- <widget class="QWidget" name="Form">
+ <class>adminRegistrationPage</class>
+ <widget class="QWidget" name="adminRegistrationPage">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -129,6 +129,9 @@ font: 700 16pt &quot;Segoe UI&quot;;</string>
        </item>
        <item>
         <widget class="QPushButton" name="showHidePassBtn">
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
          <property name="styleSheet">
           <string notr="true">border:none;
 margin-top:7px;</string>
@@ -168,6 +171,9 @@ margin-top:7px;</string>
        </item>
        <item>
         <widget class="QPushButton" name="showHideConfirmPassBtn">
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
          <property name="styleSheet">
           <string notr="true">border:none;
 margin-top:7px;</string>
@@ -206,6 +212,9 @@ margin-top:7px;</string>
    </item>
    <item>
     <widget class="QPushButton" name="signUpBtn">
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
      <property name="styleSheet">
       <string notr="true">background-color: rgb(11, 100, 197);
 font: 600 12pt &quot;Segoe UI&quot;;

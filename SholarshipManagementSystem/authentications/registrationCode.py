@@ -4,13 +4,16 @@ from PyQt6.QtGui import QIcon
 from PyQt6.QtWidgets import QWidget, QMessageBox, QLineEdit
 from SholarshipManagementSystem.authentications.adminReg import Ui_Form
 from SholarshipManagementSystem.databaseHandler.dbHandler import databaseHandler
+# from SholarshipManagementSystem.authentications.loginCode import LoginCode
 
-class SignUpPage(QWidget, Ui_Form):
+
+class Validations(QWidget, Ui_Form):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
         self.setWindowTitle("REGISTER")
         self.setWindowIcon(QIcon("../../icons/SMsysIcon.png"))
+        # self.loginCode = LoginCode()
         self. myDb = databaseHandler("localhost","root","","scholarship_management_sys_db")
 
         self.btnClicks()
@@ -22,11 +25,15 @@ class SignUpPage(QWidget, Ui_Form):
 
 
     def btnClicks(self):
+        # registration
         self.showHidePassBtn.clicked.connect(lambda : self.togglePasswordBtn(self.passTxt, self.showHidePassBtn))
         self.showHideConfirmPassBtn.clicked.connect(lambda : self.togglePasswordBtn(self.confirmPassTxt, self.showHideConfirmPassBtn))
 
+
         self.signUpBtn.clicked.connect(self.signUp)
         # self.signUpBtn.clicked.connect(self.showValues)
+
+        self.goToLoginPageBtn.clicked.connect(self.goToLoginPage)
 
     def signUp(self):
 
@@ -34,9 +41,15 @@ class SignUpPage(QWidget, Ui_Form):
             self.msgBox("Empty Fields", "Fill in all the empty fields")
             return
 
+        if self.myDb.checkEmailExists("SELECT * FROM admin WHERE email = %s", (self.emailTxt.text().strip())):
+            self.msgBox("Existing Email","Email Already Exists.")
+            print("Email Already Exists.")
+            return
+
         if self.passTxt.text() != self.confirmPassTxt.text():
             self.msgBox("Error", "Passwords do Not Match!")
             return
+
 
         query = "INSERT INTO admin (name, email, pass_word) VALUES (%s, %s, %s)"
 
@@ -52,6 +65,7 @@ class SignUpPage(QWidget, Ui_Form):
         msgBox.setStandardButtons(QMessageBox.StandardButton.Ok)
         msgBox.exec()
 
+
     def togglePasswordBtn(self, lineEdit, Btn):
         if lineEdit.echoMode() == QLineEdit.EchoMode.Normal:
             lineEdit.setEchoMode(QLineEdit.EchoMode.Password)
@@ -59,3 +73,10 @@ class SignUpPage(QWidget, Ui_Form):
         else:
             lineEdit.setEchoMode(QLineEdit.EchoMode.Normal)
             Btn.setIcon(QIcon("../../icons/hideWhite.png"))
+
+
+    def goToLoginPage(self):
+        from SholarshipManagementSystem.authentications.loginCode import LoginCode
+        loginCode = LoginCode()
+        self.hide()
+        loginCode.show()

@@ -222,7 +222,7 @@ QLineEdit{
 </string>
          </property>
          <property name="currentIndex">
-          <number>3</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="home">
           <layout class="QGridLayout" name="gridLayout_2">
@@ -245,7 +245,7 @@ QLineEdit{
               </spacer>
              </item>
              <item>
-              <widget class="QLabel" name="homScreenUsernameLabel">
+              <widget class="QLabel" name="homeScreenUsernameLabel">
                <property name="text">
                 <string>HELLO &quot;nAME&quot;</string>
                </property>
@@ -902,17 +902,17 @@ QPushButton:checked{
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_4">
        <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_2" stretch="0,0">
-         <property name="spacing">
-          <number>6</number>
-         </property>
+        <layout class="QGridLayout" name="gridLayout_6">
          <property name="topMargin">
-          <number>20</number>
+          <number>5</number>
          </property>
          <property name="rightMargin">
           <number>0</number>
          </property>
-         <item>
+         <property name="bottomMargin">
+          <number>17</number>
+         </property>
+         <item row="0" column="0">
           <widget class="QLabel" name="fullNavIcon">
            <property name="minimumSize">
             <size>
@@ -937,13 +937,13 @@ QPushButton:checked{
            </property>
           </widget>
          </item>
-         <item>
+         <item row="0" column="1">
           <layout class="QVBoxLayout" name="verticalLayout">
            <property name="spacing">
             <number>6</number>
            </property>
            <item>
-            <widget class="QLabel" name="welcomLabel">
+            <widget class="QLabel" name="welcomeLabel">
              <property name="text">
               <string>Welcome</string>
              </property>
@@ -969,7 +969,8 @@ QPushButton:checked{
            </property>
            <property name="icon">
             <iconset resource="res.qrc">
-             <normaloff>:/icons/home.png</normaloff>:/icons/home.png</iconset>
+             <normaloff>:/icons/home.png</normaloff>
+             <normalon>:/icons/whiteHomeIcon.png</normalon>:/icons/home.png</iconset>
            </property>
            <property name="checkable">
             <bool>true</bool>
@@ -986,7 +987,8 @@ QPushButton:checked{
            </property>
            <property name="icon">
             <iconset resource="res.qrc">
-             <normaloff>:/icons/manageScholarship.png</normaloff>:/icons/manageScholarship.png</iconset>
+             <normaloff>:/icons/manageScholarship.png</normaloff>
+             <normalon>:/icons/whiteManageScholarshipIcon.png</normalon>:/icons/manageScholarship.png</iconset>
            </property>
            <property name="checkable">
             <bool>true</bool>
@@ -1147,7 +1149,8 @@ QPushButton:checked{
            </property>
            <property name="icon">
             <iconset resource="res.qrc">
-             <normaloff>:/icons/home.png</normaloff>:/icons/home.png</iconset>
+             <normaloff>:/icons/home.png</normaloff>
+             <normalon>:/icons/whiteHomeIcon.png</normalon>:/icons/home.png</iconset>
            </property>
            <property name="checkable">
             <bool>true</bool>
@@ -1164,7 +1167,8 @@ QPushButton:checked{
            </property>
            <property name="icon">
             <iconset resource="res.qrc">
-             <normaloff>:/icons/manageScholarship.png</normaloff>:/icons/manageScholarship.png</iconset>
+             <normaloff>:/icons/manageScholarship.png</normaloff>
+             <normalon>:/icons/whiteManageScholarshipIcon.png</normalon>:/icons/manageScholarship.png</iconset>
            </property>
            <property name="checkable">
             <bool>true</bool>
