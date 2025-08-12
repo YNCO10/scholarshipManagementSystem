@@ -1,10 +1,10 @@
 import sys
 
 from PyQt6.QtWidgets import QApplication
-from registrationCode import Validations
+from SholarshipManagementSystem.authentications.regValidationPHP import RegCode
 
 
 app = QApplication(sys.argv)
-win = Validations()
+win = RegCode()
 win.show()
 app.exec()

@@ -7,16 +7,15 @@
 
 
 from PyQt6 import QtCore, QtGui, QtWidgets
-import myProjectResources
 
 
-class Ui_Form(object):
-    def setupUi(self, Form):
-        Form.setObjectName("Form")
-        Form.resize(602, 517)
-        Form.setMinimumSize(QtCore.QSize(602, 517))
-        Form.setMaximumSize(QtCore.QSize(602, 517))
-        Form.setStyleSheet("QWidget{\n"
+class Ui_adminRegistrationPage(object):
+    def setupUi(self, adminRegistrationPage):
+        adminRegistrationPage.setObjectName("adminRegistrationPage")
+        adminRegistrationPage.resize(602, 517)
+        adminRegistrationPage.setMinimumSize(QtCore.QSize(602, 517))
+        adminRegistrationPage.setMaximumSize(QtCore.QSize(602, 517))
+        adminRegistrationPage.setStyleSheet("QWidget{\n"
 "    background-color: rgb(20, 41, 63);\n"
 "}\n"
 "\n"
@@ -33,9 +32,9 @@ class Ui_Form(object):
 "    font: 11pt \"Segoe UI\";\n"
 "\n"
 "}")
-        self.verticalLayout_2 = QtWidgets.QVBoxLayout(Form)
+        self.verticalLayout_2 = QtWidgets.QVBoxLayout(adminRegistrationPage)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
-        self.label = QtWidgets.QLabel(parent=Form)
+        self.label = QtWidgets.QLabel(parent=adminRegistrationPage)
         self.label.setStyleSheet("margin-top:20px;\n"
 "font: 700 16pt \"Segoe UI\";")
         self.label.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
@@ -49,32 +48,33 @@ class Ui_Form(object):
         self.verticalLayout.setObjectName("verticalLayout")
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
-        self.label_2 = QtWidgets.QLabel(parent=Form)
+        self.label_2 = QtWidgets.QLabel(parent=adminRegistrationPage)
         self.label_2.setObjectName("label_2")
         self.horizontalLayout_2.addWidget(self.label_2)
-        self.nameTxt = QtWidgets.QLineEdit(parent=Form)
+        self.nameTxt = QtWidgets.QLineEdit(parent=adminRegistrationPage)
         self.nameTxt.setObjectName("nameTxt")
         self.horizontalLayout_2.addWidget(self.nameTxt)
         self.verticalLayout.addLayout(self.horizontalLayout_2)
         self.horizontalLayout_3 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_3.setObjectName("horizontalLayout_3")
-        self.label_3 = QtWidgets.QLabel(parent=Form)
+        self.label_3 = QtWidgets.QLabel(parent=adminRegistrationPage)
         self.label_3.setObjectName("label_3")
         self.horizontalLayout_3.addWidget(self.label_3)
-        self.emailTxt = QtWidgets.QLineEdit(parent=Form)
+        self.emailTxt = QtWidgets.QLineEdit(parent=adminRegistrationPage)
         self.emailTxt.setObjectName("emailTxt")
         self.horizontalLayout_3.addWidget(self.emailTxt)
         self.verticalLayout.addLayout(self.horizontalLayout_3)
         self.horizontalLayout_4 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_4.setObjectName("horizontalLayout_4")
-        self.label_4 = QtWidgets.QLabel(parent=Form)
+        self.label_4 = QtWidgets.QLabel(parent=adminRegistrationPage)
         self.label_4.setObjectName("label_4")
         self.horizontalLayout_4.addWidget(self.label_4)
-        self.passTxt = QtWidgets.QLineEdit(parent=Form)
+        self.passTxt = QtWidgets.QLineEdit(parent=adminRegistrationPage)
         self.passTxt.setEchoMode(QtWidgets.QLineEdit.EchoMode.Password)
         self.passTxt.setObjectName("passTxt")
         self.horizontalLayout_4.addWidget(self.passTxt)
-        self.showHidePassBtn = QtWidgets.QPushButton(parent=Form)
+        self.showHidePassBtn = QtWidgets.QPushButton(parent=adminRegistrationPage)
+        self.showHidePassBtn.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.showHidePassBtn.setStyleSheet("border:none;\n"
 "margin-top:7px;")
         self.showHidePassBtn.setText("")
@@ -87,14 +87,15 @@ class Ui_Form(object):
         self.verticalLayout.addLayout(self.horizontalLayout_4)
         self.horizontalLayout_5 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_5.setObjectName("horizontalLayout_5")
-        self.label_5 = QtWidgets.QLabel(parent=Form)
+        self.label_5 = QtWidgets.QLabel(parent=adminRegistrationPage)
         self.label_5.setObjectName("label_5")
         self.horizontalLayout_5.addWidget(self.label_5)
-        self.confirmPassTxt = QtWidgets.QLineEdit(parent=Form)
+        self.confirmPassTxt = QtWidgets.QLineEdit(parent=adminRegistrationPage)
         self.confirmPassTxt.setEchoMode(QtWidgets.QLineEdit.EchoMode.Password)
         self.confirmPassTxt.setObjectName("confirmPassTxt")
         self.horizontalLayout_5.addWidget(self.confirmPassTxt)
-        self.showHideConfirmPassBtn = QtWidgets.QPushButton(parent=Form)
+        self.showHideConfirmPassBtn = QtWidgets.QPushButton(parent=adminRegistrationPage)
+        self.showHideConfirmPassBtn.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.showHideConfirmPassBtn.setStyleSheet("border:none;\n"
 "margin-top:7px;")
         self.showHideConfirmPassBtn.setText("")
@@ -104,9 +105,17 @@ class Ui_Form(object):
         self.horizontalLayout_5.addWidget(self.showHideConfirmPassBtn)
         self.verticalLayout.addLayout(self.horizontalLayout_5)
         self.verticalLayout_2.addLayout(self.verticalLayout)
+        self.errorMsgLabelReg = QtWidgets.QLabel(parent=adminRegistrationPage)
+        self.errorMsgLabelReg.setStyleSheet("color:Red;\n"
+"margin-left:15px;\n"
+"margin-right:15px;\n"
+"margin-top:15px;")
+        self.errorMsgLabelReg.setObjectName("errorMsgLabelReg")
+        self.verticalLayout_2.addWidget(self.errorMsgLabelReg)
         spacerItem1 = QtWidgets.QSpacerItem(20, 57, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
         self.verticalLayout_2.addItem(spacerItem1)
-        self.signUpBtn = QtWidgets.QPushButton(parent=Form)
+        self.signUpBtn = QtWidgets.QPushButton(parent=adminRegistrationPage)
+        self.signUpBtn.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.signUpBtn.setStyleSheet("background-color: rgb(11, 100, 197);\n"
 "font: 600 12pt \"Segoe UI\";\n"
 "padding:15px;\n"
@@ -119,10 +128,10 @@ class Ui_Form(object):
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setContentsMargins(145, -1, 200, 20)
         self.horizontalLayout.setObjectName("horizontalLayout")
-        self.label_6 = QtWidgets.QLabel(parent=Form)
+        self.label_6 = QtWidgets.QLabel(parent=adminRegistrationPage)
         self.label_6.setObjectName("label_6")
         self.horizontalLayout.addWidget(self.label_6)
-        self.goToLoginPageBtn = QtWidgets.QPushButton(parent=Form)
+        self.goToLoginPageBtn = QtWidgets.QPushButton(parent=adminRegistrationPage)
         self.goToLoginPageBtn.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.goToLoginPageBtn.setStyleSheet("border:none;\n"
 "font: 600 12pt \"Segoe UI\";\n"
@@ -133,27 +142,28 @@ class Ui_Form(object):
         self.horizontalLayout.addWidget(self.goToLoginPageBtn)
         self.verticalLayout_2.addLayout(self.horizontalLayout)
 
-        self.retranslateUi(Form)
-        QtCore.QMetaObject.connectSlotsByName(Form)
+        self.retranslateUi(adminRegistrationPage)
+        QtCore.QMetaObject.connectSlotsByName(adminRegistrationPage)
 
-    def retranslateUi(self, Form):
+    def retranslateUi(self, adminRegistrationPage):
         _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "Form"))
-        self.label.setText(_translate("Form", "SIGN UP"))
-        self.label_2.setText(_translate("Form", "Name                    "))
-        self.label_3.setText(_translate("Form", "Email                     "))
-        self.label_4.setText(_translate("Form", "Password              "))
-        self.label_5.setText(_translate("Form", "Confirm Password"))
-        self.signUpBtn.setText(_translate("Form", "SIGN UP"))
-        self.label_6.setText(_translate("Form", "Already have an account?"))
-        self.goToLoginPageBtn.setText(_translate("Form", "Login"))
+        adminRegistrationPage.setWindowTitle(_translate("adminRegistrationPage", "Form"))
+        self.label.setText(_translate("adminRegistrationPage", "SIGN UP"))
+        self.label_2.setText(_translate("adminRegistrationPage", "Name                    "))
+        self.label_3.setText(_translate("adminRegistrationPage", "Email                     "))
+        self.label_4.setText(_translate("adminRegistrationPage", "Password              "))
+        self.label_5.setText(_translate("adminRegistrationPage", "Confirm Password"))
+        self.errorMsgLabelReg.setText(_translate("adminRegistrationPage", "Error msg here..."))
+        self.signUpBtn.setText(_translate("adminRegistrationPage", "SIGN UP"))
+        self.label_6.setText(_translate("adminRegistrationPage", "Already have an account?"))
+        self.goToLoginPageBtn.setText(_translate("adminRegistrationPage", "Login"))
 
 
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    Form = QtWidgets.QWidget()
-    ui = Ui_Form()
-    ui.setupUi(Form)
-    Form.show()
+    adminRegistrationPage = QtWidgets.QWidget()
+    ui = Ui_adminRegistrationPage()
+    ui.setupUi(adminRegistrationPage)
+    adminRegistrationPage.show()
     sys.exit(app.exec())

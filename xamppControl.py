@@ -15,6 +15,4 @@ def start_apache():
 def stop_apache():
     subprocess.run([os.path.join(XAMPP_PATH, "apache_stop.bat")], shell=True)
 
-# Example usage:
-# start_mysql()
-# start_apache()
+stop_apache()
