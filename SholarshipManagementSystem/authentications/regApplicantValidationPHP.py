@@ -6,7 +6,7 @@ from PyQt6.QtWidgets import QWidget, QMessageBox
 import requests
 import json
 from SholarshipManagementSystem.authentications.applicantReg import Ui_applicantRegistration
-from regValidationPHP import RegCode
+from SholarshipManagementSystem.authentications.regValidationPHP import RegCode
 
 
 
@@ -72,7 +72,7 @@ class AppValCode(QWidget, Ui_applicantRegistration):
         )
 
         # go to loginPage
-        self.goToLoginPageBtn.clicked.connect(self.goToLoginPage)
+        # self.goToLoginPageBtn.clicked.connect(self.goToLoginPage)
 
     #     register
         self.signUpBtn.clicked.connect(self.register)
@@ -108,12 +108,12 @@ class AppValCode(QWidget, Ui_applicantRegistration):
                     "name":self.nameTxt.text().strip(),
                     "email":self.emailTxt.text().strip(),
                     "nationality":self.nationalityTxt.text().strip(),
+                    "pass": self.passTxt.text().strip(),
                     "gender":self.genderCombo.currentText(),
                     "phone_number":self.phoneNumTxt.text().strip(),
                     "age":self.ageSpinBox.text(),
                     "dob":dob.toPyDate(),
-                    "education_level":self.educationCombo.currentText(),
-                    "password":self.passTxt.text().strip()
+                    "education_level":self.educationCombo.currentText()
                 }
             )
 
@@ -140,12 +140,15 @@ class AppValCode(QWidget, Ui_applicantRegistration):
         return re.match(pattern, phoneNum) is not None
 
 
-    def goToLoginPage(self):
-        from loginValidationPHP import LoginCode
-        self.win = LoginCode()
-        self.hide()
-        self.win.show()
+    # def goToLoginPage(self):
+    #     from SholarshipManagementSystem.welcomePage.welcomePageCode import WelcomePageCode
+    #     self.win = WelcomePageCode()
+    #     self.hide()
+    #     self.win.show()
 
+
+    def hideWindow(self):
+        self.hide()
 
     def msgBox(self, title, msg):
         msgBox = QMessageBox()

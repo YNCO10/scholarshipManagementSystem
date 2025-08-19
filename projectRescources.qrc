@@ -1,5 +1,7 @@
 <RCC>
   <qresource>
+    <file>icons/adminIcon.png</file>
+    <file>icons/applicantIcon.png</file>
     <file>icons/whiteHomeIcon.png</file>
     <file>icons/whiteManageScholarshipIcon.png</file>
     <file>icons/activity.svg</file>

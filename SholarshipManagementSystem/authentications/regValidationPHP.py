@@ -1,9 +1,7 @@
 import re
-import sys
-
 
 from PyQt6.QtGui import QIcon
-from PyQt6.QtWidgets import QWidget, QMessageBox, QLineEdit, QApplication
+from PyQt6.QtWidgets import QWidget, QMessageBox, QLineEdit
 import requests
 import json
 from SholarshipManagementSystem.authentications.adminReg import Ui_adminRegistrationPage
@@ -40,7 +38,7 @@ class RegCode(QWidget, Ui_adminRegistrationPage):
         ))
 
          # switch pages
-        self.goToLoginPageBtn.clicked.connect(self.goTologinPage)
+        # self.goToLoginPageBtn.clicked.connect(self.goTologinPage)
 
     def register(self):
         if self.nameTxt.text() == "" or self.passTxt.text() == "" or self.emailTxt.text() == "" or self.confirmPassTxt.text() == "":
@@ -66,7 +64,7 @@ class RegCode(QWidget, Ui_adminRegistrationPage):
                 data={
                     "name":self.nameTxt.text().strip(),
                     "email":self.emailTxt.text().strip(),
-                    "pass_word":self.passTxt.text().strip()
+                    "pass":self.passTxt.text().strip()
                 }
             )
             result = json.loads(response.text)
@@ -113,11 +111,14 @@ class RegCode(QWidget, Ui_adminRegistrationPage):
             lineEdit.setEchoMode(QLineEdit.EchoMode.Password)
             btn.setIcon(QIcon("../../icons/seeWhiteIcon.png"))
 
-    def goTologinPage(self):
-        from loginValidationPHP import LoginCode
-        self.win = LoginCode()
+    # def goTologinPage(self):
+    #     from loginValidationPHP import LoginCode
+    #     self.win = LoginCode()
+    #     self.hide()
+    #     self.win.show()
+
+    def hideWindow(self):
         self.hide()
-        self.win.show()
 
 
 
