@@ -11,7 +11,7 @@ class Dash(QMainWindow, Ui_MainWindow):
         super().__init__()
         # uic.loadUi("C:/Users/Yankho/OneDrive/Desktop/PROJECT/SholarshipManagementSystem/homePage/dash.ui", self)
         self.setupUi(self)
-        self.setWindowTitle("Dashboard.")
+        self.setWindowTitle("Dashboard")
 
         self.passTxt.setText("THIS IS A RANDOM PASSWORD NIGGA")
 
@@ -26,7 +26,7 @@ class Dash(QMainWindow, Ui_MainWindow):
         self.BtnClicks()
         self.readOnlyLineEdit()
 
-    #BTN CLICKS
+    #BTN CLICKS###############################################################
     def BtnClicks(self):
         # Home
         self.homeBtn.clicked.connect(self.switchToDash)
@@ -45,21 +45,21 @@ class Dash(QMainWindow, Ui_MainWindow):
         self.notificationsBtn.clicked.connect(self.switchToNotificationsPage)
         self.notificationsIconBtn.clicked.connect(self.switchToNotificationsPage)
         # scholarshipDialog
-        self.uploadScholarshipBtn.clicked.connect(self.goToUploadScholarship)
+        # self.uploadScholarshipBtn.clicked.connect(self.goToUploadScholarship)
     #     show password
         self.showPassBtn.clicked.connect(self.togglePasswordBtn)
 
+##################################################################################
+    # def goToUploadScholarship(self):
+    #     dialog = QDialog()
+    #     ui = Ui_Dialog()
+    #     ui.setupUi(dialog)
+    #
+    #     ui.cancelBtn.clicked.connect(dialog.close)#close dialog
+    #
+    #     dialog.exec()
 
-    def goToUploadScholarship(self):
-        dialog = QDialog()
-        ui = Ui_Dialog()
-        ui.setupUi(dialog)
-
-        ui.cancelBtn.clicked.connect(dialog.close)#close dialog
-
-        dialog.exec()
-
-
+    ##################################################################################
     def togglePasswordBtn(self):
         if self.passTxt.echoMode() == QLineEdit.EchoMode.Normal:
             self.passTxt.setEchoMode(QLineEdit.EchoMode.Password)
@@ -77,7 +77,7 @@ class Dash(QMainWindow, Ui_MainWindow):
 
 
 
-    # PAGE SWITCHING
+    # PAGE SWITCHING################################################
     def switchToDash(self):
         self.mainDisplayWidget.setCurrentIndex(0)
 

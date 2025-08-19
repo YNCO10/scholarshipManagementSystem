@@ -24,7 +24,7 @@ class RegCode(QWidget, Ui_adminRegistrationPage):
         #signUp
         self.signUpBtn.clicked.connect(self.register)
 
-        #showHide pass
+        #showHide pass login
         self.showHidePassBtn.clicked.connect(
             lambda : self.togglePassword(
                 self.passTxt,
@@ -106,16 +106,10 @@ class RegCode(QWidget, Ui_adminRegistrationPage):
 
         if lineEdit.echoMode() == QLineEdit.EchoMode.Password:
             lineEdit.setEchoMode(QLineEdit.EchoMode.Normal)
-            btn.setIcon(QIcon("../../icons/hideWhite.png"))
+            btn.setIcon(QIcon(":/icons/hideWhite.png"))
         else:
             lineEdit.setEchoMode(QLineEdit.EchoMode.Password)
-            btn.setIcon(QIcon("../../icons/seeWhiteIcon.png"))
-
-    # def goTologinPage(self):
-    #     from loginValidationPHP import LoginCode
-    #     self.win = LoginCode()
-    #     self.hide()
-    #     self.win.show()
+            btn.setIcon(QIcon(":/icons/seeWhiteIcon.png"))
 
     def hideWindow(self):
         self.hide()

@@ -140,13 +140,6 @@ class AppValCode(QWidget, Ui_applicantRegistration):
         return re.match(pattern, phoneNum) is not None
 
 
-    # def goToLoginPage(self):
-    #     from SholarshipManagementSystem.welcomePage.welcomePageCode import WelcomePageCode
-    #     self.win = WelcomePageCode()
-    #     self.hide()
-    #     self.win.show()
-
-
     def hideWindow(self):
         self.hide()
 

@@ -6,20 +6,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>417</width>
-    <height>344</height>
+    <width>481</width>
+    <height>447</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>390</width>
-    <height>340</height>
+    <width>481</width>
+    <height>447</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>417</width>
-    <height>349</height>
+    <width>481</width>
+    <height>448</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -47,7 +47,7 @@ QPushButton{
 QLabel{
 	
 	
-	font: 600 10pt &quot;Segoe UI&quot;;
+	font: 600 12pt &quot;Segoe UI&quot;;
 }
 
 
@@ -57,8 +57,8 @@ QLineEdit{
 	border-bottom: 1px solid white;
 }</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0">
+  <layout class="QVBoxLayout" name="verticalLayout_2">
+   <item>
     <widget class="QLabel" name="label_5">
      <property name="styleSheet">
       <string notr="true">font: 600 14pt &quot;Segoe UI&quot;;
@@ -72,16 +72,22 @@ margin-bottom:30px;</string>
      </property>
     </widget>
    </item>
-   <item row="1" column="0">
+   <item>
     <layout class="QVBoxLayout" name="verticalLayout">
      <property name="spacing">
-      <number>20</number>
+      <number>15</number>
      </property>
      <property name="leftMargin">
-      <number>10</number>
+      <number>20</number>
+     </property>
+     <property name="topMargin">
+      <number>20</number>
      </property>
      <property name="rightMargin">
-      <number>10</number>
+      <number>20</number>
+     </property>
+     <property name="bottomMargin">
+      <number>100</number>
      </property>
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_5">
@@ -127,11 +133,11 @@ margin-bottom:30px;</string>
      </item>
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_2">
-       <property name="bottomMargin">
-        <number>40</number>
-       </property>
        <item>
         <widget class="QLabel" name="label_4">
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
          <property name="text">
           <string>File Path:               </string>
          </property>
@@ -140,12 +146,38 @@ margin-bottom:30px;</string>
        <item>
         <widget class="QLineEdit" name="scholarshipFilepathTxt"/>
        </item>
+       <item>
+        <widget class="QPushButton" name="browseBtn">
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border:none;
+border-radius:5px;
+font: 600 9pt &quot;Segoe UI&quot;;
+margin:0px;
+padding:2px;
+background-color: rgb(11, 100, 197);
+color:rgb(1, 14, 27);</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="../../projectRescources.qrc">
+           <normaloff>:/icons/search.png</normaloff>:/icons/search.png</iconset>
+         </property>
+        </widget>
+       </item>
       </layout>
      </item>
     </layout>
    </item>
-   <item row="2" column="0">
+   <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
+     <property name="bottomMargin">
+      <number>30</number>
+     </property>
      <item>
       <spacer name="horizontalSpacer_3">
        <property name="orientation">
@@ -161,6 +193,9 @@ margin-bottom:30px;</string>
      </item>
      <item>
       <widget class="QPushButton" name="uploadBtn">
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
        <property name="text">
         <string>UPLOAD</string>
        </property>
@@ -181,6 +216,9 @@ margin-bottom:30px;</string>
      </item>
      <item>
       <widget class="QPushButton" name="cancelBtn">
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
        <property name="text">
         <string>CANCEL</string>
        </property>
@@ -203,6 +241,8 @@ margin-bottom:30px;</string>
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../../projectRescources.qrc"/>
+ </resources>
  <connections/>
 </ui>

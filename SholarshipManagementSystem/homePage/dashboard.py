@@ -7,7 +7,7 @@
 
 
 from PyQt6 import QtCore, QtGui, QtWidgets
-import myResources
+import myProjectResources
 
 
 class Ui_MainWindow(object):

@@ -7,6 +7,7 @@ from SholarshipManagementSystem.authentications.loginPage import Ui_loginPage
 from SholarshipManagementSystem.authentications.regValidationPHP import RegCode
 
 
+
 class LoginCode(QWidget, Ui_loginPage):
     def __init__(self):
         super().__init__()
@@ -56,6 +57,7 @@ class LoginCode(QWidget, Ui_loginPage):
             elif result.get("status") == "applicant":
                 self.msgBox("Welcome", f"Enjoy your experience, {result.get('applicantName', 'Applicant')}")
                 print("Login Successful")
+
 
 
 

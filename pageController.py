@@ -2,6 +2,9 @@ from SholarshipManagementSystem.welcomePage.welcomePageCode import WelcomePageCo
 from SholarshipManagementSystem.authentications.regValidationPHP import RegCode
 from SholarshipManagementSystem.authentications.regApplicantValidationPHP import AppValCode
 from SholarshipManagementSystem.authentications.loginValidationPHP import LoginCode
+from SholarshipManagementSystem.homePage.myMainDisplay import Dash
+from SholarshipManagementSystem.manageScholarshipsPage.uploadScholarCode import UploadingCode
+import myProjectResources
 
 class Controller:
     def __init__(self):
@@ -9,10 +12,35 @@ class Controller:
         self.adminReg = RegCode()
         self.applicantReg = AppValCode()
         self.login = LoginCode()
+        self.adminHome = Dash()
+        self.uploadScholar = UploadingCode()
 
-        self.btnClicks()
+        # btn clicks
+        self.btnClicksLogin()
+        self.btnClicksWelcome()
+        self.btnClicksAppReg()
+        self.btnClicksAdminReg()
+        self.btnClicksAdminDash()
 
-    def btnClicks(self):
+
+
+    # btn clicks#################################################################
+    def btnClicksLogin(self):
+        # login
+        self.login.goToRegistrationPageBtn.clicked.connect(self.showWelcome)
+
+    ###############################################################################
+    def btnClicksAppReg(self):
+        # applicant reg
+        self.applicantReg.goToLoginPageBtn.clicked.connect(self.showLogin)
+
+    ###############################################################################
+    def btnClicksAdminReg(self):
+        #     btn in admin reg
+        self.adminReg.goToLoginPageBtn.clicked.connect(self.showLogin)
+
+   ###############################################################################
+    def btnClicksWelcome(self):
         # btns in welcome page
         self.welcome.goToAdminRegBtn.clicked.connect(self.showAdminReg)
 
@@ -20,16 +48,14 @@ class Controller:
 
         self.welcome.goToLoginBtn.clicked.connect(self.showLogin)
 
-        #     btn in admin reg
-        self.adminReg.goToLoginPageBtn.clicked.connect(self.showLogin)
-
-        # applicant reg
-        self.applicantReg.goToLoginPageBtn.clicked.connect(self.showLogin)
-
-        # login
-        self.login.goToRegistrationPageBtn.clicked.connect(self.showWelcome)
+    ###############################################################################
+    def btnClicksAdminDash(self):
+        self.adminHome.uploadScholarshipBtn.clicked.connect(self.showUploadScholarship)
 
 
+
+
+    # SHOW/HIDE WINDOWS##################################################################
     def showWelcome(self):
         self.hideAll()
         self.welcome.show()
@@ -47,8 +73,19 @@ class Controller:
         self.hideAll()
         self.login.show()
 
+    def showAdinDash(self):
+        self.hideAll()
+        self.adminHome.show()
+
+    def showUploadScholarship(self):
+        self.hideAll()
+        self.uploadScholar.show()
+
+
     def hideAll(self):
         self.adminReg.hideWindow()
         self.welcome.hideWindow()
         self.applicantReg.hideWindow()
         self.login.hideWindow()
+
+

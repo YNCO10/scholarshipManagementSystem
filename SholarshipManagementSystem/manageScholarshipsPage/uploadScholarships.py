@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file 'uploadScholarships.ui'
+# Form implementation generated from reading ui file 'uploadscholarships.ui'
 #
 # Created by: PyQt6 UI code generator 6.8.1
 #
@@ -12,9 +12,9 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_Dialog(object):
     def setupUi(self, Dialog):
         Dialog.setObjectName("Dialog")
-        Dialog.resize(417, 344)
-        Dialog.setMinimumSize(QtCore.QSize(390, 340))
-        Dialog.setMaximumSize(QtCore.QSize(417, 349))
+        Dialog.resize(481, 447)
+        Dialog.setMinimumSize(QtCore.QSize(481, 447))
+        Dialog.setMaximumSize(QtCore.QSize(481, 448))
         Dialog.setStyleSheet("QDialog{\n"
 "    \n"
 "    background-color: rgb(11, 100, 197);\n"
@@ -36,7 +36,7 @@ class Ui_Dialog(object):
 "QLabel{\n"
 "    \n"
 "    \n"
-"    font: 600 10pt \"Segoe UI\";\n"
+"    font: 600 12pt \"Segoe UI\";\n"
 "}\n"
 "\n"
 "\n"
@@ -45,17 +45,17 @@ class Ui_Dialog(object):
 "    background-color: rgb(11, 100, 197);\n"
 "    border-bottom: 1px solid white;\n"
 "}")
-        self.gridLayout = QtWidgets.QGridLayout(Dialog)
-        self.gridLayout.setObjectName("gridLayout")
+        self.verticalLayout_2 = QtWidgets.QVBoxLayout(Dialog)
+        self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.label_5 = QtWidgets.QLabel(parent=Dialog)
         self.label_5.setStyleSheet("font: 600 14pt \"Segoe UI\";\n"
 "margin-bottom:30px;")
         self.label_5.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.label_5.setObjectName("label_5")
-        self.gridLayout.addWidget(self.label_5, 0, 0, 1, 1)
+        self.verticalLayout_2.addWidget(self.label_5)
         self.verticalLayout = QtWidgets.QVBoxLayout()
-        self.verticalLayout.setContentsMargins(10, -1, 10, -1)
-        self.verticalLayout.setSpacing(20)
+        self.verticalLayout.setContentsMargins(20, 20, 20, 100)
+        self.verticalLayout.setSpacing(15)
         self.verticalLayout.setObjectName("verticalLayout")
         self.horizontalLayout_5 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_5.setObjectName("horizontalLayout_5")
@@ -85,31 +85,49 @@ class Ui_Dialog(object):
         self.horizontalLayout_3.addWidget(self.scholarshipDeadlineTxt)
         self.verticalLayout.addLayout(self.horizontalLayout_3)
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_2.setContentsMargins(-1, -1, -1, 40)
         self.horizontalLayout_2.setObjectName("horizontalLayout_2")
         self.label_4 = QtWidgets.QLabel(parent=Dialog)
+        self.label_4.setStyleSheet("")
         self.label_4.setObjectName("label_4")
         self.horizontalLayout_2.addWidget(self.label_4)
         self.scholarshipFilepathTxt = QtWidgets.QLineEdit(parent=Dialog)
         self.scholarshipFilepathTxt.setObjectName("scholarshipFilepathTxt")
         self.horizontalLayout_2.addWidget(self.scholarshipFilepathTxt)
+        self.browseBtn = QtWidgets.QPushButton(parent=Dialog)
+        self.browseBtn.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
+        self.browseBtn.setStyleSheet("border:none;\n"
+"border-radius:5px;\n"
+"font: 600 9pt \"Segoe UI\";\n"
+"margin:0px;\n"
+"padding:2px;\n"
+"background-color: rgb(11, 100, 197);\n"
+"color:rgb(1, 14, 27);")
+        self.browseBtn.setText("")
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap(":/icons/search.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        self.browseBtn.setIcon(icon)
+        self.browseBtn.setObjectName("browseBtn")
+        self.horizontalLayout_2.addWidget(self.browseBtn)
         self.verticalLayout.addLayout(self.horizontalLayout_2)
-        self.gridLayout.addLayout(self.verticalLayout, 1, 0, 1, 1)
+        self.verticalLayout_2.addLayout(self.verticalLayout)
         self.horizontalLayout = QtWidgets.QHBoxLayout()
+        self.horizontalLayout.setContentsMargins(-1, -1, -1, 30)
         self.horizontalLayout.setObjectName("horizontalLayout")
         spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout.addItem(spacerItem)
         self.uploadBtn = QtWidgets.QPushButton(parent=Dialog)
+        self.uploadBtn.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.uploadBtn.setObjectName("uploadBtn")
         self.horizontalLayout.addWidget(self.uploadBtn)
         spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout.addItem(spacerItem1)
         self.cancelBtn = QtWidgets.QPushButton(parent=Dialog)
+        self.cancelBtn.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.cancelBtn.setObjectName("cancelBtn")
         self.horizontalLayout.addWidget(self.cancelBtn)
         spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout.addItem(spacerItem2)
-        self.gridLayout.addLayout(self.horizontalLayout, 2, 0, 1, 1)
+        self.verticalLayout_2.addLayout(self.horizontalLayout)
 
         self.retranslateUi(Dialog)
         QtCore.QMetaObject.connectSlotsByName(Dialog)

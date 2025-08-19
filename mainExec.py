@@ -2,7 +2,11 @@ import sys
 from PyQt6.QtWidgets import QApplication
 from pageController import Controller
 
-app = QApplication(sys.argv)
-controller = Controller()
-controller.showLogin()
-app.exec()
+class ManageWindow:
+    def __init__(self):
+        app = QApplication(sys.argv)
+        controller = Controller()
+        controller.showAdinDash()
+        app.exec()
+
+manageWin = ManageWindow()
