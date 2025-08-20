@@ -5,6 +5,7 @@ import json
 
 from SholarshipManagementSystem.authentications.loginPage import Ui_loginPage
 from SholarshipManagementSystem.authentications.regValidationPHP import RegCode
+import Sessions
 
 
 
@@ -14,6 +15,7 @@ class LoginCode(QWidget, Ui_loginPage):
         self.setWindowTitle("Login")
         self.setWindowIcon(QIcon("../../icons/SMsysIcon.png"))
         self.setupUi(self)
+
         self.regCode = RegCode()
 
         self.url = "http://localhost/BackEnd/scholarshipManagement/authentications/loginValidation.php"
@@ -53,6 +55,13 @@ class LoginCode(QWidget, Ui_loginPage):
                 self.msgBox("Welcome", f"Enjoy your experience, {result.get('adminName', 'Admin')}")
                 print("Login Successful")
 
+                Sessions.seshEmail = self.loginEmailTxt.text().strip()
+
+                from pageController import Controller
+                self.controller = Controller()
+                self.controller.showAdinDash()
+                self.hideWindow()
+
 
             elif result.get("status") == "applicant":
                 self.msgBox("Welcome", f"Enjoy your experience, {result.get('applicantName', 'Applicant')}")
@@ -67,29 +76,8 @@ class LoginCode(QWidget, Ui_loginPage):
 
 
         except Exception as e:
-            self.msgBox("Error", f"Oops something went wrong: {e}")
+            self.msgBox("Error", f"Oops something went wrong(login): {e}")
             print(e)
-
-
-    def checkUser(self):
-        response = requests.post(
-            "http://localhost/BackEnd/scholarshipManagement/authentications/checkUser.php",
-            data={
-                "email": self.loginEmailTxt.text().strip()
-            }
-        )
-        result = json.loads(response.text)
-        errorMsg = result.get("message", "Unknown error")
-
-        if result.get("status") == "admin":
-            self.msgBox("Welcome", f"Enjoy your experience, {result.get("adminName", "Admin")}")
-            print("Login Successful")
-        #     SWITCH TO ADMIN HOMEPAGE
-
-        if result.get("status") == "applicant":
-            self.msgBox("Welcome", f"Enjoy your experience, {result.get("applicantName","Applicant")}")
-            print("Login Successful")
-    #         SWITCH TO USER HOMEPAGE
 
 
     def hideWindow(self):

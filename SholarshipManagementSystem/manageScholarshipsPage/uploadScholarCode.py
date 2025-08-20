@@ -6,7 +6,8 @@ from PyQt6.QtWidgets import QDialog, QFileDialog
 
 from SholarshipManagementSystem.manageScholarshipsPage.uploadScholarships import Ui_Dialog
 from SholarshipManagementSystem.authentications.regValidationPHP import RegCode
-
+import Sessions
+from SholarshipManagementSystem.homePage.myMainDisplay import Dash
 
 
 class UploadingCode(QDialog, Ui_Dialog):
@@ -58,7 +59,8 @@ class UploadingCode(QDialog, Ui_Dialog):
                 data={
                     "filename": fileName.strip(),
                     "descrip": descrip.strip(),
-                    "deadline": deadline.strip()
+                    "deadline": deadline.strip(),
+                    "email": Sessions.seshEmail
                 },
                 files={
                     "document": open(filePath, "rb")
@@ -73,18 +75,20 @@ class UploadingCode(QDialog, Ui_Dialog):
                     "File Uploaded",
                     f"{msg}"
                 )
+                dash = Dash()
+                dash.populateTableWidget()
 
             elif result.get("status") == "error":
                 self.regCode.msgBox(
                     "Error",
-                    f"{msg}"
+                    f"Upload Error: {msg}"
                 )
 
 
         except Exception as e:
             self.regCode.msgBox(
-                "Blank Fields",
-                "Please fill in all fields"
+                "Error",
+                f"Exception(upload): {e}"
             )
 
             print("Please fill in all fields")

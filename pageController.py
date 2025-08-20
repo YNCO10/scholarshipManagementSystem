@@ -24,10 +24,13 @@ class Controller:
 
 
 
+
     # btn clicks#################################################################
     def btnClicksLogin(self):
         # login
         self.login.goToRegistrationPageBtn.clicked.connect(self.showWelcome)
+
+        # self.login.signInBtn.clicked.connect(self.login.login)
 
     ###############################################################################
     def btnClicksAppReg(self):
