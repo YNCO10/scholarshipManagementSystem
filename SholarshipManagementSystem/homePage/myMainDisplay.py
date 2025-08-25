@@ -173,7 +173,7 @@ class Dash(QMainWindow, Ui_MainWindow):
     def displayScholarshipDoc(self, path):
 
         print(repr(path))
-        referenceDir = "C:/XAMPP/htdocs/BackEnd/scholarshipManagement/uploadScholarships/docs/uploadedFiles"
+        # referenceDir = "C:/XAMPP/htdocs/BackEnd/scholarshipManagement/uploadScholarships/docs/uploadedFiles"
         xamppDir = r"C:/XAMPP/htdocs/BackEnd/scholarshipManagement/uploadScholarships/docs/uploadedFiles"
 
         fullPath = os.path.join(xamppDir, path)

@@ -7,7 +7,7 @@ import requests
 import json
 from SholarshipManagementSystem.authentications.applicantReg import Ui_applicantRegistration
 from SholarshipManagementSystem.authentications.regValidationPHP import RegCode
-
+from SholarshipManagementSystem.classes.applicant import Applicant
 
 
 class AppValCode(QWidget, Ui_applicantRegistration):
@@ -55,6 +55,7 @@ class AppValCode(QWidget, Ui_applicantRegistration):
         # BTN CLICKS
         self.btnClicks()
 
+########################################################################################################################
     # ALL BTN CLICKS BELOW
     def btnClicks(self):
         self.showHidePassBtn.clicked.connect(
@@ -77,7 +78,7 @@ class AppValCode(QWidget, Ui_applicantRegistration):
     #     register
         self.signUpBtn.clicked.connect(self.register)
 
-
+########################################################################################################################
     def register(self):
 
         if self.nameTxt.text() == "" or self.nationalityTxt.text() == "" or self.passTxt.text() == "" or self.emailTxt.text() == "" or self.confirmPassTxt.text() == "":
@@ -102,50 +103,58 @@ class AppValCode(QWidget, Ui_applicantRegistration):
 
         dob = self.DOBdateEdit.date()
         try:
-            response = requests.post(
-                self.url,
-                data={
-                    "name":self.nameTxt.text().strip(),
-                    "email":self.emailTxt.text().strip(),
-                    "nationality":self.nationalityTxt.text().strip(),
-                    "pass": self.passTxt.text().strip(),
-                    "gender":self.genderCombo.currentText(),
-                    "phone_number":self.phoneNumTxt.text().strip(),
-                    "age":self.ageSpinBox.text(),
-                    "dob":dob.toPyDate(),
-                    "education_level":self.educationCombo.currentText()
-                }
+
+            applicant = Applicant(
+                self.nameTxt.text().strip(),
+                self.emailTxt.text().strip(),
+                self.nationalityTxt.text().strip(),
+                self.passTxt.text().strip(),
+                self.genderCombo.currentText(),
+                self.phoneNumTxt.text().strip(),
+                self.ageSpinBox.text().strip(),
+                dob.toPyDate(),
+                self.educationCombo.currentText()
             )
 
-            result = json.loads(response.text)
-            print(f"Raw response: {response.text}")
+            result = applicant.execute(self.url)
+            print(f"Raw response: {result}")
             errorMsg = result.get("message", "Unknown error")
 
             if result.get("status") == "success":
                 self.msgBox("Welcome", "Enjoy your experience.")
                 print("Registration Successful")
+                self.goToLogin()
+
             else:
                 self.msgBox("Error", f"Error: {errorMsg}")
-                print(f"Something went wrong (Reg): {errorMsg}")
+                print(f"Something went wrong (AppReg): {errorMsg}")
 
 
         except Exception as e:
-            self.msgBox("Error", f"Oops something went wrong: {e}")
-            print(f"Oops something went wrong: {e}")
+            self.msgBox("Error", f"Oops something went wrong(AppReg): {e}")
+            print(f"Oops something went wrong(AppReg): {e}")
 
-
+########################################################################################################################
     def validatePhoneNumberLineEdit(self, phoneNum):
         pattern = r"^\+\d{7,15}$"
 
         return re.match(pattern, phoneNum) is not None
 
-
+########################################################################################################################
     def hideWindow(self):
         self.hide()
 
+########################################################################################################################
     def msgBox(self, title, msg):
         msgBox = QMessageBox()
         msgBox.setWindowTitle(title)
         msgBox.setText(msg)
         msgBox.setStandardButtons(QMessageBox.StandardButton.Ok)
         msgBox.exec()
+
+########################################################################################################################
+    def goToLogin(self):
+        from pageController import Controller
+        self.controller = Controller()
+        self.controller.showLogin()
+        self.hideWindow()

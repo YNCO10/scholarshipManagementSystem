@@ -6,20 +6,20 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>481</width>
-    <height>447</height>
+    <width>520</width>
+    <height>518</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>481</width>
-    <height>447</height>
+    <width>520</width>
+    <height>518</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>481</width>
-    <height>448</height>
+    <width>520</width>
+    <height>518</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -27,6 +27,7 @@
   </property>
   <property name="styleSheet">
    <string notr="true">QDialog{
+	
 	
 	background-color: rgb(11, 100, 197);
 
@@ -55,131 +56,25 @@ QLineEdit{
 	border:none;
 	background-color: rgb(11, 100, 197);
 	border-bottom: 1px solid white;
+	
+	font: 11pt &quot;Segoe UI&quot;;
+}
+
+QRadioButton{
+	font: 600 12pt &quot;Segoe UI&quot;;
 }</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout_2">
-   <item>
-    <widget class="QLabel" name="label_5">
-     <property name="styleSheet">
-      <string notr="true">font: 600 14pt &quot;Segoe UI&quot;;
-margin-bottom:30px;</string>
-     </property>
-     <property name="text">
-      <string>Please Select a File</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignmentFlag::AlignCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <layout class="QVBoxLayout" name="verticalLayout">
-     <property name="spacing">
-      <number>15</number>
-     </property>
-     <property name="leftMargin">
-      <number>20</number>
-     </property>
+  <layout class="QGridLayout" name="gridLayout_2">
+   <item row="1" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout_34">
      <property name="topMargin">
-      <number>20</number>
-     </property>
-     <property name="rightMargin">
-      <number>20</number>
+      <number>19</number>
      </property>
      <property name="bottomMargin">
-      <number>100</number>
+      <number>0</number>
      </property>
      <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_5">
-       <item>
-        <widget class="QLabel" name="label">
-         <property name="text">
-          <string>Scholarship Name:</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="scholarshipNameTxt"/>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_4">
-       <item>
-        <widget class="QLabel" name="label_2">
-         <property name="text">
-          <string>Description:           </string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="scholarshipDescriptionTxt"/>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_3">
-       <item>
-        <widget class="QLabel" name="label_3">
-         <property name="text">
-          <string>Deadline:               </string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="scholarshipDeadlineTxt"/>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_2">
-       <item>
-        <widget class="QLabel" name="label_4">
-         <property name="styleSheet">
-          <string notr="true"/>
-         </property>
-         <property name="text">
-          <string>File Path:               </string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLineEdit" name="scholarshipFilepathTxt"/>
-       </item>
-       <item>
-        <widget class="QPushButton" name="browseBtn">
-         <property name="cursor">
-          <cursorShape>PointingHandCursor</cursorShape>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">border:none;
-border-radius:5px;
-font: 600 9pt &quot;Segoe UI&quot;;
-margin:0px;
-padding:2px;
-background-color: rgb(11, 100, 197);
-color:rgb(1, 14, 27);</string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="icon">
-          <iconset resource="../../projectRescources.qrc">
-           <normaloff>:/icons/search.png</normaloff>:/icons/search.png</iconset>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-    </layout>
-   </item>
-   <item>
-    <layout class="QHBoxLayout" name="horizontalLayout">
-     <property name="bottomMargin">
-      <number>30</number>
-     </property>
-     <item>
-      <spacer name="horizontalSpacer_3">
+      <spacer name="horizontalSpacer_13">
        <property name="orientation">
         <enum>Qt::Orientation::Horizontal</enum>
        </property>
@@ -196,13 +91,16 @@ color:rgb(1, 14, 27);</string>
        <property name="cursor">
         <cursorShape>PointingHandCursor</cursorShape>
        </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(1, 14, 27);</string>
+       </property>
        <property name="text">
         <string>UPLOAD</string>
        </property>
       </widget>
      </item>
      <item>
-      <spacer name="horizontalSpacer">
+      <spacer name="horizontalSpacer_14">
        <property name="orientation">
         <enum>Qt::Orientation::Horizontal</enum>
        </property>
@@ -219,13 +117,16 @@ color:rgb(1, 14, 27);</string>
        <property name="cursor">
         <cursorShape>PointingHandCursor</cursorShape>
        </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(1, 14, 27);</string>
+       </property>
        <property name="text">
         <string>CANCEL</string>
        </property>
       </widget>
      </item>
      <item>
-      <spacer name="horizontalSpacer_2">
+      <spacer name="horizontalSpacer_15">
        <property name="orientation">
         <enum>Qt::Orientation::Horizontal</enum>
        </property>
@@ -238,6 +139,712 @@ color:rgb(1, 14, 27);</string>
       </spacer>
      </item>
     </layout>
+   </item>
+   <item row="0" column="0">
+    <widget class="QScrollArea" name="scrollArea">
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(11, 100, 197);</string>
+     </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOn</enum>
+     </property>
+     <property name="sizeAdjustPolicy">
+      <enum>QAbstractScrollArea::SizeAdjustPolicy::AdjustToContentsOnFirstShow</enum>
+     </property>
+     <property name="widgetResizable">
+      <bool>true</bool>
+     </property>
+     <widget class="QWidget" name="scrollAreaWidgetContents_4">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>488</width>
+        <height>1051</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout">
+       <item row="0" column="1">
+        <widget class="QWidget" name="widget" native="true">
+         <layout class="QGridLayout" name="gridLayout_3">
+          <item row="1" column="0">
+           <layout class="QVBoxLayout" name="verticalLayout_19">
+            <property name="leftMargin">
+             <number>20</number>
+            </property>
+            <property name="rightMargin">
+             <number>20</number>
+            </property>
+            <property name="bottomMargin">
+             <number>20</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="label_41">
+              <property name="styleSheet">
+               <string notr="true">margin-bottom:17px;</string>
+              </property>
+              <property name="text">
+               <string>SCHOLARSHIP DETAILS</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_20">
+              <property name="spacing">
+               <number>15</number>
+              </property>
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>40</number>
+              </property>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_35">
+                <item>
+                 <widget class="QLabel" name="label_42">
+                  <property name="text">
+                   <string>Scholarship Name:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="scholarshipNameTxt"/>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_36">
+                <item>
+                 <widget class="QLabel" name="label_43">
+                  <property name="text">
+                   <string>Provider:                 </string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="providerTxt"/>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_37">
+                <item>
+                 <widget class="QLabel" name="label_44">
+                  <property name="text">
+                   <string>Type:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QComboBox" name="typeCombo">
+                  <property name="styleSheet">
+                   <string notr="true">QComboBox{
+	border:none;
+	border-bottom:1px solid white;
+	background-color: rgb(11, 100, 197);
+	background:transparent;
+	font: 11pt &quot;Segoe UI&quot;;
+}
+
+</string>
+                  </property>
+                  <item>
+                   <property name="text">
+                    <string>Agriculture/Environment</string>
+                   </property>
+                   <property name="icon">
+                    <iconset theme="QIcon::ThemeIcon::DocumentNew"/>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Artistic/Creative</string>
+                   </property>
+                   <property name="icon">
+                    <iconset theme="QIcon::ThemeIcon::DocumentPageSetup"/>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Athletic</string>
+                   </property>
+                   <property name="icon">
+                    <iconset theme="QIcon::ThemeIcon::DocumentPageSetup"/>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Business/Entrepreneurship</string>
+                   </property>
+                   <property name="icon">
+                    <iconset theme="QIcon::ThemeIcon::DocumentNew"/>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Community service</string>
+                   </property>
+                   <property name="icon">
+                    <iconset theme="QIcon::ThemeIcon::DocumentPageSetup"/>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Corporate</string>
+                   </property>
+                   <property name="icon">
+                    <iconset theme="QIcon::ThemeIcon::DocumentNew"/>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Disability</string>
+                   </property>
+                   <property name="icon">
+                    <iconset theme="QIcon::ThemeIcon::DocumentPageSetup"/>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>First-generation</string>
+                   </property>
+                   <property name="icon">
+                    <iconset theme="QIcon::ThemeIcon::DocumentPageSetup"/>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Government</string>
+                   </property>
+                   <property name="icon">
+                    <iconset theme="QIcon::ThemeIcon::DocumentNew"/>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>International student</string>
+                   </property>
+                   <property name="icon">
+                    <iconset theme="QIcon::ThemeIcon::DocumentPageSetup"/>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Medical/Nursing</string>
+                   </property>
+                   <property name="icon">
+                    <iconset theme="QIcon::ThemeIcon::DocumentNew"/>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Merit-based</string>
+                   </property>
+                   <property name="icon">
+                    <iconset theme="QIcon::ThemeIcon::DocumentPageSetup"/>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Minority</string>
+                   </property>
+                   <property name="icon">
+                    <iconset theme="QIcon::ThemeIcon::DocumentPageSetup"/>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>NGO/Foundation</string>
+                   </property>
+                   <property name="icon">
+                    <iconset theme="QIcon::ThemeIcon::DocumentNew"/>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Need-based</string>
+                   </property>
+                   <property name="icon">
+                    <iconset theme="QIcon::ThemeIcon::DocumentPageSetup"/>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Religious</string>
+                   </property>
+                   <property name="icon">
+                    <iconset theme="QIcon::ThemeIcon::DocumentNew"/>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>STEM</string>
+                   </property>
+                   <property name="icon">
+                    <iconset theme="QIcon::ThemeIcon::DocumentNew"/>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Teacher education</string>
+                   </property>
+                   <property name="icon">
+                    <iconset theme="QIcon::ThemeIcon::DocumentNew"/>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>University-specific</string>
+                   </property>
+                   <property name="icon">
+                    <iconset theme="QIcon::ThemeIcon::DocumentNew"/>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Women in STEM</string>
+                   </property>
+                   <property name="icon">
+                    <iconset theme="QIcon::ThemeIcon::DocumentPageSetup"/>
+                   </property>
+                  </item>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_38">
+                <item>
+                 <widget class="QLabel" name="label_45">
+                  <property name="text">
+                   <string>Subject:                   </string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="subjectTxt"/>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_39">
+                <item>
+                 <widget class="QLabel" name="label_46">
+                  <property name="text">
+                   <string>Description:           </string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="descripTxt"/>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_40">
+                <item>
+                 <widget class="QLabel" name="label_47">
+                  <property name="text">
+                   <string>Deadline:               </string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QDateEdit" name="deadlineDateEdit">
+                  <property name="styleSheet">
+                   <string notr="true">QDateEdit{
+	background-color: rgb(11, 100, 197);
+	color: white;
+	font: 600 12pt &quot;Segoe UI&quot;;
+	border:none;
+	border-bottom:1px solid white;
+	padding:2px;
+}
+QDateEdit::up-button{
+	background:transparent;
+}
+QDateEdit::down-button{
+	background:transparent;
+}</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <spacer name="horizontalSpacer_16">
+                  <property name="orientation">
+                   <enum>Qt::Orientation::Horizontal</enum>
+                  </property>
+                  <property name="sizeHint" stdset="0">
+                   <size>
+                    <width>40</width>
+                    <height>20</height>
+                   </size>
+                  </property>
+                 </spacer>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_41">
+                <item>
+                 <widget class="QLabel" name="label_48">
+                  <property name="styleSheet">
+                   <string notr="true"/>
+                  </property>
+                  <property name="text">
+                   <string>File Path:               </string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="scholarshipFilepathTxt"/>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="browseBtn">
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">border:none;
+border-radius:5px;
+font: 600 9pt &quot;Segoe UI&quot;;
+margin:0px;
+padding:2px;
+background-color: rgb(11, 100, 197);
+color:rgb(1, 14, 27);</string>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="../../projectRescources.qrc">
+                    <normaloff>:/icons/search.png</normaloff>:/icons/search.png</iconset>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </item>
+          <item row="2" column="0">
+           <widget class="Line" name="line">
+            <property name="styleSheet">
+             <string notr="true">color: rgb(1, 14, 27);</string>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Orientation::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="6" column="0">
+           <widget class="Line" name="line_2">
+            <property name="styleSheet">
+             <string notr="true">color: rgb(1, 14, 27);</string>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Orientation::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="3" column="0">
+           <layout class="QVBoxLayout" name="verticalLayout_3">
+            <property name="leftMargin">
+             <number>20</number>
+            </property>
+            <property name="topMargin">
+             <number>40</number>
+            </property>
+            <property name="rightMargin">
+             <number>20</number>
+            </property>
+            <property name="bottomMargin">
+             <number>40</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="label_49">
+              <property name="styleSheet">
+               <string notr="true">margin-bottom:20px;</string>
+              </property>
+              <property name="text">
+               <string>SCHOLARSHIP BENEFITS</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_2">
+              <property name="spacing">
+               <number>15</number>
+              </property>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_42">
+                <item>
+                 <widget class="QLabel" name="label_50">
+                  <property name="text">
+                   <string>financial Amount:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QComboBox" name="financialCombo">
+                  <property name="styleSheet">
+                   <string notr="true">QComboBox{
+	border:none;
+	border-bottom:1px solid white;
+	background-color: rgb(11, 100, 197);
+	background:transparent;
+	font: 11pt &quot;Segoe UI&quot;;
+}
+</string>
+                  </property>
+                  <item>
+                   <property name="text">
+                    <string>Full Tuition</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Partial</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Stipend</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Lump Sum</string>
+                   </property>
+                  </item>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout">
+                <property name="spacing">
+                 <number>15</number>
+                </property>
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayout">
+                  <item>
+                   <widget class="QLabel" name="label">
+                    <property name="text">
+                     <string>Job Opportunities</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QCheckBox" name="jobOrppotunitiesCheckBox">
+                    <property name="layoutDirection">
+                     <enum>Qt::LayoutDirection::RightToLeft</enum>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayout_2">
+                  <item>
+                   <widget class="QLabel" name="label_2">
+                    <property name="text">
+                     <string>Accomodation</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QCheckBox" name="AccomodationCheckBox">
+                    <property name="layoutDirection">
+                     <enum>Qt::LayoutDirection::RightToLeft</enum>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayout_3">
+                  <item>
+                   <widget class="QLabel" name="label_3">
+                    <property name="text">
+                     <string>Insurance</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QCheckBox" name="insuranceCheckBox">
+                    <property name="layoutDirection">
+                     <enum>Qt::LayoutDirection::RightToLeft</enum>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayout_4">
+                  <item>
+                   <widget class="QLabel" name="label_4">
+                    <property name="text">
+                     <string>Travel Allawance</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QCheckBox" name="travelAllawanceCheckBox">
+                    <property name="layoutDirection">
+                     <enum>Qt::LayoutDirection::RightToLeft</enum>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayout_5">
+                  <item>
+                   <widget class="QLabel" name="label_6">
+                    <property name="text">
+                     <string>Workshop Access</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QCheckBox" name="wrkShopCheckBox">
+                    <property name="layoutDirection">
+                     <enum>Qt::LayoutDirection::RightToLeft</enum>
+                    </property>
+                    <property name="text">
+                     <string/>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </item>
+          <item row="4" column="0">
+           <widget class="Line" name="line_3">
+            <property name="styleSheet">
+             <string notr="true">color: rgb(1, 14, 27);</string>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Orientation::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="0">
+           <widget class="QLabel" name="label_5">
+            <property name="styleSheet">
+             <string notr="true">font: 600 14pt &quot;Segoe UI&quot;;
+margin-bottom:30px;</string>
+            </property>
+            <property name="text">
+             <string>Enter Required Details</string>
+            </property>
+            <property name="alignment">
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
+           </widget>
+          </item>
+          <item row="5" column="0">
+           <layout class="QVBoxLayout" name="verticalLayout_31">
+            <property name="spacing">
+             <number>15</number>
+            </property>
+            <property name="leftMargin">
+             <number>20</number>
+            </property>
+            <property name="rightMargin">
+             <number>20</number>
+            </property>
+            <property name="bottomMargin">
+             <number>40</number>
+            </property>
+            <item>
+             <widget class="QLabel" name="label_51">
+              <property name="text">
+               <string>CONTACT INFORMATION</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_24">
+              <property name="spacing">
+               <number>15</number>
+              </property>
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>10</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>30</number>
+              </property>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_43">
+                <item>
+                 <widget class="QLabel" name="label_52">
+                  <property name="text">
+                   <string>Application Link:     </string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="linkTxt"/>
+                </item>
+               </layout>
+              </item>
+              <item>
+               <layout class="QHBoxLayout" name="horizontalLayout_44">
+                <item>
+                 <widget class="QLabel" name="label_53">
+                  <property name="text">
+                   <string>Provider Email:        </string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QLineEdit" name="providerEmailTxt"/>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
    </item>
   </layout>
  </widget>

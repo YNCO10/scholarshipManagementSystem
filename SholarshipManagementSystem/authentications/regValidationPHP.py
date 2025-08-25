@@ -5,6 +5,7 @@ from PyQt6.QtWidgets import QWidget, QMessageBox, QLineEdit
 import requests
 import json
 from SholarshipManagementSystem.authentications.adminReg import Ui_adminRegistrationPage
+from SholarshipManagementSystem.classes.admin import Admin
 
 
 
@@ -19,7 +20,7 @@ class RegCode(QWidget, Ui_adminRegistrationPage):
 
         self.errorMsgLabelReg.setText("")
         self.btnClicks()
-
+########################################################################################################################
     def btnClicks(self):
         #signUp
         self.signUpBtn.clicked.connect(self.register)
@@ -40,6 +41,7 @@ class RegCode(QWidget, Ui_adminRegistrationPage):
          # switch pages
         # self.goToLoginPageBtn.clicked.connect(self.goTologinPage)
 
+########################################################################################################################
     def register(self):
         if self.nameTxt.text() == "" or self.passTxt.text() == "" or self.emailTxt.text() == "" or self.confirmPassTxt.text() == "":
             self.msgBox("Blank Fields", "Please fill in all blank fields.")
@@ -59,22 +61,23 @@ class RegCode(QWidget, Ui_adminRegistrationPage):
             return
 
         try:
-            response = requests.post(
-                self.url,
-                data={
-                    "name":self.nameTxt.text().strip(),
-                    "email":self.emailTxt.text().strip(),
-                    "pass":self.passTxt.text().strip()
-                }
+            admin = Admin(
+                self.nameTxt.text().strip(),
+                self.emailTxt.text().strip(),
+                self.passTxt.text().strip()
             )
-            result = json.loads(response.text)
-            print(f"Raw response: {response.text}")  # for debugging
+
+            result = admin.execute(self.url)
+            # result = json.loads(response.text)
+            print(f"Raw response: {result}")  # for debugging
             errorMsg = result.get("message", "Unknown error")
 
 
             if result.get("status") == "success":
                 self.msgBox("Welcome", "Enjoy your experience.")
                 print("Registration Successful")
+                self.goToLogin()
+
             else:
                 self.msgBox("Error", f"Error: {errorMsg}")
                 print(f"Something went wrong (Reg): {errorMsg}")
@@ -83,13 +86,13 @@ class RegCode(QWidget, Ui_adminRegistrationPage):
             self.msgBox("Error", f"Oops something went wrong: {e}")
             print(f"Oops something went wrong: {e}")
 
-
+########################################################################################################################
     def validateEmailField(self, email):
         pattern = r"^[\w\.-]+@[\w\.-]+\.\w+$"
 
         return re.match(pattern, email) is not None
 
-
+########################################################################################################################
     def validatePassField(self, password):
         pattern = r"[^A-Za-z0-9_ ]"
 
@@ -101,7 +104,7 @@ class RegCode(QWidget, Ui_adminRegistrationPage):
 
         return True
 
-
+########################################################################################################################
     def togglePassword(self, lineEdit, btn):
 
         if lineEdit.echoMode() == QLineEdit.EchoMode.Password:
@@ -111,16 +114,21 @@ class RegCode(QWidget, Ui_adminRegistrationPage):
             lineEdit.setEchoMode(QLineEdit.EchoMode.Password)
             btn.setIcon(QIcon(":/icons/seeWhiteIcon.png"))
 
+########################################################################################################################
     def hideWindow(self):
         self.hide()
 
-
-
-
-
+########################################################################################################################
     def msgBox(self, title, msg):
         msgBox = QMessageBox()
         msgBox.setWindowTitle(title)
         msgBox.setText(msg)
         msgBox.setStandardButtons(QMessageBox.StandardButton.Ok)
         msgBox.exec()
+
+########################################################################################################################
+    def goToLogin(self):
+        from pageController import Controller
+        self.controller = Controller()
+        self.controller.showLogin()
+        self.hideWindow()
