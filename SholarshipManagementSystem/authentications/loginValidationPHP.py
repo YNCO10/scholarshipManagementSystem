@@ -13,7 +13,7 @@ class LoginCode(QWidget, Ui_loginPage):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Login")
-        self.setWindowIcon(QIcon("../../icons/SMsysIcon.png"))
+        self.setWindowIcon(QIcon(":icons/SMsysIcon.png"))
         self.setupUi(self)
 
         self.regCode = RegCode()

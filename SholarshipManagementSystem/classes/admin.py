@@ -1,3 +1,5 @@
+import json
+
 import requests
 class Admin:
     def __init__(self, name, email, password):
@@ -18,7 +20,11 @@ class Admin:
             url,
             data=self.toDict()
         )
-        return response.json()
+        try:
+            return response.json()
+        except json.JSONDecodeError:
+            print("Response was not JSON:", response.text)
+            return {"status": "error", "message": "Invalid server response"}
 
 
 ########################################################################################################################

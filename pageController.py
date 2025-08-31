@@ -4,6 +4,11 @@ from SholarshipManagementSystem.authentications.regApplicantValidationPHP import
 from SholarshipManagementSystem.authentications.loginValidationPHP import LoginCode
 from SholarshipManagementSystem.homePage.myMainDisplay import Dash
 from SholarshipManagementSystem.manageScholarshipsPage.uploadScholarCode import UploadingCode
+from SholarshipManagementSystem.authentications.verificationCode import VerificationCode
+from SholarshipManagementSystem.assessments.introductionCode import introCode
+from SholarshipManagementSystem.assessments.numericalCode import NumericalReasoningCode
+from SholarshipManagementSystem.assessments.verbalReasoningCode import VerbalReasoning
+
 import myProjectResources
 
 class Controller:
@@ -14,6 +19,10 @@ class Controller:
         self.login = LoginCode()
         self.adminHome = Dash()
         self.uploadScholar = UploadingCode()
+        self.verifyEmail = VerificationCode()
+        self.introductionCode = introCode()
+        self.numericalReasoning = NumericalReasoningCode()
+        self.verbalReasoning = VerbalReasoning()
 
         # btn clicks
         self.btnClicksLogin()
@@ -21,7 +30,6 @@ class Controller:
         self.btnClicksAppReg()
         self.btnClicksAdminReg()
         self.btnClicksAdminDash()
-
 
 
 
@@ -83,6 +91,23 @@ class Controller:
     def showUploadScholarship(self):
         self.hideAll()
         self.uploadScholar.show()
+
+    def showVerificationPage(self):
+        self.hideAll()
+        self.verifyEmail.show()
+
+    def showIntroPage(self):
+        self.hideAll()
+        self.introductionCode.show()
+
+    def showNumReasoning(self):
+        self.hideAll()
+        self.numericalReasoning.show()
+
+    def showVerbalReasoning(self):
+        self.hideAll()
+        self.verbalReasoning.show()
+
 
 
     def hideAll(self):

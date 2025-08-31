@@ -3,8 +3,6 @@ import re
 
 from PyQt6.QtGui import QIcon
 from PyQt6.QtWidgets import QWidget, QMessageBox
-import requests
-import json
 from SholarshipManagementSystem.authentications.applicantReg import Ui_applicantRegistration
 from SholarshipManagementSystem.authentications.regValidationPHP import RegCode
 from SholarshipManagementSystem.classes.applicant import Applicant

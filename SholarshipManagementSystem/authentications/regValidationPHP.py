@@ -13,13 +13,14 @@ class RegCode(QWidget, Ui_adminRegistrationPage):
     def __init__(self):
         super().__init__()
         self.setWindowTitle("Register")
-        self.setWindowIcon(QIcon("../../icons/SMsysIcon.png"))
+        self.setWindowIcon(QIcon(":icons/SMsysIcon.png"))
         self.setupUi(self)
 
         self.url = "http://localhost/BackEnd/scholarshipManagement/authentications/regValidation.php"
 
         self.errorMsgLabelReg.setText("")
         self.btnClicks()
+
 ########################################################################################################################
     def btnClicks(self):
         #signUp
@@ -70,17 +71,17 @@ class RegCode(QWidget, Ui_adminRegistrationPage):
             result = admin.execute(self.url)
             # result = json.loads(response.text)
             print(f"Raw response: {result}")  # for debugging
-            errorMsg = result.get("message", "Unknown error")
+            msg = result.get("message", "Unknown error")
 
 
             if result.get("status") == "success":
-                self.msgBox("Welcome", "Enjoy your experience.")
-                print("Registration Successful")
-                self.goToLogin()
+                self.msgBox("Verify Email", f"{msg}")
+                print("Email verification in process...")
+                self.goToVerification()
 
             else:
-                self.msgBox("Error", f"Error: {errorMsg}")
-                print(f"Something went wrong (Reg): {errorMsg}")
+                self.msgBox("Error", f"Error: {msg}")
+                print(f"Something went wrong (Reg): {msg}")
 
         except Exception as e:
             self.msgBox("Error", f"Oops something went wrong: {e}")
@@ -127,8 +128,8 @@ class RegCode(QWidget, Ui_adminRegistrationPage):
         msgBox.exec()
 
 ########################################################################################################################
-    def goToLogin(self):
+    def goToVerification(self):
         from pageController import Controller
         self.controller = Controller()
-        self.controller.showLogin()
+        self.controller.showVerificationPage()
         self.hideWindow()

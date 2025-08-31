@@ -106,9 +106,9 @@ class Dash(QMainWindow, Ui_MainWindow):
                     #     get db content
                 dbContent = result.get("data",[])
 
-                self.scholarshipTableWidget.setRowCount(len(dbContent))
+                self.scholarshipTableWidget.setRowCount(len(dbContent))#always initialise tbl so it doesn't stack up rows
 
-                self.scholarshipTableWidget.setColumnCount(6)#always initialise tbl so it doesn't stack up rows
+                self.scholarshipTableWidget.setColumnCount(6)
 
                 self.scholarshipTableWidget.setHorizontalHeaderLabels(
                     ["ID", "Name", "Descrip", "File Path", "Deadline", "Actions"]
