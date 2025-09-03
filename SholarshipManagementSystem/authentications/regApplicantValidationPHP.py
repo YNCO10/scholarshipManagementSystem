@@ -13,7 +13,7 @@ class AppValCode(QWidget, Ui_applicantRegistration):
         super().__init__()
         self.setupUi(self)
         self.setWindowTitle("REGISTER")
-        self.setWindowIcon(QIcon("../../icons/SMsysIcon.png"))
+        self.setWindowIcon(QIcon(":icons/SMsysIcon.png"))
         self.regCode = RegCode()
         self.url = "http://localhost/BackEnd/scholarshipManagement/authentications/regApplicantValidation.php"
 

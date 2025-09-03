@@ -1,3 +1,6 @@
+from random import choice
+
+from PyQt6.QtCore import QTimer
 from PyQt6.QtGui import QIcon
 from PyQt6.QtWidgets import QWidget
 from SholarshipManagementSystem.assessments.numericalReasoning import Ui_NumericalReasoningForm
@@ -17,8 +20,13 @@ class NumericalReasoningCode(QWidget, Ui_NumericalReasoningForm):
         self.regCode = RegCode()
         self.assess = None
         self.controller = None
+        self.questionHeader.setText("Time Left:")
 
+        self.timeLimit = 5
+        self.remainingTime = self.timeLimit
 
+        self.timer = QTimer(self)
+        self.timer.timeout.connect(self.updateTimer)
 
         self.btnClicks()
 
@@ -32,12 +40,19 @@ class NumericalReasoningCode(QWidget, Ui_NumericalReasoningForm):
 ########################################################################################################################
     def loadQuestions(self, question):
     # populate labels with questions & options
+        self.qTimer.setStyleSheet("color:white;")
         self.question_txt.setText(question.get("question_txt"))
 
         self.qOptionA.setText(question.get("option_a", "None of the above"))
         self.qOptionB.setText(question.get("option_b", "None of the above"))
         self.qOptionC.setText(question.get("option_c", "None of the above"))
         self.qOptionD.setText(question.get("option_d", "None of the above"))
+
+        self.remainingTime = self.timeLimit
+        self.qTimer.setText(str(self.remainingTime))
+        self.timer.start(1000)
+
+
 
 ########################################################################################################################
     def nextQuestion(self):
@@ -122,3 +137,25 @@ class NumericalReasoningCode(QWidget, Ui_NumericalReasoningForm):
         self.controller = Controller()
         self.controller.showVerbalReasoning()
         self.close()
+
+    def updateTimer(self):
+        self.remainingTime -= 1
+        self.qTimer.setText(str(self.remainingTime))
+
+        if self.remainingTime < 4:
+            self.qTimer.setStyleSheet("color:Red;")
+        # if str(self.remainingTime) == "2":
+        #     self.qTimer.setStyleSheet("color:Red;")
+        # if str(self.remainingTime) == "1":
+        #     self.qTimer.setStyleSheet("color:Red;")
+
+        if str(self.remainingTime) == "0":
+            self.timer.stop()
+
+            nextQuestion = self.assess.nextQuestion()
+
+            if nextQuestion:
+                self.loadQuestions(nextQuestion)
+                return
+            else:
+                self.getFinalScore()

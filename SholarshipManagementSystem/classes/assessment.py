@@ -26,3 +26,9 @@ class Assessment:
 ########################################################################################################################
     def finalScore(self):
         return self.score
+
+    def finalGrade(self,numScore, verbalScore, logicalScore, criticalScore):
+        sumOfScores = numScore+verbalScore+logicalScore+criticalScore
+        perc = (sumOfScores/20) * 100
+        return perc
+

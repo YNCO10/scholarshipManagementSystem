@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>VerbalReasoningFrom</class>
- <widget class="QWidget" name="VerbalReasoningFrom">
+ <class>logicalReasoningForm</class>
+ <widget class="QWidget" name="logicalReasoningForm">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -12,14 +12,14 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>800</width>
+    <width>841</width>
     <height>586</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
     <width>841</width>
-    <height>642</height>
+    <height>586</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -38,53 +38,38 @@ QRadioButton{
 	font: 600 12pt &quot;Segoe UI&quot;;
 }</string>
   </property>
-  <layout class="QGridLayout" name="gridLayout">
-   <item row="1" column="0">
-    <widget class="QStackedWidget" name="verbalReasoninStackedWidget">
-     <property name="minimumSize">
-      <size>
-       <width>836</width>
-       <height>586</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>836</width>
-       <height>586</height>
-      </size>
-     </property>
+  <layout class="QVBoxLayout" name="verticalLayout_5">
+   <item>
+    <widget class="QStackedWidget" name="logicalReasoningStackedWidget">
      <property name="currentIndex">
       <number>1</number>
      </property>
      <widget class="QWidget" name="page">
-      <layout class="QGridLayout" name="gridLayout_2">
-       <item row="0" column="0">
+      <layout class="QVBoxLayout" name="verticalLayout_6">
+       <item>
         <widget class="QLabel" name="label">
          <property name="styleSheet">
           <string notr="true">font: 700 16pt &quot;Segoe UI&quot;;
 margin-top:30px;</string>
          </property>
          <property name="text">
-          <string>VERBAL REASONING</string>
+          <string>LOGICAL REASONING</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignmentFlag::AlignCenter</set>
          </property>
         </widget>
        </item>
-       <item row="1" column="0">
-        <layout class="QVBoxLayout" name="verticalLayout_6">
-         <property name="spacing">
-          <number>7</number>
-         </property>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_4">
          <property name="leftMargin">
           <number>50</number>
          </property>
          <property name="topMargin">
-          <number>20</number>
+          <number>40</number>
          </property>
          <property name="rightMargin">
-          <number>30</number>
+          <number>50</number>
          </property>
          <property name="bottomMargin">
           <number>40</number>
@@ -94,14 +79,14 @@ margin-top:30px;</string>
            <item>
             <widget class="QLabel" name="label_2">
              <property name="text">
-              <string>Type: Sentence completion or analogy</string>
+              <string>Type: Deductive reasoning / pattern recognition</string>
              </property>
             </widget>
            </item>
            <item>
             <widget class="QLabel" name="label_3">
              <property name="text">
-              <string>Instruction: Each question presents a short passage, sentence, or word relationship. Choose the option that best completes the idea.</string>
+              <string>Instruction: Each question requires identifying the next step in a sequence or applying logic to a condition.</string>
              </property>
              <property name="wordWrap">
               <bool>true</bool>
@@ -122,18 +107,10 @@ margin-top:30px;</string>
            <item>
             <widget class="QLabel" name="label_5">
              <property name="text">
-              <string>Question: Select the pair that best expresses a relationship similar to:
-“Doctor : Patient”</string>
-             </property>
-             <property name="wordWrap">
-              <bool>true</bool>
+              <string>Question: All cats are mammals. All mammals are animals. Which statement must be true?</string>
              </property>
             </widget>
            </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QVBoxLayout" name="verticalLayout_5">
            <item>
             <widget class="QLabel" name="label_6">
              <property name="text">
@@ -144,42 +121,42 @@ margin-top:30px;</string>
            <item>
             <widget class="QLabel" name="label_7">
              <property name="text">
-              <string>A) Teacher : Student</string>
+              <string>A) All animals are cats</string>
              </property>
             </widget>
            </item>
            <item>
             <widget class="QLabel" name="label_8">
              <property name="text">
-              <string>B) Lawyer : Judge</string>
+              <string>B) All cats are animals</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="label_9">
+            <widget class="QLabel" name="label_17">
              <property name="text">
-              <string>C) Farmer : Land</string>
+              <string>C) Some animals are cats</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="label_10">
+            <widget class="QLabel" name="label_18">
              <property name="text">
-              <string>D) Painter : Brush</string>
+              <string>D) No cats are animals</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="label_11">
+            <widget class="QLabel" name="label_19">
              <property name="text">
-              <string>Correct Answer: A</string>
+              <string>Correct Answer: B</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="label_23">
+            <widget class="QLabel" name="label_20">
              <property name="text">
-              <string>Explanation: A doctor treats a patient; a teacher instructs a student.</string>
+              <string>Explanation: Since all cats are mammals and all mammals are animals, cats must be animals.</string>
              </property>
             </widget>
            </item>
@@ -187,8 +164,8 @@ margin-top:30px;</string>
          </item>
         </layout>
        </item>
-       <item row="2" column="0">
-        <layout class="QVBoxLayout" name="verticalLayout_7">
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_3">
          <item>
           <layout class="QHBoxLayout" name="horizontalLayout">
            <item>
@@ -242,7 +219,7 @@ width:100px;</string>
           </layout>
          </item>
          <item>
-          <spacer name="verticalSpacer_2">
+          <spacer name="verticalSpacer">
            <property name="orientation">
             <enum>Qt::Orientation::Vertical</enum>
            </property>
@@ -259,9 +236,9 @@ width:100px;</string>
       </layout>
      </widget>
      <widget class="QWidget" name="page_2">
-      <layout class="QVBoxLayout" name="verticalLayout_12">
+      <layout class="QVBoxLayout" name="verticalLayout_11">
        <item>
-        <layout class="QVBoxLayout" name="verticalLayout_10">
+        <layout class="QVBoxLayout" name="verticalLayout_7">
          <property name="spacing">
           <number>15</number>
          </property>
@@ -291,9 +268,9 @@ width:100px;</string>
         </layout>
        </item>
        <item>
-        <layout class="QVBoxLayout" name="verticalLayout_11">
+        <layout class="QVBoxLayout" name="verticalLayout_9">
          <property name="spacing">
-          <number>50</number>
+          <number>40</number>
          </property>
          <property name="leftMargin">
           <number>70</number>
@@ -302,10 +279,10 @@ width:100px;</string>
           <number>80</number>
          </property>
          <property name="rightMargin">
-          <number>50</number>
+          <number>40</number>
          </property>
          <property name="bottomMargin">
-          <number>40</number>
+          <number>50</number>
          </property>
          <item>
           <widget class="QLabel" name="question_txt">
@@ -318,9 +295,9 @@ width:100px;</string>
           </widget>
          </item>
          <item>
-          <layout class="QVBoxLayout" name="verticalLayout_9">
+          <layout class="QVBoxLayout" name="verticalLayout_8">
            <property name="spacing">
-            <number>6</number>
+            <number>15</number>
            </property>
            <item>
             <widget class="QRadioButton" name="qOptionA">
@@ -355,7 +332,7 @@ width:100px;</string>
         </layout>
        </item>
        <item>
-        <layout class="QVBoxLayout" name="verticalLayout_8">
+        <layout class="QVBoxLayout" name="verticalLayout_10">
          <item>
           <spacer name="verticalSpacer_3">
            <property name="orientation">
@@ -422,7 +399,7 @@ width:100px;</string>
           </layout>
          </item>
          <item>
-          <spacer name="verticalSpacer_4">
+          <spacer name="verticalSpacer_2">
            <property name="orientation">
             <enum>Qt::Orientation::Vertical</enum>
            </property>

@@ -8,6 +8,9 @@ from SholarshipManagementSystem.authentications.verificationCode import Verifica
 from SholarshipManagementSystem.assessments.introductionCode import introCode
 from SholarshipManagementSystem.assessments.numericalCode import NumericalReasoningCode
 from SholarshipManagementSystem.assessments.verbalReasoningCode import VerbalReasoning
+from SholarshipManagementSystem.assessments.logicalCode import LogicalCode
+from SholarshipManagementSystem.assessments.criticalCode import CriticalCode
+from SholarshipManagementSystem.application.applyScholarshipCode import ApplyScholarship
 
 import myProjectResources
 
@@ -23,6 +26,9 @@ class Controller:
         self.introductionCode = introCode()
         self.numericalReasoning = NumericalReasoningCode()
         self.verbalReasoning = VerbalReasoning()
+        self.logicalReasoning = LogicalCode()
+        self.criticalThinking = CriticalCode()
+        self.applyScholar = ApplyScholarship()
 
         # btn clicks
         self.btnClicksLogin()
@@ -107,6 +113,18 @@ class Controller:
     def showVerbalReasoning(self):
         self.hideAll()
         self.verbalReasoning.show()
+
+    def showLogicalReasoning(self):
+        self.hideAll()
+        self.logicalReasoning.show()
+
+    def showCriticalThinking(self):
+        self.hideAll()
+        self.criticalThinking.show()
+
+    def showApplyScholarPage(self):
+        self.applyScholar.show()
+
 
 
 

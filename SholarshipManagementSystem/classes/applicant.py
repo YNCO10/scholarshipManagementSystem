@@ -3,14 +3,14 @@ import requests
 
 class Applicant:
     def __init__(self, name, email, nationality, password, gender, phoneNum, age, dob, educationLevel):
-        self.name = name,
-        self.email = email,
-        self.nationality = nationality,
-        self.password = password,
-        self.gender = gender,
-        self.phoneNum = phoneNum,
-        self.age = age,
-        self.dob = dob,
+        self.name = name
+        self.email = email
+        self.nationality = nationality
+        self.password = password
+        self.gender = gender
+        self.phoneNum = phoneNum
+        self.age = age
+        self.dob = dob
         self.educationLevel = educationLevel
 
 

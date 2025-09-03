@@ -1,35 +1,41 @@
 from PyQt6.QtGui import QIcon
 from PyQt6.QtWidgets import QWidget
 
+from SholarshipManagementSystem.assessments.logicalPage import Ui_logicalReasoningForm
 from SholarshipManagementSystem.authentications.regValidationPHP import RegCode
-from SholarshipManagementSystem.assessments.verbalPage import Ui_VerbalReasoningFrom
-from SholarshipManagementSystem.assessments.numericalCode import NumericalReasoningCode
 from SholarshipManagementSystem.classes.assessment import Assessment
 import json
 import requests
 import Sessions
 
-
-
-class VerbalReasoning(QWidget, Ui_VerbalReasoningFrom):
+class LogicalCode(QWidget, Ui_logicalReasoningForm):
     def __init__(self):
         super().__init__()
         self.setupUi(self)
         self.setWindowIcon(QIcon(":icons/SMsysIcon.png"))
-        self.setWindowTitle("Verbal Reasoning")
+        self.setWindowTitle("Logical Reasoning")
+        self.regCode = RegCode()
         self.assess = None
         self.controller = None
-        self.regCode = RegCode()
-        self.numCode = NumericalReasoningCode()
 
         self.btnClicks()
 
-        self.verbalReasoninStackedWidget.setCurrentIndex(0)
+        self.logicalReasoningStackedWidget.setCurrentIndex(0)
 
 ########################################################################################################################
     def btnClicks(self):
         self.startBtn.clicked.connect(self.startAssessment)
         self.qNextBtn.clicked.connect(self.nextQuestion)
+
+########################################################################################################################
+    def loadQuestions(self, question):
+    # populate labels with questions & options
+        self.question_txt.setText(question.get("question_txt"))
+
+        self.qOptionA.setText(question.get("option_a", "None of the above"))
+        self.qOptionB.setText(question.get("option_b", "None of the above"))
+        self.qOptionC.setText(question.get("option_c", "None of the above"))
+        self.qOptionD.setText(question.get("option_d", "None of the above"))
 
 ########################################################################################################################
     def nextQuestion(self):
@@ -59,26 +65,14 @@ class VerbalReasoning(QWidget, Ui_VerbalReasoningFrom):
                 return
             else:
                 self.getFinalScore()
-                Sessions.verbalReasoningScore = self.assess.finalScore()
-                self.close()
+                Sessions.logicalReasoningScore = self.assess.finalScore()
 
+                self.goToCritical()
 
-                self.goToLogical()
-
-########################################################################################################################
-    def loadQuestions(self, question):
-        # populate labels with questions & options
-        self.question_txt.setText(question.get("question_txt"))
-
-        self.qOptionA.setText(question.get("option_a", "None of the above"))
-        self.qOptionB.setText(question.get("option_b", "None of the above"))
-        self.qOptionC.setText(question.get("option_c", "None of the above"))
-        self.qOptionD.setText(question.get("option_d", "None of the above"))
-
-########################################################################################################################
+    ########################################################################################################################
     def getDataFromDB(self, category):
         url = "http://localhost/BackEnd/scholarshipManagement/assessments/assessmentValidation.php"
-        # category = "numerical"
+
         response = requests.post(
             url,
             data={
@@ -99,29 +93,30 @@ class VerbalReasoning(QWidget, Ui_VerbalReasoningFrom):
 
         elif result.get("status") == "error":
             self.regCode.msgBox(
-                "Error(verbal)",
+                "Error(NumCode)",
                 msg
             )
-
-########################################################################################################################
-    def startAssessment(self):
-        self.getDataFromDB("verbal")
-        self.verbalReasoninStackedWidget.setCurrentIndex(1)
-
-########################################################################################################################
-    def hideWindow(self):
-        self.hide()
 
 ########################################################################################################################
     def getFinalScore(self):
         perc = (self.assess.score / 5) * 100
         self.regCode.msgBox(
             "Sub-test complete",
-            f"You scored {self.assess.finalScore()}/5 \n{perc:.0f}% \nNext test is on Logical Reasoning"
+            f"You scored {self.assess.finalScore()}/5\n{perc:.0f}%\nNext test is on Verbal Reasoning"
         )
 
-    def goToLogical(self):
+########################################################################################################################
+    def startAssessment(self):
+        self.logicalReasoningStackedWidget.setCurrentIndex(1)
+        self.getDataFromDB("logical")
+
+########################################################################################################################
+    def hideWindow(self):
+        self.hide()
+
+########################################################################################################################
+    def goToCritical(self):
         from pageController import Controller
         self.controller = Controller()
-        self.controller.showLogicalReasoning()
+        self.controller.showCriticalThinking()
         self.close()

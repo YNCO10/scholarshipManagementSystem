@@ -54,7 +54,7 @@ QLabel{
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton">
+      <widget class="QPushButton" name="beginBtn">
        <property name="cursor">
         <cursorShape>PointingHandCursor</cursorShape>
        </property>

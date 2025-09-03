@@ -29,16 +29,16 @@ class Ui_introduction(object):
         self.horizontalLayout.setObjectName("horizontalLayout")
         spacerItem = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout.addItem(spacerItem)
-        self.pushButton = QtWidgets.QPushButton(parent=introduction)
-        self.pushButton.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
-        self.pushButton.setStyleSheet("font: 600 12pt \"Segoe UI\";\n"
+        self.beginBtn = QtWidgets.QPushButton(parent=introduction)
+        self.beginBtn.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
+        self.beginBtn.setStyleSheet("font: 600 12pt \"Segoe UI\";\n"
 "background-color: rgb(11, 100, 197);\n"
 "padding:7px;\n"
 "width:100px;")
-        self.pushButton.setDefault(False)
-        self.pushButton.setFlat(False)
-        self.pushButton.setObjectName("pushButton")
-        self.horizontalLayout.addWidget(self.pushButton)
+        self.beginBtn.setDefault(False)
+        self.beginBtn.setFlat(False)
+        self.beginBtn.setObjectName("beginBtn")
+        self.horizontalLayout.addWidget(self.beginBtn)
         spacerItem1 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout.addItem(spacerItem1)
         self.gridLayout.addLayout(self.horizontalLayout, 3, 0, 1, 1)
@@ -97,7 +97,7 @@ class Ui_introduction(object):
     def retranslateUi(self, introduction):
         _translate = QtCore.QCoreApplication.translate
         introduction.setWindowTitle(_translate("introduction", "Form"))
-        self.pushButton.setText(_translate("introduction", "BEGIN"))
+        self.beginBtn.setText(_translate("introduction", "BEGIN"))
         self.label_2.setText(_translate("introduction", "About"))
         self.label_3.setText(_translate("introduction", "You are about to write a series of amplitude tests. The total time for this Session is 6 minutes, each sub-test will consist of 5 questions. This test is only taken once .YOU MUST TAKE THE FIRST 4 TESTS"))
         self.label_4.setText(_translate("introduction", "Instructions"))
