@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>520</width>
+    <width>535</width>
     <height>518</height>
    </rect>
   </property>
@@ -18,13 +18,13 @@
   </property>
   <property name="minimumSize">
    <size>
-    <width>520</width>
+    <width>535</width>
     <height>518</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>520</width>
+    <width>535</width>
     <height>518</height>
    </size>
   </property>
@@ -68,7 +68,14 @@ QLineEdit{
 
 QRadioButton{
 	font: 600 12pt &quot;Segoe UI&quot;;
-}</string>
+}
+
+
+QComboBox{
+	font: 11pt &quot;Segoe UI&quot;;
+}
+
+</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
@@ -81,8 +88,8 @@ QRadioButton{
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>488</width>
-        <height>784</height>
+        <width>503</width>
+        <height>898</height>
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout">
@@ -101,7 +108,7 @@ margin-bottom:30px;</string>
         </widget>
        </item>
        <item row="1" column="0">
-        <layout class="QVBoxLayout" name="verticalLayout_6">
+        <layout class="QVBoxLayout" name="verticalLayout_12">
          <property name="spacing">
           <number>20</number>
          </property>
@@ -121,14 +128,14 @@ margin-bottom:30px;</string>
          <item>
           <layout class="QVBoxLayout" name="verticalLayout_2">
            <property name="spacing">
-            <number>20</number>
+            <number>15</number>
            </property>
            <item>
-            <layout class="QHBoxLayout" name="horizontalLayout_2">
+            <layout class="QHBoxLayout" name="horizontalLayout_19">
              <item>
-              <widget class="QLabel" name="label_3">
+              <widget class="QLabel" name="label_28">
                <property name="text">
-                <string>Fromer School Attended        </string>
+                <string>Former School                          </string>
                </property>
               </widget>
              </item>
@@ -141,7 +148,7 @@ margin-bottom:30px;</string>
                 </sizepolicy>
                </property>
                <property name="placeholderText">
-                <string>e.g. University of Greenwich</string>
+                <string>e.g. Greenwich University</string>
                </property>
               </widget>
              </item>
@@ -157,9 +164,15 @@ margin-bottom:30px;</string>
               </widget>
              </item>
              <item>
-              <widget class="QSpinBox" name="gpaSpinbox">
+              <widget class="QDoubleSpinBox" name="gpaSpinbox">
+               <property name="decimals">
+                <number>1</number>
+               </property>
                <property name="maximum">
-                <number>5</number>
+                <double>5.000000000000000</double>
+               </property>
+               <property name="singleStep">
+                <double>0.100000000000000</double>
                </property>
               </widget>
              </item>
@@ -214,6 +227,105 @@ margin-bottom:30px;</string>
           </layout>
          </item>
          <item>
+          <layout class="QVBoxLayout" name="verticalLayout_6">
+           <property name="spacing">
+            <number>15</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="label_3">
+             <property name="text">
+              <string>If &quot;yes&quot;, please provide some proof of need</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_9">
+             <item>
+              <widget class="QLineEdit" name="proofOfNeedTxt">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="placeholderText">
+                <string>e.g. Bank Statement showing Montly income</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="proofBrowseBtn">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">border:none;
+border-radius:5px;
+font: 600 9pt &quot;Segoe UI&quot;;
+margin:0px;
+padding:2px;
+background-color: rgb(11, 100, 197);
+color:rgb(1, 14, 27);</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="icon">
+                <iconset resource="../../projectRescources.qrc">
+                 <normaloff>:/icons/search.png</normaloff>:/icons/search.png</iconset>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_18">
+           <item>
+            <widget class="QLabel" name="label_27">
+             <property name="text">
+              <string>Income Bracket</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="incomeBracketComboBox">
+             <item>
+              <property name="text">
+               <string>less than MWK150,000</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Between MWK150,000 - MWK250,000</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Between MKW250,000 - MWK500,000</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Between MWK500,00 - MWK1,000,000</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>Between MWK1,000,000 - MWK2,000,000</string>
+              </property>
+             </item>
+             <item>
+              <property name="text">
+               <string>More than MWK2,000,000</string>
+              </property>
+             </item>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
           <widget class="Line" name="line">
            <property name="orientation">
             <enum>Qt::Orientation::Horizontal</enum>
@@ -221,17 +333,17 @@ margin-bottom:30px;</string>
           </widget>
          </item>
          <item>
-          <widget class="QLabel" name="label_7">
-           <property name="text">
-            <string>MOTIVATION</string>
-           </property>
-          </widget>
-         </item>
-         <item>
           <layout class="QVBoxLayout" name="verticalLayout_5">
            <property name="spacing">
-            <number>20</number>
+            <number>15</number>
            </property>
+           <item>
+            <widget class="QLabel" name="label_7">
+             <property name="text">
+              <string>MOTIVATION</string>
+             </property>
+            </widget>
+           </item>
            <item>
             <widget class="QLabel" name="label_8">
              <property name="text">
@@ -281,7 +393,7 @@ font: 11pt &quot;Segoe UI&quot;;</string>
          <item>
           <widget class="QLabel" name="label_10">
            <property name="text">
-            <string>Documents</string>
+            <string>DOCUMENTS</string>
            </property>
           </widget>
          </item>

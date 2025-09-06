@@ -27,7 +27,9 @@ class UploadingCode(QDialog, Ui_Dialog):
 
 # BTN CLICKS############################################################################################################
     def btnClicks(self):
-        self.browseBtn.clicked.connect(self.browseFile)
+        self.browseBtn.clicked.connect(
+            lambda : self.browseBtn(self.scholarshipFilepathTxt)
+        )
 
         self.cancelBtn.clicked.connect(self.closeWindow)
 
@@ -35,7 +37,7 @@ class UploadingCode(QDialog, Ui_Dialog):
 
 
     # BROWSE FILE#######################################################################################################
-    def browseFile(self):
+    def browseFile(self,lineEdit):
         filePath, _ = QFileDialog.getOpenFileName(
             self,
             "Select Document",
@@ -43,7 +45,7 @@ class UploadingCode(QDialog, Ui_Dialog):
             "PDF Files (*.pdf);;All Files (*)"
         )
         if filePath:
-            self.scholarshipFilepathTxt.setText(filePath)
+            lineEdit.setText(filePath)
 
 #     UPLOAD DOCUMENT###################################################################################################
     def uploadDocument(self):

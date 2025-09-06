@@ -4,6 +4,7 @@ from PyQt6.QtWidgets import QWidget
 from SholarshipManagementSystem.application.applyScholarshipPage import Ui_applyScholarshipForm
 from SholarshipManagementSystem.classes.application import Application
 from SholarshipManagementSystem.authentications.regValidationPHP import RegCode
+from SholarshipManagementSystem.manageScholarshipsPage.uploadScholarCode import UploadingCode
 
 
 
@@ -15,6 +16,7 @@ class ApplyScholarship(QWidget, Ui_applyScholarshipForm):
         self.setWindowTitle("Apply For Scholarship")
         self.url = "http://localhost/BackEnd/scholarshipManagement/application/applyScholarship.php"
         self.regCode = RegCode()
+        self.uploadCode = UploadingCode()
 
         self.btnClicks()
 
@@ -22,6 +24,20 @@ class ApplyScholarship(QWidget, Ui_applyScholarshipForm):
     def btnClicks(self):
         self.cancelBtn.clicked.connect(self.closeWindow)
         self.applyBtn.clicked.connect(self.applyToScholarship)
+
+        #browse btns
+        self.recommBrowseBtn.clicked.connect(
+            lambda : self.uploadCode.browseFile(self.recommedationLetterTxt)
+        )
+        self.transcriptBrowseBtn.clicked.connect(
+            lambda : self.uploadCode.browseFile(self.transcriptTxt)
+        )
+        self.proofBrowseBtn.clicked.connect(
+            lambda : self.uploadCode.browseFile(self.proofOfNeedTxt)
+        )
+        self.nationalBrowseBtn.clicked.connect(
+            lambda : self.uploadCode.browseFile(self.nationalIdTxt)
+        )
 
 ########################################################################################################################
     def applyToScholarship(self):
@@ -33,6 +49,8 @@ class ApplyScholarship(QWidget, Ui_applyScholarshipForm):
             nationalID = self.nationalIdTxt.text()
             recomLetter = self.recommedationLetterTxt.text()
             careerGoals = self.careerGoalsTxt.text()
+            proofOfNeed = self.proofOfNeedTxt.text()
+            incomeBracket = self.incomeBracketComboBox.currentText()
             financialAssistance = None
             print("Checkpoint 1")
             # CHECK EMPTY FIELDS
@@ -51,19 +69,22 @@ class ApplyScholarship(QWidget, Ui_applyScholarshipForm):
             if financialAssistance is None:
                 self.regCode.msgBox(
                     "Empty fields",
-                    "Please fill in all required fields & Selections."
+                    'You forgot to check "Yes" or "No" for financial need.'
                 )
                 return
+
             print("Checkpoint 2")
             application = Application(
-                self.formerSchoolTxt.text().strip(),
-                self.gpaSpinbox.text().strip(),
+                schoolAttended.strip(),
+                gpa.strip(),
                 financialAssistance,
-                self.reasonForApplyingTxt.toPlainText().strip(),
-                self.transcriptTxt.text().strip(),
-                self.nationalIdTxt.text().strip(),
-                self.recommedationLetterTxt.text().strip(),
-                self.careerGoalsTxt.text().strip()
+                reasonForApplying.strip(),
+                transcript.strip(),
+                nationalID.strip(),
+                recomLetter.strip(),
+                careerGoals.strip(),
+                proofOfNeed.strip(),
+                incomeBracket.strip()
             )
             print("Checkpoint 3")
             result = application.apply(self.url)

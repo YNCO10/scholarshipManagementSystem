@@ -73,11 +73,19 @@ class CriticalCode(QWidget, Ui_criticalReasoningForm):
                         Sessions.logicalReasoningScore,
                         Sessions.criticalReasoningScore
                     )
+
+                    #for debugging
                     print(
                         f"Numerical Score: {Sessions.numericalReasoningScore}\n"
                         f"Verbal Score: {Sessions.verbalReasoningScore}\n"
                         f"Logical Score: {Sessions.logicalReasoningScore}\n"
                         f"Verbal Score: {Sessions.criticalReasoningScore}\n"
+                    )
+                    self.sendDataToDb(
+                        "http://localhost/BackEnd/scholarshipManagement/assessments/insertAssessment.php",
+                        "jeff@gmail.com",
+                        finalGrade,
+                        20
                     )
                     self.regCode.msgBox(
                         "Session complete",
@@ -87,11 +95,12 @@ class CriticalCode(QWidget, Ui_criticalReasoningForm):
                 except Exception as e:
                     print(f"Exception Error: {e}")
 
+
 #######################################################################################################################
 
     def getDataFromDB(self, category):
         url = "http://localhost/BackEnd/scholarshipManagement/assessments/assessmentValidation.php"
-        # category = "numerical"
+
         response = requests.post(
             url,
             data={
@@ -115,12 +124,35 @@ class CriticalCode(QWidget, Ui_criticalReasoningForm):
                 msg
             )
 
+#######################################################################################################################
     def getFinalScore(self):
         perc = (self.assess.score / 5) * 100
         self.regCode.msgBox(
             "Sub-test complete",
             f'You scored {self.assess.finalScore()}/5\n{perc:.0f}%\nClick "ok" to check out your overall grade.'
         )
+
+#######################################################################################################################
+    def sendDataToDb(self, url, email, score, totalQuest):
+        result = self.assess.sendDataToDb(
+            score,
+            email,
+            url,
+            totalQuest
+        )
+
+        msg = result.get("message", "Unknown Response")
+
+        if result.get("status") == "success":
+            self.regCode.msgBox(
+                "Process Complete",
+                f"{msg}"
+            )
+        elif result.get("status") == "error":
+            self.regCode.msgBox(
+                "Process Failed!",
+                f"{msg}"
+            )
 
 #######################################################################################################################
     def startAssessment(self):

@@ -10,7 +10,9 @@ class Application:
                  transcript,
                  nationalID,
                  recommendationLetter,
-                 careerGoals
+                 careerGoals,
+                 proofOfNeed,
+                 incomeBracket
                  ):
         super().__init__()
         self.schoolAttended = schoolAttended
@@ -21,9 +23,20 @@ class Application:
         self.nationalID = nationalID
         self.recommendationLetter = recommendationLetter
         self.careerGoals = careerGoals
+        self.proofOfNeed = proofOfNeed
+        self.incomeBracket = incomeBracket
 
     def apply(self, url):
-        response = requests.post(url, data=self.toDict())
+        response = requests.post(
+            url, 
+            data=self.toDict(),
+            files={
+                "Transcript": open(self.transcript, "rb"),
+                "National_ID": open(self.nationalID, "rb"),
+                "Recommendation_Letter": open(self.recommendationLetter, "rb"),
+                "Proof_Of_Need": open(self.proofOfNeed, "rb")
+            }
+        )
         try:
             return response.json()
         except ValueError:
@@ -36,8 +49,5 @@ class Application:
             "gpa": self.gpa,
             "fin_assistance": self.financialAssistance,
             "reasonForApplying": self.reasonForApplying,
-            "transcript": self.transcript,
-            "nationalID": self.nationalID,
-            "recommendation_letter": self.recommendationLetter,
             "careerGoal": self.careerGoals
         }
