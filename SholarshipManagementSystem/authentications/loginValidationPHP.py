@@ -12,6 +12,7 @@ import Sessions
 class LoginCode(QWidget, Ui_loginPage):
     def __init__(self):
         super().__init__()
+        self.controller = None
         self.setWindowTitle("Login")
         self.setWindowIcon(QIcon(":icons/SMsysIcon.png"))
         self.setupUi(self)
@@ -52,7 +53,9 @@ class LoginCode(QWidget, Ui_loginPage):
 
 
             if result.get("status") == "admin":
+                Sessions.adminName = result.get('adminName', 'Admin')
                 self.msgBox("Welcome", f"Enjoy your experience, {result.get('adminName', 'Admin')}")
+
                 print("Login Successful")
 
                 Sessions.seshEmail = self.loginEmailTxt.text().strip()
@@ -64,9 +67,9 @@ class LoginCode(QWidget, Ui_loginPage):
 
 
             elif result.get("status") == "applicant":
+                Sessions.adminName = result.get('applicantName', 'Applicant')
                 self.msgBox("Welcome", f"Enjoy your experience, {result.get('applicantName', 'Applicant')}")
                 print("Login Successful")
-
 
 
 

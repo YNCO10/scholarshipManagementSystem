@@ -22,7 +22,7 @@ class NumericalReasoningCode(QWidget, Ui_NumericalReasoningForm):
         self.controller = None
         self.questionHeader.setText("Time Left:")
 
-        self.timeLimit = 5
+        self.timeLimit = 40
         self.remainingTime = self.timeLimit
 
         self.timer = QTimer(self)
@@ -83,6 +83,7 @@ class NumericalReasoningCode(QWidget, Ui_NumericalReasoningForm):
             else:
                 self.getFinalScore()
                 Sessions.numericalReasoningScore = self.assess.finalScore()
+                self.timer.stop()
 
                 self.goToVerbalReasoning()
 
@@ -118,10 +119,10 @@ class NumericalReasoningCode(QWidget, Ui_NumericalReasoningForm):
 
 ########################################################################################################################
     def getFinalScore(self):
-        perc = (self.assess.score / 5) * 100
+        perc = (self.assess.score / 10) * 100
         self.regCode.msgBox(
             "Sub-test complete",
-            f"You scored {self.assess.finalScore()}/5\n{perc:.0f}%\nNext test is on Verbal Reasoning"
+            f"You scored {self.assess.finalScore()}/10\n{perc:.0f}%\nNext test is on Verbal Reasoning"
         )
 ########################################################################################################################
     def startAssessment(self):
@@ -130,24 +131,22 @@ class NumericalReasoningCode(QWidget, Ui_NumericalReasoningForm):
 
 ########################################################################################################################
     def hideWindow(self):
-        self.hide()
+        self.close()
 
+########################################################################################################################
     def goToVerbalReasoning(self):
         from pageController import Controller
         self.controller = Controller()
         self.controller.showVerbalReasoning()
         self.close()
 
+########################################################################################################################
     def updateTimer(self):
         self.remainingTime -= 1
         self.qTimer.setText(str(self.remainingTime))
 
-        if self.remainingTime < 4:
+        if self.remainingTime < 6:
             self.qTimer.setStyleSheet("color:Red;")
-        # if str(self.remainingTime) == "2":
-        #     self.qTimer.setStyleSheet("color:Red;")
-        # if str(self.remainingTime) == "1":
-        #     self.qTimer.setStyleSheet("color:Red;")
 
         if str(self.remainingTime) == "0":
             self.timer.stop()

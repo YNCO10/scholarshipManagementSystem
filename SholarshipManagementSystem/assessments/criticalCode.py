@@ -1,3 +1,4 @@
+from PyQt6.QtCore import QTimer
 from PyQt6.QtGui import QIcon
 from PyQt6.QtWidgets import QWidget, QButtonGroup
 
@@ -18,6 +19,12 @@ class CriticalCode(QWidget, Ui_criticalReasoningForm):
         self.assess = None
         self.controller = None
 
+        self.timeLimit = 15
+        self.remainingTime = self.timeLimit
+
+        self.timer = QTimer(self)
+        self.timer.timeout.connect(self.updateTimer)
+
 
         self.btnCLicks()
 
@@ -34,7 +41,12 @@ class CriticalCode(QWidget, Ui_criticalReasoningForm):
 
     def loadQuestions(self, question):
     # populate labels with questions & options
+        self.qTimer.setStyleSheet("color:white;")
         self.question_txt.setText(question.get("question_txt"))
+
+        self.remainingTime = self.timeLimit
+        self.qTimer.setText(str(self.remainingTime))
+        self.timer.start(1000)
 
 #######################################################################################################################
 
@@ -66,6 +78,7 @@ class CriticalCode(QWidget, Ui_criticalReasoningForm):
                 try:
                     Sessions.criticalReasoningScore = self.assess.finalScore()
                     self.getFinalScore()
+                    self.timer.stop()
 
                     finalGrade = self.assess.finalGrade(
                         Sessions.numericalReasoningScore,
@@ -73,6 +86,12 @@ class CriticalCode(QWidget, Ui_criticalReasoningForm):
                         Sessions.logicalReasoningScore,
                         Sessions.criticalReasoningScore
                     )
+
+                    self.regCode.msgBox(
+                        "Session complete",
+                        f"Your overall score is {finalGrade:.0f}%"
+                    )
+
 
                     #for debugging
                     print(
@@ -85,12 +104,9 @@ class CriticalCode(QWidget, Ui_criticalReasoningForm):
                         "http://localhost/BackEnd/scholarshipManagement/assessments/insertAssessment.php",
                         "jeff@gmail.com",
                         finalGrade,
-                        20
+                        40
                     )
-                    self.regCode.msgBox(
-                        "Session complete",
-                        f"Your overall score is {finalGrade:.0f}"
-                    )
+
                     print(f"final grade: {finalGrade}%")
                 except Exception as e:
                     print(f"Exception Error: {e}")
@@ -126,10 +142,10 @@ class CriticalCode(QWidget, Ui_criticalReasoningForm):
 
 #######################################################################################################################
     def getFinalScore(self):
-        perc = (self.assess.score / 5) * 100
+        perc = (self.assess.score / 10) * 100
         self.regCode.msgBox(
             "Sub-test complete",
-            f'You scored {self.assess.finalScore()}/5\n{perc:.0f}%\nClick "ok" to check out your overall grade.'
+            f'You scored {self.assess.finalScore()}/10\n{perc:.0f}%\nClick "ok" to check out your overall grade.'
         )
 
 #######################################################################################################################
@@ -162,3 +178,22 @@ class CriticalCode(QWidget, Ui_criticalReasoningForm):
 ########################################################################################################################
     def hideWindow(self):
         self.hide()
+########################################################################################################################
+    def updateTimer(self):
+        self.remainingTime -= 1
+        self.qTimer.setText(str(self.remainingTime))
+
+        if self.remainingTime < 6:
+            self.qTimer.setStyleSheet("color:Red;")
+
+        if str(self.remainingTime) == "0":
+            self.timer.stop()
+
+            nextQuestion = self.assess.nextQuestion()
+
+            if nextQuestion:
+                self.loadQuestions(nextQuestion)
+                return
+            else:
+                self.getFinalScore()
+########################################################################################################################

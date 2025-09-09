@@ -32,7 +32,7 @@ class Assessment:
 ########################################################################################################################
     def finalGrade(self,numScore, verbalScore, logicalScore, criticalScore):
         sumOfScores = numScore+verbalScore+logicalScore+criticalScore
-        perc = (sumOfScores/20) * 100
+        perc = (sumOfScores/40) * 100
         return perc
 ########################################################################################################################
     def sendDataToDb(self, score, email, url, totalQuest):

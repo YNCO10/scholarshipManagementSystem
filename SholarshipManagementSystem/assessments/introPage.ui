@@ -174,7 +174,7 @@ width:100px;</string>
        <item>
         <widget class="QLabel" name="label_5">
          <property name="text">
-          <string>The time limit is 1:30 minutes for each test, do not take too long to answer a question or it may run out. If you press next without answering the question no marks will be awarded for that question. You cannot skip a question. If you decide to close the app before finishing YOUR RESULTS WILL NOT BE SAVED.</string>
+          <string>There is a different time limit for each test, allocated time will be shown in Instructions page, do not take too long to answer a question or it may run out. You cannot skip a question. If you decide to close the app before finishing YOUR RESULTS WILL NOT BE SAVED.</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignmentFlag::AlignCenter</set>

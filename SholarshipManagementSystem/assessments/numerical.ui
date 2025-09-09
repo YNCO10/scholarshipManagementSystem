@@ -13,7 +13,7 @@
   <property name="minimumSize">
    <size>
     <width>836</width>
-    <height>576</height>
+    <height>586</height>
    </size>
   </property>
   <property name="maximumSize">
@@ -42,7 +42,7 @@ QRadioButton{
    <item row="0" column="0">
     <widget class="QStackedWidget" name="numericalReasoningStackedWidget">
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="firstPage">
       <layout class="QVBoxLayout" name="verticalLayout_74">
@@ -177,6 +177,13 @@ margin-top:40px;</string>
             </widget>
            </item>
           </layout>
+         </item>
+         <item>
+          <widget class="QLabel" name="timeAllocatedLabel">
+           <property name="text">
+            <string>Time Allocated:</string>
+           </property>
+          </widget>
          </item>
         </layout>
        </item>

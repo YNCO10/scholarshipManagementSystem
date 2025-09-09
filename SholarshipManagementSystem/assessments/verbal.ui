@@ -54,7 +54,7 @@ QRadioButton{
       </size>
      </property>
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="page">
       <layout class="QGridLayout" name="gridLayout_2">
@@ -87,7 +87,7 @@ margin-top:30px;</string>
           <number>30</number>
          </property>
          <property name="bottomMargin">
-          <number>40</number>
+          <number>20</number>
          </property>
          <item>
           <layout class="QVBoxLayout" name="verticalLayout">
@@ -180,6 +180,13 @@ margin-top:30px;</string>
             <widget class="QLabel" name="label_23">
              <property name="text">
               <string>Explanation: A doctor treats a patient; a teacher instructs a student.</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="timeAllocatedLabel">
+             <property name="text">
+              <string>Time Allocated: </string>
              </property>
             </widget>
            </item>

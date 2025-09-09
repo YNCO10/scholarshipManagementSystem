@@ -6,7 +6,6 @@ import sys
 import requests
 from PyQt6.QtGui import QIcon
 from PyQt6.QtWidgets import QMainWindow, QLineEdit, QMessageBox, QTableWidgetItem, QPushButton, QWidget, QHBoxLayout
-
 from SholarshipManagementSystem.homePage.dashboard import Ui_MainWindow
 import Sessions
 
@@ -24,6 +23,9 @@ class Dash(QMainWindow, Ui_MainWindow):
         self.homeIconBtn.click()
 
         self.iconNameWidget.setHidden(True)
+
+        # DISPLAY USERNAME
+        self.usernameLabel.setText(Sessions.adminName)
 
         #BTN CLICKS
         self.BtnClicks()
@@ -105,23 +107,44 @@ class Dash(QMainWindow, Ui_MainWindow):
             if result.get("status") == "success":
                     #     get db content
                 dbContent = result.get("data",[])
-
                 self.scholarshipTableWidget.setRowCount(len(dbContent))#always initialise tbl so it doesn't stack up rows
+                self.scholarshipTableWidget.setRowCount(len(dbContent))
 
-                self.scholarshipTableWidget.setColumnCount(6)
+                self.scholarshipTableWidget.setColumnCount(13)
 
                 self.scholarshipTableWidget.setHorizontalHeaderLabels(
-                    ["ID", "Name", "Descrip", "File Path", "Deadline", "Actions"]
+                    [
+                        "Actions",
+                        "ID",
+                        "Name",
+                        "Descrip",
+                        "Type",
+                        "Subject",
+                        "Deadline",
+                        "Financial Amount",
+                        "Provider",
+                        "Provider Email",
+                        "Application Link",
+                        "Perks",
+                        "File Path"
+                    ]
                 )
 
                     #     populate tbl with content from db
                 for rowindx, rowData in enumerate(dbContent):
                     #         fill data for all 4 columns
-                    self.scholarshipTableWidget.setItem(rowindx, 0, QTableWidgetItem(str(rowData.get("id",""))))
-                    self.scholarshipTableWidget.setItem(rowindx, 1, QTableWidgetItem(rowData.get("name","")))
-                    self.scholarshipTableWidget.setItem(rowindx, 2, QTableWidgetItem(rowData.get("type","")))
-                    self.scholarshipTableWidget.setItem(rowindx, 3, QTableWidgetItem(rowData.get("file_path","")))
-                    self.scholarshipTableWidget.setItem(rowindx, 4, QTableWidgetItem(rowData.get("deadline","")))
+                    self.scholarshipTableWidget.setItem(rowindx, 1, QTableWidgetItem(str(rowData.get("id",""))))
+                    self.scholarshipTableWidget.setItem(rowindx, 2, QTableWidgetItem(rowData.get("scholarship_name","")))
+                    self.scholarshipTableWidget.setItem(rowindx, 3, QTableWidgetItem(rowData.get("descrip","")))
+                    self.scholarshipTableWidget.setItem(rowindx, 4, QTableWidgetItem(rowData.get("type","")))
+                    self.scholarshipTableWidget.setItem(rowindx, 5, QTableWidgetItem(rowData.get("subject","")))
+                    self.scholarshipTableWidget.setItem(rowindx, 6, QTableWidgetItem(rowData.get("deadline","")))
+                    self.scholarshipTableWidget.setItem(rowindx, 7, QTableWidgetItem(rowData.get("financial_amount","")))
+                    self.scholarshipTableWidget.setItem(rowindx, 8, QTableWidgetItem(rowData.get("provider","")))
+                    self.scholarshipTableWidget.setItem(rowindx, 9, QTableWidgetItem(rowData.get("provider_email","")))
+                    self.scholarshipTableWidget.setItem(rowindx, 10, QTableWidgetItem(rowData.get("applicantion_link","")))
+                    self.scholarshipTableWidget.setItem(rowindx, 11, QTableWidgetItem(rowData.get("perks","") or "No Benefits Available for this Scholarship"))
+                    self.scholarshipTableWidget.setItem(rowindx, 12, QTableWidgetItem(rowData.get("file_path","")))
 
                     #       create View & del btn
                     viewBtn = QPushButton("View")
@@ -155,7 +178,7 @@ class Dash(QMainWindow, Ui_MainWindow):
                     layout.setContentsMargins(0,0,0,0)
 
             #         add widget to tbl
-                    self.scholarshipTableWidget.setCellWidget(rowindx, 5, btnWidget)
+                    self.scholarshipTableWidget.setCellWidget(rowindx, 0, btnWidget)
 
                 self.styleTbl()
 

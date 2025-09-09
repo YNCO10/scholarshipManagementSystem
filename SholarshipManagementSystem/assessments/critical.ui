@@ -30,7 +30,7 @@ QRadioButton{
    <item row="0" column="0">
     <widget class="QStackedWidget" name="criticalReasoningStackedWidget">
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="page">
       <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -126,6 +126,13 @@ margin-top:30px;</string>
              </property>
              <property name="wordWrap">
               <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="timeAllocatedLabel">
+             <property name="text">
+              <string>Time Allocated:</string>
              </property>
             </widget>
            </item>
