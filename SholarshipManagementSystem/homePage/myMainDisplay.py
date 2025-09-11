@@ -5,9 +5,15 @@ import sys
 
 import requests
 from PyQt6.QtGui import QIcon
-from PyQt6.QtWidgets import QMainWindow, QLineEdit, QMessageBox, QTableWidgetItem, QPushButton, QWidget, QHBoxLayout
+from PyQt6.QtWidgets import QMainWindow, QLineEdit, QMessageBox, QTableWidgetItem, QPushButton, QWidget, QHBoxLayout, \
+    QVBoxLayout
 from SholarshipManagementSystem.homePage.dashboard import Ui_MainWindow
+import matplotlib.pyplot as plt
+from matplotlib.figure import Figure
 import Sessions
+from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg as FigureCanvas
+
+
 
 class Dash(QMainWindow, Ui_MainWindow):
     def __init__(self):
@@ -30,7 +36,8 @@ class Dash(QMainWindow, Ui_MainWindow):
         #BTN CLICKS
         self.BtnClicks()
         self.readOnlyLineEdit()
-
+        self.loadPlot()
+        self.loadPlot2()
 
 
 
@@ -282,3 +289,48 @@ class Dash(QMainWindow, Ui_MainWindow):
         msgBox.setText(msg)
         msgBox.setStandardButtons(QMessageBox.StandardButton.Ok)
         msgBox.exec()
+
+
+########################################################################################################################
+
+
+    def plot1(self):
+
+        fig = Figure()
+        ax = fig.add_subplot(111)
+        # your data
+        labels = ["High School", "Diploma", "Degree"]
+        sizes = [20, 30, 50]
+        ax.pie(sizes, labels=labels, autopct="%1.1f%%")
+        return fig
+
+    def plot2(self):
+        fig = Figure()
+        ax = fig.add_subplot(111)
+
+        # Your data
+        labels = ["Tennis", "Cars", "Girls"]
+        sizes = [20, 30, 50]  # heights of bars
+
+        # Create bar chart
+        ax.bar(labels, sizes, color=["green", "blue", "pink"])
+
+        # Add values on top of bars
+        for i, value in enumerate(sizes):
+            ax.text(i, value + 1, str(value), ha='center', va='bottom')
+
+        ax.set_title("Ranking Example")
+        ax.set_ylabel("Values")
+
+        return fig
+
+
+    def loadPlot(self):
+        figure = FigureCanvas(self.plot1())
+        layout = QVBoxLayout(self.chartWidget)
+        layout.addWidget(figure)
+
+    def loadPlot2(self):
+        figure = FigureCanvas(self.plot2())
+        layout = QVBoxLayout(self.chart2Widget)
+        layout.addWidget(figure)

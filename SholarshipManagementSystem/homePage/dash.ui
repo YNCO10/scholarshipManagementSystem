@@ -222,7 +222,7 @@ QLineEdit{
 </string>
          </property>
          <property name="currentIndex">
-          <number>3</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="home">
           <layout class="QGridLayout" name="gridLayout_2">
@@ -355,10 +355,10 @@ font: 12pt &quot;Segoe UI&quot;;</string>
               <number>20</number>
              </property>
              <item>
-              <widget class="QTableWidget" name="recentApplicationsTableWidget"/>
+              <widget class="QWidget" name="chartWidget" native="true"/>
              </item>
              <item>
-              <widget class="QTableWidget" name="applicantRankTableWidget"/>
+              <widget class="QWidget" name="chart2Widget" native="true"/>
              </item>
             </layout>
            </item>
