@@ -7,7 +7,7 @@
 
 
 from PyQt6 import QtCore, QtGui, QtWidgets
-import myProjectResources
+
 
 class Ui_WelcomePage(object):
     def setupUi(self, WelcomePage):
@@ -45,6 +45,10 @@ class Ui_WelcomePage(object):
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(WelcomePage)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
         self.groupBox = QtWidgets.QGroupBox(parent=WelcomePage)
+        self.groupBox.setStyleSheet("QPushButton::hover{\n"
+"    background-color: rgb(20, 41, 63);\n"
+"    color: Black;\n"
+"}")
         self.groupBox.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.groupBox.setObjectName("groupBox")
         self.verticalLayout_4 = QtWidgets.QVBoxLayout(self.groupBox)
@@ -80,6 +84,7 @@ class Ui_WelcomePage(object):
         spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_3.addItem(spacerItem3)
         self.goToAdminRegBtn = QtWidgets.QPushButton(parent=self.groupBox)
+        self.goToAdminRegBtn.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/icons/adminIcon.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.goToAdminRegBtn.setIcon(icon)
@@ -88,6 +93,7 @@ class Ui_WelcomePage(object):
         spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_3.addItem(spacerItem4)
         self.goToApplicantRegBtn = QtWidgets.QPushButton(parent=self.groupBox)
+        self.goToApplicantRegBtn.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap(":/icons/applicantIcon.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
         self.goToApplicantRegBtn.setIcon(icon1)
@@ -105,6 +111,7 @@ class Ui_WelcomePage(object):
         self.label_5.setObjectName("label_5")
         self.horizontalLayout.addWidget(self.label_5)
         self.goToLoginBtn = QtWidgets.QPushButton(parent=self.groupBox)
+        self.goToLoginBtn.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.goToLoginBtn.setStyleSheet("font: 600 12pt \"Segoe UI\";\n"
 "text-decoration: underline;\n"
 "background-color: rgb(20, 41, 63);\n"

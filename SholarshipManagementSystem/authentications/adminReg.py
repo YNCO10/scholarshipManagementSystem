@@ -7,7 +7,7 @@
 
 
 from PyQt6 import QtCore, QtGui, QtWidgets
-
+import myProjectResources
 
 class Ui_adminRegistrationPage(object):
     def setupUi(self, adminRegistrationPage):
@@ -31,6 +31,11 @@ class Ui_adminRegistrationPage(object):
 "    \n"
 "    font: 11pt \"Segoe UI\";\n"
 "\n"
+"}\n"
+"\n"
+"QPushButton::hover{\n"
+"    background-color: rgb(20, 41, 63);\n"
+"    color: Black;\n"
 "}")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(adminRegistrationPage)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
@@ -80,8 +85,10 @@ class Ui_adminRegistrationPage(object):
         self.showHidePassBtn.setText("")
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/icons/seeWhiteIcon.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon.addPixmap(QtGui.QPixmap(":/icons/hideWhite.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.On)
         self.showHidePassBtn.setIcon(icon)
         self.showHidePassBtn.setIconSize(QtCore.QSize(20, 20))
+        self.showHidePassBtn.setCheckable(True)
         self.showHidePassBtn.setObjectName("showHidePassBtn")
         self.horizontalLayout_4.addWidget(self.showHidePassBtn)
         self.verticalLayout.addLayout(self.horizontalLayout_4)
@@ -101,6 +108,7 @@ class Ui_adminRegistrationPage(object):
         self.showHideConfirmPassBtn.setText("")
         self.showHideConfirmPassBtn.setIcon(icon)
         self.showHideConfirmPassBtn.setIconSize(QtCore.QSize(20, 20))
+        self.showHideConfirmPassBtn.setCheckable(True)
         self.showHideConfirmPassBtn.setObjectName("showHideConfirmPassBtn")
         self.horizontalLayout_5.addWidget(self.showHideConfirmPassBtn)
         self.verticalLayout.addLayout(self.horizontalLayout_5)

@@ -1,5 +1,8 @@
 <RCC>
   <qresource>
+    <file>alarm-bell.png</file>
+    <file>graph.png</file>
+    <file>settings (1).png</file>
     <file>whiteHomeIcon.png</file>
     <file>whiteManageScholarshipIcon.png</file>
     <file>icons/hideWhite.png</file>

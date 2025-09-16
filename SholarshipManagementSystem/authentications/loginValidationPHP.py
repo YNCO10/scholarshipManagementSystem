@@ -53,10 +53,11 @@ class LoginCode(QWidget, Ui_loginPage):
 
 
             if result.get("status") == "admin":
-                Sessions.adminName = result.get('adminName', 'Admin')
+                Sessions.adminName = result.get("adminName", "Admin")
                 self.msgBox("Welcome", f"Enjoy your experience, {result.get('adminName', 'Admin')}")
 
                 print("Login Successful")
+                print(Sessions.adminName)
 
                 Sessions.seshEmail = self.loginEmailTxt.text().strip()
 

@@ -9,7 +9,6 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 import myProjectResources
 
-
 class Ui_loginPage(object):
     def setupUi(self, loginPage):
         loginPage.setObjectName("loginPage")
@@ -30,6 +29,12 @@ class Ui_loginPage(object):
 "    \n"
 "    font: 11pt \"Segoe UI\";\n"
 "\n"
+"}\n"
+"\n"
+"\n"
+"QPushButton::hover{\n"
+"    background-color: rgb(20, 41, 63);\n"
+"    color: Black;\n"
 "}")
         self.verticalLayout_3 = QtWidgets.QVBoxLayout(loginPage)
         self.verticalLayout_3.setObjectName("verticalLayout_3")
@@ -71,8 +76,10 @@ class Ui_loginPage(object):
         self.loginShowHidePassBtn.setText("")
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(":/icons/seeWhiteIcon.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon.addPixmap(QtGui.QPixmap(":/icons/hideWhite.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.On)
         self.loginShowHidePassBtn.setIcon(icon)
         self.loginShowHidePassBtn.setIconSize(QtCore.QSize(20, 20))
+        self.loginShowHidePassBtn.setCheckable(True)
         self.loginShowHidePassBtn.setObjectName("loginShowHidePassBtn")
         self.horizontalLayout_6.addWidget(self.loginShowHidePassBtn)
         self.verticalLayout_2.addLayout(self.horizontalLayout_6)

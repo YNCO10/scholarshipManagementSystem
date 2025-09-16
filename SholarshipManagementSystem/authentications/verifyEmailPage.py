@@ -32,6 +32,11 @@ class Ui_VerifyEmail(object):
 "    \n"
 "    font: 11pt \"Segoe UI\";\n"
 "\n"
+"}\n"
+"\n"
+"QPushButton::hover{\n"
+"    background-color: rgb(20, 41, 63);\n"
+"    color: Black;\n"
 "}")
         self.verticalLayout = QtWidgets.QVBoxLayout(VerifyEmail)
         self.verticalLayout.setObjectName("verticalLayout")
@@ -58,6 +63,7 @@ class Ui_VerifyEmail(object):
 "padding:15px;\n"
 "margin-left: 20px;\n"
 "margin-right: 20px;")
+        self.pushButton_2.setCheckable(False)
         self.pushButton_2.setObjectName("pushButton_2")
         self.verticalLayout.addWidget(self.pushButton_2)
         self.horizontalLayout_2 = QtWidgets.QHBoxLayout()

@@ -79,6 +79,7 @@ class Ui_MainWindow(object):
         self.profileBtnQuickAccess = QtWidgets.QPushButton(parent=self.headerWidget)
         self.profileBtnQuickAccess.setMinimumSize(QtCore.QSize(40, 40))
         self.profileBtnQuickAccess.setMaximumSize(QtCore.QSize(40, 40))
+        self.profileBtnQuickAccess.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.profileBtnQuickAccess.setStyleSheet("")
         self.profileBtnQuickAccess.setText("")
         icon2 = QtGui.QIcon()
@@ -113,6 +114,8 @@ class Ui_MainWindow(object):
 "    margin-bottom:20px;\n"
 "    margin-right:20px;\n"
 "    margin-left:20px;\n"
+"    \n"
+"    font: 600 10.5pt \"Segoe UI\";\n"
 "}\n"
 "\n"
 "\n"
@@ -124,29 +127,43 @@ class Ui_MainWindow(object):
 "    font: 11pt \"Segoe UI\";\n"
 "\n"
 "}\n"
+"\n"
+"\n"
+"QPushButton::hover{\n"
+"    background-color: rgb(20, 41, 63);\n"
+"    color: Black;\n"
+"}\n"
 "")
         self.mainDisplayWidget.setObjectName("mainDisplayWidget")
         self.home = QtWidgets.QWidget()
         self.home.setObjectName("home")
         self.gridLayout_2 = QtWidgets.QGridLayout(self.home)
         self.gridLayout_2.setObjectName("gridLayout_2")
+        self.scrollArea = QtWidgets.QScrollArea(parent=self.home)
+        self.scrollArea.setWidgetResizable(True)
+        self.scrollArea.setObjectName("scrollArea")
+        self.scrollAreaWidgetContents_2 = QtWidgets.QWidget()
+        self.scrollAreaWidgetContents_2.setGeometry(QtCore.QRect(0, 0, 654, 616))
+        self.scrollAreaWidgetContents_2.setObjectName("scrollAreaWidgetContents_2")
+        self.gridLayout_7 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents_2)
+        self.gridLayout_7.setObjectName("gridLayout_7")
         self.horizontalLayout_5 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_5.setContentsMargins(-1, 10, -1, -1)
         self.horizontalLayout_5.setObjectName("horizontalLayout_5")
         spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_5.addItem(spacerItem2)
-        self.homeScreenUsernameLabel = QtWidgets.QLabel(parent=self.home)
+        self.homeScreenUsernameLabel = QtWidgets.QLabel(parent=self.scrollAreaWidgetContents_2)
         self.homeScreenUsernameLabel.setObjectName("homeScreenUsernameLabel")
         self.horizontalLayout_5.addWidget(self.homeScreenUsernameLabel)
         spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_5.addItem(spacerItem3)
-        self.gridLayout_2.addLayout(self.horizontalLayout_5, 0, 0, 1, 1)
+        self.gridLayout_7.addLayout(self.horizontalLayout_5, 0, 0, 1, 1)
         self.horizontalLayout_6 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_6.setContentsMargins(-1, 20, -1, -1)
         self.horizontalLayout_6.setObjectName("horizontalLayout_6")
         spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_6.addItem(spacerItem4)
-        self.recentApplicantionsLabel = QtWidgets.QLabel(parent=self.home)
+        self.recentApplicantionsLabel = QtWidgets.QLabel(parent=self.scrollAreaWidgetContents_2)
         self.recentApplicantionsLabel.setStyleSheet("\n"
 "font: 12pt \"Segoe UI\";")
         self.recentApplicantionsLabel.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
@@ -154,7 +171,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_6.addWidget(self.recentApplicantionsLabel)
         spacerItem5 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_6.addItem(spacerItem5)
-        self.recentApplicantionsLabel_2 = QtWidgets.QLabel(parent=self.home)
+        self.recentApplicantionsLabel_2 = QtWidgets.QLabel(parent=self.scrollAreaWidgetContents_2)
         self.recentApplicantionsLabel_2.setStyleSheet("\n"
 "font: 12pt \"Segoe UI\";")
         self.recentApplicantionsLabel_2.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
@@ -162,51 +179,45 @@ class Ui_MainWindow(object):
         self.horizontalLayout_6.addWidget(self.recentApplicantionsLabel_2)
         spacerItem6 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Minimum)
         self.horizontalLayout_6.addItem(spacerItem6)
-        self.gridLayout_2.addLayout(self.horizontalLayout_6, 1, 0, 1, 1)
+        self.gridLayout_7.addLayout(self.horizontalLayout_6, 1, 0, 1, 1)
         self.horizontalLayout_7 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_7.setContentsMargins(20, -1, 20, 20)
         self.horizontalLayout_7.setSpacing(30)
         self.horizontalLayout_7.setObjectName("horizontalLayout_7")
-        self.chartWidget = QtWidgets.QWidget(parent=self.home)
+        self.chartWidget = QtWidgets.QWidget(parent=self.scrollAreaWidgetContents_2)
         self.chartWidget.setObjectName("chartWidget")
         self.horizontalLayout_7.addWidget(self.chartWidget)
-        self.chart2Widget = QtWidgets.QWidget(parent=self.home)
+        self.chart2Widget = QtWidgets.QWidget(parent=self.scrollAreaWidgetContents_2)
         self.chart2Widget.setObjectName("chart2Widget")
         self.horizontalLayout_7.addWidget(self.chart2Widget)
-        self.gridLayout_2.addLayout(self.horizontalLayout_7, 2, 0, 1, 1)
-        self.verticalLayout_9 = QtWidgets.QVBoxLayout()
-        self.verticalLayout_9.setObjectName("verticalLayout_9")
-        self.recentApplicantionsLabel_3 = QtWidgets.QLabel(parent=self.home)
-        self.recentApplicantionsLabel_3.setStyleSheet("\n"
-"font: 12pt \"Segoe UI\";")
-        self.recentApplicantionsLabel_3.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
-        self.recentApplicantionsLabel_3.setObjectName("recentApplicantionsLabel_3")
-        self.verticalLayout_9.addWidget(self.recentApplicantionsLabel_3)
+        self.gridLayout_7.addLayout(self.horizontalLayout_7, 2, 0, 1, 1)
         self.verticalLayout_8 = QtWidgets.QVBoxLayout()
         self.verticalLayout_8.setContentsMargins(20, 0, 20, 20)
         self.verticalLayout_8.setObjectName("verticalLayout_8")
-        self.listofScholarshipsTableWidget = QtWidgets.QTableWidget(parent=self.home)
-        self.listofScholarshipsTableWidget.setObjectName("listofScholarshipsTableWidget")
-        self.listofScholarshipsTableWidget.setColumnCount(0)
-        self.listofScholarshipsTableWidget.setRowCount(0)
-        self.verticalLayout_8.addWidget(self.listofScholarshipsTableWidget)
+        self.listofApplicantsTableWidget = QtWidgets.QTableWidget(parent=self.scrollAreaWidgetContents_2)
+        self.listofApplicantsTableWidget.setStyleSheet("")
+        self.listofApplicantsTableWidget.setObjectName("listofApplicantsTableWidget")
+        self.listofApplicantsTableWidget.setColumnCount(0)
+        self.listofApplicantsTableWidget.setRowCount(0)
+        self.verticalLayout_8.addWidget(self.listofApplicantsTableWidget)
         self.verticalLayout_7 = QtWidgets.QVBoxLayout()
         self.verticalLayout_7.setContentsMargins(-1, 20, -1, 20)
         self.verticalLayout_7.setSpacing(10)
         self.verticalLayout_7.setObjectName("verticalLayout_7")
-        self.totalAppliacantslabel = QtWidgets.QLabel(parent=self.home)
+        self.totalAppliacantslabel = QtWidgets.QLabel(parent=self.scrollAreaWidgetContents_2)
         self.totalAppliacantslabel.setStyleSheet("\n"
 "font: 12pt \"Segoe UI\";")
         self.totalAppliacantslabel.setObjectName("totalAppliacantslabel")
         self.verticalLayout_7.addWidget(self.totalAppliacantslabel)
-        self.totalScholarshipsLabel = QtWidgets.QLabel(parent=self.home)
+        self.totalScholarshipsLabel = QtWidgets.QLabel(parent=self.scrollAreaWidgetContents_2)
         self.totalScholarshipsLabel.setStyleSheet("\n"
 "font: 12pt \"Segoe UI\";")
         self.totalScholarshipsLabel.setObjectName("totalScholarshipsLabel")
         self.verticalLayout_7.addWidget(self.totalScholarshipsLabel)
         self.verticalLayout_8.addLayout(self.verticalLayout_7)
-        self.verticalLayout_9.addLayout(self.verticalLayout_8)
-        self.gridLayout_2.addLayout(self.verticalLayout_9, 3, 0, 1, 1)
+        self.gridLayout_7.addLayout(self.verticalLayout_8, 3, 0, 1, 1)
+        self.scrollArea.setWidget(self.scrollAreaWidgetContents_2)
+        self.gridLayout_2.addWidget(self.scrollArea, 0, 0, 1, 1)
         self.mainDisplayWidget.addWidget(self.home)
         self.manageScholarships = QtWidgets.QWidget()
         self.manageScholarships.setObjectName("manageScholarships")
@@ -227,6 +238,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_10.addWidget(self.scholarshipTableWidget)
         self.gridLayout_3.addLayout(self.verticalLayout_10, 0, 0, 1, 1)
         self.uploadScholarshipBtn = QtWidgets.QPushButton(parent=self.manageScholarships)
+        self.uploadScholarshipBtn.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.uploadScholarshipBtn.setObjectName("uploadScholarshipBtn")
         self.gridLayout_3.addWidget(self.uploadScholarshipBtn, 1, 0, 1, 1)
         self.mainDisplayWidget.addWidget(self.manageScholarships)
@@ -317,7 +329,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_13.addWidget(self.passTxt)
         self.showPassBtn = QtWidgets.QPushButton(parent=self.profile)
         self.showPassBtn.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.ArrowCursor))
-        self.showPassBtn.setMouseTracking(False)
+        self.showPassBtn.setMouseTracking(True)
         self.showPassBtn.setStyleSheet("QPushButton{\n"
 "    \n"
 "    background-color: rgb(1, 14, 27);\n"
@@ -515,6 +527,7 @@ class Ui_MainWindow(object):
         self.reportBtn = QtWidgets.QPushButton(parent=self.iconNameWidget)
         icon6 = QtGui.QIcon()
         icon6.addPixmap(QtGui.QPixmap(":/icons/report.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon6.addPixmap(QtGui.QPixmap(":/icons/graph.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.On)
         self.reportBtn.setIcon(icon6)
         self.reportBtn.setCheckable(True)
         self.reportBtn.setAutoExclusive(True)
@@ -523,6 +536,7 @@ class Ui_MainWindow(object):
         self.notificationsBtn = QtWidgets.QPushButton(parent=self.iconNameWidget)
         icon7 = QtGui.QIcon()
         icon7.addPixmap(QtGui.QPixmap(":/icons/notification.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon7.addPixmap(QtGui.QPixmap(":/icons/alarm-bell.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.On)
         self.notificationsBtn.setIcon(icon7)
         self.notificationsBtn.setCheckable(True)
         self.notificationsBtn.setAutoExclusive(True)
@@ -531,6 +545,7 @@ class Ui_MainWindow(object):
         self.profileBtn = QtWidgets.QPushButton(parent=self.iconNameWidget)
         icon8 = QtGui.QIcon()
         icon8.addPixmap(QtGui.QPixmap(":/icons/gear.png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.Off)
+        icon8.addPixmap(QtGui.QPixmap(":/icons/settings (1).png"), QtGui.QIcon.Mode.Normal, QtGui.QIcon.State.On)
         self.profileBtn.setIcon(icon8)
         self.profileBtn.setCheckable(True)
         self.profileBtn.setAutoExclusive(True)
@@ -634,7 +649,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
-        self.mainDisplayWidget.setCurrentIndex(0)
+        self.mainDisplayWidget.setCurrentIndex(1)
         self.menuBtn.toggled['bool'].connect(self.iconOnlyWidget.setHidden) # type: ignore
         self.menuBtn.toggled['bool'].connect(self.iconNameWidget.setVisible) # type: ignore
         self.profileIconBtn.toggled['bool'].connect(self.profileBtn.setChecked) # type: ignore
@@ -661,7 +676,6 @@ class Ui_MainWindow(object):
         self.homeScreenUsernameLabel.setText(_translate("MainWindow", "HELLO \"nAME\""))
         self.recentApplicantionsLabel.setText(_translate("MainWindow", "RECENT APPLICANTIONS              "))
         self.recentApplicantionsLabel_2.setText(_translate("MainWindow", "APPLICANT RANK"))
-        self.recentApplicantionsLabel_3.setText(_translate("MainWindow", "SCHOLARSHIP LIST"))
         self.totalAppliacantslabel.setText(_translate("MainWindow", "TOTAL NUMBER OF APPLICANTS: RAND_NUM"))
         self.totalScholarshipsLabel.setText(_translate("MainWindow", "TOTAL NUMBER OF SCHOLARSHIPS: RAND_NUM"))
         self.label.setText(_translate("MainWindow", "SCHOLARSHIPS"))

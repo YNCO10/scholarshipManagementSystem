@@ -13,8 +13,8 @@ class Ui_applicantRegistration(object):
     def setupUi(self, applicantRegistration):
         applicantRegistration.setObjectName("applicantRegistration")
         applicantRegistration.resize(619, 766)
-        applicantRegistration.setMinimumSize(QtCore.QSize(596, 596))
-        applicantRegistration.setMaximumSize(QtCore.QSize(620, 800))
+        applicantRegistration.setMinimumSize(QtCore.QSize(619, 766))
+        applicantRegistration.setMaximumSize(QtCore.QSize(619, 766))
         applicantRegistration.setStyleSheet("QWidget{\n"
 "    \n"
 "    background-color: rgb(20, 41, 63);\n"
@@ -32,6 +32,11 @@ class Ui_applicantRegistration(object):
 "    \n"
 "    font: 11pt \"Segoe UI\";\n"
 "\n"
+"}\n"
+"\n"
+"QPushButton::hover{\n"
+"    background-color: rgb(20, 41, 63);\n"
+"    color: Black;\n"
 "}")
         self.verticalLayout_2 = QtWidgets.QVBoxLayout(applicantRegistration)
         self.verticalLayout_2.setObjectName("verticalLayout_2")
@@ -181,6 +186,7 @@ class Ui_applicantRegistration(object):
         spacerItem = QtWidgets.QSpacerItem(20, 4, QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Expanding)
         self.verticalLayout_2.addItem(spacerItem)
         self.signUpBtn = QtWidgets.QPushButton(parent=applicantRegistration)
+        self.signUpBtn.setCursor(QtGui.QCursor(QtCore.Qt.CursorShape.PointingHandCursor))
         self.signUpBtn.setStyleSheet("background-color: rgb(11, 100, 197);\n"
 "font: 600 12pt \"Segoe UI\";\n"
 "padding:15px;\n"

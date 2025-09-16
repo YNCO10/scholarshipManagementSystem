@@ -42,6 +42,11 @@ QLineEdit{
 	
 	font: 11pt &quot;Segoe UI&quot;;
 
+}
+
+QPushButton::hover{
+	background-color: rgb(20, 41, 63);
+	color: Black;
 }</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -141,13 +146,17 @@ margin-top:7px;</string>
          </property>
          <property name="icon">
           <iconset resource="../../projectRescources.qrc">
-           <normaloff>:/icons/seeWhiteIcon.png</normaloff>:/icons/seeWhiteIcon.png</iconset>
+           <normaloff>:/icons/seeWhiteIcon.png</normaloff>
+           <normalon>:/icons/hideWhite.png</normalon>:/icons/seeWhiteIcon.png</iconset>
          </property>
          <property name="iconSize">
           <size>
            <width>20</width>
            <height>20</height>
           </size>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
          </property>
         </widget>
        </item>
@@ -183,13 +192,17 @@ margin-top:7px;</string>
          </property>
          <property name="icon">
           <iconset resource="../../projectRescources.qrc">
-           <normaloff>:/icons/seeWhiteIcon.png</normaloff>:/icons/seeWhiteIcon.png</iconset>
+           <normaloff>:/icons/seeWhiteIcon.png</normaloff>
+           <normalon>:/icons/hideWhite.png</normalon>:/icons/seeWhiteIcon.png</iconset>
          </property>
          <property name="iconSize">
           <size>
            <width>20</width>
            <height>20</height>
           </size>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
          </property>
         </widget>
        </item>

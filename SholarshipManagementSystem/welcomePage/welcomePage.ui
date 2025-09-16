@@ -57,6 +57,12 @@ QGroupBox{
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
     <widget class="QGroupBox" name="groupBox">
+     <property name="styleSheet">
+      <string notr="true">QPushButton::hover{
+	background-color: rgb(20, 41, 63);
+	color: Black;
+}</string>
+     </property>
      <property name="title">
       <string>SCHOLARSHIP MANAGEMENT SYSTEM</string>
      </property>
@@ -172,6 +178,9 @@ QGroupBox{
           </item>
           <item>
            <widget class="QPushButton" name="goToAdminRegBtn">
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
             <property name="text">
              <string>ADMIN</string>
             </property>
@@ -196,6 +205,9 @@ QGroupBox{
           </item>
           <item>
            <widget class="QPushButton" name="goToApplicantRegBtn">
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
             <property name="text">
              <string>APPLICANT</string>
             </property>
@@ -250,6 +262,9 @@ QGroupBox{
           </item>
           <item>
            <widget class="QPushButton" name="goToLoginBtn">
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
             <property name="styleSheet">
              <string notr="true">font: 600 12pt &quot;Segoe UI&quot;;
 text-decoration: underline;
