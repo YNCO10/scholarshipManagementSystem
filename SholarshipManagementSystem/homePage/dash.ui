@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>950</width>
-    <height>700</height>
+    <height>717</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -233,7 +233,7 @@ QPushButton::hover{
 </string>
          </property>
          <property name="currentIndex">
-          <number>1</number>
+          <number>3</number>
          </property>
          <widget class="QWidget" name="home">
           <layout class="QGridLayout" name="gridLayout_2">
@@ -247,8 +247,8 @@ QPushButton::hover{
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>654</width>
-                <height>616</height>
+                <width>410</width>
+                <height>374</height>
                </rect>
               </property>
               <layout class="QGridLayout" name="gridLayout_7">
@@ -292,103 +292,7 @@ QPushButton::hover{
                  </item>
                 </layout>
                </item>
-               <item row="1" column="0">
-                <layout class="QHBoxLayout" name="horizontalLayout_6">
-                 <property name="topMargin">
-                  <number>20</number>
-                 </property>
-                 <item>
-                  <spacer name="horizontalSpacer_5">
-                   <property name="orientation">
-                    <enum>Qt::Orientation::Horizontal</enum>
-                   </property>
-                   <property name="sizeHint" stdset="0">
-                    <size>
-                     <width>40</width>
-                     <height>20</height>
-                    </size>
-                   </property>
-                  </spacer>
-                 </item>
-                 <item>
-                  <widget class="QLabel" name="recentApplicantionsLabel">
-                   <property name="styleSheet">
-                    <string notr="true">
-font: 12pt &quot;Segoe UI&quot;;</string>
-                   </property>
-                   <property name="text">
-                    <string>RECENT APPLICANTIONS              </string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignmentFlag::AlignCenter</set>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <spacer name="horizontalSpacer_6">
-                   <property name="orientation">
-                    <enum>Qt::Orientation::Horizontal</enum>
-                   </property>
-                   <property name="sizeHint" stdset="0">
-                    <size>
-                     <width>40</width>
-                     <height>20</height>
-                    </size>
-                   </property>
-                  </spacer>
-                 </item>
-                 <item>
-                  <widget class="QLabel" name="recentApplicantionsLabel_2">
-                   <property name="styleSheet">
-                    <string notr="true">
-font: 12pt &quot;Segoe UI&quot;;</string>
-                   </property>
-                   <property name="text">
-                    <string>APPLICANT RANK</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignmentFlag::AlignCenter</set>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <spacer name="horizontalSpacer_7">
-                   <property name="orientation">
-                    <enum>Qt::Orientation::Horizontal</enum>
-                   </property>
-                   <property name="sizeHint" stdset="0">
-                    <size>
-                     <width>40</width>
-                     <height>20</height>
-                    </size>
-                   </property>
-                  </spacer>
-                 </item>
-                </layout>
-               </item>
-               <item row="2" column="0">
-                <layout class="QHBoxLayout" name="horizontalLayout_7">
-                 <property name="spacing">
-                  <number>30</number>
-                 </property>
-                 <property name="leftMargin">
-                  <number>20</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>20</number>
-                 </property>
-                 <property name="bottomMargin">
-                  <number>20</number>
-                 </property>
-                 <item>
-                  <widget class="QWidget" name="chartWidget" native="true"/>
-                 </item>
-                 <item>
-                  <widget class="QWidget" name="chart2Widget" native="true"/>
-                 </item>
-                </layout>
-               </item>
-               <item row="3" column="0">
+               <item row="4" column="0">
                 <layout class="QVBoxLayout" name="verticalLayout_8">
                  <property name="leftMargin">
                   <number>20</number>
@@ -445,6 +349,106 @@ font: 12pt &quot;Segoe UI&quot;;</string>
                   </layout>
                  </item>
                 </layout>
+               </item>
+               <item row="2" column="0">
+                <layout class="QHBoxLayout" name="horizontalLayout_7">
+                 <property name="spacing">
+                  <number>30</number>
+                 </property>
+                 <property name="leftMargin">
+                  <number>20</number>
+                 </property>
+                 <property name="rightMargin">
+                  <number>20</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>20</number>
+                 </property>
+                 <item>
+                  <widget class="QWidget" name="chartWidget" native="true"/>
+                 </item>
+                 <item>
+                  <widget class="QWidget" name="chart2Widget" native="true"/>
+                 </item>
+                </layout>
+               </item>
+               <item row="1" column="0">
+                <layout class="QHBoxLayout" name="horizontalLayout_2">
+                 <item>
+                  <spacer name="horizontalSpacer_5">
+                   <property name="orientation">
+                    <enum>Qt::Orientation::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="recentApplicantionsLabel">
+                   <property name="styleSheet">
+                    <string notr="true">
+font: 12pt &quot;Segoe UI&quot;;</string>
+                   </property>
+                   <property name="text">
+                    <string>RECENT APPLICANTIONS              </string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignmentFlag::AlignCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <spacer name="horizontalSpacer_7">
+                   <property name="orientation">
+                    <enum>Qt::Orientation::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                 <item>
+                  <widget class="QLabel" name="recentApplicantionsLabel_2">
+                   <property name="styleSheet">
+                    <string notr="true">
+font: 12pt &quot;Segoe UI&quot;;</string>
+                   </property>
+                   <property name="text">
+                    <string>APPLICANT RANK</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignmentFlag::AlignCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <spacer name="horizontalSpacer_6">
+                   <property name="orientation">
+                    <enum>Qt::Orientation::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
+                 </item>
+                </layout>
+               </item>
+               <item row="3" column="0">
+                <widget class="QPushButton" name="changeLayoutBtn">
+                 <property name="text">
+                  <string>CHANGE</string>
+                 </property>
+                </widget>
                </item>
               </layout>
              </widget>
@@ -747,34 +751,12 @@ margin-bottom:80px;</string>
          </widget>
          <widget class="QWidget" name="notificationsPage">
           <layout class="QGridLayout" name="gridLayout_4">
-           <item row="0" column="0">
-            <layout class="QVBoxLayout" name="verticalLayout_11">
-             <property name="spacing">
-              <number>20</number>
+           <item row="2" column="0">
+            <widget class="QPushButton" name="sendNotificationsBtn">
+             <property name="text">
+              <string>SEND</string>
              </property>
-             <property name="leftMargin">
-              <number>20</number>
-             </property>
-             <property name="rightMargin">
-              <number>20</number>
-             </property>
-             <property name="bottomMargin">
-              <number>20</number>
-             </property>
-             <item>
-              <widget class="QLabel" name="notificationPageTitleLabel">
-               <property name="text">
-                <string>NOTIFICATIONS</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignmentFlag::AlignCenter</set>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QTableWidget" name="notificationsTableWidget"/>
-             </item>
-            </layout>
+            </widget>
            </item>
            <item row="1" column="0">
             <layout class="QVBoxLayout" name="verticalLayout_12">
@@ -857,12 +839,34 @@ margin-bottom:80px;</string>
              </item>
             </layout>
            </item>
-           <item row="2" column="0">
-            <widget class="QPushButton" name="sendNotificationsBtn">
-             <property name="text">
-              <string>SEND</string>
+           <item row="0" column="0">
+            <layout class="QVBoxLayout" name="verticalLayout_11">
+             <property name="spacing">
+              <number>20</number>
              </property>
-            </widget>
+             <property name="leftMargin">
+              <number>20</number>
+             </property>
+             <property name="rightMargin">
+              <number>20</number>
+             </property>
+             <property name="bottomMargin">
+              <number>20</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="notificationPageTitleLabel">
+               <property name="text">
+                <string>NOTIFICATIONS</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignmentFlag::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QTableWidget" name="notificationsTableWidget"/>
+             </item>
+            </layout>
            </item>
           </layout>
          </widget>

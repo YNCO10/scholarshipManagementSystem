@@ -5,7 +5,7 @@ class ApplicantTracker:
         self.email = email
         self.url = url
 
-    def getData(self):
+    def getApplicantData(self):
             response = requests.post(
                 self.url,
                 data=self.toDict()

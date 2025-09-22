@@ -66,4 +66,4 @@ class ScoreHandler:
             assessmentScore * self.weights["assessment"]
         ) / sum(self.weights.values())
 
-        return round(finalScore, 2)
+        return round(finalScore, 0)

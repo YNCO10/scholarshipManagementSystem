@@ -5,6 +5,7 @@ from SholarshipManagementSystem.application.applyScholarshipPage import Ui_apply
 from SholarshipManagementSystem.classes.application import Application
 from SholarshipManagementSystem.authentications.regValidationPHP import RegCode
 from SholarshipManagementSystem.manageScholarshipsPage.uploadScholarCode import UploadingCode
+from SholarshipManagementSystem.applicantTracking.getApplicantData import GetApplicantData
 
 
 
@@ -17,6 +18,8 @@ class ApplyScholarship(QWidget, Ui_applyScholarshipForm):
         self.url = "http://localhost/BackEnd/scholarshipManagement/application/applyScholarship.php"
         self.regCode = RegCode()
         self.uploadCode = UploadingCode()
+        self.getData = GetApplicantData()
+
 
         self.btnClicks()
 
@@ -96,6 +99,8 @@ class ApplyScholarship(QWidget, Ui_applyScholarshipForm):
                     "Process Complete",
                     msg
                 )
+                self.getData.scoreApplicant()#make sure you replace hardcoded email with sesh email
+
             elif result.get("status") == "error":
                 self.regCode.msgBox(
                     "Application Failed",

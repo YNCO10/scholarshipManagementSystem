@@ -4,9 +4,12 @@ import subprocess
 import sys
 
 import requests
+from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QIcon
 from PyQt6.QtWidgets import QMainWindow, QLineEdit, QMessageBox, QTableWidgetItem, QPushButton, QWidget, QHBoxLayout, \
-    QVBoxLayout
+    QVBoxLayout, QCompleter
+
+from SholarshipManagementSystem.homePage.applicantDetailsCode import ApplicantDetails
 from SholarshipManagementSystem.homePage.dashboard import Ui_MainWindow
 from matplotlib.figure import Figure
 import Sessions
@@ -17,8 +20,10 @@ from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg as FigureCanvas
 class Dash(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
+        self.appDetails = None
         self.setupUi(self)
         self.setWindowTitle("Dashboard")
+        self.setWindowIcon(QIcon(":icons/SMsysIcon.png"))
 
         self.passTxt.setText("THIS IS A RANDOM PASSWORD NIGGA")
 
@@ -69,6 +74,10 @@ class Dash(QMainWindow, Ui_MainWindow):
     #     show password
         self.showPassBtn.clicked.connect(self.togglePasswordBtn)
 
+    #     sendNotification
+        self.sendNotificationsBtn.clicked.connect(self.sendNotification)
+
+
     ###PASSWORD#########################################################################################################
     def togglePasswordBtn(self):
         if self.passTxt.echoMode() == QLineEdit.EchoMode.Normal:
@@ -98,6 +107,7 @@ class Dash(QMainWindow, Ui_MainWindow):
 
     def switchToNotificationsPage(self):
         self.mainDisplayWidget.setCurrentIndex(3)
+        self.populateApplicantEmailLineEdit()
 
     def switchToProfilePage(self):
         self.mainDisplayWidget.setCurrentIndex(2)
@@ -300,7 +310,7 @@ class Dash(QMainWindow, Ui_MainWindow):
 
     def plot1(self):
 
-        url = "http://localhost/BackEnd/scholarshipManagement/authentications/dataForChart.php"
+        url = "http://localhost/BackEnd/scholarshipManagement/chartData/dataForChart.php"
 
         response = requests.post(
             url = url
@@ -308,6 +318,8 @@ class Dash(QMainWindow, Ui_MainWindow):
 
         print(f"RAW RESPONSE : {response.text}")
         result = json.loads(response.text)
+
+
         msg = result.get("message", "Unknown error")
 
         if result.get("status") == "error":
@@ -327,9 +339,9 @@ class Dash(QMainWindow, Ui_MainWindow):
 
 ########################################################################################################################
     def plot2(self):
-        url = "http://localhost/BackEnd/scholarshipManagement/authentications/dataForChart.php"
+        url = "http://localhost/BackEnd/scholarshipManagement/chartData/dataForChart.php"
 
-        response = requests.post(
+        response = requests.get(
             url=url
         )
 
@@ -355,15 +367,17 @@ class Dash(QMainWindow, Ui_MainWindow):
 
 ########################################################################################################################
     def plot3(self):
-        url = "http://localhost/BackEnd/scholarshipManagement/uploadScholarships/loadScholarshipCategories.php"
+        url = "http://localhost/BackEnd/scholarshipManagement/applicant/applicantsRegisteredPerWeek.php"
 
-        response = requests.post(
+        response = requests.get(
             url=url
         )
 
-        print(f"RAW RESPONSE : {response.text}")
+        print(f"RAW RESPONSE(plot3) : {response.text}")
         result = json.loads(response.text)
-        msg = result.get("message", "Unknown error")
+        print(type(result))
+        print(result)
+        msg = result.get("message", "Unknown Msg")
 
         if result.get("status") == "error":
             self.msgBox(
@@ -372,38 +386,19 @@ class Dash(QMainWindow, Ui_MainWindow):
             )
             return
 
-        # categories = list(result.keys())
-        # sizes = list(result.values())
-        categories = [
-            "Mon",
-            "Tue",
-            "Wed",
-            "Thu",
-            "Fri",
-            "Sat",
-            "Sun"
-        ]
-        sizes = [
-            5,
-            4,
-            12,
-            7,
-            7,
-            2,
-            6
-        ]
+        categories = list(result.keys())
+        sizes = list(result.values())
 
         fig = Figure()
         ax = fig.add_subplot(111)
         ax.plot(categories, sizes, marker="o")
 
-
+        #put values on each occurrence
         for i, value in enumerate(sizes):
             ax.text(i, value + 1, str(value), ha='center', va='bottom')
 
-        ax.set_title("Applicant Education Levels")
-        ax.set_ylabel("Values")
-        ax.set_xlabel("Financial Amount")
+        ax.set_ylabel("Number of Applicants")
+        ax.set_title("Registrations This Week")
 
         return fig
 
@@ -423,7 +418,8 @@ class Dash(QMainWindow, Ui_MainWindow):
     def populateApplicantTbl(self):
         try:
             response = requests.get(
-                "http://localhost/BackEnd/scholarshipManagement/authentications/loadApplicantData.php")
+                "http://localhost/BackEnd/scholarshipManagement/applicant/loadApplicantData.php"
+            )
 
             print(F"RAW RESPONSE: {response.text}")
             result = json.loads(response.text)
@@ -432,6 +428,7 @@ class Dash(QMainWindow, Ui_MainWindow):
             if result.get("status") == "success":
                 #     get db content
                 dbContent = result.get("data", [])
+                # Sessions.seshEmail
                 print(dbContent)
                 self.listofApplicantsTableWidget.setRowCount(
                     len(dbContent))  # always initialise tbl so it doesn't stack up rows
@@ -484,9 +481,9 @@ class Dash(QMainWindow, Ui_MainWindow):
                                          "border-radius:3px;"
                                          "}")
 
-                    # viewBtn.clicked.connect(
-                    #     #DISPLAY APPLICANT DETAILS WIDGET
-                    # )
+                    viewBtn.clicked.connect(
+                        lambda _, Id=rowData.get("id"): self.displayApplicantDetails(Id)
+                    )
                     delBtn.clicked.connect(
                         lambda _, Id=rowData.get("id"): self.delScholarship(Id)
                     )
@@ -506,6 +503,7 @@ class Dash(QMainWindow, Ui_MainWindow):
 
                     self.listofApplicantsTableWidget.resizeColumnsToContents()
 
+
             elif result.get("message") == "error":
                 self.msgBox("Error(upload)", f"Upload error: {msg}")
                 print(msg)
@@ -521,7 +519,7 @@ class Dash(QMainWindow, Ui_MainWindow):
         try:
 
             response = requests.post(
-                "http://localhost/BackEnd/scholarshipManagement/authentications/deleteApplicant.php",
+                "http://localhost/BackEnd/scholarshipManagement/applicant/deleteApplicant.php",
                 data={
                     "id": Id
                 }
@@ -541,3 +539,102 @@ class Dash(QMainWindow, Ui_MainWindow):
         except Exception as e:
             self.msgBox("Error", f"Something went wrong while Deleting Applicant(dash): {e}")
             print(e)
+
+
+    def populateApplicantEmailLineEdit(self):
+        # msg population
+        quickTitle = [
+            "Application Accepted.",
+            "Application Denied",
+            "Account Verification"
+        ]
+
+        completer = QCompleter(quickTitle, self)
+        completer.setCaseSensitivity(Qt.CaseSensitivity.CaseInsensitive)
+        completer.setFilterMode(Qt.MatchFlag.MatchContains)  # live filter anywhere in the string
+        completer.setCompletionMode(QCompleter.CompletionMode.UnfilteredPopupCompletion)
+
+        self.notificationTitleTxt.setCompleter(completer)
+
+
+        #msg population
+        quickMsg = [
+            "Congratulations, You have been accepted!",
+            "We are sorry to inform you that you have NOT been accepted. Please feel free to Apply for the next scholarship",
+            "Your account is not verified. Please get it verified before you are removed from the system!"
+        ]
+
+        completer = QCompleter(quickMsg, self)
+        completer.setCaseSensitivity(Qt.CaseSensitivity.CaseInsensitive)
+        completer.setFilterMode(Qt.MatchFlag.MatchContains)  # live filter anywhere in the string
+        completer.setCompletionMode(QCompleter.CompletionMode.UnfilteredPopupCompletion)
+
+        self.notificationMsgTxt.setCompleter(completer)
+
+        # email populations
+        self.notificationEmailTxt.setPlaceholderText("user@gmail.com")
+
+        url = "http://localhost/BackEnd/scholarshipManagement/applicant/getApplicantEmails.php"
+
+        try:
+            response = requests.get(url)
+            result = response.json()
+            msg = result.get("message", "Unknown Msg")
+
+            if result["status"] == "error":
+                self.msgBox(
+                    "Error(LiveFiltering)",
+                    f"Something went wrong:\n{msg}"
+                )
+                print(f"Something went wrong(LiveFiltering):\n{msg}")
+                return
+
+            elif result["status"] == "success":
+                dbEmails = result["data"]
+
+                completer = QCompleter(dbEmails, self)
+                completer.setCaseSensitivity(Qt.CaseSensitivity.CaseInsensitive)
+                completer.setFilterMode(Qt.MatchFlag.MatchContains)  # live filter anywhere in the string
+                completer.setCompletionMode(QCompleter.CompletionMode.UnfilteredPopupCompletion)
+
+                self.notificationEmailTxt.setCompleter(completer)
+
+        except Exception as e:
+            self.msgBox(
+                "Error(LiveFiltering)",
+                f"Exception Error:\n{e}"
+            )
+            print(f"Exception Error:\n{e}")
+            return
+
+
+    def sendNotification(self):
+        url = "http://localhost/BackEnd/scholarshipManagement/notifications/insertNotification.php"
+        response = requests.post(
+            url = url,
+            data={
+                "email" : Sessions.seshEmail,
+                "recipientEmail" : self.notificationEmailTxt.text().strip(),
+                "title" : self.notificationTitleTxt.text().strip(),
+                "msg" : self.notificationMsgTxt.text().strip()
+            }
+        )
+        print(f"RAW RESPONSE: {response.text}")
+        result = response.json()
+        msg = result.get("message", "Unknown Msg")
+
+        if result.get("status") == "success":
+            self.msgBox(
+                "Email sent",
+                msg
+            )
+        elif result.get("status") == "error":
+            self.msgBox(
+                "Error",
+                msg
+            )
+
+    def displayApplicantDetails(self, Id):
+        from SholarshipManagementSystem.homePage.applicantDetailsCode import ApplicantDetails
+        self.appDetails = ApplicantDetails(Id)
+        self.appDetails.show()

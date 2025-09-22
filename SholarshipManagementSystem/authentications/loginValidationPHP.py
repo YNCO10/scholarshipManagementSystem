@@ -72,6 +72,17 @@ class LoginCode(QWidget, Ui_loginPage):
                 self.msgBox("Welcome", f"Enjoy your experience, {result.get('applicantName', 'Applicant')}")
                 print("Login Successful")
 
+                if result.get("isAssessmentDone"):
+                    self.msgBox(
+                        "Dash",
+                        "APPLICANT DASHBOARD HERE..."
+                    )
+                else:
+                    from pageController import Controller
+                    self.controller = Controller()
+                    self.controller.showIntroPage()
+                    self.hideWindow()
+
 
 
             else:
