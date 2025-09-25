@@ -79,6 +79,14 @@ class Dash(QMainWindow, Ui_MainWindow):
     #     sendNotification
         self.sendNotificationsBtn.clicked.connect(self.sendNotification)
 
+    #     filterBtn
+        self.filterBtn.clicked.connect(
+            lambda : self.populateApplicantPerSubject(
+                "http://localhost/BackEnd/scholarshipManagement/uploadScholarships/filteredScholarships.php",
+                f"{self.subjectFilterCombo.currentText().strip()}"
+            )
+        )
+
 
     ###PASSWORD#########################################################################################################
     def togglePasswordBtn(self):
@@ -115,19 +123,24 @@ class Dash(QMainWindow, Ui_MainWindow):
         self.mainDisplayWidget.setCurrentIndex(2)
 
     def switchToReportsPage(self):
+        self.populateApplicantRankTbl()
         self.mainDisplayWidget.setCurrentIndex(4)
         self.loadPlot3()
         self.loadPlot4()
-        self.loadPlot5()
-        self.loadPlot6()
-        self.loadPlot7()
-        self.loadPlot8()
 
         self.applicantsThisWeekChart.setFixedHeight(300)
         self.applicantsPerCountryChart.setFixedHeight(300)
-        self.scholarshipsPerSubject.setFixedHeight(300)
-        self.testChart2.setFixedHeight(300)
-        self.testChart1.setFixedHeight(300)
+        self.applicantPerSubjectTableWidget.setFixedHeight(300)
+        self.scholarshipPerSubjectTableWidget.setFixedHeight(300)
+        self.applicantRankTableWidget.setFixedHeight(300)
+
+
+        self.populateFilterCombo()
+
+        self.populateApplicantPerSubject(
+            "http://localhost/BackEnd/scholarshipManagement/uploadScholarships/filteredScholarships.php",
+            "All"
+        )
 
     # PAGE SWITCHING END################################################################################################
 
@@ -222,7 +235,7 @@ class Dash(QMainWindow, Ui_MainWindow):
 
 
             elif result.get("message") == "error":
-                self.msgBox("Error(upload)", f"Upload error: {msg}")
+                self.msgBox("Error(ScholarTbl)", f"Error: {msg}")
                 print(msg)
 
         except Exception as e:
@@ -338,6 +351,13 @@ class Dash(QMainWindow, Ui_MainWindow):
 
 ########################################################################################################################
     def plot3(self):
+
+        return self.charts.pieChart(
+            "http://localhost/BackEnd/scholarshipManagement/chartData/nationality.php"
+        )
+
+########################################################################################################################
+    def plot4(self):
         title = "Applicants Registered this week"
 
         return self.charts.lineGraph(
@@ -359,38 +379,14 @@ class Dash(QMainWindow, Ui_MainWindow):
 
 ########################################################################################################################
     def loadPlot3(self):
-        figure = FigureCanvas(self.plot2())
+        figure = FigureCanvas(self.plot3())
         layout = QVBoxLayout(self.applicantsPerCountryChart)
         layout.addWidget(figure)
 
 ########################################################################################################################
     def loadPlot4(self):
-        figure = FigureCanvas(self.plot2())
+        figure = FigureCanvas(self.plot4())
         layout = QVBoxLayout(self.applicantsThisWeekChart)
-        layout.addWidget(figure)
-
-########################################################################################################################
-    def loadPlot5(self):
-        figure = FigureCanvas(self.plot3())
-        layout = QVBoxLayout(self.scholarshipsPerSubject)
-        layout.addWidget(figure)
-
-########################################################################################################################
-    def loadPlot6(self):
-        figure = FigureCanvas(self.plot2())
-        layout = QVBoxLayout(self.applicantsThisWeekChart)
-        layout.addWidget(figure)
-
-########################################################################################################################
-    def loadPlot7(self):
-        figure = FigureCanvas(self.plot3())
-        layout = QVBoxLayout(self.testChart1)
-        layout.addWidget(figure)
-
-########################################################################################################################
-    def loadPlot8(self):
-        figure = FigureCanvas(self.plot2())
-        layout = QVBoxLayout(self.testChart2)
         layout.addWidget(figure)
 
 ########################################################################################################################
@@ -411,7 +407,7 @@ class Dash(QMainWindow, Ui_MainWindow):
                 print(dbContent)
                 self.listofApplicantsTableWidget.setRowCount(
                     len(dbContent))  # always initialise tbl so it doesn't stack up rows
-                self.listofApplicantsTableWidget.setRowCount(len(dbContent))
+
 
                 self.listofApplicantsTableWidget.setColumnCount(10)
 
@@ -519,7 +515,7 @@ class Dash(QMainWindow, Ui_MainWindow):
             self.msgBox("Error", f"Something went wrong while Deleting Applicant(dash): {e}")
             print(e)
 
-
+########################################################################################################################
     def populateApplicantEmailLineEdit(self):
         # msg population
         quickTitle = [
@@ -586,7 +582,7 @@ class Dash(QMainWindow, Ui_MainWindow):
             print(f"Exception Error:\n{e}")
             return
 
-
+########################################################################################################################
     def sendNotification(self):
         url = "http://localhost/BackEnd/scholarshipManagement/notifications/insertNotification.php"
         response = requests.post(
@@ -613,7 +609,126 @@ class Dash(QMainWindow, Ui_MainWindow):
                 msg
             )
 
+########################################################################################################################
     def displayApplicantDetails(self, Id):
         from SholarshipManagementSystem.homePage.applicantDetailsCode import ApplicantDetails
         self.appDetails = ApplicantDetails(Id)
         self.appDetails.show()
+
+########################################################################################################################
+    def populateApplicantRankTbl(self):
+        url = "http://localhost/BackEnd/scholarshipManagement/applicant/applicantRank.php"
+
+        try:
+            response = requests.get(url)
+            result = response.json()
+            msg = result.get("message", "Unknown Msg")
+
+            if result.get("status") == "error":
+                self.msgBox(
+                    "Error",
+                    f"Something went wrong: {msg}"
+                )
+                return
+
+
+            print("RAW RESPONSE: {response.text}")
+
+            dbContent = result.get("data", [])
+
+            self.applicantRankTableWidget.setRowCount(len(dbContent))
+            self.applicantRankTableWidget.setColumnCount(2)
+
+            self.applicantRankTableWidget.setHorizontalHeaderLabels(
+                [
+                    "Name",
+                    "Score"
+                ]
+            )
+
+
+            for rowindx, rowData in enumerate(dbContent):
+                self.applicantRankTableWidget.setItem(rowindx, 0, QTableWidgetItem(rowData.get("name", "Display Error")))
+                self.applicantRankTableWidget.setItem(rowindx, 1, QTableWidgetItem(str(rowData.get("score", "Display Error"))))
+
+            # self.applicantRankTableWidget.resizeColumnsToContents()
+        except Exception as e:
+            self.msgBox(
+                "Error",
+                f"Exception: {e}")
+
+
+########################################################################################################################
+    def populateApplicantPerSubject(self, url, selectedFilter):
+        try:
+            response = requests.post(
+                url,
+                data={
+                    "filter": selectedFilter
+                }
+            )
+            result = response.json()
+            msg = result.get("message", "Unknown Msg")
+
+            if result.get("status") == "error":
+                self.msgBox(
+                    "Error",
+                    f"Something went wrong: {msg}"
+                )
+                return
+
+
+            print("RAW RESPONSE: {response.text}")
+
+            dbContent = result.get("data", [])
+
+            self.applicantPerSubjectTableWidget.setRowCount(len(dbContent))
+            self.applicantPerSubjectTableWidget.setColumnCount(2)
+
+            self.applicantPerSubjectTableWidget.setHorizontalHeaderLabels(
+                [
+                    "Scholarship Name",
+                    "Subject"
+                ]
+            )
+
+
+            for rowindx, rowData in enumerate(dbContent):
+                self.applicantPerSubjectTableWidget.setItem(rowindx, 0, QTableWidgetItem(rowData.get("name", "Display Error")))
+                self.applicantPerSubjectTableWidget.setItem(rowindx, 1, QTableWidgetItem(str(rowData.get("subject", "Display Error"))))
+
+        except Exception as e:
+            self.msgBox(
+                "Error",
+                f"Exception(Reports): {e}")
+            print(f"Exception(Reports): {e}")
+
+########################################################################################################################
+    def populateFilterCombo(self):
+        try:
+            response = requests.get(
+                "http://localhost/BackEnd/scholarshipManagement/applicant/getSubject.php"
+            )
+
+            result = response.json()
+            print("RAW RESPONSE : {response.text}")
+
+            msg = result.get("message")
+
+            if result.get("status") == "error":
+                self.msgBox(
+                    "Error",
+                    f"{msg}")
+                print(f"Error: {msg}")
+                return
+
+            dbContent = result.get("data", [])
+
+            self.subjectFilterCombo.addItem("All")
+            self.subjectFilterCombo.addItems(dbContent)
+
+        except Exception as e:
+            self.msgBox(
+                "Error",
+                f"Exception(filterCombo): {e}")
+            print(f"Exception(filterCombo): {e}")
