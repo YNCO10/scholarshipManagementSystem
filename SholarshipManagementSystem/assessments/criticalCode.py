@@ -100,9 +100,10 @@ class CriticalCode(QWidget, Ui_criticalReasoningForm):
                         f"Logical Score: {Sessions.logicalReasoningScore}\n"
                         f"Verbal Score: {Sessions.criticalReasoningScore}\n"
                     )
+                    print(Sessions.seshEmail)
                     self.sendDataToDb(
                         "http://localhost/BackEnd/scholarshipManagement/assessments/insertAssessment.php",
-                        "jeff@gmail.com",
+                        Sessions.seshEmail,
                         finalGrade,
                         40
                     )

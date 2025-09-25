@@ -73,11 +73,13 @@ class LoginCode(QWidget, Ui_loginPage):
                 print("Login Successful")
 
                 if result.get("isAssessmentDone"):
+                    Sessions.seshEmail = self.loginEmailTxt.text().strip()
                     self.msgBox(
                         "Dash",
                         "APPLICANT DASHBOARD HERE..."
                     )
                 else:
+                    Sessions.seshEmail = self.loginEmailTxt.text().strip()
                     from pageController import Controller
                     self.controller = Controller()
                     self.controller.showIntroPage()

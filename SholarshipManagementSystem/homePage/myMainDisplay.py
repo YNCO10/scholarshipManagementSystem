@@ -14,6 +14,7 @@ from SholarshipManagementSystem.homePage.dashboard import Ui_MainWindow
 from matplotlib.figure import Figure
 import Sessions
 from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg as FigureCanvas
+from SholarshipManagementSystem.reportsPage.charts import Chart
 
 
 
@@ -21,6 +22,7 @@ class Dash(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
         self.appDetails = None
+        self.charts = Chart()
         self.setupUi(self)
         self.setWindowTitle("Dashboard")
         self.setWindowIcon(QIcon(":icons/SMsysIcon.png"))
@@ -114,6 +116,19 @@ class Dash(QMainWindow, Ui_MainWindow):
 
     def switchToReportsPage(self):
         self.mainDisplayWidget.setCurrentIndex(4)
+        self.loadPlot3()
+        self.loadPlot4()
+        self.loadPlot5()
+        self.loadPlot6()
+        self.loadPlot7()
+        self.loadPlot8()
+
+        self.applicantsThisWeekChart.setFixedHeight(300)
+        self.applicantsPerCountryChart.setFixedHeight(300)
+        self.scholarshipsPerSubject.setFixedHeight(300)
+        self.testChart2.setFixedHeight(300)
+        self.testChart1.setFixedHeight(300)
+
     # PAGE SWITCHING END################################################################################################
 
     # POPULATE TABLE WIDGET#############################################################################################
@@ -310,97 +325,25 @@ class Dash(QMainWindow, Ui_MainWindow):
 
     def plot1(self):
 
-        url = "http://localhost/BackEnd/scholarshipManagement/chartData/dataForChart.php"
-
-        response = requests.post(
-            url = url
+        return self.charts.pieChart(
+            "http://localhost/BackEnd/scholarshipManagement/chartData/educationLevel.php"
         )
-
-        print(f"RAW RESPONSE : {response.text}")
-        result = json.loads(response.text)
-
-
-        msg = result.get("message", "Unknown error")
-
-        if result.get("status") == "error":
-            self.msgBox(
-                "Error",
-                msg
-            )
-            return
-
-        fig = Figure()
-        ax = fig.add_subplot(111)
-        categories = list(result.keys())
-        sizes = list(result.values())
-        ax.pie(sizes, labels=categories, autopct="%1.1f%%")
-        # ax.set_title("Financial Amount")
-        return fig
 
 ########################################################################################################################
     def plot2(self):
-        url = "http://localhost/BackEnd/scholarshipManagement/chartData/dataForChart.php"
-
-        response = requests.get(
-            url=url
+        return self.charts.barChart(
+            "http://localhost/BackEnd/scholarshipManagement/chartData/nationality.php",
+            "Number of Applicants"
         )
-
-        print(f"RAW RESPONSE : {response.text}")
-        result = json.loads(response.text)
-        msg = result.get("message", "Unknown error")
-
-        if result.get("status") == "error":
-            self.msgBox(
-                "Error",
-                msg
-            )
-            return
-
-        categories = list(result.keys())
-        sizes = list(result.values())
-
-        fig = Figure()
-        ax = fig.add_subplot(111)
-        ax.pie(sizes, labels=categories, autopct="%1.1f%%")
-        # ax.set_title("Applicant Education Levels")
-        return fig
 
 ########################################################################################################################
     def plot3(self):
-        url = "http://localhost/BackEnd/scholarshipManagement/applicant/applicantsRegisteredPerWeek.php"
+        title = "Applicants Registered this week"
 
-        response = requests.get(
-            url=url
+        return self.charts.lineGraph(
+            "http://localhost/BackEnd/scholarshipManagement/applicant/applicantsRegisteredPerWeek.php",
+            "Number of applicants"
         )
-
-        print(f"RAW RESPONSE(plot3) : {response.text}")
-        result = json.loads(response.text)
-        print(type(result))
-        print(result)
-        msg = result.get("message", "Unknown Msg")
-
-        if result.get("status") == "error":
-            self.msgBox(
-                "Error",
-                msg
-            )
-            return
-
-        categories = list(result.keys())
-        sizes = list(result.values())
-
-        fig = Figure()
-        ax = fig.add_subplot(111)
-        ax.plot(categories, sizes, marker="o")
-
-        #put values on each occurrence
-        for i, value in enumerate(sizes):
-            ax.text(i, value + 1, str(value), ha='center', va='bottom')
-
-        ax.set_ylabel("Number of Applicants")
-        ax.set_title("Registrations This Week")
-
-        return fig
 
 ########################################################################################################################
     def loadPlot(self):
@@ -410,8 +353,44 @@ class Dash(QMainWindow, Ui_MainWindow):
 
 ########################################################################################################################
     def loadPlot2(self):
-        figure = FigureCanvas(self.plot3())
+        figure = FigureCanvas(self.plot2())
         layout = QVBoxLayout(self.chart2Widget)
+        layout.addWidget(figure)
+
+########################################################################################################################
+    def loadPlot3(self):
+        figure = FigureCanvas(self.plot2())
+        layout = QVBoxLayout(self.applicantsPerCountryChart)
+        layout.addWidget(figure)
+
+########################################################################################################################
+    def loadPlot4(self):
+        figure = FigureCanvas(self.plot2())
+        layout = QVBoxLayout(self.applicantsThisWeekChart)
+        layout.addWidget(figure)
+
+########################################################################################################################
+    def loadPlot5(self):
+        figure = FigureCanvas(self.plot3())
+        layout = QVBoxLayout(self.scholarshipsPerSubject)
+        layout.addWidget(figure)
+
+########################################################################################################################
+    def loadPlot6(self):
+        figure = FigureCanvas(self.plot2())
+        layout = QVBoxLayout(self.applicantsThisWeekChart)
+        layout.addWidget(figure)
+
+########################################################################################################################
+    def loadPlot7(self):
+        figure = FigureCanvas(self.plot3())
+        layout = QVBoxLayout(self.testChart1)
+        layout.addWidget(figure)
+
+########################################################################################################################
+    def loadPlot8(self):
+        figure = FigureCanvas(self.plot2())
+        layout = QVBoxLayout(self.testChart2)
         layout.addWidget(figure)
 
 ########################################################################################################################
@@ -447,7 +426,7 @@ class Dash(QMainWindow, Ui_MainWindow):
                         "Nationality",
                         "Education Level",
                         "DOB",
-                        "Assessment Score"
+                        "Overall Score"
                     ]
                 )
 

@@ -55,7 +55,9 @@ class ApplyScholarship(QWidget, Ui_applyScholarshipForm):
             proofOfNeed = self.proofOfNeedTxt.text()
             incomeBracket = self.incomeBracketComboBox.currentText()
             financialAssistance = None
+
             print("Checkpoint 1")
+
             # CHECK EMPTY FIELDS
             if schoolAttended == "" or reasonForApplying == "" or transcript == "" or nationalID == "" or recomLetter == "":
                 self.regCode.msgBox(
@@ -77,6 +79,7 @@ class ApplyScholarship(QWidget, Ui_applyScholarshipForm):
                 return
 
             print("Checkpoint 2")
+
             application = Application(
                 schoolAttended.strip(),
                 gpa.strip(),
@@ -90,6 +93,7 @@ class ApplyScholarship(QWidget, Ui_applyScholarshipForm):
                 incomeBracket.strip()
             )
             print("Checkpoint 3")
+
             result = application.apply(self.url)
             print(f"RAW RESPONSE: {result}")
             msg = result.get("message", "Unknown Response")
@@ -99,6 +103,7 @@ class ApplyScholarship(QWidget, Ui_applyScholarshipForm):
                     "Process Complete",
                     msg
                 )
+                # rank applicant
                 self.getData.scoreApplicant()#make sure you replace hardcoded email with sesh email
 
             elif result.get("status") == "error":

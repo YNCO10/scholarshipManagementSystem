@@ -28,8 +28,8 @@ class AppValCode(QWidget, Ui_applicantRegistration):
             "No formal education",
             "Secondary School",
             "Diploma",
-            "Bachelor's Degree",
-            "Master's Degree",
+            "Bachelors Degree",
+            "Masters Degree",
             "Doctorate (PhD)"
         ]
         #add education levels
