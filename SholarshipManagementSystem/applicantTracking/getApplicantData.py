@@ -77,7 +77,7 @@ class GetApplicantData:
             self.need = result.get("need")
             self.financialProof = result.get("financialProof")
             self.uploadedDocs = result.get("uploadedDocs")
-            self.requiredDocs = ["NationalID", "transcript", "recommendation", "proofOfNeed"]
+            self.requiredDocs = ["Recommendation Letter", "Proof Of Need", "National ID", "Transcript"]
             self.assessmentScore = result.get("score")
             self.totalQuest = 40
 
@@ -91,7 +91,7 @@ class GetApplicantData:
                 "uploadedDocs": self.uploadedDocs,
                 "requiredDocs": self.requiredDocs,
                 "assessmentScore": self.assessmentScore,
-                "totalQuest": self.totalQuest
+                "totalQuest": 40
             }
 
             score = self.scoreHandler.applicantScore(applicant_data)

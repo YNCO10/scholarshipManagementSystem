@@ -6,6 +6,7 @@ from SholarshipManagementSystem.manageApplicantl.applicantCardTemp import Ui_App
 class ApplicantCard(QWidget, Ui_ApplicantCardForm):
     def __init__(self, name, email):
         super().__init__()
+        self.manage = None
         self.email = email
         self.name = name
         self.setupUi(self)
@@ -20,14 +21,13 @@ class ApplicantCard(QWidget, Ui_ApplicantCardForm):
         border: 1px solid black;
         paddling:7px;
         """)
-
-        self.viewBtn.clicked.connect(self.viewBtn)
+        self.viewBtn.clicked.connect(self.viewApplicant)
         # self.delBtn.clicked.connect()
 
     def viewApplicant(self):
         from SholarshipManagementSystem.manageApplicantl.manageApplicantDetailsCode import ManageApplicantDetails
-        manage = ManageApplicantDetails(self.email)
-        manage.show()
+        self.manage = ManageApplicantDetails(self.email)
+        self.manage.show()
 
     def delApplicant(self, email):
         pass

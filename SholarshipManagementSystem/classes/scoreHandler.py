@@ -44,7 +44,7 @@ class ScoreHandler:
 
 ########################################################################################################################
     def documentScore(self, uploadedDocs:list, requiredDocs:list)->float:
-        if not uploadedDocs:
+        if not requiredDocs:
             return 0
         uploadedCount = sum(1 for d in requiredDocs if d in uploadedDocs)
         return (uploadedCount/len(requiredDocs)) * 100

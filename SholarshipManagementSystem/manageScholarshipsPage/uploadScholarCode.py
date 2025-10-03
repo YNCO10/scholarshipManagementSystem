@@ -28,7 +28,7 @@ class UploadingCode(QDialog, Ui_Dialog):
 # BTN CLICKS############################################################################################################
     def btnClicks(self):
         self.browseBtn.clicked.connect(
-            lambda : self.browseBtn(self.scholarshipFilepathTxt)
+            lambda : self.browseFile(self.scholarshipFilepathTxt)
         )
 
         self.cancelBtn.clicked.connect(self.closeWindow)

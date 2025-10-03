@@ -208,7 +208,7 @@ INSERT INTO `documents` (`id`, `user_id`, `file_path`, `doc_type`, `date_uploade
 (12, 1, 'uploads/doc_104.pdf', 'Proof Of Need', '2025-09-18'),
 (13, 19, 'uploads/doc_105.pdf', 'Transcript', '2025-09-19'),
 (14, 5, 'uploads/doc_106.pdf', 'National ID', '2025-09-20'),
-(15, 16, 'uploads/doc_107.pdf', 'Recommendation', '2025-09-21'),
+(15, 16, 'uploads/doc_107.pdf', 'Recommendation Letter', '2025-09-21'),
 (16, 8, 'uploads/doc_108.pdf', 'Proof Of Need', '2025-09-22'),
 (17, 11, 'uploads/doc_109.pdf', 'Transcript', '2025-09-15'),
 (18, 2, 'uploads/doc_110.pdf', 'National ID', '2025-09-16'),

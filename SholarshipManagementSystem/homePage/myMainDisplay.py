@@ -19,6 +19,7 @@ from SholarshipManagementSystem.classes.admin import Admin
 class Dash(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
+        self.controller = None
         self.appDetails = None
         self.admin = Admin(Sessions.adminName, Sessions.seshEmail, "*********")
         self.charts = Chart()
@@ -64,7 +65,7 @@ class Dash(QMainWindow, Ui_MainWindow):
         # scholar...
         self.scholarshipBtn.clicked.connect(self.switchToScholarshipPage)
         self.scholarshipIconBtn.clicked.connect(self.switchToScholarshipPage)
-        # self.uploadScholarshipBtn.clicked.connect(self.showUploadScholarship)
+        self.uploadScholarshipBtn.clicked.connect(self.showUploadScholarship)
         # report
         self.reportBtn.clicked.connect(self.switchToReportsPage)
         self.reportIconBtn.clicked.connect(self.switchToReportsPage)
@@ -362,6 +363,12 @@ class Dash(QMainWindow, Ui_MainWindow):
         except Exception as e:
             self.msgBox("Error", f"Something went wrong while deleting(dash): {e}")
             print(f"deleting(dash): {e}")
+
+########################################################################################################################
+    def showUploadScholarship(self):
+        from pageController import Controller
+        self.controller = Controller()
+        self.controller.showUploadScholarship()
 
 ####TABLE STYLESHEET####################################################################################################
     def styleTbl(self):
@@ -973,7 +980,7 @@ class Dash(QMainWindow, Ui_MainWindow):
             if result.get("status") == "error":
                 self.msgBox("Error", result.get("message", "Unknown error"))
                 return
-
+            # print("CHECKPOINT 1")
             dbContent = result.get("data", [])
 
             self.manageApplicantScroll.setWidgetResizable(True)
@@ -982,19 +989,19 @@ class Dash(QMainWindow, Ui_MainWindow):
             old = self.manageApplicantScroll.takeWidget()
             if old:
                 old.deleteLater()
-
+            # print("CHECKPOINT 2")
             #new content
             container = QWidget()
             layout = QVBoxLayout(container)
             layout.setContentsMargins(10, 10, 10, 10)
             layout.setSpacing(12)
-
+            # print("CHECKPOINT 3")
             # Page title
             pageTitle = QLabel("MANAGE APPLICANT")
             pageTitle.setStyleSheet("font: 700 16pt 'Segoe UI';")
             pageTitle.setAlignment(Qt.AlignmentFlag.AlignHCenter)
             layout.addWidget(pageTitle)
-
+            # print("CHECKPOINT 3")
             # Search bar
             searchLayout = QHBoxLayout()
             searchBar = QLineEdit()
@@ -1003,6 +1010,7 @@ class Dash(QMainWindow, Ui_MainWindow):
             padding:7px;
             """)
             searchBar.setPlaceholderText("Type name or email")
+            # print("CHECKPOINT 4")
             #search btn
             searchBtn = QPushButton()
             searchBtn.setIcon(QIcon(":/icons/search.png"))
@@ -1011,12 +1019,13 @@ class Dash(QMainWindow, Ui_MainWindow):
             margin:0px;
             background: #063970;
             """)
+            # print("CHECKPOINT 5")
             searchLayout.addStretch(1)
             searchLayout.addWidget(searchBar)
             searchLayout.addWidget(searchBtn)
             searchLayout.addStretch(1)
             layout.addLayout(searchLayout)
-
+            # print("CHECKPOINT 6")
 
             # Applicant cards
             for d in dbContent:
@@ -1027,11 +1036,12 @@ class Dash(QMainWindow, Ui_MainWindow):
                         padding: 8px;
                         background: #063970;
                     }
-                    QWidget:hover {
+                    QWidget::hover {
                         color:black;
                     }
                 """)
                 layout.addWidget(card)
+                # print("CHECKPOINT 7")
 
             # Add a stretch at the bottom so cards stay at the top
             layout.addStretch(1)
@@ -1041,6 +1051,7 @@ class Dash(QMainWindow, Ui_MainWindow):
 
             #set the current index, no insertWidget needed.
             self.mainDisplayWidget.setCurrentIndex(2)
+            # print("CHECKPOINT 8")
 
         except Exception as e:
             self.msgBox("Error", f"Exception: {e}")

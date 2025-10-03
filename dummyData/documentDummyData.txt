@@ -1,0 +1,37 @@
+INSERT INTO `documents` (`user_id`, `file_path`, `doc_type`, `date_uploaded`) VALUES
+-- User 3 uploads all 4
+(3, 'uploads/doc_301.pdf', 'Transcript', '2025-09-29'),
+(3, 'uploads/doc_302.pdf', 'Recommendation Letter', '2025-09-29'),
+(3, 'uploads/doc_303.pdf', 'Proof Of Need', '2025-09-29'),
+(3, 'uploads/doc_304.pdf', 'National ID', '2025-09-29'),
+
+-- User 7 uploads all 4
+(7, 'uploads/doc_701.pdf', 'Transcript', '2025-09-29'),
+(7, 'uploads/doc_702.pdf', 'Recommendation Letter', '2025-09-29'),
+(7, 'uploads/doc_703.pdf', 'Proof Of Need', '2025-09-29'),
+(7, 'uploads/doc_704.pdf', 'National ID', '2025-09-29'),
+
+-- User 12 uploads all 4
+(12, 'uploads/doc_1201.pdf', 'Transcript', '2025-09-29'),
+(12, 'uploads/doc_1202.pdf', 'Recommendation Letter', '2025-09-29'),
+(12, 'uploads/doc_1203.pdf', 'Proof Of Need', '2025-09-29'),
+(12, 'uploads/doc_1204.pdf', 'National ID', '2025-09-29'),
+
+-- Other users random docs
+(1, 'uploads/doc_101.pdf', 'Transcript', '2025-09-29'),
+(2, 'uploads/doc_201.pdf', 'National ID', '2025-09-29'),
+(4, 'uploads/doc_401.pdf', 'Recommendation Letter', '2025-09-29'),
+(5, 'uploads/doc_501.pdf', 'Proof Of Need', '2025-09-29'),
+(6, 'uploads/doc_601.pdf', 'Transcript', '2025-09-29'),
+(8, 'uploads/doc_801.pdf', 'National ID', '2025-09-29'),
+(9, 'uploads/doc_901.pdf', 'Transcript', '2025-09-29'),
+(10, 'uploads/doc_1001.pdf', 'Recommendation Letter', '2025-09-29'),
+(11, 'uploads/doc_1101.pdf', 'Proof Of Need', '2025-09-29'),
+(13, 'uploads/doc_1301.pdf', 'Transcript', '2025-09-29'),
+(14, 'uploads/doc_1401.pdf', 'Recommendation Letter', '2025-09-29'),
+(15, 'uploads/doc_1501.pdf', 'National ID', '2025-09-29'),
+(16, 'uploads/doc_1601.pdf', 'Transcript', '2025-09-29'),
+(17, 'uploads/doc_1701.pdf', 'Recommendation Letter', '2025-09-29'),
+(18, 'uploads/doc_1801.pdf', 'Proof Of Need', '2025-09-29'),
+(19, 'uploads/doc_1901.pdf', 'Transcript', '2025-09-29'),
+(20, 'uploads/doc_2001.pdf', 'National ID', '2025-09-29');
