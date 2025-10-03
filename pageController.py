@@ -12,6 +12,7 @@ from SholarshipManagementSystem.assessments.logicalCode import LogicalCode
 from SholarshipManagementSystem.assessments.criticalCode import CriticalCode
 from SholarshipManagementSystem.application.applyScholarshipCode import ApplyScholarship
 from SholarshipManagementSystem.homePage.applicantDetailsCode import ApplicantDetails
+from SholarshipManagementSystem.manageApplicantl.manageApplicantDetailsCode import ManageApplicantDetails
 
 
 import myProjectResources
@@ -31,7 +32,8 @@ class Controller:
         self.logicalReasoning = LogicalCode()
         self.criticalThinking = CriticalCode()
         self.applyScholar = ApplyScholarship()
-        # self.applicantDetails = ApplicantDetails(2)
+        self.applicantDetails = ApplicantDetails("")
+        self.manageApplicantDetails = ManageApplicantDetails("test11@gmail.com")
 
         # btn clicks
         self.btnClicksLogin()
@@ -128,8 +130,12 @@ class Controller:
     def showApplyScholarPage(self):
         self.applyScholar.show()
 
-    # def showApplicantDetails(self):
-    #     self.applicantDetails.show()
+    def showApplicantDetails(self):
+        self.applicantDetails.show()
+    #
+    def showManageApplicantDetails(self):
+        self.manageApplicantDetails.show()
+
 
 
 

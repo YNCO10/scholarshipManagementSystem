@@ -2,38 +2,41 @@ import json
 import os
 import subprocess
 import sys
-
 import requests
-from PyQt6.QtCore import Qt
+from PyQt6.QtCore import Qt, QTimer
 from PyQt6.QtGui import QIcon
 from PyQt6.QtWidgets import QMainWindow, QLineEdit, QMessageBox, QTableWidgetItem, QPushButton, QWidget, QHBoxLayout, \
-    QVBoxLayout, QCompleter
-
-from SholarshipManagementSystem.homePage.applicantDetailsCode import ApplicantDetails
+    QVBoxLayout, QCompleter,QLabel
 from SholarshipManagementSystem.homePage.dashboard import Ui_MainWindow
-from matplotlib.figure import Figure
 import Sessions
 from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg as FigureCanvas
-from SholarshipManagementSystem.reportsPage.charts import Chart
 
+from SholarshipManagementSystem.manageApplicantl.applicantCardCode import ApplicantCard
+from SholarshipManagementSystem.reportsPage.charts import Chart
+from SholarshipManagementSystem.classes.admin import Admin
 
 
 class Dash(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
         self.appDetails = None
+        self.admin = Admin(Sessions.adminName, Sessions.seshEmail, "*********")
         self.charts = Chart()
         self.setupUi(self)
         self.setWindowTitle("Dashboard")
         self.setWindowIcon(QIcon(":icons/SMsysIcon.png"))
 
-        self.passTxt.setText("THIS IS A RANDOM PASSWORD NIGGA")
-
         #DISPLAY HOME SCREEN
         self.mainDisplayWidget.setCurrentIndex(0)
         self.populateApplicantTbl()
+        self.populateTableWidget()
         self.homeBtn.click()
         self.homeIconBtn.click()
+        self.totalNumberOfApplicantsLabelHome.setText(f"Total Number Of Applicants: {Sessions.applicantCount}")
+        self.totalNumberOfApplicantsLabelReports.setText(f"Total Number Of Applicants: {Sessions.applicantCount}")
+
+        self.totalNumOfScholarshipsLabelReports.setText(f"Total Number Scholarships: {Sessions.scholarshipCount}")
+        self.totalNumOfScholarshipsLabelHome.setText(f"Total Number Scholarships: {Sessions.scholarshipCount}")
 
         self.iconNameWidget.setHidden(True)
 
@@ -41,10 +44,11 @@ class Dash(QMainWindow, Ui_MainWindow):
         self.usernameLabel.setText(Sessions.adminName)
         self.homeScreenUsernameLabel.setText(f"Hello {Sessions.adminName}")
 
-
         #BTN CLICKS
         self.BtnClicks()
-        self.readOnlyLineEdit()
+
+        #preriquisutes
+
         self.loadPlot()
         self.loadPlot2()
 
@@ -52,10 +56,7 @@ class Dash(QMainWindow, Ui_MainWindow):
         self.chartWidget.setFixedHeight(300)
         self.chart2Widget.setFixedHeight(300)
 
-
-
-
-    #BTN CLICKS###############################################################
+    ####BTN CLICKS#########################################################################################################
     def BtnClicks(self):
         # Home
         self.homeBtn.clicked.connect(self.switchToDash)
@@ -63,9 +64,13 @@ class Dash(QMainWindow, Ui_MainWindow):
         # scholar...
         self.scholarshipBtn.clicked.connect(self.switchToScholarshipPage)
         self.scholarshipIconBtn.clicked.connect(self.switchToScholarshipPage)
+        # self.uploadScholarshipBtn.clicked.connect(self.showUploadScholarship)
         # report
         self.reportBtn.clicked.connect(self.switchToReportsPage)
         self.reportIconBtn.clicked.connect(self.switchToReportsPage)
+        #manageApplicant
+        self.manageApplicantBtn.clicked.connect(self.switchToManageApplicants)
+        self.manageApplicantIconBtn.clicked.connect(self.switchToManageApplicants)
         # profile
         self.profileBtn.clicked.connect(self.switchToProfilePage)
         self.profileIconBtn.clicked.connect(self.switchToProfilePage)
@@ -73,20 +78,36 @@ class Dash(QMainWindow, Ui_MainWindow):
         # noti...
         self.notificationsBtn.clicked.connect(self.switchToNotificationsPage)
         self.notificationsIconBtn.clicked.connect(self.switchToNotificationsPage)
-    #     show password
+        #     show password
         self.showPassBtn.clicked.connect(self.togglePasswordBtn)
 
-    #     sendNotification
+        #     sendNotification
         self.sendNotificationsBtn.clicked.connect(self.sendNotification)
 
-    #     filterBtn
+        #     filterBtn(applicant)
         self.filterBtn.clicked.connect(
-            lambda : self.populateApplicantPerSubject(
-                "http://localhost/BackEnd/scholarshipManagement/uploadScholarships/filteredScholarships.php",
+            lambda: self.populateApplicantPerSubject(
+                "http://localhost/BackEnd/scholarshipManagement/applicant/filteredApplicant.php",
                 f"{self.subjectFilterCombo.currentText().strip()}"
             )
         )
+        #     filter btn(scholarship)
+        self.scholarshipFilterBtn.clicked.connect(
+            lambda: self.populateScholarshipTbl(
+                "http://localhost/BackEnd/scholarshipManagement/uploadScholarships/filteredScholarships.php",
+                self.subjectScholarshipFilterCombo.currentText().strip()
+            )
+        )
 
+        #     LOGOUT
+        self.logoutBtn.clicked.connect(self.logout)
+        self.LogoutBtn.clicked.connect(self.logout)
+        self.logoutIconBtn.clicked.connect(self.logout)
+
+        #     update details BTNS
+        self.changeEmailBtn.clicked.connect(self.changeEmail)
+        self.changeUsernameTxt.clicked.connect(self.changeUsername)
+        self.changePassBtn.clicked.connect(self.changePass)
 
     ###PASSWORD#########################################################################################################
     def togglePasswordBtn(self):
@@ -97,16 +118,17 @@ class Dash(QMainWindow, Ui_MainWindow):
             self.passTxt.setEchoMode(QLineEdit.EchoMode.Normal)
             self.showPassBtn.setIcon(QIcon(":icons/hideWhite.png"))
 
+########################################################################################################################
+    def getAdminDetails(self):
+        self.usernameTxt.setText(Sessions.adminName)
+        self.emailTxt.setText(Sessions.seshEmail)
+        # self.passTxt.setText("RANDOM PASSWORD")
 
 ########################################################################################################################
-    def readOnlyLineEdit(self):
-        self.usernameTxt.setReadOnly(True)
-        self.passTxt.setReadOnly(True)
-        self.emailTxt.setReadOnly(True)
+    def maximisePage(self):
+        QTimer.singleShot(0, self.showMaximized)
 
-
-
-    # PAGE SWITCHING####################################################################################################
+# PAGE SWITCHING####################################################################################################
     def switchToDash(self):
         self.mainDisplayWidget.setCurrentIndex(0)
 
@@ -116,49 +138,86 @@ class Dash(QMainWindow, Ui_MainWindow):
         self.populateTableWidget()
 
     def switchToNotificationsPage(self):
-        self.mainDisplayWidget.setCurrentIndex(3)
+        self.mainDisplayWidget.setCurrentIndex(4)
         self.populateApplicantEmailLineEdit()
 
     def switchToProfilePage(self):
-        self.mainDisplayWidget.setCurrentIndex(2)
+        self.mainDisplayWidget.setCurrentIndex(5)
+        #set dateJoined
+        self.getAdminDetails()
+        try:
+            data = self.admin.getAdminDetails()
+            adminData = data.get("data", [])
+            self.dateJoinedLabel.setText(
+                f"Date Joined: {adminData[0]["date_joined"]}"
+            )
+        except Exception as e:
+            self.msgBox(
+                "Error",
+                f"Exception Error(adminData_Dash): {e}"
+            )
 
     def switchToReportsPage(self):
-        self.populateApplicantRankTbl()
-        self.mainDisplayWidget.setCurrentIndex(4)
-        self.loadPlot3()
-        self.loadPlot4()
+        try:
+            self.populateApplicantRankTbl()
+            print("CHECKPOINT 1")
+            self.mainDisplayWidget.setCurrentIndex(3)
+            print("CHECKPOINT 2")
+            self.loadPlot3()
+            print("CHECKPOINT 3")
+            self.loadPlot4()
+            print("CHECKPOINT 4")
+            self.loadPlot5()
+            print("CHECKPOINT 4")
+            self.applicantsThisWeekChart.setFixedHeight(300)
+            self.applicantsPerCountryChart.setFixedHeight(300)
+            self.applicantPerSubjectTableWidget.setFixedHeight(300)
+            self.scholarshipPerSubjectTableWidget.setFixedHeight(300)
+            self.applicantRankTableWidget.setFixedHeight(300)
+            print("CHECKPOINT 5")
+            self.populateApplicantFilter()
+            self.populateScholarshipFilter()
+            print("CHECKPOINT 6")
+            self.populateApplicantPerSubject(
+                "http://localhost/BackEnd/scholarshipManagement/applicant/filteredApplicant.php",
+                "All"
+            )
 
-        self.applicantsThisWeekChart.setFixedHeight(300)
-        self.applicantsPerCountryChart.setFixedHeight(300)
-        self.applicantPerSubjectTableWidget.setFixedHeight(300)
-        self.scholarshipPerSubjectTableWidget.setFixedHeight(300)
-        self.applicantRankTableWidget.setFixedHeight(300)
+            self.populateScholarshipTbl(
+                "http://localhost/BackEnd/scholarshipManagement/uploadScholarships/filteredScholarships.php",
+                "All"
+            )
+        except Exception as e:
+            self.msgBox(
+                "Error",
+                f"Exception: {e}"
+            )
+            print(f"Exception: {e}")
 
+    def switchToManageApplicants(self):
+        self.mainDisplayWidget.setCurrentIndex(2)
+        self.showManageApplicantPage()
 
-        self.populateFilterCombo()
+# PAGE SWITCHING END################################################################################################
 
-        self.populateApplicantPerSubject(
-            "http://localhost/BackEnd/scholarshipManagement/uploadScholarships/filteredScholarships.php",
-            "All"
-        )
-
-    # PAGE SWITCHING END################################################################################################
-
-    # POPULATE TABLE WIDGET#############################################################################################
+# POPULATE TABLE WIDGET#############################################################################################
     def populateTableWidget(self):
 
         print(f"Admin Email: {Sessions.seshEmail}")
         try:
-            response = requests.get("http://localhost/BackEnd/scholarshipManagement/uploadScholarships/getScholarshipDetails.php")
+            response = requests.get(
+                "http://localhost/BackEnd/scholarshipManagement/uploadScholarships/getScholarshipDetails.php")
 
-            print(F"RAW RESPONSE: {response.text}")
+            print(f"RAW RESPONSE: {response.text}")
             result = json.loads(response.text)
             msg = result.get("message", "Unknown response")
 
             if result.get("status") == "success":
-                    #     get db content
-                dbContent = result.get("data",[])
-                self.scholarshipTableWidget.setRowCount(len(dbContent))#always initialise tbl so it doesn't stack up rows
+                #     get db content
+                dbContent = result.get("data", [])
+                self.scholarshipTableWidget.setRowCount(
+                    len(dbContent))  #always initialise tbl so it doesn't stack up rows
+                Sessions.scholarshipCount = len(dbContent)
 
                 self.scholarshipTableWidget.setColumnCount(13)
 
@@ -180,21 +239,25 @@ class Dash(QMainWindow, Ui_MainWindow):
                     ]
                 )
 
-                    #     populate tbl with content from db
+                #     populate tbl with content from db
                 for rowindx, rowData in enumerate(dbContent):
                     #         fill data for all 4 columns
-                    self.scholarshipTableWidget.setItem(rowindx, 1, QTableWidgetItem(str(rowData.get("id",""))))
-                    self.scholarshipTableWidget.setItem(rowindx, 2, QTableWidgetItem(rowData.get("scholarship_name","")))
-                    self.scholarshipTableWidget.setItem(rowindx, 3, QTableWidgetItem(rowData.get("descrip","")))
-                    self.scholarshipTableWidget.setItem(rowindx, 4, QTableWidgetItem(rowData.get("type","")))
-                    self.scholarshipTableWidget.setItem(rowindx, 5, QTableWidgetItem(rowData.get("subject","")))
-                    self.scholarshipTableWidget.setItem(rowindx, 6, QTableWidgetItem(rowData.get("deadline","")))
-                    self.scholarshipTableWidget.setItem(rowindx, 7, QTableWidgetItem(rowData.get("financial_amount","")))
-                    self.scholarshipTableWidget.setItem(rowindx, 8, QTableWidgetItem(rowData.get("provider","")))
-                    self.scholarshipTableWidget.setItem(rowindx, 9, QTableWidgetItem(rowData.get("provider_email","")))
-                    self.scholarshipTableWidget.setItem(rowindx, 10, QTableWidgetItem(rowData.get("applicantion_link","")))
-                    self.scholarshipTableWidget.setItem(rowindx, 11, QTableWidgetItem(rowData.get("perks","") or "No Benefits Available for this Scholarship"))
-                    self.scholarshipTableWidget.setItem(rowindx, 12, QTableWidgetItem(rowData.get("file_path","")))
+                    self.scholarshipTableWidget.setItem(rowindx, 1, QTableWidgetItem(str(rowData.get("id", ""))))
+                    self.scholarshipTableWidget.setItem(rowindx, 2,
+                                                        QTableWidgetItem(rowData.get("scholarship_name", "")))
+                    self.scholarshipTableWidget.setItem(rowindx, 3, QTableWidgetItem(rowData.get("descrip", "")))
+                    self.scholarshipTableWidget.setItem(rowindx, 4, QTableWidgetItem(rowData.get("type", "")))
+                    self.scholarshipTableWidget.setItem(rowindx, 5, QTableWidgetItem(rowData.get("subject", "")))
+                    self.scholarshipTableWidget.setItem(rowindx, 6, QTableWidgetItem(rowData.get("deadline", "")))
+                    self.scholarshipTableWidget.setItem(rowindx, 7,
+                                                        QTableWidgetItem(rowData.get("financial_amount", "")))
+                    self.scholarshipTableWidget.setItem(rowindx, 8, QTableWidgetItem(rowData.get("provider", "")))
+                    self.scholarshipTableWidget.setItem(rowindx, 9, QTableWidgetItem(rowData.get("provider_email", "")))
+                    self.scholarshipTableWidget.setItem(rowindx, 10,
+                                                        QTableWidgetItem(rowData.get("applicantion_link", "")))
+                    self.scholarshipTableWidget.setItem(rowindx, 11, QTableWidgetItem(
+                        rowData.get("perks", "") or "No Benefits Available for this Scholarship"))
+                    self.scholarshipTableWidget.setItem(rowindx, 12, QTableWidgetItem(rowData.get("file_path", "")))
 
                     #       create View & del btn
                     viewBtn = QPushButton("View")
@@ -207,27 +270,26 @@ class Dash(QMainWindow, Ui_MainWindow):
                                           "border-radius:3px;"
                                           "}")
                     delBtn.setStyleSheet("QPushButton { "
-                                          "color: white;"
+                                         "color: white;"
                                          "padding:3px;"
-                                          "margin:0px;"
+                                         "margin:0px;"
                                          "border-radius:3px;"
-                                          "}")
-
+                                         "}")
 
                     viewBtn.clicked.connect(
-                        lambda _, path=rowData.get("file_path"):self.displayScholarshipDoc(path)
+                        lambda _, path=rowData.get("file_path"): self.displayScholarshipDoc(path)
                     )
                     delBtn.clicked.connect(
-                        lambda _, Id=rowData.get("id"):self.delScholarship(Id)
+                        lambda _, Id=rowData.get("id"): self.delScholarship(Id)
                     )
                     #   align horizontally
                     btnWidget = QWidget()
                     layout = QHBoxLayout(btnWidget)
                     layout.addWidget(viewBtn)
                     layout.addWidget(delBtn)
-                    layout.setContentsMargins(0,0,0,0)
+                    layout.setContentsMargins(0, 0, 0, 0)
 
-            #         add widget to tbl
+                    #         add widget to tbl
                     self.scholarshipTableWidget.setCellWidget(rowindx, 0, btnWidget)
 
                 self.styleTbl()
@@ -242,7 +304,7 @@ class Dash(QMainWindow, Ui_MainWindow):
             self.msgBox("Error", f"Something went wrong Populating scholarships tbl(dash): {e}")
             print(e)
 
- ### DISPLAY SCHOLARSHIPS########################################################################################
+### DISPLAY SCHOLARSHIPS########################################################################################
     def displayScholarshipDoc(self, path):
 
         print(repr(path))
@@ -269,8 +331,6 @@ class Dash(QMainWindow, Ui_MainWindow):
                 subprocess.Popen(['xdg-open', fullPath])
         except Exception as e:
             self.msgBox("Error", f"Cannot open file: {e}")
-
-
 
 ####### DELETE SCHOLARSHIPS#############################################################################################
     def delScholarship(self, Id):
@@ -303,7 +363,6 @@ class Dash(QMainWindow, Ui_MainWindow):
             self.msgBox("Error", f"Something went wrong while deleting(dash): {e}")
             print(f"deleting(dash): {e}")
 
-
 ####TABLE STYLESHEET####################################################################################################
     def styleTbl(self):
         self.scholarshipTableWidget.setStyleSheet("QTableWidget { color: #010e1b; }")
@@ -311,7 +370,6 @@ class Dash(QMainWindow, Ui_MainWindow):
         self.scholarshipTableWidget.verticalHeader().setDefaultSectionSize(40)
 
         self.scholarshipTableWidget.resizeColumnsToContents()
-
 
         # self.scholarshipTableWidget.horizontalHeader().setStretchLastSection(True)
 
@@ -332,15 +390,30 @@ class Dash(QMainWindow, Ui_MainWindow):
         msgBox.setStandardButtons(QMessageBox.StandardButton.Ok)
         msgBox.exec()
 
+    def confirmMsgBox(self, title, msg):
+        msgBox = QMessageBox()
+        msgBox.setWindowTitle(title)
+        msgBox.setText(msg)
+        msgBox.setStandardButtons(QMessageBox.StandardButton.Ok | QMessageBox.StandardButton.Cancel)
+
+        result = msgBox.exec()
+
+        if result == QMessageBox.StandardButton.Ok:
+            return True
+        else:
+            return False
 
 ########################################################################################################################
-
-
     def plot1(self):
 
         return self.charts.pieChart(
             "http://localhost/BackEnd/scholarshipManagement/chartData/educationLevel.php"
         )
+
+    def loadPlot(self):
+        figure = FigureCanvas(self.plot1())
+        layout = QVBoxLayout(self.chartWidget)
+        layout.addWidget(figure)
 
 ########################################################################################################################
     def plot2(self):
@@ -349,12 +422,22 @@ class Dash(QMainWindow, Ui_MainWindow):
             "Number of Applicants"
         )
 
+    def loadPlot2(self):
+        figure = FigureCanvas(self.plot2())
+        layout = QVBoxLayout(self.chart2Widget)
+        layout.addWidget(figure)
+
 ########################################################################################################################
     def plot3(self):
 
         return self.charts.pieChart(
             "http://localhost/BackEnd/scholarshipManagement/chartData/nationality.php"
         )
+
+    def loadPlot3(self):
+        figure = FigureCanvas(self.plot3())
+        layout = QVBoxLayout(self.applicantsPerCountryChart)
+        layout.addWidget(figure)
 
 ########################################################################################################################
     def plot4(self):
@@ -365,28 +448,21 @@ class Dash(QMainWindow, Ui_MainWindow):
             "Number of applicants"
         )
 
-########################################################################################################################
-    def loadPlot(self):
-        figure = FigureCanvas(self.plot1())
-        layout = QVBoxLayout(self.chartWidget)
-        layout.addWidget(figure)
-
-########################################################################################################################
-    def loadPlot2(self):
-        figure = FigureCanvas(self.plot2())
-        layout = QVBoxLayout(self.chart2Widget)
-        layout.addWidget(figure)
-
-########################################################################################################################
-    def loadPlot3(self):
-        figure = FigureCanvas(self.plot3())
-        layout = QVBoxLayout(self.applicantsPerCountryChart)
-        layout.addWidget(figure)
-
-########################################################################################################################
     def loadPlot4(self):
         figure = FigureCanvas(self.plot4())
         layout = QVBoxLayout(self.applicantsThisWeekChart)
+        layout.addWidget(figure)
+
+########################################################################################################################
+    def plot5(self):
+
+        return self.charts.pieChart(
+            "http://localhost/BackEnd/scholarshipManagement/uploadScholarships/loadScholarshipCategories.php",
+        )
+
+    def loadPlot5(self):
+        figure = FigureCanvas(self.plot5())
+        layout = QVBoxLayout(self.financialAmountPerScholarshipChart)
         layout.addWidget(figure)
 
 ########################################################################################################################
@@ -407,7 +483,7 @@ class Dash(QMainWindow, Ui_MainWindow):
                 print(dbContent)
                 self.listofApplicantsTableWidget.setRowCount(
                     len(dbContent))  # always initialise tbl so it doesn't stack up rows
-
+                Sessions.applicantCount = len(dbContent)
 
                 self.listofApplicantsTableWidget.setColumnCount(10)
 
@@ -432,12 +508,17 @@ class Dash(QMainWindow, Ui_MainWindow):
                     self.listofApplicantsTableWidget.setItem(rowindx, 1, QTableWidgetItem(str(rowData.get("id", ""))))
                     self.listofApplicantsTableWidget.setItem(rowindx, 2, QTableWidgetItem(rowData.get("name", "")))
                     self.listofApplicantsTableWidget.setItem(rowindx, 3, QTableWidgetItem(rowData.get("email", "")))
-                    self.listofApplicantsTableWidget.setItem(rowindx, 4, QTableWidgetItem(str(rowData.get("age", ""))  or "Not specified"))
-                    self.listofApplicantsTableWidget.setItem(rowindx, 5, QTableWidgetItem(rowData.get("gender", "") or "Not specified"))
-                    self.listofApplicantsTableWidget.setItem(rowindx, 6, QTableWidgetItem(rowData.get("nationality", "") or "Not specified"))
-                    self.listofApplicantsTableWidget.setItem(rowindx, 7, QTableWidgetItem(rowData.get("education_level", "")))
+                    self.listofApplicantsTableWidget.setItem(rowindx, 4, QTableWidgetItem(
+                        str(rowData.get("age", "")) or "Not specified"))
+                    self.listofApplicantsTableWidget.setItem(rowindx, 5, QTableWidgetItem(
+                        rowData.get("gender", "") or "Not specified"))
+                    self.listofApplicantsTableWidget.setItem(rowindx, 6, QTableWidgetItem(
+                        rowData.get("nationality", "") or "Not specified"))
+                    self.listofApplicantsTableWidget.setItem(rowindx, 7,
+                                                             QTableWidgetItem(rowData.get("education_level", "")))
                     self.listofApplicantsTableWidget.setItem(rowindx, 8, QTableWidgetItem(rowData.get("dob", "")))
-                    self.listofApplicantsTableWidget.setItem(rowindx, 9, QTableWidgetItem(str (rowData.get("score", "")) or 0))
+                    self.listofApplicantsTableWidget.setItem(rowindx, 9,
+                                                             QTableWidgetItem(str(rowData.get("score", "")) or 0))
 
                     #       create View & del btn
                     viewBtn = QPushButton("View")
@@ -531,7 +612,6 @@ class Dash(QMainWindow, Ui_MainWindow):
 
         self.notificationTitleTxt.setCompleter(completer)
 
-
         #msg population
         quickMsg = [
             "Congratulations, You have been accepted!",
@@ -583,33 +663,6 @@ class Dash(QMainWindow, Ui_MainWindow):
             return
 
 ########################################################################################################################
-    def sendNotification(self):
-        url = "http://localhost/BackEnd/scholarshipManagement/notifications/insertNotification.php"
-        response = requests.post(
-            url = url,
-            data={
-                "email" : Sessions.seshEmail,
-                "recipientEmail" : self.notificationEmailTxt.text().strip(),
-                "title" : self.notificationTitleTxt.text().strip(),
-                "msg" : self.notificationMsgTxt.text().strip()
-            }
-        )
-        print(f"RAW RESPONSE: {response.text}")
-        result = response.json()
-        msg = result.get("message", "Unknown Msg")
-
-        if result.get("status") == "success":
-            self.msgBox(
-                "Email sent",
-                msg
-            )
-        elif result.get("status") == "error":
-            self.msgBox(
-                "Error",
-                msg
-            )
-
-########################################################################################################################
     def displayApplicantDetails(self, Id):
         from SholarshipManagementSystem.homePage.applicantDetailsCode import ApplicantDetails
         self.appDetails = ApplicantDetails(Id)
@@ -631,8 +684,7 @@ class Dash(QMainWindow, Ui_MainWindow):
                 )
                 return
 
-
-            print("RAW RESPONSE: {response.text}")
+            print(f"RAW RESPONSE: {response.text}")
 
             dbContent = result.get("data", [])
 
@@ -646,17 +698,17 @@ class Dash(QMainWindow, Ui_MainWindow):
                 ]
             )
 
-
             for rowindx, rowData in enumerate(dbContent):
-                self.applicantRankTableWidget.setItem(rowindx, 0, QTableWidgetItem(rowData.get("name", "Display Error")))
-                self.applicantRankTableWidget.setItem(rowindx, 1, QTableWidgetItem(str(rowData.get("score", "Display Error"))))
+                self.applicantRankTableWidget.setItem(rowindx, 0,
+                                                      QTableWidgetItem(rowData.get("name", "Display Error")))
+                self.applicantRankTableWidget.setItem(rowindx, 1,
+                                                      QTableWidgetItem(str(rowData.get("score", "Display Error"))))
 
             # self.applicantRankTableWidget.resizeColumnsToContents()
         except Exception as e:
             self.msgBox(
                 "Error",
                 f"Exception: {e}")
-
 
 ########################################################################################################################
     def populateApplicantPerSubject(self, url, selectedFilter):
@@ -677,8 +729,7 @@ class Dash(QMainWindow, Ui_MainWindow):
                 )
                 return
 
-
-            print("RAW RESPONSE: {response.text}")
+            print(f"RAW RESPONSE: {response.text}")
 
             dbContent = result.get("data", [])
 
@@ -692,9 +743,8 @@ class Dash(QMainWindow, Ui_MainWindow):
                 ]
             )
 
-
             for rowindx, rowData in enumerate(dbContent):
-                self.applicantPerSubjectTableWidget.setItem(rowindx, 0, QTableWidgetItem(rowData.get("name", "Display Error")))
+                self.applicantPerSubjectTableWidget.setItem(rowindx, 0, QTableWidgetItem(rowData["name"]))
                 self.applicantPerSubjectTableWidget.setItem(rowindx, 1, QTableWidgetItem(str(rowData.get("subject", "Display Error"))))
 
         except Exception as e:
@@ -704,14 +754,14 @@ class Dash(QMainWindow, Ui_MainWindow):
             print(f"Exception(Reports): {e}")
 
 ########################################################################################################################
-    def populateFilterCombo(self):
+    def populateApplicantFilter(self):
         try:
             response = requests.get(
                 "http://localhost/BackEnd/scholarshipManagement/applicant/getSubject.php"
             )
 
             result = response.json()
-            print("RAW RESPONSE : {response.text}")
+            print(f"RAW RESPONSE : {response.text}")
 
             msg = result.get("message")
 
@@ -732,3 +782,266 @@ class Dash(QMainWindow, Ui_MainWindow):
                 "Error",
                 f"Exception(filterCombo): {e}")
             print(f"Exception(filterCombo): {e}")
+
+########################################################################################################################
+    def populateScholarshipTbl(self, url, selectedFilter):
+
+        try:
+            response = requests.post(
+                url,
+                data={
+                    "filter": selectedFilter
+                }
+            )
+
+            result = response.json()
+            print(f"RAW RESPONSE: {response.text}")
+
+            msg = result.get("message", "Unknown Msg")
+
+            if result.get("status") == "error":
+                self.msgBox(
+                    "Error",
+                    f"{msg}")
+                print(f"Error: {msg}")
+                return
+
+            dbContent = result.get("data", [])
+
+            self.scholarshipPerSubjectTableWidget.setColumnCount(2)
+            self.scholarshipPerSubjectTableWidget.setRowCount(len(dbContent))
+
+            self.scholarshipPerSubjectTableWidget.setHorizontalHeaderLabels(
+                [
+                    "Name",
+                    "Subject"
+                ]
+            )
+
+            for rowindx, rowData in enumerate(dbContent):
+                self.scholarshipPerSubjectTableWidget.setItem(rowindx, 0,
+                                                              QTableWidgetItem(rowData.get("name", "Display Error")))
+                self.scholarshipPerSubjectTableWidget.setItem(rowindx, 1, QTableWidgetItem(
+                    str(rowData.get("subject", "Display Error"))))
+        except Exception as e:
+            self.msgBox(
+                "Error",
+                f"Exception(scholarshipTbl): {e}")
+            print(f"Exception(scholarshipTbl): {e}")
+
+########################################################################################################################
+    def populateScholarshipFilter(self):
+
+        url = "http://localhost/BackEnd/scholarshipManagement/uploadScholarships/getSubject.php"
+        try:
+            response = requests.get(url)
+
+            result = response.json()
+            print(f"RAW RESPONSE : {response.text}")
+
+            msg = result.get("message")
+
+            if result.get("status") == "error":
+                self.msgBox(
+                    "Error",
+                    f"{msg}")
+                print(f"Error: {msg}")
+                return
+
+            dbContent = result.get("data", [])
+
+            self.subjectScholarshipFilterCombo.addItem("All")
+            self.subjectScholarshipFilterCombo.addItems(dbContent)
+        except Exception as e:
+            self.msgBox(
+                "Error",
+                f"Exception(scholarshipFilter): {e}")
+            print(f"Exception(scholarshipFilter): {e}")
+
+
+########################################################################################################################
+    def sendNotification(self):
+        result = self.admin.sendNotification(
+            self.notificationEmailTxt,
+            self.notificationTitleTxt,
+            self.notificationMsgTxt
+        )
+
+        msg = result.get("message", "Unknown Msg")
+
+        if result.get("status") == "success":
+            self.msgBox(
+                "Email sent",
+                msg
+            )
+        elif result.get("status") == "error":
+            self.msgBox(
+                "Error",
+                msg
+            )
+
+########################################################################################################################
+    def changePass(self):
+        if self.confirmMsgBox("Confirm Action", "Do you want to continue"):
+            result = self.admin.updateDetails(
+                "pass",
+                f"{self.passTxt.text().strip()}"
+            )
+
+            msg = result.get("message", "Unknown Msg")
+
+            if result.get("status") == "success":
+                self.msgBox(
+                    "Process Complete",
+                    msg
+                )
+
+            elif result.get("status") == "error":
+                self.msgBox(
+                    "Process Failed",
+                    msg
+                )
+        else:
+            pass
+
+########################################################################################################################
+    def changeEmail(self):
+        if self.confirmMsgBox("Confirm Action", "Do you want to continue"):
+            result = self.admin.updateDetails(
+                "email",
+                f"{self.emailTxt.text().strip()}"
+            )
+
+            msg = result.get("message", "Unknown Msg")
+
+            if result.get("status") == "success":
+                self.msgBox(
+                    "Process Complete",
+                    msg
+                )
+
+            elif result.get("status") == "error":
+                self.msgBox(
+                    "Process Failed",
+                    msg
+                )
+        else:
+            pass
+
+########################################################################################################################
+    def changeUsername(self):
+        if self.confirmMsgBox("Confirm Action", "Do you want to continue"):
+            result = self.admin.updateDetails(
+                "username",
+                f"{self.usernameTxt.text().strip()}"
+            )
+            msg = result.get("message", "Unknown Msg")
+
+            if result.get("status") == "success":
+                self.msgBox(
+                    "Process Complete",
+                    msg
+                )
+
+            elif result.get("status") == "error":
+                self.msgBox(
+                    "Process Failed",
+                    msg
+                )
+        else:
+            pass
+
+########################################################################################################################
+    def logout(self):
+        if self.confirmMsgBox("Confirm Action", "Do you want to continue"):
+            from pageController import Controller
+            controller = Controller()
+            controller.showLogin()
+            self.close()
+        else:
+            pass
+
+########################################################################################################################
+    def showManageApplicantPage(self):
+
+        try:
+
+            response = requests.get(
+                "http://localhost/BackEnd/scholarshipManagement/applicant/loadApplicantData.php"
+            )
+            result = response.json()
+            if result.get("status") == "error":
+                self.msgBox("Error", result.get("message", "Unknown error"))
+                return
+
+            dbContent = result.get("data", [])
+
+            self.manageApplicantScroll.setWidgetResizable(True)
+
+            # clear any previous content
+            old = self.manageApplicantScroll.takeWidget()
+            if old:
+                old.deleteLater()
+
+            #new content
+            container = QWidget()
+            layout = QVBoxLayout(container)
+            layout.setContentsMargins(10, 10, 10, 10)
+            layout.setSpacing(12)
+
+            # Page title
+            pageTitle = QLabel("MANAGE APPLICANT")
+            pageTitle.setStyleSheet("font: 700 16pt 'Segoe UI';")
+            pageTitle.setAlignment(Qt.AlignmentFlag.AlignHCenter)
+            layout.addWidget(pageTitle)
+
+            # Search bar
+            searchLayout = QHBoxLayout()
+            searchBar = QLineEdit()
+            searchBar.setStyleSheet("""
+            width:300px;
+            padding:7px;
+            """)
+            searchBar.setPlaceholderText("Type name or email")
+            #search btn
+            searchBtn = QPushButton()
+            searchBtn.setIcon(QIcon(":/icons/search.png"))
+            searchBtn.setStyleSheet("""
+            padding:7px;
+            margin:0px;
+            background: #063970;
+            """)
+            searchLayout.addStretch(1)
+            searchLayout.addWidget(searchBar)
+            searchLayout.addWidget(searchBtn)
+            searchLayout.addStretch(1)
+            layout.addLayout(searchLayout)
+
+
+            # Applicant cards
+            for d in dbContent:
+                card = ApplicantCard(d.get("name"), d.get("email"))
+                # Make each card highlight on hover
+                card.setStyleSheet("""
+                    QWidget {
+                        padding: 8px;
+                        background: #063970;
+                    }
+                    QWidget:hover {
+                        color:black;
+                    }
+                """)
+                layout.addWidget(card)
+
+            # Add a stretch at the bottom so cards stay at the top
+            layout.addStretch(1)
+
+            # Put this container into the designer scroll area
+            self.manageApplicantScroll.setWidget(container)
+
+            #set the current index, no insertWidget needed.
+            self.mainDisplayWidget.setCurrentIndex(2)
+
+        except Exception as e:
+            self.msgBox("Error", f"Exception: {e}")
+            print(f"Exception(showManageApplicantPage): {e}")

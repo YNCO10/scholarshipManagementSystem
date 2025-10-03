@@ -18,7 +18,6 @@ class ApplyScholarship(QWidget, Ui_applyScholarshipForm):
         self.url = "http://localhost/BackEnd/scholarshipManagement/application/applyScholarship.php"
         self.regCode = RegCode()
         self.uploadCode = UploadingCode()
-        self.getData = GetApplicantData()
 
 
         self.btnClicks()
@@ -55,6 +54,7 @@ class ApplyScholarship(QWidget, Ui_applyScholarshipForm):
             proofOfNeed = self.proofOfNeedTxt.text()
             incomeBracket = self.incomeBracketComboBox.currentText()
             financialAssistance = None
+            email = "test11@gmail.com"
 
             print("Checkpoint 1")
 
@@ -79,8 +79,10 @@ class ApplyScholarship(QWidget, Ui_applyScholarshipForm):
                 return
 
             print("Checkpoint 2")
+            self.getData = GetApplicantData(email)
 
             application = Application(
+                email,
                 schoolAttended.strip(),
                 gpa.strip(),
                 financialAssistance,

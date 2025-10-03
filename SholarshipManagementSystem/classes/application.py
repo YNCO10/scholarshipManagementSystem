@@ -3,6 +3,7 @@ import requests
 
 class Application:
     def __init__(self,
+                 email,
                  schoolAttended,
                  gpa,
                  financialAssistance,
@@ -15,6 +16,7 @@ class Application:
                  incomeBracket
                  ):
         super().__init__()
+        self.email = email
         self.schoolAttended = schoolAttended
         self.gpa = gpa
         self.financialAssistance = financialAssistance
@@ -32,9 +34,9 @@ class Application:
             data=self.toDict(),
             files={
                 "Transcript": open(self.transcript, "rb"),
-                "National_ID": open(self.nationalID, "rb"),
-                "Recommendation_Letter": open(self.recommendationLetter, "rb"),
-                "Proof_Of_Need": open(self.proofOfNeed, "rb")
+                "National ID": open(self.nationalID, "rb"),
+                "Recommendation Letter": open(self.recommendationLetter, "rb"),
+                "Proof Of Need": open(self.proofOfNeed, "rb")
             }
         )
         try:
@@ -49,5 +51,6 @@ class Application:
             "gpa": self.gpa,
             "fin_assistance": self.financialAssistance,
             "reasonForApplying": self.reasonForApplying,
-            "careerGoal": self.careerGoals
+            "careerGoal": self.careerGoals,
+            "email" : self.email
         }

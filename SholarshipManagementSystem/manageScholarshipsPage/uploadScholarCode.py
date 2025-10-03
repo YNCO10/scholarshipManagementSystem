@@ -19,7 +19,7 @@ class UploadingCode(QDialog, Ui_Dialog):
         super().__init__()
         self.setupUi(self)
         self.setWindowTitle("UPLOAD SCHOLARSHIP")
-        self.setWindowIcon(QIcon(":icons/Sms"))
+        self.setWindowIcon(QIcon(":icons/SMsysIcon.png"))
         self.regCode = RegCode()
 
         self.btnClicks()

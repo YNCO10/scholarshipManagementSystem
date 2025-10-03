@@ -6,7 +6,7 @@ class ManageWindow:
     def __init__(self):
         app = QApplication(sys.argv)
         controller = Controller()
-        controller.showApplicantReg()
+        controller.showLogin()
         app.exec()
 
 manageWin = ManageWindow()

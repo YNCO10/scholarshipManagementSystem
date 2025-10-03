@@ -6,3 +6,5 @@ verbalReasoningScore = None
 logicalReasoningScore = None
 criticalReasoningScore  = None
 finalScore = None
+applicantCount = None
+scholarshipCount = None

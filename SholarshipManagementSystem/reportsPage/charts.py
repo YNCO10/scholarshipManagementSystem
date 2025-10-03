@@ -21,35 +21,44 @@ class Chart:
             print(result)
             msg = result.get("message", "Unknown Msg")
 
+            if result.get("status") == "error":
+                self.regCode.msgBox(
+                    "Error",
+                    msg
+                )
+                return
+
+            fig = Figure()
+            ax = fig.add_subplot(111)
+
+
+            data = result.get("data", {})
+            if not data:
+                ax.text(0.5, 0.5, "No data to display",
+                        ha='center', va='center', fontsize=12, color="red")
+                ax.set_axis_off()  # hide x/y axes since no graph
+                return fig
+
+            categories = list(result.keys())
+            sizes = list(result.values())
+
+            ax.plot(categories, sizes, marker="o")
+
+            # put values on each occurrence
+            for i, value in enumerate(sizes):
+                ax.text(i, value + 1, str(value), ha='center', va='bottom')
+
+
+            ax.set_ylabel(yLabel)
+
+
+            return fig
+
         except (requests.RequestException, ValueError) as e:
             self.regCode.msgBox(
                 "Error(lineGraph)",
                 f"Exception:\n{e}"
             )
-
-        if result.get("status") == "error":
-            self.regCode.msgBox(
-                "Error",
-                msg
-            )
-            return
-
-        categories = list(result.keys())
-        sizes = list(result.values())
-
-        fig = Figure()
-        ax = fig.add_subplot(111)
-        ax.plot(categories, sizes, marker="o")
-
-        # put values on each occurrence
-        for i, value in enumerate(sizes):
-            ax.text(i, value + 1, str(value), ha='center', va='bottom')
-
-
-        ax.set_ylabel(yLabel)
-
-
-        return fig
 
 
 ########################################################################################################################
@@ -82,8 +91,8 @@ class Chart:
 
         fig = Figure()
         ax = fig.add_subplot(111)
-        ax.pie(sizes, labels=categories, autopct="%1.1f%%")
-        # ax.set_title("Applicant Education Levels")
+        ax.pie(sizes, labels=categories, autopct="%d%%", shadow=True)
+
         return fig
 
 ########################################################################################################################

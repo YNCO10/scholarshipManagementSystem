@@ -1,6 +1,6 @@
 import json
-
 import requests
+
 class Admin:
     def __init__(self, name, email, password):
         self.name = name
@@ -32,5 +32,49 @@ class Admin:
         pass
 
 ########################################################################################################################
-    def sendNotification(self):
-        pass
+    def sendNotification(self, recipientEmail, title, msg):
+        url = "http://localhost/BackEnd/scholarshipManagement/notifications/insertNotification.php"
+        response = requests.post(
+            url=url,
+            data={
+                "email": self.email,
+                "recipientEmail": recipientEmail.text().strip(),
+                "title": title.text().strip(),
+                "msg": msg.text().strip()
+            }
+        )
+        try:
+            return response.json()
+        except json.JSONDecodeError:
+            print("Response was not JSON:", response.text)
+            return {"status": "error", "message": "Invalid server response"}
+
+########################################################################################################################
+    def updateDetails(self, category, value):
+        response = requests.post(
+            "http://localhost/BackEnd/scholarshipManagement/profile/updateDetails.php",
+            data={
+                "cat" : category,
+                "email" : self.email,
+                "value" : value
+            }
+        )
+        try:
+            return response.json()
+        except json.JSONDecodeError:
+            print("Response was not JSON:", response.text)
+            return {"status": "error", "message": "Invalid server response"}
+
+########################################################################################################################
+    def getAdminDetails(self):
+        response = requests.post(
+            "http://localhost/BackEnd/scholarshipManagement/admin/getDetails.php",
+            data={
+                "email" : self.email
+            }
+        )
+        try:
+            return response.json()
+        except json.JSONDecodeError:
+            print("Response was not JSON:", response.text)
+            return {"status": "error", "message": "Invalid server response"}

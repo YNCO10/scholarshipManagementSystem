@@ -61,9 +61,14 @@ class LoginCode(QWidget, Ui_loginPage):
 
                 Sessions.seshEmail = self.loginEmailTxt.text().strip()
 
-                from pageController import Controller
-                self.controller = Controller()
-                self.controller.showAdinDash()
+                # from pageController import Controller
+                # self.controller = Controller()
+                # self.controller.showAdinDash()
+                # self.hideWindow()
+
+                from SholarshipManagementSystem.homePage.myMainDisplay import Dash
+                dash = Dash()
+                dash.showMaximized()
                 self.hideWindow()
 
 
@@ -74,10 +79,13 @@ class LoginCode(QWidget, Ui_loginPage):
 
                 if result.get("isAssessmentDone"):
                     Sessions.seshEmail = self.loginEmailTxt.text().strip()
-                    self.msgBox(
-                        "Dash",
-                        "APPLICANT DASHBOARD HERE..."
-                    )
+                    # self.msgBox(
+                    #     "Dash",
+                    #     "APPLICANT DASHBOARD HERE..."
+                    # )
+                    from SholarshipManagementSystem.manageApplicantl.applicantCardCode import ManageApplicantWindow
+                    manageApplicant = ManageApplicantWindow()
+                    manageApplicant.show()
                 else:
                     Sessions.seshEmail = self.loginEmailTxt.text().strip()
                     from pageController import Controller

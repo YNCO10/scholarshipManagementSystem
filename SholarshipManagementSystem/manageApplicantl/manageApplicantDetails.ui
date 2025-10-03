@@ -1,0 +1,842 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>Form</class>
+ <widget class="QWidget" name="Form">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>561</width>
+    <height>628</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget{
+	background-color: rgb(6, 57, 112);
+}
+
+QLabel{
+	font: 600 12pt &quot;Segoe UI&quot;;
+}
+
+QPushButton{
+	padding: 7px;
+	
+	font: 600 11pt &quot;Segoe UI&quot;;
+}
+</string>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <widget class="QStackedWidget" name="stackedWidget">
+     <property name="currentIndex">
+      <number>1</number>
+     </property>
+     <widget class="QWidget" name="appplicantDetails">
+      <layout class="QVBoxLayout" name="verticalLayout_5">
+       <item>
+        <widget class="QLabel" name="label">
+         <property name="styleSheet">
+          <string notr="true">margin-top:30px;
+margin-bottom:30px;
+font: 700 14pt &quot;Segoe UI&quot;;</string>
+         </property>
+         <property name="text">
+          <string>APPLICANT DETAILS</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QScrollArea" name="scrollArea">
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+         <widget class="QWidget" name="scrollAreaWidgetContents">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>-150</y>
+            <width>511</width>
+            <height>952</height>
+           </rect>
+          </property>
+          <layout class="QGridLayout" name="gridLayout">
+           <item row="0" column="0">
+            <layout class="QVBoxLayout" name="verticalLayout_2">
+             <property name="spacing">
+              <number>20</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="nameLabel">
+               <property name="text">
+                <string>Applicant Name:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="ageLabel">
+               <property name="text">
+                <string>Applicant Age:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="dateJoinedLabel">
+               <property name="text">
+                <string>Date Joined:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="eduLevelLabel">
+               <property name="text">
+                <string>Education Level:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="formerSchoolLabel">
+               <property name="text">
+                <string>Former School:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="phoneNumLabel">
+               <property name="text">
+                <string>Phone Number:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="nationalityLabel">
+               <property name="text">
+                <string>Nationality:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="gpaLabel">
+               <property name="text">
+                <string>GPA</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="incomeBracketLabel">
+               <property name="text">
+                <string>Income Bracket</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="applicationSubmittedLabel">
+               <property name="text">
+                <string>Application Submitted on:.......After/Before Deadline</string>
+               </property>
+               <property name="wordWrap">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="ApplicantScoreLabel">
+               <property name="text">
+                <string>Applicant Score</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="AssessmentScoreLabel">
+               <property name="text">
+                <string>Assessment Score:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_7">
+               <property name="text">
+                <string>Reason For Applying:</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QWidget" name="reasonForApplyingWidget" native="true">
+               <property name="styleSheet">
+                <string notr="true">border-radius:7px;
+background-color: rgb(24, 155, 255);
+color:rgb(1, 14, 27);</string>
+               </property>
+               <layout class="QVBoxLayout" name="verticalLayout_4">
+                <item>
+                 <widget class="QScrollArea" name="reasonForApplyingScrollArea">
+                  <property name="widgetResizable">
+                   <bool>true</bool>
+                  </property>
+                  <widget class="QWidget" name="scrollAreaWidgetContents_2">
+                   <property name="geometry">
+                    <rect>
+                     <x>0</x>
+                     <y>0</y>
+                     <width>473</width>
+                     <height>54</height>
+                    </rect>
+                   </property>
+                   <layout class="QGridLayout" name="gridLayout_2">
+                    <item row="0" column="0">
+                     <widget class="QLabel" name="reasonForApplicationLabel">
+                      <property name="text">
+                       <string>NO DATA TO DISPLAY</string>
+                      </property>
+                      <property name="wordWrap">
+                       <bool>true</bool>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <spacer name="verticalSpacer">
+               <property name="orientation">
+                <enum>Qt::Orientation::Vertical</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
+                 <height>40</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_9">
+               <property name="text">
+                <string>Submited docs</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QTableWidget" name="viewDocsTableWidget">
+               <property name="styleSheet">
+                <string notr="true">border:1px solid black;
+border-radius:7px;</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_3">
+         <property name="spacing">
+          <number>6</number>
+         </property>
+         <property name="leftMargin">
+          <number>9</number>
+         </property>
+         <property name="rightMargin">
+          <number>15</number>
+         </property>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout">
+           <property name="spacing">
+            <number>6</number>
+           </property>
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>0</number>
+           </property>
+           <item>
+            <widget class="QPushButton" name="acceptBtn">
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">color:rgb(55, 244, 32);
+font: 700 11pt &quot;Segoe UI&quot;;
+background-color: rgb(1, 14, 27);</string>
+             </property>
+             <property name="text">
+              <string>ACCEPT</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="rejectBtn">
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">font: 700 11pt &quot;Segoe UI&quot;;
+color: rgb(255, 0, 0);
+background-color: rgb(1, 14, 27);</string>
+             </property>
+             <property name="text">
+              <string>REJECT</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <widget class="QPushButton" name="goToApplicantCriteriaBtn">
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(1, 14, 27);
+font: 700 11pt &quot;Segoe UI&quot;;</string>
+           </property>
+           <property name="text">
+            <string>APPPLICANT CRITERIA</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="cancelBtn">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(1, 14, 27);
+font: 700 11pt &quot;Segoe UI&quot;;</string>
+           </property>
+           <property name="text">
+            <string>CANCEL</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="applicantCriteria">
+      <layout class="QVBoxLayout" name="verticalLayout_6">
+       <item>
+        <widget class="QLabel" name="label_2">
+         <property name="styleSheet">
+          <string notr="true">margin-top:30px;
+margin-bottom:30px;
+font: 700 14pt &quot;Segoe UI&quot;;</string>
+         </property>
+         <property name="text">
+          <string>APPLICANT CRITERIA</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignmentFlag::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QScrollArea" name="scrollArea_2">
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+         <widget class="QWidget" name="scrollAreaWidgetContents_3">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>-539</y>
+            <width>511</width>
+            <height>953</height>
+           </rect>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_14">
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_13">
+             <property name="spacing">
+              <number>30</number>
+             </property>
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout_7">
+               <property name="spacing">
+                <number>15</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_3">
+                 <property name="text">
+                  <string>ACADEMIC SCORE</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="transcriptSubmittedLabel">
+                 <property name="text">
+                  <string>Transcript: submitted or Not</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="academicScoreLabel">
+                 <property name="text">
+                  <string>score: ?</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <widget class="Line" name="line">
+               <property name="orientation">
+                <enum>Qt::Orientation::Horizontal</enum>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout_8">
+               <property name="spacing">
+                <number>15</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_6">
+                 <property name="text">
+                  <string>FINANCIAL SCORE</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="proofOfNeedSubmittedLabel">
+                 <property name="text">
+                  <string>Proof of Need: submitted or Not</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="incomeBracketLabel_2">
+                 <property name="text">
+                  <string>Income Bracket: High-Low....</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="financialScoreLabel">
+                 <property name="text">
+                  <string>Score: ?</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <widget class="Line" name="line_2">
+               <property name="orientation">
+                <enum>Qt::Orientation::Horizontal</enum>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout_9">
+               <property name="spacing">
+                <number>15</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_4">
+                 <property name="text">
+                  <string>DOCUMENT SCORE</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="documentsUploadedLabel">
+                 <property name="text">
+                  <string>Documents uploaded: uploaded dpcs/required docs</string>
+                 </property>
+                 <property name="wordWrap">
+                  <bool>true</bool>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="documentScoreLabel">
+                 <property name="text">
+                  <string>Score: ?</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout_10">
+               <property name="spacing">
+                <number>15</number>
+               </property>
+               <item>
+                <widget class="Line" name="line_5">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Horizontal</enum>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="label_18">
+                 <property name="text">
+                  <string>ASSESSMENT SCORE</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QLabel" name="assessmentScoreLabel">
+                 <property name="text">
+                  <string>Score: ?%</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_11">
+             <property name="spacing">
+              <number>15</number>
+             </property>
+             <item>
+              <widget class="Line" name="line_4">
+               <property name="orientation">
+                <enum>Qt::Orientation::Horizontal</enum>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_5">
+               <property name="text">
+                <string>WEIGHTS</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_2">
+               <item>
+                <widget class="QLabel" name="label_21">
+                 <property name="text">
+                  <string>Academic:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QComboBox" name="academicWeightCombo">
+                 <item>
+                  <property name="text">
+                   <string>5.0</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>4.5</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>4.0</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>3.5</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>3.0</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>2.5</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>2.0</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>1.5</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>1.0</string>
+                  </property>
+                 </item>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_3">
+               <item>
+                <widget class="QLabel" name="label_16">
+                 <property name="text">
+                  <string>Financial:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QComboBox" name="financialWeightCombo">
+                 <item>
+                  <property name="text">
+                   <string>5.0</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>4.5</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>4.0</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>3.5</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>3.0</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>2.5</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>2.0</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>1.5</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>1.0</string>
+                  </property>
+                 </item>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_4">
+               <item>
+                <widget class="QLabel" name="label_17">
+                 <property name="text">
+                  <string>Documents:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QComboBox" name="docWeightCombo">
+                 <item>
+                  <property name="text">
+                   <string>5.0</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>4.5</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>4.0</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>3.5</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>3.0</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>2.5</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>2.0</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>1.5</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>1.0</string>
+                  </property>
+                 </item>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_5">
+               <item>
+                <widget class="QLabel" name="label_23">
+                 <property name="text">
+                  <string>Assessment:</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QComboBox" name="assessmentWeightCombo">
+                 <item>
+                  <property name="text">
+                   <string>5.0</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>4.5</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>4.0</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>3.5</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>3.0</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>2.5</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>2.0</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>1.5</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>1.0</string>
+                  </property>
+                 </item>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QPushButton" name="changeWeightsBtn">
+             <property name="cursor">
+              <cursorShape>PointingHandCursor</cursorShape>
+             </property>
+             <property name="text">
+              <string>CHANGE WEIGHTS</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="Line" name="line_3">
+             <property name="orientation">
+              <enum>Qt::Orientation::Horizontal</enum>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_12">
+             <property name="spacing">
+              <number>15</number>
+             </property>
+             <item>
+              <widget class="QLabel" name="label_24">
+               <property name="text">
+                <string>FINAL SCORE</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="finalScoreFormulaLabel">
+               <property name="text">
+                <string>?/Sum of weights</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="finalScoreLabel">
+               <property name="text">
+                <string>Score = ?</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="goToApplicantDetialsBtn">
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(1, 14, 27);
+font: 700 11pt &quot;Segoe UI&quot;;</string>
+         </property>
+         <property name="text">
+          <string>APPLICANT DETAILS</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="cancelBtn_2">
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(1, 14, 27);
+font: 700 11pt &quot;Segoe UI&quot;;
+</string>
+         </property>
+         <property name="text">
+          <string>CANCEL</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

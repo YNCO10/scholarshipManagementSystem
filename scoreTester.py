@@ -4,10 +4,10 @@ scoreHandler = ScoreHandler()
 
 applicant_data = {
     "gpa": 3.7,
-    "transcript": True,
-    "need": True,
+    "transcript": False,
+    "need": False,
     "financialProof": False,
-    "incomeBracket": 2000,
+    "incomeBracket": 2000000,
     "uploadedDocs": ["id_card", "transcript", "recommendation"],
     "requiredDocs": ["NationalID", "transcript", "recommendation", "proofOfNeed"],
     "score": 15,#make assessment tbl, in assessment.py, if user ends at compulsory then total questions = 20 else it's equal to 40(depending on num o questions in assessments)

@@ -1,5 +1,7 @@
 <RCC>
   <qresource>
+    <file>icons/manageApplicantWhite.png</file>
+    <file>icons/mnageApplicant.png</file>
     <file>icons/alarm-bell.png</file>
     <file>icons/graph.png</file>
     <file>icons/settings (1).png</file>
