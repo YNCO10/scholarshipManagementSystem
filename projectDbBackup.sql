@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 02, 2025 at 11:00 AM
+-- Generation Time: Oct 03, 2025 at 09:24 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -79,26 +79,26 @@ CREATE TABLE `applicant` (
 --
 
 INSERT INTO `applicant` (`id`, `name`, `email`, `pass_word`, `age`, `phone_num`, `gender`, `reviewer_id`, `is_accepted`, `nationality`, `education_level`, `dob`, `verified`, `verify_token`, `subject`, `assessment_completed`, `date_registered`, `score`) VALUES
-(1, 'Test Applicant 1', 'test1@gmail.com', '$2y$10$OI/KLqdm0Qkmo0uEZLcgO.FCjTE4SPhLoZoHoDj4zrvZyB8haB.SK', 20, '+265881000001', 'Female', NULL, 0, 'Malawian', 'Secondary School', '2005-04-01', 0, NULL, 'Computer Science & IT', 0, '2025-09-22', 20),
+(1, 'Test Applicant 1', 'test1@gmail.com', '$2y$10$OI/KLqdm0Qkmo0uEZLcgO.FCjTE4SPhLoZoHoDj4zrvZyB8haB.SK', 20, '+265881000001', 'Female', NULL, 0, 'Malawian', 'Secondary School', '2005-04-01', 0, NULL, 'Computer Science & IT', 0, '2025-09-22', 130),
 (2, 'Test Applicant 2', 'test2@gmail.com', '$2y$10$wTvYJG9EfJsEIl8BO0DtkeAu4VTpY4jTfOqnxQAA1kPmjKFj45wwa', 18, '+265881000002', 'Female', NULL, 0, 'Malawian', 'Diploma', '2003-02-12', 0, NULL, 'Business & Management', 0, '2025-09-22', 40),
-(3, 'Test Applicant 3', 'test3@gmail.com', '$2y$10$wIugeGF.J5nvc7PXs5pT..Tm5k4qQcZ6bUToy/5QSPaZ.FYhNFDuK', 24, '+265881000003', 'Female', NULL, 0, 'Zimbabwe', 'Diploma', '2001-08-09', 0, NULL, 'Engineering & Technology', 0, '2025-09-22', 25),
-(4, 'Test Applicant 4', 'test4@gmail.com', '$2y$10$DzcmzvIyYxjDsxnUb/iijuX0Hq3A0Tchccw5PLTmc7RgoByFGpS96', 19, '+265881000004', 'Female', NULL, 0, 'Egypt', 'Secondary School', '2006-11-23', 0, NULL, 'Economics', 0, '2025-09-22', 77),
-(5, 'Test Applicant 5', 'test5@gmail.com', '$2y$10$3upKZzWQ2khWfsZkkqQ2lOqc2orqwgEq.Zxr7RmE0pv8BTBBsh.XO', 21, '+265881000005', 'Female', NULL, 0, 'Malawian', 'Diploma', '2004-06-16', 0, NULL, 'Health Sciences', 0, '2025-09-22', 64),
-(6, 'Test Applicant 6', 'test6@gmail.com', '$2y$10$G0dU3IFMgCbk1DSgaF7/mexfQ.eiDz0TLGPlf6OyAwwWPH1zvsEFW', 23, '+265881000006', 'Male', NULL, 0, 'Zimbabwe', 'Diploma', '2002-03-30', 0, NULL, 'Law', 0, '2025-09-22', 30),
-(7, 'Test Applicant 7', 'test7@gmail.com', '$2y$10$hgH6Q9exO8sqEUZcjLVVQuPpAAXN2QwUBKXzObDd7EfvXaFTBVHyW', 25, '+265881000007', 'Male', NULL, 0, 'Malawian', 'Bachelors Degree', '2000-12-05', 0, NULL, 'Psychology', 0, '2025-09-22', 90),
-(8, 'Test Applicant 8', 'test8@gmail.com', '$2y$10$fBDU4gqxKh/nR8eJYsHTTubb6LGd00WHLj7dwLERGlVLINFV/z9s6', 18, '+265881000008', 'Female', NULL, 0, 'Malawian', 'Secondary School', '2007-07-07', 0, NULL, 'Computer Science & IT', 0, '2025-09-22', 33),
-(9, 'Test Applicant 9', 'test9@gmail.com', '$2y$10$AB7xzvP.23l2ND5fp2wlWOmucPwMcQWX8905i0v.gqPCtWZyfQlCG', 27, '+265881000009', 'Male', NULL, 0, 'Tunisia', 'Masters Degree', '1998-09-02', 0, NULL, 'Business & Management', 1, '2025-09-22', 89),
+(3, 'Test Applicant 3', 'test3@gmail.com', '$2y$10$wIugeGF.J5nvc7PXs5pT..Tm5k4qQcZ6bUToy/5QSPaZ.FYhNFDuK', 24, '+265881000003', 'Female', NULL, 0, 'Zimbabwe', 'Diploma', '2001-08-09', 0, NULL, 'Engineering & Technology', 0, '2025-09-22', 83),
+(4, 'Test Applicant 4', 'test4@gmail.com', '$2y$10$DzcmzvIyYxjDsxnUb/iijuX0Hq3A0Tchccw5PLTmc7RgoByFGpS96', 19, '+265881000004', 'Female', NULL, 0, 'Egypt', 'Secondary School', '2006-11-23', 0, NULL, 'Economics', 0, '2025-09-22', 52),
+(5, 'Test Applicant 5', 'test5@gmail.com', '$2y$10$3upKZzWQ2khWfsZkkqQ2lOqc2orqwgEq.Zxr7RmE0pv8BTBBsh.XO', 21, '+265881000005', 'Female', NULL, 0, 'Malawian', 'Diploma', '2004-06-16', 0, NULL, 'Health Sciences', 0, '2025-09-22', 86),
+(6, 'Test Applicant 6', 'test6@gmail.com', '$2y$10$G0dU3IFMgCbk1DSgaF7/mexfQ.eiDz0TLGPlf6OyAwwWPH1zvsEFW', 23, '+265881000006', 'Male', NULL, 0, 'Zimbabwe', 'Diploma', '2002-03-30', 0, NULL, 'Law', 0, '2025-09-22', 117),
+(7, 'Test Applicant 7', 'test7@gmail.com', '$2y$10$hgH6Q9exO8sqEUZcjLVVQuPpAAXN2QwUBKXzObDd7EfvXaFTBVHyW', 25, '+265881000007', 'Male', NULL, 0, 'Malawian', 'Bachelors Degree', '2000-12-05', 0, NULL, 'Psychology', 0, '2025-09-22', 105),
+(8, 'Test Applicant 8', 'test8@gmail.com', '$2y$10$fBDU4gqxKh/nR8eJYsHTTubb6LGd00WHLj7dwLERGlVLINFV/z9s6', 18, '+265881000008', 'Female', NULL, 0, 'Malawian', 'Secondary School', '2007-07-07', 0, NULL, 'Computer Science & IT', 0, '2025-09-22', 48),
+(9, 'Test Applicant 9', 'test9@gmail.com', '$2y$10$AB7xzvP.23l2ND5fp2wlWOmucPwMcQWX8905i0v.gqPCtWZyfQlCG', 27, '+265881000009', 'Male', NULL, 0, 'Tunisia', 'Masters Degree', '1998-09-02', 0, NULL, 'Business & Management', 1, '2025-09-22', 46),
 (10, 'Test Applicant 10', 'test10@gmail.com', ' $2y$10$Aka/2KXQLa8OyuLgn3B6u..Q8R1rP3Vr0kMaXYBatTkD5Er8qKDze', 26, '+265881000010', 'Female', NULL, 0, 'Malawian', 'Diploma', '1999-05-19', 0, NULL, 'Engineering & Technology', 0, '2025-09-22', 81),
-(11, 'Test Applicant 11', 'test11@gmail.com', '$2y$10$OI/KLqdm0Qkmo0uEZLcgO.FCjTE4SPhLoZoHoDj4zrvZyB8haB.SK', 20, '+265881000011', 'Female', NULL, 0, 'Malawian', 'Secondary School', '2005-04-01', 0, NULL, 'Economics', 0, '2025-09-23', 40),
-(12, 'Test Applicant 12', 'test12@gmail.com', '$2y$10$wTvYJG9EfJsEIl8BO0DtkeAu4VTpY4jTfOqnxQAA1kPmjKFj45wwa', 37, '+265881000012', 'Female', NULL, 0, 'Malawian', 'Doctorate (PhD)', '2003-02-12', 0, NULL, 'Health Sciences', 0, '2025-09-23', 17),
-(13, 'Test Applicant 13', 'test13@gmail.com', '$2y$10$wIugeGF.J5nvc7PXs5pT..Tm5k4qQcZ6bUToy/5QSPaZ.FYhNFDuK', 18, '+265881000013', 'Female', NULL, 0, 'Egypt', 'Diploma', '2001-08-09', 0, NULL, 'Law', 0, '2025-09-23', 62),
-(14, 'Test Applicant 14', 'test14@gmail.com', '$2y$10$DzcmzvIyYxjDsxnUb/iijuX0Hq3A0Tchccw5PLTmc7RgoByFGpS96', 19, '+265881000014', 'Female', NULL, 0, 'Malawian', 'Secondary School', '2006-11-23', 0, NULL, 'Psychology', 0, '2025-09-24', 50),
+(11, 'Test Applicant 11', 'test11@gmail.com', '$2y$10$OI/KLqdm0Qkmo0uEZLcgO.FCjTE4SPhLoZoHoDj4zrvZyB8haB.SK', 20, '+265881000011', 'Female', NULL, 0, 'Malawian', 'Secondary School', '2005-04-01', 0, NULL, 'Economics', 0, '2025-09-23', 55),
+(12, 'Test Applicant 12', 'test12@gmail.com', '$2y$10$wTvYJG9EfJsEIl8BO0DtkeAu4VTpY4jTfOqnxQAA1kPmjKFj45wwa', 37, '+265881000012', 'Female', NULL, 0, 'Malawian', 'Doctorate (PhD)', '2003-02-12', 0, NULL, 'Health Sciences', 0, '2025-09-23', 118),
+(13, 'Test Applicant 13', 'test13@gmail.com', '$2y$10$wIugeGF.J5nvc7PXs5pT..Tm5k4qQcZ6bUToy/5QSPaZ.FYhNFDuK', 18, '+265881000013', 'Female', NULL, 0, 'Egypt', 'Diploma', '2001-08-09', 0, NULL, 'Law', 0, '2025-09-23', 42),
+(14, 'Test Applicant 14', 'test14@gmail.com', '$2y$10$DzcmzvIyYxjDsxnUb/iijuX0Hq3A0Tchccw5PLTmc7RgoByFGpS96', 19, '+265881000014', 'Female', NULL, 0, 'Malawian', 'Secondary School', '2006-11-23', 0, NULL, 'Psychology', 0, '2025-09-24', 99),
 (15, 'Test Applicant 15', 'test15@gmail.com', '$2y$10$3upKZzWQ2khWfsZkkqQ2lOqc2orqwgEq.Zxr7RmE0pv8BTBBsh.XO', 21, '+265881000015', 'Female', NULL, 0, 'Malawian', 'Diploma', '2004-06-16', 0, NULL, 'Computer Science & IT', 0, '2025-09-24', 73),
 (16, 'Test Applicant 16', 'test16@gmail.com', '$2y$10$G0dU3IFMgCbk1DSgaF7/mexfQ.eiDz0TLGPlf6OyAwwWPH1zvsEFW', 23, '+265881000016', 'Male', NULL, 0, 'Tunisia', 'Doctorate (PhD)', '2002-03-30', 0, NULL, 'Business & Management', 0, '2025-09-25', 81),
 (17, 'Test Applicant 17', 'test17@gmail.com', '$2y$10$hgH6Q9exO8sqEUZcjLVVQuPpAAXN2QwUBKXzObDd7EfvXaFTBVHyW', 25, '+265881000017', 'Male', NULL, 0, 'South Africa', 'Bachelors Degree', '2000-12-05', 0, NULL, 'Engineering & Technology', 0, '2025-09-25', 93),
 (18, 'Test Applicant 18', 'test18@gmail.com', '$2y$10$fBDU4gqxKh/nR8eJYsHTTubb6LGd00WHLj7dwLERGlVLINFV/z9s6', 18, '+265881000018', 'Female', NULL, 0, 'Malawian', 'Secondary School', '2007-07-07', 0, NULL, 'Economics', 0, '2025-09-25', 59),
-(19, 'Test Applicant 19', 'test19@gmail.com', '$2y$10$AB7xzvP.23l2ND5fp2wlWOmucPwMcQWX8905i0v.gqPCtWZyfQlCG', 27, '+265881000019', 'Male', NULL, 0, 'Malawian', 'Masters Degree', '1998-09-02', 0, NULL, 'Health Sciences', 0, '2025-09-25', 44),
-(20, 'Test Applicant 20', 'test20@gmail.com', ' $2y$10$Aka/2KXQLa8OyuLgn3B6u..Q8R1rP3Vr0kMaXYBatTkD5Er8qKDze', 20, '+265881000019', 'Female', NULL, 0, 'Tunisia', 'Masters Degree', '2005-02-08', 0, NULL, 'Health Sciences', 0, '2025-09-25', 44);
+(19, 'Test Applicant 19', 'test19@gmail.com', '$2y$10$AB7xzvP.23l2ND5fp2wlWOmucPwMcQWX8905i0v.gqPCtWZyfQlCG', 27, '+265881000019', 'Male', NULL, 0, 'Malawian', 'Masters Degree', '1998-09-02', 0, NULL, 'Health Sciences', 0, '2025-09-25', 98),
+(20, 'Test Applicant 20', 'test20@gmail.com', ' $2y$10$Aka/2KXQLa8OyuLgn3B6u..Q8R1rP3Vr0kMaXYBatTkD5Er8qKDze', 20, '+265881000019', 'Female', NULL, 0, 'Tunisia', 'Masters Degree', '2005-02-08', 0, NULL, 'Health Sciences', 0, '2025-09-25', 61);
 
 -- --------------------------------------------------------
 
@@ -125,23 +125,26 @@ CREATE TABLE `applications` (
 --
 
 INSERT INTO `applications` (`id`, `user_id`, `scholarship_id`, `application_status`, `date_submitted`, `school_attended`, `gpa`, `fin_assistance`, `reason_for_applying`, `careerGoals`, `income_bracket`) VALUES
-(20, 5, 12, 'Pending', '2025-09-02', 'Blantyre Academy', 4, 0, 'Receiving this award will ease financial stress and enable me to dedicate more time to academic excellence. I aim to expand my knowledge in computing and return the favor by mentoring young students in my area.', 'Work as a software developer building health-tech solutions.', 'Between MWK250,000 - MWK500,000'),
-(21, 5, 13, 'Pending', '2025-09-03', 'Mzuzu High', 3, 1, 'My parents cannot afford tuition, yet I have consistently performed well. With this assistance, I will continue my studies in economics and later contribute to rural development through strategic policy and small-business support.', 'Economic analyst focusing on rural enterprise.', 'Between MWK250,000 - MWK500,000'),
-(22, 7, 15, 'Pending', '2025-09-04', 'Chanco Prep', 3, 0, 'This scholarship will allow me to enroll in advanced science courses that are currently out of reach. I plan to research renewable energy sources and help Malawi transition toward affordable, clean electricity for all citizens.', 'Researcher in renewable energy technology.', 'Between MWK250,000 - MWK500,000'),
-(24, 8, 12, 'Pending', '2025-09-06', 'Zomba Institute', 2, 1, 'The financial barrier has been my greatest challenge. By supporting me, this scholarship gives me the chance to study agriculture, share modern farming techniques, and empower local farmers to produce sustainable harvests all year.', 'Agricultural extension specialist.', 'Between MWK250,000 - MWK500,000'),
-(25, 2, 13, 'Pending', '2025-09-07', 'Karonga High', 3, 0, 'I have demonstrated dedication to learning despite economic difficulties. This opportunity will allow me to focus on biomedical sciences, discover affordable treatments, and improve healthcare delivery in underserved communities of Malawi.', 'Biomedical researcher in tropical medicine.', 'Between MWK250,000 - MWK500,000'),
-(26, 3, 15, 'Pending', '2025-09-08', 'Dedza Secondary', 3, 1, 'My ambition is to become a civil engineer addressing infrastructure gaps. Winning this scholarship lets me study structural design and later return to design safe, durable bridges and roads that connect rural regions efficiently.', 'Civil engineer building sustainable transport networks.', 'Between MWK250,000 - MWK500,000'),
-(28, 1, 12, 'Pending', '2025-09-10', 'Salima High', 3, 1, 'I believe education is the best tool to fight poverty. With this scholarship, I can complete my degree in business administration and mentor young entrepreneurs, helping them start enterprises that create employment opportunities.', 'Business strategist and entrepreneurship coach.', 'Between MWK250,000 - MWK500,000'),
-(29, 10, 13, 'Pending', '2025-09-11', 'Mchinji Secondary', 2, 1, 'My family struggles to pay fees though I consistently rank among the top students. Assistance from this program will let me major in accounting and support nonprofit organizations with transparent financial systems.', 'Certified public accountant for NGOs.', 'Between MWK250,000 - MWK500,000'),
-(30, 4, 15, 'Pending', '2025-09-12', 'Kasungu Day School', 3, 0, 'I am passionate about technology and innovation. This funding gives me the ability to study data science and later apply predictive analytics to agriculture, improving food security for smallholder farmers throughout the country.', 'Data scientist improving agricultural yields.', 'Between MWK250,000 - MWK500,000'),
-(32, 9, 12, 'Pending', '2025-09-14', 'Mangochi High', 4, 0, 'The cost of higher education is beyond my family’s means. This support enables me to continue computer engineering studies and eventually create affordable digital tools for small businesses to expand their markets.', 'Computer engineer building SME software.', 'Between MWK250,000 - MWK500,000'),
-(33, 8, 13, 'Pending', '2025-09-15', 'Nsanje Secondary', 3, 1, 'This award will help me gain critical legal knowledge so I can champion social justice causes. I am determined to provide pro bono services for vulnerable groups and to advocate for fair representation in courts.', 'Human rights lawyer focusing on rural outreach.', 'Between MWK250,000 - MWK500,000'),
-(35, 13, 12, 'Pending', '2025-09-02', 'Blantyre Academy', 4, 0, 'Receiving this award will ease financial stress and enable me to dedicate more time to academic excellence. I aim to expand my knowledge in computing and return the favor by mentoring young students in my area.', 'Work as a software developer building health-tech solutions.', 'Between MWK250,000 - MWK500,000'),
-(36, 11, 13, 'Pending', '2025-09-03', 'Mzuzu High', 3, 1, 'My parents cannot afford tuition, yet I have consistently performed well. With this assistance, I will continue my studies in economics and later contribute to rural development through strategic policy and small-business support.', 'Economic analyst focusing on rural enterprise.', 'Between MWK250,000 - MWK500,000'),
-(37, 15, 15, 'Pending', '2025-09-04', 'Chanco Prep', 3, 0, 'This scholarship will allow me to enroll in advanced science courses that are currently out of reach. I plan to research renewable energy sources and help Malawi transition toward affordable, clean electricity for all citizens.', 'Researcher in renewable energy technology.', 'Between MWK250,000 - MWK500,000'),
-(39, 12, 12, 'Pending', '2025-09-06', 'Zomba Institute', 2, 1, 'The financial barrier has been my greatest challenge. By supporting me, this scholarship gives me the chance to study agriculture, share modern farming techniques, and empower local farmers to produce sustainable harvests all year.', 'Agricultural extension specialist.', 'Between MWK250,000 - MWK500,000'),
-(40, 18, 13, 'Pending', '2025-09-07', 'Karonga High', 3, 0, 'I have demonstrated dedication to learning despite economic difficulties. This opportunity will allow me to focus on biomedical sciences, discover affordable treatments, and improve healthcare delivery in underserved communities of Malawi.', 'Biomedical researcher in tropical medicine.', 'Between MWK250,000 - MWK500,000'),
-(41, 16, 15, 'Pending', '2025-09-08', 'Dedza Secondary', 3, 1, 'My ambition is to become a civil engineer addressing infrastructure gaps. Winning this scholarship lets me study structural design and later return to design safe, durable bridges and roads that connect rural regions efficiently.', 'Civil engineer building sustainable transport networks.', 'Between MWK250,000 - MWK500,000');
+(1, 1, 12, 'Pending', '2025-09-29', 'Chichiri Secondary School', 4, 1, 'I am applying for this scholarship to further my education without financial burden and to become the first in my family to graduate.', 'To become a civil engineer and contribute to national infrastructure development.', 'less than MWK150,000'),
+(2, 2, 15, 'Pending', '2025-09-29', 'St. Patrick’s Academy', 3, 0, 'This scholarship will allow me to complete my studies and acquire skills that will benefit both myself and my community.', 'To become a medical doctor serving rural areas.', 'Between MWK150,000 - MWK250,000'),
+(3, 3, 18, 'Pending', '2025-09-29', 'Nkhotakota Secondary School', 2, 1, 'I want to pursue higher education despite financial difficulties, and this scholarship will provide the chance.', 'To become a teacher who inspires and uplifts students.', 'Between MKW250,000 - MWK500,000'),
+(4, 4, 16, 'Pending', '2025-09-29', 'Blantyre Day Secondary', 5, 1, 'This scholarship will help me pay for my tuition and focus fully on my studies without worrying about school fees.', 'To become a lawyer advocating for justice and equality.', 'Between MWK500,00 - MWK1,000,000'),
+(5, 5, 13, 'Pending', '2025-09-29', 'Zomba Catholic Secondary', 4, 0, 'I believe education is the key to my future and I seek this support to reach my full potential.', 'To become an IT specialist focusing on software development.', 'Between MWK1,000,000 - MWK2,000,000'),
+(6, 6, 17, 'Pending', '2025-09-29', 'Mchinji Boys Secondary', 3, 1, 'My family cannot afford to pay my school fees, and this scholarship will allow me to continue my education.', 'To become a nurse providing healthcare to underserved areas.', 'More than MWK2,000,000'),
+(7, 7, 12, 'Pending', '2025-09-29', 'St. Mary’s Secondary', 2, 0, 'I want to study further and this scholarship will allow me to pursue my dream career.', 'To become an accountant and support businesses with financial planning.', 'less than MWK150,000'),
+(8, 8, 18, 'Pending', '2025-09-29', 'Bwaila Secondary School', 5, 1, 'Receiving this scholarship will help me overcome financial barriers and achieve academic success.', 'To become a data scientist working on innovative solutions.', 'Between MWK150,000 - MWK250,000'),
+(9, 9, 13, 'Pending', '2025-09-29', 'Karonga Secondary School', 3, 0, 'I am motivated to learn but lack the financial resources, so this scholarship will enable me to continue.', 'To become an environmentalist promoting sustainable living.', 'Between MKW250,000 - MWK500,000'),
+(10, 10, 15, 'Pending', '2025-09-29', 'Mzuzu Academy', 4, 1, 'I wish to achieve academic excellence but financial limitations stand in my way, hence this application.', 'To become an architect designing sustainable housing.', 'Between MWK500,00 - MWK1,000,000'),
+(11, 11, 16, 'Pending', '2025-09-29', 'St. Augustine’s Secondary', 2, 0, 'I want to pursue higher education to uplift my family and contribute positively to society.', 'To become a journalist advocating for transparency.', 'Between MWK1,000,000 - MWK2,000,000'),
+(12, 12, 17, 'Pending', '2025-09-29', 'Chayamba Secondary School', 5, 1, 'I am committed to education but lack the resources, and this scholarship will help me complete my studies.', 'To become a doctor addressing public health challenges.', 'More than MWK2,000,000'),
+(13, 13, 18, 'Pending', '2025-09-29', 'Ndirande Hill Secondary', 3, 1, 'This scholarship will reduce the financial stress my parents face and allow me to excel academically.', 'To become a lecturer inspiring future generations.', 'less than MWK150,000'),
+(14, 14, 12, 'Pending', '2025-09-29', 'Mtendere Secondary School', 2, 0, 'With this scholarship, I can continue learning and aim for a brighter future.', 'To become an entrepreneur creating job opportunities.', 'Between MWK150,000 - MWK250,000'),
+(15, 15, 13, 'Pending', '2025-09-29', 'Robert Blake Secondary School', 4, 1, 'I want to improve my education and this opportunity will help me reach greater heights.', 'To become a software engineer building impactful apps.', 'Between MKW250,000 - MWK500,000'),
+(16, 16, 15, 'Pending', '2025-09-29', 'St. Charles Secondary', 5, 0, 'Education is my passion and I seek this scholarship to support my academic journey.', 'To become a pilot with international experience.', 'Between MWK500,00 - MWK1,000,000'),
+(17, 17, 17, 'Pending', '2025-09-29', 'Likuni Boys Secondary', 3, 1, 'I want to pursue studies in my field of interest and this scholarship is the only way.', 'To become a banker supporting economic growth.', 'Between MWK1,000,000 - MWK2,000,000'),
+(18, 18, 16, 'Pending', '2025-09-29', 'Chikwawa Secondary School', 2, 0, 'This opportunity will empower me to study without worrying about financial obstacles.', 'To become a social worker helping vulnerable groups.', 'More than MWK2,000,000'),
+(19, 19, 18, 'Pending', '2025-09-29', 'Kasungu Secondary School', 4, 1, 'I am applying for this scholarship because it is the only chance I have to advance my studies.', 'To become a scientist researching renewable energy.', 'Between MWK150,000 - MWK250,000'),
+(20, 20, 12, 'Pending', '2025-09-29', 'Dedza Secondary School', 5, 0, 'This scholarship will help me achieve my education goals and uplift my family from poverty.', 'To become a teacher who shapes future leaders.', 'less than MWK150,000');
 
 -- --------------------------------------------------------
 
@@ -152,8 +155,8 @@ INSERT INTO `applications` (`id`, `user_id`, `scholarship_id`, `application_stat
 CREATE TABLE `assessment` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `score` float DEFAULT NULL,
-  `totalQuest` int(11) DEFAULT NULL,
+  `score` float DEFAULT 0,
+  `totalQuest` int(11) DEFAULT 0,
   `date_taken` date DEFAULT curdate()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -162,26 +165,26 @@ CREATE TABLE `assessment` (
 --
 
 INSERT INTO `assessment` (`id`, `user_id`, `score`, `totalQuest`, `date_taken`) VALUES
-(1, 3, 60, 20, '2025-09-07'),
-(2, 41, 22.5, 40, '2025-09-08'),
-(3, 49, 27.5, 40, '2025-09-08'),
-(4, 1, 37.5, 40, '2025-09-23'),
-(5, 11, 35, 40, '2025-09-23'),
-(6, 7, 35, 40, '2025-09-23'),
-(7, 13, 27.5, 40, '2025-09-23');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `criteria`
---
-
-CREATE TABLE `criteria` (
-  `id` int(11) NOT NULL,
-  `name` varchar(150) NOT NULL,
-  `weight` float NOT NULL,
-  `description` varchar(200) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+(1, 1, 100, 40, '2025-10-03'),
+(2, 2, 78, 40, '2025-10-03'),
+(3, 3, 64, 40, '2025-10-03'),
+(4, 4, 55, 40, '2025-10-03'),
+(5, 5, 92, 40, '2025-10-03'),
+(6, 6, 100, 40, '2025-10-03'),
+(7, 7, 81, 40, '2025-10-03'),
+(8, 8, 47, 40, '2025-10-03'),
+(9, 9, 36, 40, '2025-10-03'),
+(10, 10, 88, 40, '2025-10-03'),
+(11, 11, 53, 40, '2025-10-03'),
+(12, 12, 69, 40, '2025-10-03'),
+(13, 13, 74, 40, '2025-10-03'),
+(14, 14, 100, 40, '2025-10-03'),
+(15, 15, 61, 40, '2025-10-03'),
+(16, 16, 82, 40, '2025-10-03'),
+(17, 17, 95, 40, '2025-10-03'),
+(18, 18, 42, 40, '2025-10-03'),
+(19, 19, 67, 40, '2025-10-03'),
+(20, 20, 59, 40, '2025-10-03');
 
 -- --------------------------------------------------------
 
@@ -202,41 +205,34 @@ CREATE TABLE `documents` (
 --
 
 INSERT INTO `documents` (`id`, `user_id`, `file_path`, `doc_type`, `date_uploaded`) VALUES
-(9, 3, 'uploads/doc_101.pdf', 'Transcript', '2025-09-15'),
-(10, 7, 'uploads/doc_102.pdf', 'National ID', '2025-09-16'),
-(11, 12, 'uploads/doc_103.pdf', 'Recommendation', '2025-09-17'),
-(12, 1, 'uploads/doc_104.pdf', 'Proof Of Need', '2025-09-18'),
-(13, 19, 'uploads/doc_105.pdf', 'Transcript', '2025-09-19'),
-(14, 5, 'uploads/doc_106.pdf', 'National ID', '2025-09-20'),
-(15, 16, 'uploads/doc_107.pdf', 'Recommendation Letter', '2025-09-21'),
-(16, 8, 'uploads/doc_108.pdf', 'Proof Of Need', '2025-09-22'),
-(17, 11, 'uploads/doc_109.pdf', 'Transcript', '2025-09-15'),
-(18, 2, 'uploads/doc_110.pdf', 'National ID', '2025-09-16'),
-(19, 14, 'uploads/doc_111.pdf', 'Recommendation', '2025-09-17'),
-(20, 6, 'uploads/doc_112.pdf', 'Proof Of Need', '2025-09-18'),
-(21, 9, 'uploads/doc_113.pdf', 'Transcript', '2025-09-19'),
-(22, 20, 'uploads/doc_114.pdf', 'National ID', '2025-09-20'),
-(23, 4, 'uploads/doc_115.pdf', 'Recommendation', '2025-09-21'),
-(24, 18, 'uploads/doc_116.pdf', 'Proof Of Need', '2025-09-22'),
-(25, 13, 'uploads/doc_117.pdf', 'Transcript', '2025-09-15'),
-(26, 10, 'uploads/doc_118.pdf', 'National ID', '2025-09-16'),
-(27, 15, 'uploads/doc_119.pdf', 'Recommendation', '2025-09-17'),
-(28, 17, 'uploads/doc_120.pdf', 'Proof Of Need', '2025-09-18'),
-(29, 1, 'uploads/doc_121.pdf', 'Transcript', '2025-09-19'),
-(30, 3, 'uploads/doc_122.pdf', 'National ID', '2025-09-20'),
-(31, 7, 'uploads/doc_123.pdf', 'Recommendation', '2025-09-21'),
-(32, 12, 'uploads/doc_124.pdf', 'Proof Of Need', '2025-09-22'),
-(33, 19, 'uploads/doc_125.pdf', 'Transcript', '2025-09-15'),
-(34, 5, 'uploads/doc_126.pdf', 'National ID', '2025-09-16'),
-(35, 16, 'uploads/doc_127.pdf', 'Recommendation', '2025-09-17'),
-(36, 8, 'uploads/doc_128.pdf', 'Proof Of Need', '2025-09-18'),
-(37, 11, 'uploads/doc_129.pdf', 'Transcript', '2025-09-19'),
-(38, 2, 'uploads/doc_130.pdf', 'National ID', '2025-09-20'),
-(39, 14, 'uploads/doc_131.pdf', 'Recommendation', '2025-09-21'),
-(40, 6, 'uploads/doc_132.pdf', 'Proof Of Need', '2025-09-22'),
-(41, 9, 'uploads/doc_133.pdf', 'Transcript', '2025-09-15'),
-(42, 20, 'uploads/doc_134.pdf', 'National ID', '2025-09-16'),
-(43, 4, 'uploads/doc_135.pdf', 'Recommendation', '2025-09-17');
+(1, 3, 'uploads/doc_301.pdf', 'Transcript', '2025-09-29'),
+(2, 3, 'uploads/doc_302.pdf', 'Recommendation Letter', '2025-09-29'),
+(3, 3, 'uploads/doc_303.pdf', 'Proof Of Need', '2025-09-29'),
+(4, 3, 'uploads/doc_304.pdf', 'National ID', '2025-09-29'),
+(5, 7, 'uploads/doc_701.pdf', 'Transcript', '2025-09-29'),
+(6, 7, 'uploads/doc_702.pdf', 'Recommendation Letter', '2025-09-29'),
+(7, 7, 'uploads/doc_703.pdf', 'Proof Of Need', '2025-09-29'),
+(8, 7, 'uploads/doc_704.pdf', 'National ID', '2025-09-29'),
+(9, 12, 'uploads/doc_1201.pdf', 'Transcript', '2025-09-29'),
+(10, 12, 'uploads/doc_1202.pdf', 'Recommendation Letter', '2025-09-29'),
+(11, 12, 'uploads/doc_1203.pdf', 'Proof Of Need', '2025-09-29'),
+(13, 1, 'uploads/doc_101.pdf', 'Transcript', '2025-09-29'),
+(14, 2, 'uploads/doc_201.pdf', 'National ID', '2025-09-29'),
+(15, 4, 'uploads/doc_401.pdf', 'Recommendation Letter', '2025-09-29'),
+(16, 5, 'uploads/doc_501.pdf', 'Proof Of Need', '2025-09-29'),
+(17, 6, 'uploads/doc_601.pdf', 'Transcript', '2025-09-29'),
+(18, 8, 'uploads/doc_801.pdf', 'National ID', '2025-09-29'),
+(19, 9, 'uploads/doc_901.pdf', 'Transcript', '2025-09-29'),
+(20, 10, 'uploads/doc_1001.pdf', 'Recommendation Letter', '2025-09-29'),
+(21, 11, 'uploads/doc_1101.pdf', 'Proof Of Need', '2025-09-29'),
+(22, 13, 'uploads/doc_1301.pdf', 'Transcript', '2025-09-29'),
+(23, 14, 'uploads/doc_1401.pdf', 'Recommendation Letter', '2025-09-29'),
+(24, 15, 'uploads/doc_1501.pdf', 'National ID', '2025-09-29'),
+(25, 16, 'uploads/doc_1601.pdf', 'Transcript', '2025-09-29'),
+(26, 17, 'uploads/doc_1701.pdf', 'Recommendation Letter', '2025-09-29'),
+(27, 18, 'uploads/doc_1801.pdf', 'Proof Of Need', '2025-09-29'),
+(28, 19, 'uploads/doc_1901.pdf', 'Transcript', '2025-09-29'),
+(29, 20, 'uploads/doc_2001.pdf', 'National ID', '2025-09-29');
 
 -- --------------------------------------------------------
 
@@ -482,7 +478,7 @@ CREATE TABLE `scholarships` (
   `type` varchar(200) NOT NULL,
   `file_path` varchar(255) NOT NULL,
   `admin_id` int(11) NOT NULL,
-  `deadline` datetime NOT NULL,
+  `deadline` date DEFAULT curdate(),
   `descrip` varchar(150) DEFAULT 'No Description',
   `provider` varchar(150) DEFAULT NULL,
   `financial_amount` varchar(20) DEFAULT NULL,
@@ -496,12 +492,13 @@ CREATE TABLE `scholarships` (
 --
 
 INSERT INTO `scholarships` (`id`, `name`, `type`, `file_path`, `admin_id`, `deadline`, `descrip`, `provider`, `financial_amount`, `applicantion_link`, `provider_email`, `subject`) VALUES
-(12, 'ewrubvwierb', 'Government', '1756145025_0 Backend Development .pdf', 15, '2027-02-08 00:00:00', 'qwrifubqiwufjq', 'kjewbrkjber', 'Partial', 'ekrjbwkejrfbkq', 'qwkejfqwkjf', 'Computer Science & IT'),
-(13, 'wqlfblkwjb', 'Agriculture/Environment', '1756147159_ITDSABD Topic 3 Understanding Data  Exploration.pdf', 15, '2000-01-01 00:00:00', 'kqwejfkqwjlbf', 'khjwflkjee', 'Lump Sum', 'kwjqnlfjne', 'qwkjbeflkj', 'Arts & Humanities'),
-(15, 'kerjbgkwjebr', 'Women in STEM', '1756147914_Network Security and Cryptography Student Guide.pdf', 15, '2000-01-01 00:00:00', 'kqwjekqjbr', 'kwejrbkje', 'Full Tuition', 'lqijerbkjhqebr', 'qjwhebfjqwh', 'Communications & Media Studies'),
-(16, 'qwejfbhlqkwjef', 'Government', '1756150146_ITDSABD Topic 2 Introduction to Data.pdf', 15, '2000-01-01 00:00:00', 'kqwjhebflkqwjbf', 'liqweubflkqwjfe', 'Full Tuition', 'kjjhsefvbkj', 'qlkrfbqklrf', 'Communications & Media Studies'),
-(17, 'qwkjfbkqer', 'Agriculture/Environment', '1756150845_studentGuideOld.pdf', 15, '2000-01-01 00:00:00', 'qkwjfblw', 'erngrgk', 'Partial', 'kejwrbfkwej', 'kqwjbfkqj', 'Dentistry'),
-(18, 'qwkejfnkwj', 'Agriculture/Environment', '1756151005_ITDSABD Topic 2 Introduction to Data.pdf', 15, '2000-01-01 00:00:00', 'qwkjebfjw', 'wkefbqwkef', 'Partial', 'walkjfqbwelkrjf', 'qkwjrfblkqerbf', 'Law');
+(12, 'ewrubvwierb', 'Government', '1756145025_0 Backend Development .pdf', 15, '2025-10-01', 'qwrifubqiwufjq', 'kjewbrkjber', 'Partial', 'ekrjbwkejrfbkq', 'qwkejfqwkjf', 'Computer Science & IT'),
+(13, 'wqlfblkwjb', 'Agriculture/Environment', '1756147159_ITDSABD Topic 3 Understanding Data  Exploration.pdf', 15, '2025-10-01', 'kqwejfkqwjlbf', 'khjwflkjee', 'Lump Sum', 'kwjqnlfjne', 'qwkjbeflkj', 'Arts & Humanities'),
+(15, 'kerjbgkwjebr', 'Women in STEM', '1756147914_Network Security and Cryptography Student Guide.pdf', 15, '2025-10-01', 'kqwjekqjbr', 'kwejrbkje', 'Full Tuition', 'lqijerbkjhqebr', 'qjwhebfjqwh', 'Communications & Media Studies'),
+(16, 'qwejfbhlqkwjef', 'Government', '1756150146_ITDSABD Topic 2 Introduction to Data.pdf', 15, '2025-10-01', 'kqwjhebflkqwjbf', 'liqweubflkqwjfe', 'Full Tuition', 'kjjhsefvbkj', 'qlkrfbqklrf', 'Communications & Media Studies'),
+(17, 'qwkjfbkqer', 'Agriculture/Environment', '1756150845_studentGuideOld.pdf', 15, '2025-10-01', 'qkwjfblw', 'erngrgk', 'Partial', 'kejwrbfkwej', 'kqwjbfkqj', 'Dentistry'),
+(18, 'qwkejfnkwj', 'Agriculture/Environment', '1756151005_ITDSABD Topic 2 Introduction to Data.pdf', 15, '2025-10-01', 'qwkjebfjw', 'wkefbqwkef', 'Partial', 'walkjfqbwelkrjf', 'qkwjrfblkqerbf', 'Law'),
+(19, 'NCC scholar', 'Business/Entrepreneurship', '1759518981_ITDSABD Topic 11 Data Science Ethics.pdf', 15, '2025-09-30', 'extend your education studies', 'NCC', 'Stipend', 'www.Ncc.ca.za', 'ncc@gmail.com', 'Communications & Media Studies');
 
 -- --------------------------------------------------------
 
@@ -525,7 +522,9 @@ INSERT INTO `sholarship_perks` (`scholarship_id`, `perk_id`) VALUES
 (18, 3),
 (18, 4),
 (18, 5),
-(18, 6);
+(18, 6),
+(19, 2),
+(19, 4);
 
 --
 -- Indexes for dumped tables
@@ -558,12 +557,6 @@ ALTER TABLE `applications`
 -- Indexes for table `assessment`
 --
 ALTER TABLE `assessment`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `criteria`
---
-ALTER TABLE `criteria`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -626,25 +619,19 @@ ALTER TABLE `applicant`
 -- AUTO_INCREMENT for table `applications`
 --
 ALTER TABLE `applications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `assessment`
 --
 ALTER TABLE `assessment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- AUTO_INCREMENT for table `criteria`
---
-ALTER TABLE `criteria`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `documents`
 --
 ALTER TABLE `documents`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT for table `notifications`
@@ -668,7 +655,7 @@ ALTER TABLE `questions`
 -- AUTO_INCREMENT for table `scholarships`
 --
 ALTER TABLE `scholarships`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- Constraints for dumped tables

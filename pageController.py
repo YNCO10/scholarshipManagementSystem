@@ -31,7 +31,7 @@ class Controller:
         self.verbalReasoning = VerbalReasoning()
         self.logicalReasoning = LogicalCode()
         self.criticalThinking = CriticalCode()
-        self.applyScholar = ApplyScholarship()
+        self.applyScholar = None
         self.applicantDetails = ApplicantDetails("")
         self.manageApplicantDetails = ManageApplicantDetails("test11@gmail.com")
 
@@ -127,7 +127,8 @@ class Controller:
         self.hideAll()
         self.criticalThinking.show()
 
-    def showApplyScholarPage(self):
+    def showApplyScholarPage(self, Id):
+        self.applyScholar = ApplyScholarship(Id)
         self.applyScholar.show()
 
     def showApplicantDetails(self):

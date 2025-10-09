@@ -50,7 +50,7 @@ class GetApplicantData:
             self.assessmentWeight,
         )
         # print("Checkpoint4")
-        self.scoreApplicant()
+        # self.scoreApplicant()
 
 
     def scoreApplicant(self):

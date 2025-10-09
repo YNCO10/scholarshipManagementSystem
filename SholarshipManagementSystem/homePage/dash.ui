@@ -679,7 +679,7 @@ QPushButton::hover{
 </string>
          </property>
          <property name="currentIndex">
-          <number>1</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="home">
           <layout class="QGridLayout" name="gridLayout_2">
@@ -693,8 +693,8 @@ QPushButton::hover{
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>410</width>
-                <height>374</height>
+                <width>716</width>
+                <height>674</height>
                </rect>
               </property>
               <layout class="QGridLayout" name="gridLayout_7">
@@ -834,18 +834,31 @@ font: 12pt &quot;Segoe UI&quot;;</string>
                   </spacer>
                  </item>
                  <item>
-                  <widget class="QLabel" name="recentApplicantionsLabel">
+                  <widget class="QLabel" name="chart1Label">
                    <property name="styleSheet">
                     <string notr="true">
 font: 12pt &quot;Segoe UI&quot;;</string>
                    </property>
                    <property name="text">
-                    <string>RECENT APPLICANTIONS              </string>
+                    <string>Chart1 Label...</string>
                    </property>
                    <property name="alignment">
                     <set>Qt::AlignmentFlag::AlignCenter</set>
                    </property>
                   </widget>
+                 </item>
+                 <item>
+                  <spacer name="horizontalSpacer_12">
+                   <property name="orientation">
+                    <enum>Qt::Orientation::Horizontal</enum>
+                   </property>
+                   <property name="sizeHint" stdset="0">
+                    <size>
+                     <width>40</width>
+                     <height>20</height>
+                    </size>
+                   </property>
+                  </spacer>
                  </item>
                  <item>
                   <spacer name="horizontalSpacer_7">
@@ -861,13 +874,13 @@ font: 12pt &quot;Segoe UI&quot;;</string>
                   </spacer>
                  </item>
                  <item>
-                  <widget class="QLabel" name="recentApplicantionsLabel_2">
+                  <widget class="QLabel" name="chart2Label">
                    <property name="styleSheet">
                     <string notr="true">
 font: 12pt &quot;Segoe UI&quot;;</string>
                    </property>
                    <property name="text">
-                    <string>APPLICANT RANK</string>
+                    <string>Chart2 Label...</string>
                    </property>
                    <property name="alignment">
                     <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -957,8 +970,8 @@ font: 12pt &quot;Segoe UI&quot;;</string>
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>98</width>
-                <height>28</height>
+                <width>68</width>
+                <height>18</height>
                </rect>
               </property>
               <layout class="QGridLayout" name="gridLayout_8"/>
@@ -1810,12 +1823,12 @@ margin-bottom:80px;</string>
    <slot>setChecked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>34</x>
-     <y>758</y>
+     <x>43</x>
+     <y>748</y>
     </hint>
     <hint type="destinationlabel">
-     <x>157</x>
-     <y>758</y>
+     <x>232</x>
+     <y>748</y>
     </hint>
    </hints>
   </connection>
@@ -1890,12 +1903,12 @@ margin-bottom:80px;</string>
    <slot>setChecked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>170</x>
-     <y>758</y>
+     <x>245</x>
+     <y>748</y>
     </hint>
     <hint type="destinationlabel">
      <x>50</x>
-     <y>758</y>
+     <y>748</y>
     </hint>
    </hints>
   </connection>

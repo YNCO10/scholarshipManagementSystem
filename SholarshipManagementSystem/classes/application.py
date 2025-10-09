@@ -3,6 +3,7 @@ import requests
 
 class Application:
     def __init__(self,
+                 Id,
                  email,
                  schoolAttended,
                  gpa,
@@ -16,6 +17,7 @@ class Application:
                  incomeBracket
                  ):
         super().__init__()
+        self.Id = Id
         self.email = email
         self.schoolAttended = schoolAttended
         self.gpa = gpa
@@ -52,5 +54,6 @@ class Application:
             "fin_assistance": self.financialAssistance,
             "reasonForApplying": self.reasonForApplying,
             "careerGoal": self.careerGoals,
-            "email" : self.email
+            "email" : self.email,
+            "scholarshipID" : self.Id
         }

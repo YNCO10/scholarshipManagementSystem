@@ -1,79 +1,22 @@
-INSERT INTO applications
-(user_id, scholarship_id, application_status, date_submitted,
- school_attended, gpa, fin_assistance,
- reason_for_applying, careerGoals, income_bracket)
-VALUES
-(20, 11, 'Pending', '2025-09-01', 'Lilongwe Secondary', 3, 1,
- 'I am eager to further my education and develop essential skills that will allow me to support my community. This scholarship provides financial help and mentorship that will help me achieve my long-term ambitions in science.',
- 'Become an environmental engineer and lead sustainable projects.',
- 'Between MWK250,000 - MWK500,000'),
-
-(13, 12, 'Pending', '2025-09-02', 'Blantyre Academy', 4, 0,
- 'Receiving this award will ease financial stress and enable me to dedicate more time to academic excellence. I aim to expand my knowledge in computing and return the favor by mentoring young students in my area.',
- 'Work as a software developer building health-tech solutions.',
- 'Between MWK250,000 - MWK500,000'),
-
-(11, 13, 'Pending', '2025-09-03', 'Mzuzu High', 3, 1,
- 'My parents cannot afford tuition, yet I have consistently performed well. With this assistance, I will continue my studies in economics and later contribute to rural development through strategic policy and small-business support.',
- 'Economic analyst focusing on rural enterprise.',
- 'Between MWK250,000 - MWK500,000'),
-
-(15, 15, 'Pending', '2025-09-04', 'Chanco Prep', 3, 0,
- 'This scholarship will allow me to enroll in advanced science courses that are currently out of reach. I plan to research renewable energy sources and help Malawi transition toward affordable, clean electricity for all citizens.',
- 'Researcher in renewable energy technology.',
- 'Between MWK250,000 - MWK500,000'),
-
-(16, 11, 'Pending', '2025-09-05', 'St. Marys School', 4, 1,
- 'Education is my gateway to transforming the economic condition of my family and community. I intend to pursue a degree in education and later establish a center that trains teachers to improve literacy rates in villages.',
- 'Educational program director and policy advocate.',
- 'Between MWK250,000 - MWK500,000'),
-
-(12, 12, 'Pending', '2025-09-06', 'Zomba Institute', 2, 1,
- 'The financial barrier has been my greatest challenge. By supporting me, this scholarship gives me the chance to study agriculture, share modern farming techniques, and empower local farmers to produce sustainable harvests all year.',
- 'Agricultural extension specialist.',
- 'Between MWK250,000 - MWK500,000'),
-
-(18, 13, 'Pending', '2025-09-07', 'Karonga High', 3, 0,
- 'I have demonstrated dedication to learning despite economic difficulties. This opportunity will allow me to focus on biomedical sciences, discover affordable treatments, and improve healthcare delivery in underserved communities of Malawi.',
- 'Biomedical researcher in tropical medicine.',
- 'Between MWK250,000 - MWK500,000'),
-
-(16, 15, 'Pending', '2025-09-08', 'Dedza Secondary', 3, 1,
- 'My ambition is to become a civil engineer addressing infrastructure gaps. Winning this scholarship lets me study structural design and later return to design safe, durable bridges and roads that connect rural regions efficiently.',
- 'Civil engineer building sustainable transport networks.',
- 'Between MWK250,000 - MWK500,000'),
-
-(19, 11, 'Pending', '2025-09-09', 'Ntcheu Boarding', 4, 0,
- 'Access to quality education will give me the knowledge and confidence to innovate solutions in environmental management. This financial help reduces family burdens and motivates me to excel academically while volunteering locally.',
- 'Environmental policy consultant.',
- 'Between MWK250,000 - MWK500,000'),
-
-(110, 12, 'Pending', '2025-09-10', 'Salima High', 3, 1,
- 'I believe education is the best tool to fight poverty. With this scholarship, I can complete my degree in business administration and mentor young entrepreneurs, helping them start enterprises that create employment opportunities.',
- 'Business strategist and entrepreneurship coach.',
- 'Between MWK250,000 - MWK500,000'),
-
-(111, 13, 'Pending', '2025-09-11', 'Mchinji Secondary', 2, 1,
- 'My family struggles to pay fees though I consistently rank among the top students. Assistance from this program will let me major in accounting and support nonprofit organizations with transparent financial systems.',
- 'Certified public accountant for NGOs.',
- 'Between MWK250,000 - MWK500,000'),
-
-(112, 15, 'Pending', '2025-09-12', 'Kasungu Day School', 3, 0,
- 'I am passionate about technology and innovation. This funding gives me the ability to study data science and later apply predictive analytics to agriculture, improving food security for smallholder farmers throughout the country.',
- 'Data scientist improving agricultural yields.',
- 'Between MWK250,000 - MWK500,000'),
-
-(113, 11, 'Pending', '2025-09-13', 'Nkhotakota Secondary', 3, 1,
- 'Winning this scholarship will allow me to attend advanced mathematics courses and join international competitions, after which I plan to teach and inspire a new generation of problem solvers in my home district.',
- 'University lecturer in mathematics.',
- 'Between MWK250,000 - MWK500,000'),
-
-(114, 12, 'Pending', '2025-09-14', 'Mangochi High', 4, 0,
- 'The cost of higher education is beyond my family’s means. This support enables me to continue computer engineering studies and eventually create affordable digital tools for small businesses to expand their markets.',
- 'Computer engineer building SME software.',
- 'Between MWK250,000 - MWK500,000'),
-
-(115, 13, 'Pending', '2025-09-15', 'Nsanje Secondary', 3, 1,
- 'This award will help me gain critical legal knowledge so I can champion social justice causes. I am determined to provide pro bono services for vulnerable groups and to advocate for fair representation in courts.',
- 'Human rights lawyer focusing on rural outreach.',
- 'Between MWK250,000 - MWK500,000');
+INSERT INTO `applications` 
+(`user_id`, `scholarship_id`, `application_status`, `date_submitted`, `school_attended`, `gpa`, `fin_assistance`, `reason_for_applying`, `careerGoals`, `income_bracket`) VALUES
+(1, 12, 'Pending', '2025-09-29', 'Chichiri Secondary School', 4, 1, 'I am applying for this scholarship to further my education without financial burden and to become the first in my family to graduate.', 'To become a civil engineer and contribute to national infrastructure development.', 'less than MWK150,000'),
+(2, 15, 'Pending', '2025-09-29', 'St. Patrick’s Academy', 3, 0, 'This scholarship will allow me to complete my studies and acquire skills that will benefit both myself and my community.', 'To become a medical doctor serving rural areas.', 'Between MWK150,000 - MWK250,000'),
+(3, 18, 'Pending', '2025-09-29', 'Nkhotakota Secondary School', 2, 1, 'I want to pursue higher education despite financial difficulties, and this scholarship will provide the chance.', 'To become a teacher who inspires and uplifts students.', 'Between MKW250,000 - MWK500,000'),
+(4, 16, 'Pending', '2025-09-29', 'Blantyre Day Secondary', 5, 1, 'This scholarship will help me pay for my tuition and focus fully on my studies without worrying about school fees.', 'To become a lawyer advocating for justice and equality.', 'Between MWK500,00 - MWK1,000,000'),
+(5, 13, 'Pending', '2025-09-29', 'Zomba Catholic Secondary', 4, 0, 'I believe education is the key to my future and I seek this support to reach my full potential.', 'To become an IT specialist focusing on software development.', 'Between MWK1,000,000 - MWK2,000,000'),
+(6, 17, 'Pending', '2025-09-29', 'Mchinji Boys Secondary', 3, 1, 'My family cannot afford to pay my school fees, and this scholarship will allow me to continue my education.', 'To become a nurse providing healthcare to underserved areas.', 'More than MWK2,000,000'),
+(7, 12, 'Pending', '2025-09-29', 'St. Mary’s Secondary', 2, 0, 'I want to study further and this scholarship will allow me to pursue my dream career.', 'To become an accountant and support businesses with financial planning.', 'less than MWK150,000'),
+(8, 18, 'Pending', '2025-09-29', 'Bwaila Secondary School', 5, 1, 'Receiving this scholarship will help me overcome financial barriers and achieve academic success.', 'To become a data scientist working on innovative solutions.', 'Between MWK150,000 - MWK250,000'),
+(9, 13, 'Pending', '2025-09-29', 'Karonga Secondary School', 3, 0, 'I am motivated to learn but lack the financial resources, so this scholarship will enable me to continue.', 'To become an environmentalist promoting sustainable living.', 'Between MKW250,000 - MWK500,000'),
+(10, 15, 'Pending', '2025-09-29', 'Mzuzu Academy', 4, 1, 'I wish to achieve academic excellence but financial limitations stand in my way, hence this application.', 'To become an architect designing sustainable housing.', 'Between MWK500,00 - MWK1,000,000'),
+(11, 16, 'Pending', '2025-09-29', 'St. Augustine’s Secondary', 2, 0, 'I want to pursue higher education to uplift my family and contribute positively to society.', 'To become a journalist advocating for transparency.', 'Between MWK1,000,000 - MWK2,000,000'),
+(12, 17, 'Pending', '2025-09-29', 'Chayamba Secondary School', 5, 1, 'I am committed to education but lack the resources, and this scholarship will help me complete my studies.', 'To become a doctor addressing public health challenges.', 'More than MWK2,000,000'),
+(13, 18, 'Pending', '2025-09-29', 'Ndirande Hill Secondary', 3, 1, 'This scholarship will reduce the financial stress my parents face and allow me to excel academically.', 'To become a lecturer inspiring future generations.', 'less than MWK150,000'),
+(14, 12, 'Pending', '2025-09-29', 'Mtendere Secondary School', 2, 0, 'With this scholarship, I can continue learning and aim for a brighter future.', 'To become an entrepreneur creating job opportunities.', 'Between MWK150,000 - MWK250,000'),
+(15, 13, 'Pending', '2025-09-29', 'Robert Blake Secondary School', 4, 1, 'I want to improve my education and this opportunity will help me reach greater heights.', 'To become a software engineer building impactful apps.', 'Between MKW250,000 - MWK500,000'),
+(16, 15, 'Pending', '2025-09-29', 'St. Charles Secondary', 5, 0, 'Education is my passion and I seek this scholarship to support my academic journey.', 'To become a pilot with international experience.', 'Between MWK500,00 - MWK1,000,000'),
+(17, 17, 'Pending', '2025-09-29', 'Likuni Boys Secondary', 3, 1, 'I want to pursue studies in my field of interest and this scholarship is the only way.', 'To become a banker supporting economic growth.', 'Between MWK1,000,000 - MWK2,000,000'),
+(18, 16, 'Pending', '2025-09-29', 'Chikwawa Secondary School', 2, 0, 'This opportunity will empower me to study without worrying about financial obstacles.', 'To become a social worker helping vulnerable groups.', 'More than MWK2,000,000'),
+(19, 18, 'Pending', '2025-09-29', 'Kasungu Secondary School', 4, 1, 'I am applying for this scholarship because it is the only chance I have to advance my studies.', 'To become a scientist researching renewable energy.', 'Between MWK150,000 - MWK250,000'),
+(20, 12, 'Pending', '2025-09-29', 'Dedza Secondary School', 5, 0, 'This scholarship will help me achieve my education goals and uplift my family from poverty.', 'To become a teacher who shapes future leaders.', 'less than MWK150,000');

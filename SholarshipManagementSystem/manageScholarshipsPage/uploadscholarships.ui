@@ -71,6 +71,81 @@ QRadioButton{
 }</string>
   </property>
   <layout class="QGridLayout" name="gridLayout_2">
+   <item row="2" column="0">
+    <layout class="QHBoxLayout" name="horizontalLayout_34">
+     <property name="topMargin">
+      <number>19</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
+     <item>
+      <spacer name="horizontalSpacer_13">
+       <property name="orientation">
+        <enum>Qt::Orientation::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="uploadBtn">
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(1, 14, 27);</string>
+       </property>
+       <property name="text">
+        <string>UPLOAD</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_14">
+       <property name="orientation">
+        <enum>Qt::Orientation::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="cancelBtn">
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(1, 14, 27);</string>
+       </property>
+       <property name="text">
+        <string>CANCEL</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_15">
+       <property name="orientation">
+        <enum>Qt::Orientation::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+    </layout>
+   </item>
    <item row="0" column="0">
     <widget class="QScrollArea" name="scrollArea">
      <property name="styleSheet">
@@ -89,9 +164,9 @@ QRadioButton{
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>-123</y>
+        <y>-446</y>
         <width>488</width>
-        <height>1032</height>
+        <height>1037</height>
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout">
@@ -355,12 +430,31 @@ QRadioButton{
                 <item>
                  <widget class="QLabel" name="label_45">
                   <property name="text">
-                   <string>Subject:                   </string>
+                   <string>Scheme:                   </string>
                   </property>
                  </widget>
                 </item>
                 <item>
                  <widget class="QLineEdit" name="subjectTxt"/>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="newSchemeBtn">
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">margin:0px;
+padding:3px;
+background-color: rgb(1, 14, 27);
+height:20px;
+width:70px;
+font: 9pt &quot;Segoe UI&quot;;
+border-radius:5px;</string>
+                  </property>
+                  <property name="text">
+                   <string>New Scheme</string>
+                  </property>
+                 </widget>
                 </item>
                </layout>
               </item>
@@ -776,81 +870,6 @@ margin-bottom:30px;</string>
       </layout>
      </widget>
     </widget>
-   </item>
-   <item row="2" column="0">
-    <layout class="QHBoxLayout" name="horizontalLayout_34">
-     <property name="topMargin">
-      <number>19</number>
-     </property>
-     <property name="bottomMargin">
-      <number>0</number>
-     </property>
-     <item>
-      <spacer name="horizontalSpacer_13">
-       <property name="orientation">
-        <enum>Qt::Orientation::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="uploadBtn">
-       <property name="cursor">
-        <cursorShape>PointingHandCursor</cursorShape>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background-color: rgb(1, 14, 27);</string>
-       </property>
-       <property name="text">
-        <string>UPLOAD</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <spacer name="horizontalSpacer_14">
-       <property name="orientation">
-        <enum>Qt::Orientation::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-     <item>
-      <widget class="QPushButton" name="cancelBtn">
-       <property name="cursor">
-        <cursorShape>PointingHandCursor</cursorShape>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background-color: rgb(1, 14, 27);</string>
-       </property>
-       <property name="text">
-        <string>CANCEL</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <spacer name="horizontalSpacer_15">
-       <property name="orientation">
-        <enum>Qt::Orientation::Horizontal</enum>
-       </property>
-       <property name="sizeHint" stdset="0">
-        <size>
-         <width>40</width>
-         <height>20</height>
-        </size>
-       </property>
-      </spacer>
-     </item>
-    </layout>
    </item>
   </layout>
  </widget>

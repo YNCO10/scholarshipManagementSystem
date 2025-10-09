@@ -31,7 +31,15 @@ class ManageApplicantDetails(QWidget, Ui_Form):
         self.goToApplicantDetialsBtn.clicked.connect(self.goToApplicantDetails)
 
         self.goToApplicantCriteriaBtn.clicked.connect(self.goToApplicantCriteria)
-
+        #accept
+        self.acceptBtn.clicked.connect(
+            lambda: self.changeApplicantStatus("ACCEPTED")
+        )
+        #reject
+        self.rejectBtn.clicked.connect(
+            lambda: self.changeApplicantStatus("REJECTED")
+        )
+        #mark as reviewed
         self.cancelBtn.clicked.connect(self.closeWindow)
         self.cancelBtn_2.clicked.connect(self.closeWindow)
 
@@ -242,6 +250,39 @@ class ManageApplicantDetails(QWidget, Ui_Form):
                 f"Exception(updateWeights): {e}"
             )
             print(f"Exception(updateWeights): {e}")
+
+########################################################################################################################
+    def changeApplicantStatus(self, status):
+        try:
+            response = requests.post(
+                "http://localhost/BackEnd/scholarshipManagement/manageApplicant/updateStatus.php",
+                data={
+                    "email" : self.email,
+                    "status": status
+                }
+            )
+            result = response.json()
+            msg = result.get("message", "Unknown MSG")
+
+            if result.get("status") == "success":
+                self.regCode.msgBox(
+                    "Process Complete",
+                    msg
+                )
+
+            elif result.get("status") == "error":
+                self.regCode.msgBox(
+                    "Error",
+                    msg
+                )
+                print(f"Error: {msg}")
+
+        except Exception as e:
+            self.regCode.msgBox(
+                "Error",
+                f"Exception(changeApplicantStatus): {e}"
+            )
+            print(f"Exception(changeApplicantStatus): {e}")
 
 ########################################################################################################################
     def closeWindow(self):

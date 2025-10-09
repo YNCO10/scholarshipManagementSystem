@@ -39,6 +39,7 @@ class Dash(QMainWindow, Ui_MainWindow):
         self.totalNumOfScholarshipsLabelReports.setText(f"Total Number Scholarships: {Sessions.scholarshipCount}")
         self.totalNumOfScholarshipsLabelHome.setText(f"Total Number Scholarships: {Sessions.scholarshipCount}")
 
+        #HIDE SIDEBAR
         self.iconNameWidget.setHidden(True)
 
         # DISPLAY USERNAME
@@ -52,6 +53,11 @@ class Dash(QMainWindow, Ui_MainWindow):
 
         self.loadPlot()
         self.loadPlot2()
+        #index to load different charts
+        self.idx = 1
+        #chart labels
+        self.chart1Label.setText("Applicant Education Level")
+        self.chart2Label.setText("Applicant per country")
 
         self.listofApplicantsTableWidget.setFixedHeight(300)
         self.chartWidget.setFixedHeight(300)
@@ -109,6 +115,9 @@ class Dash(QMainWindow, Ui_MainWindow):
         self.changeEmailBtn.clicked.connect(self.changeEmail)
         self.changeUsernameTxt.clicked.connect(self.changeUsername)
         self.changePassBtn.clicked.connect(self.changePass)
+
+        #changeCharts btn
+        self.changeChartBtn.clicked.connect(self.loadRandChart)
 
     ###PASSWORD#########################################################################################################
     def togglePasswordBtn(self):
@@ -473,6 +482,72 @@ class Dash(QMainWindow, Ui_MainWindow):
         layout.addWidget(figure)
 
 ########################################################################################################################
+    def loadHomePageCharts1(self):
+        try:
+            self.clearLayout(self.chartWidget)
+            self.clearLayout(self.chart2Widget)
+
+            self.chart1Label.setText("Applicant Education Level")
+            figure = FigureCanvas(self.plot1())
+            layout = QVBoxLayout(self.chartWidget)
+            layout.addWidget(figure)
+            self.chartWidget.setLayout(layout)
+
+            self.chart2Label.setText("Applicant per country")
+            figure2 = FigureCanvas(self.plot2())
+            layout2 = QVBoxLayout(self.chart2Widget)
+            layout2.addWidget(figure2)
+            self.chart2Widget.setLayout(layout2)
+
+        except Exception as e:
+            print(f"Exception(loadHomePageCharts1): {e}")
+
+########################################################################################################################
+    def loadHomePageCharts2(self):
+        try:
+            self.clearLayout(self.chartWidget)
+            self.clearLayout(self.chart2Widget)
+
+            self.chart1Label.setText("Applications this week")
+            figure = FigureCanvas(self.plot4())
+            layout = QVBoxLayout(self.chartWidget)
+            layout.addWidget(figure)
+            self.chartWidget.setLayout(layout)
+
+            self.chart2Label.setText("Financial benefit per scholarship")
+            figure2 = FigureCanvas(self.plot5())
+            layout2 = QVBoxLayout(self.chart2Widget)
+            layout2.addWidget(figure2)
+            self.chart2Widget.setLayout(layout2)
+
+        except Exception as e:
+            print(f"Exception(loadHomePageCharts2): {e}")
+
+########################################################################################################################
+    def clearLayout(self, widget):
+
+        layout = widget.layout()
+        if layout is not None:
+            while layout.count():
+                child = layout.takeAt(0)
+                if child.widget():
+                    child.widget().deleteLater()
+            QWidget().setLayout(layout)
+
+########################################################################################################################
+    def loadRandChart(self):
+        self.homePageCharts = [
+            self.loadHomePageCharts1,
+            self.loadHomePageCharts2
+        ]
+
+        chartFunction = self.homePageCharts[self.idx]
+        chartFunction()
+
+        self.idx = (self.idx + 1) % len(self.homePageCharts)
+
+
+########################################################################################################################
     def populateApplicantTbl(self):
         try:
             response = requests.get(
@@ -548,7 +623,7 @@ class Dash(QMainWindow, Ui_MainWindow):
                         lambda _, Id=rowData.get("id"): self.displayApplicantDetails(Id)
                     )
                     delBtn.clicked.connect(
-                        lambda _, Id=rowData.get("id"): self.delScholarship(Id)
+                        lambda _, Id=rowData.get("id"): self.delApplicant(Id)
                     )
                     #   align horizontally
                     btnWidget = QWidget()
@@ -592,9 +667,9 @@ class Dash(QMainWindow, Ui_MainWindow):
             msg = result.get("message")
 
             if result.get("status") == "success":
-                self.populateTableWidget()
                 self.msgBox("Process Complete", f"{msg}")
                 print(f"Delete successful: {msg}")
+                self.populateApplicantTbl()
 
             elif result.get("status") == "error":
                 self.msgBox("delete failed(dash)", f"{msg}")

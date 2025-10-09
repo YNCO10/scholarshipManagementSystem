@@ -1,6 +1,7 @@
 from PyQt6.QtGui import QIcon
 from PyQt6.QtWidgets import QWidget
 
+import Sessions
 from SholarshipManagementSystem.application.applyScholarshipPage import Ui_applyScholarshipForm
 from SholarshipManagementSystem.classes.application import Application
 from SholarshipManagementSystem.authentications.regValidationPHP import RegCode
@@ -10,8 +11,10 @@ from SholarshipManagementSystem.applicantTracking.getApplicantData import GetApp
 
 
 class ApplyScholarship(QWidget, Ui_applyScholarshipForm):
-    def __init__(self):
+    def __init__(self, Id):
         super().__init__()
+        self.scholarshipID = Id
+        self.getData = None
         self.setupUi(self)
         self.setWindowIcon(QIcon(":icons/SMsysIcon.png"))
         self.setWindowTitle("Apply For Scholarship")
@@ -54,7 +57,8 @@ class ApplyScholarship(QWidget, Ui_applyScholarshipForm):
             proofOfNeed = self.proofOfNeedTxt.text()
             incomeBracket = self.incomeBracketComboBox.currentText()
             financialAssistance = None
-            email = "test11@gmail.com"
+            # email = "test11@gmail.com"
+            email = Sessions.seshEmail
 
             print("Checkpoint 1")
 
@@ -82,6 +86,7 @@ class ApplyScholarship(QWidget, Ui_applyScholarshipForm):
             self.getData = GetApplicantData(email)
 
             application = Application(
+                self.scholarshipID,
                 email,
                 schoolAttended.strip(),
                 gpa.strip(),

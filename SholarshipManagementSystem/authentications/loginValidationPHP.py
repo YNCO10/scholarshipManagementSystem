@@ -12,6 +12,8 @@ import Sessions
 class LoginCode(QWidget, Ui_loginPage):
     def __init__(self):
         super().__init__()
+        self.dash = None
+        self.appDash = None
         self.controller = None
         self.setWindowTitle("Login")
         self.setWindowIcon(QIcon(":icons/SMsysIcon.png"))
@@ -67,9 +69,9 @@ class LoginCode(QWidget, Ui_loginPage):
                 # self.hideWindow()
 
                 from SholarshipManagementSystem.homePage.myMainDisplay import Dash
-                dash = Dash()
-                dash.showMaximized()
-                self.hideWindow()
+                self.dash = Dash()
+                self.dash.showMaximized()
+                self.close()
 
 
             elif result.get("status") == "applicant":
@@ -79,21 +81,18 @@ class LoginCode(QWidget, Ui_loginPage):
 
                 if result.get("isAssessmentDone"):
                     Sessions.seshEmail = self.loginEmailTxt.text().strip()
-                    # self.msgBox(
-                    #     "Dash",
-                    #     "APPLICANT DASHBOARD HERE..."
-                    # )
-                    from SholarshipManagementSystem.manageApplicantl.applicantCardCode import ManageApplicantWindow
-                    manageApplicant = ManageApplicantWindow()
-                    manageApplicant.show()
+
+                    from SholarshipManagementSystem.homePage.applicantDashbordCode import ApplicantDash
+                    self.appDash = ApplicantDash()
+                    self.appDash.showMaximized()
+                    self.hideWindow()
+
                 else:
                     Sessions.seshEmail = self.loginEmailTxt.text().strip()
                     from pageController import Controller
                     self.controller = Controller()
                     self.controller.showIntroPage()
                     self.hideWindow()
-
-
 
             else:
                 self.msgBox("Error", f"Error: {errorMsg}")
@@ -106,7 +105,7 @@ class LoginCode(QWidget, Ui_loginPage):
 
 
     def hideWindow(self):
-        self.hide()
+        self.close()
 
 
     def msgBox(self, title, msg):
