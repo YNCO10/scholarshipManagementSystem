@@ -167,6 +167,7 @@ class GetApplicantData:
             # Document section--------------------------------------------
             documentsUploadedLabel.setText(
                 f"Number of Documents uploaded: {len(self.uploadedDocs)}/{len(self.requiredDocs)}")
+
             # doc Score
             docScore = self.scoreHandler.documentScore(self.uploadedDocs, self.requiredDocs)
             documentScoreLabel.setText(f"Score: {docScore} Points.")

@@ -44,6 +44,7 @@
       <property name="styleSheet">
        <string notr="true">QWidget{
 	background-color: rgb(11, 100, 197);
+	width:200px;
 }
 
 QPushButton{
@@ -137,6 +138,9 @@ QPushButton:checked{
         <layout class="QVBoxLayout" name="verticalLayout_2">
          <item>
           <widget class="QPushButton" name="homeBtn">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
            <property name="text">
             <string>Home</string>
            </property>
@@ -155,26 +159,11 @@ QPushButton:checked{
          </item>
          <item>
           <widget class="QPushButton" name="scholarshipBtn">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
            <property name="text">
             <string>Manage Scholarships</string>
-           </property>
-           <property name="icon">
-            <iconset resource="../../projectRescources.qrc">
-             <normaloff>:/icons/manageScholarship.png</normaloff>
-             <normalon>:/icons/whiteManageScholarshipIcon.png</normalon>:/icons/manageScholarship.png</iconset>
-           </property>
-           <property name="checkable">
-            <bool>true</bool>
-           </property>
-           <property name="autoExclusive">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="manageApplicantBtn">
-           <property name="text">
-            <string>Manage Applicant</string>
            </property>
            <property name="icon">
             <iconset resource="../../projectRescources.qrc">
@@ -190,7 +179,52 @@ QPushButton:checked{
           </widget>
          </item>
          <item>
+          <widget class="QPushButton" name="manageApplicantBtn">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string>Manage Applicant</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../../projectRescources.qrc">
+             <normaloff>:/icons/userWithGear.png</normaloff>
+             <normalon>:/icons/userWithGearWhite.png</normalon>:/icons/userWithGear.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="autoExclusive">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="manageApplicationBtn">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string>Manage Applications</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../../projectRescources.qrc">
+             <normaloff>:/icons/manageScholarship.png</normaloff>
+             <normalon>:/icons/whiteManageScholarshipIcon.png</normalon>:/icons/manageScholarship.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="autoExclusive">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
           <widget class="QPushButton" name="reportBtn">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
            <property name="text">
             <string>Report</string>
            </property>
@@ -209,6 +243,9 @@ QPushButton:checked{
          </item>
          <item>
           <widget class="QPushButton" name="notificationsBtn">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
            <property name="text">
             <string>Notifications</string>
            </property>
@@ -227,6 +264,9 @@ QPushButton:checked{
          </item>
          <item>
           <widget class="QPushButton" name="profileBtn">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
            <property name="text">
             <string>Profile settings</string>
            </property>
@@ -260,6 +300,9 @@ QPushButton:checked{
        </item>
        <item>
         <widget class="QPushButton" name="logoutBtn">
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
          <property name="text">
           <string>Logout</string>
          </property>
@@ -338,6 +381,9 @@ QPushButton:checked{
          </property>
          <item>
           <widget class="QPushButton" name="homeIconBtn">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
            <property name="text">
             <string/>
            </property>
@@ -356,24 +402,9 @@ QPushButton:checked{
          </item>
          <item>
           <widget class="QPushButton" name="scholarshipIconBtn">
-           <property name="text">
-            <string/>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
            </property>
-           <property name="icon">
-            <iconset resource="../../projectRescources.qrc">
-             <normaloff>:/icons/manageScholarship.png</normaloff>
-             <normalon>:/icons/whiteManageScholarshipIcon.png</normalon>:/icons/manageScholarship.png</iconset>
-           </property>
-           <property name="checkable">
-            <bool>true</bool>
-           </property>
-           <property name="autoExclusive">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="manageApplicantIconBtn">
            <property name="text">
             <string/>
            </property>
@@ -391,7 +422,52 @@ QPushButton:checked{
           </widget>
          </item>
          <item>
+          <widget class="QPushButton" name="manageApplicantIconBtn">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="../../projectRescources.qrc">
+             <normaloff>:/icons/userWithGear.png</normaloff>
+             <normalon>:/icons/userWithGearWhite.png</normalon>:/icons/userWithGear.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="autoExclusive">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="manageApplicationIconBtn">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="../../projectRescources.qrc">
+             <normaloff>:/icons/manageScholarship.png</normaloff>
+             <normalon>:/icons/whiteManageScholarshipIcon.png</normalon>:/icons/manageScholarship.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="autoExclusive">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
           <widget class="QPushButton" name="reportIconBtn">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
            <property name="text">
             <string/>
            </property>
@@ -410,6 +486,9 @@ QPushButton:checked{
          </item>
          <item>
           <widget class="QPushButton" name="notificationsIconBtn">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
            <property name="text">
             <string/>
            </property>
@@ -428,6 +507,9 @@ QPushButton:checked{
          </item>
          <item>
           <widget class="QPushButton" name="profileIconBtn">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
            <property name="text">
             <string/>
            </property>
@@ -461,6 +543,9 @@ QPushButton:checked{
        </item>
        <item>
         <widget class="QPushButton" name="logoutIconBtn">
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
          <property name="text">
           <string/>
          </property>
@@ -560,6 +645,9 @@ QPushButton:checked{
             </item>
             <item>
              <widget class="QPushButton" name="searchBtn">
+              <property name="cursor">
+               <cursorShape>PointingHandCursor</cursorShape>
+              </property>
               <property name="styleSheet">
                <string notr="true">QPushButton:checked{
 	border: none;
@@ -679,7 +767,7 @@ QPushButton::hover{
 </string>
          </property>
          <property name="currentIndex">
-          <number>1</number>
+          <number>6</number>
          </property>
          <widget class="QWidget" name="home">
           <layout class="QGridLayout" name="gridLayout_2">
@@ -693,7 +781,7 @@ QPushButton::hover{
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>716</width>
+                <width>686</width>
                 <height>674</height>
                </rect>
               </property>
@@ -970,8 +1058,8 @@ font: 12pt &quot;Segoe UI&quot;;</string>
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>68</width>
-                <height>18</height>
+                <width>686</width>
+                <height>674</height>
                </rect>
               </property>
               <layout class="QGridLayout" name="gridLayout_8"/>
@@ -1707,6 +1795,90 @@ margin-bottom:80px;</string>
            </item>
           </layout>
          </widget>
+         <widget class="QWidget" name="manageApplications">
+          <layout class="QVBoxLayout" name="verticalLayout_23">
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_6">
+             <property name="topMargin">
+              <number>40</number>
+             </property>
+             <property name="bottomMargin">
+              <number>30</number>
+             </property>
+             <item>
+              <spacer name="horizontalSpacer_13">
+               <property name="orientation">
+                <enum>Qt::Orientation::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="searchBarTxt_2">
+               <property name="styleSheet">
+                <string notr="true"/>
+               </property>
+               <property name="placeholderText">
+                <string>Search Applications</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="searchApplicationsBtn">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton{
+	margin:0px;
+	background-color: rgb(6, 57, 112);
+	padding:5px;
+}
+QPushButton:checked{
+	border: none;
+}</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="icon">
+                <iconset resource="../../projectRescources.qrc">
+                 <normaloff>:/icons/search.png</normaloff>:/icons/search.png</iconset>
+               </property>
+               <property name="checkable">
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <spacer name="horizontalSpacer_14">
+               <property name="orientation">
+                <enum>Qt::Orientation::Horizontal</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>40</width>
+                 <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QTableWidget" name="manageApplicantTableWidget">
+             <property name="styleSheet">
+              <string notr="true">margin:30px;</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
         </widget>
        </item>
       </layout>
@@ -1716,7 +1888,6 @@ margin-bottom:80px;</string>
   </widget>
  </widget>
  <resources>
-  <include location="../../projectRescources.qrc"/>
   <include location="../../projectRescources.qrc"/>
  </resources>
  <connections>
@@ -1760,11 +1931,11 @@ margin-bottom:80px;</string>
    <hints>
     <hint type="sourcelabel">
      <x>49</x>
-     <y>430</y>
+     <y>490</y>
     </hint>
     <hint type="destinationlabel">
-     <x>236</x>
-     <y>431</y>
+     <x>259</x>
+     <y>491</y>
     </hint>
    </hints>
   </connection>
@@ -1775,12 +1946,12 @@ margin-bottom:80px;</string>
    <slot>setChecked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>46</x>
-     <y>310</y>
+     <x>49</x>
+     <y>370</y>
     </hint>
     <hint type="destinationlabel">
-     <x>168</x>
-     <y>311</y>
+     <x>244</x>
+     <y>371</y>
     </hint>
    </hints>
   </connection>
@@ -1871,12 +2042,12 @@ margin-bottom:80px;</string>
    <slot>setChecked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>196</x>
-     <y>311</y>
+     <x>259</x>
+     <y>371</y>
     </hint>
     <hint type="destinationlabel">
      <x>49</x>
-     <y>310</y>
+     <y>370</y>
     </hint>
    </hints>
   </connection>
@@ -1887,12 +2058,12 @@ margin-bottom:80px;</string>
    <slot>setChecked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>258</x>
-     <y>431</y>
+     <x>259</x>
+     <y>491</y>
     </hint>
     <hint type="destinationlabel">
      <x>49</x>
-     <y>430</y>
+     <y>490</y>
     </hint>
    </hints>
   </connection>
@@ -1919,12 +2090,12 @@ margin-bottom:80px;</string>
    <slot>setChecked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>42</x>
-     <y>370</y>
+     <x>49</x>
+     <y>430</y>
     </hint>
     <hint type="destinationlabel">
-     <x>157</x>
-     <y>371</y>
+     <x>233</x>
+     <y>431</y>
     </hint>
    </hints>
   </connection>
@@ -1935,12 +2106,12 @@ margin-bottom:80px;</string>
    <slot>setChecked(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>177</x>
-     <y>371</y>
+     <x>253</x>
+     <y>431</y>
     </hint>
     <hint type="destinationlabel">
      <x>49</x>
-     <y>370</y>
+     <y>430</y>
     </hint>
    </hints>
   </connection>
@@ -1952,7 +2123,7 @@ margin-bottom:80px;</string>
    <hints>
     <hint type="sourcelabel">
      <x>259</x>
-     <y>431</y>
+     <y>491</y>
     </hint>
     <hint type="destinationlabel">
      <x>1002</x>
@@ -1972,7 +2143,7 @@ margin-bottom:80px;</string>
     </hint>
     <hint type="destinationlabel">
      <x>259</x>
-     <y>431</y>
+     <y>491</y>
     </hint>
    </hints>
   </connection>
@@ -1988,7 +2159,7 @@ margin-bottom:80px;</string>
     </hint>
     <hint type="destinationlabel">
      <x>49</x>
-     <y>430</y>
+     <y>490</y>
     </hint>
    </hints>
   </connection>
@@ -2000,7 +2171,7 @@ margin-bottom:80px;</string>
    <hints>
     <hint type="sourcelabel">
      <x>49</x>
-     <y>430</y>
+     <y>490</y>
     </hint>
     <hint type="destinationlabel">
      <x>1002</x>
@@ -2037,6 +2208,38 @@ margin-bottom:80px;</string>
     <hint type="destinationlabel">
      <x>112</x>
      <y>209</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>manageApplicationIconBtn</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>manageApplicationBtn</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>46</x>
+     <y>268</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>112</x>
+     <y>268</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>manageApplicationBtn</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>manageApplicationIconBtn</receiver>
+   <slot>setChecked(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>106</x>
+     <y>300</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>17</x>
+     <y>297</y>
     </hint>
    </hints>
   </connection>

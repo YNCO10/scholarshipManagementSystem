@@ -2,7 +2,20 @@ import requests
 
 
 class Applicant:
-    def __init__(self, name, email, nationality, password, gender, phoneNum, age, dob, educationLevel):
+    def __init__(self,
+                 name,
+                 email,
+                 nationality,
+                 password,
+                 gender,
+                 phoneNum,
+                 age,
+                 dob,
+                 educationLevel,
+                 gpa,
+                 schoolAttended,
+                 incomeBracket
+                 ):
         self.name = name
         self.email = email
         self.nationality = nationality
@@ -12,6 +25,9 @@ class Applicant:
         self.age = age
         self.dob = dob
         self.educationLevel = educationLevel
+        self.gpa = gpa
+        self.schoolAttended = schoolAttended
+        self.incomeBracket = incomeBracket
 
 
     def toDict(self):
@@ -24,7 +40,10 @@ class Applicant:
             "phone_number":self.phoneNum,
             "age":self.age,
             "dob":self.dob,
-            "education_level": self.educationLevel
+            "education_level": self.educationLevel,
+            "gpa": self.gpa,
+            "schoolAttended": self.schoolAttended,
+            "incomeBracket": self.incomeBracket
         }
 
     def execute(self, url):

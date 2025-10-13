@@ -111,7 +111,10 @@ class AppValCode(QWidget, Ui_applicantRegistration):
                 self.phoneNumTxt.text().strip(),
                 self.ageSpinBox.text().strip(),
                 dob.toPyDate(),
-                self.educationCombo.currentText()
+                self.educationCombo.currentText(),
+                self.gpaSpinBox.text().strip(),
+                self.formerSchoolLineEdit.text().strip(),
+                self.incomeBracketComboBox.currentText().strip()
             )
 
             result = applicant.execute(self.url)
