@@ -112,12 +112,16 @@ class ApplyScholarship(QWidget, Ui_applyScholarshipForm):
                 )
                 # rank applicant
                 self.getData.scoreApplicant()#make sure you replace hardcoded email with sesh email
+                self.close()
+                return
 
             elif result.get("status") == "error":
                 self.regCode.msgBox(
                     "Application Failed",
                     msg
                 )
+                return
+
         except Exception as e:
             self.regCode.msgBox(
                 "Error(apply scholar)",

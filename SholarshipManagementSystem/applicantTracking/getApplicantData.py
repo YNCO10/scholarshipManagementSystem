@@ -42,6 +42,10 @@ class GetApplicantData:
         self.docWeight = weight.get("doc")
         self.financialWeight = weight.get("financial")
 
+        print(f"academicWeight: {self.academicWeight}")
+        print(f"assessmentWeight: {self.assessmentWeight}")
+        print(f"docWeight: {self.docWeight}")
+        print(f"financialWeight: {self.financialWeight}")
         #use weights
         self.scoreHandler = ScoreHandler(
             self.academicWeight,
@@ -169,7 +173,7 @@ class GetApplicantData:
 
             # Assessment section--------------------------------------------
             assessmentScore = self.scoreHandler.assessmentScore(self.assessmentScore, self.totalQuest)
-            assessmentScoreLabel.setText(f"Score: {assessmentScore} Points.")
+            assessmentScoreLabel.setText(f"Score: {assessmentScore:.0f} Points.")
 
             # Weights section-----------------------------------------------
             academicWeightCombo.setCurrentText(str(self.academicWeight))

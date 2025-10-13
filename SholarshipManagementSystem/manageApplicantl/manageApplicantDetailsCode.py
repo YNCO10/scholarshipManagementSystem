@@ -47,6 +47,7 @@ class ManageApplicantDetails(QWidget, Ui_Form):
 
 ########################################################################################################################
     def goToApplicantCriteria(self):
+        self.getApplicantData = GetApplicantData(self.email)
         self.stackedWidget.setCurrentIndex(1)
         self.populateApplicantCriteria()
 
@@ -190,6 +191,7 @@ class ManageApplicantDetails(QWidget, Ui_Form):
 
 ########################################################################################################################
     def populateApplicantCriteria(self):
+        self.getApplicantData.scoreApplicant()
         self.getApplicantData.applicantCriteriaTemplate(
             self.transcriptSubmittedLabel,
             self.academicScoreLabel,
@@ -206,7 +208,8 @@ class ManageApplicantDetails(QWidget, Ui_Form):
             self.finalScoreFormulaLabel,
             self.finalScoreLabel
         )
-        self.getApplicantData.scoreApplicant()
+        print("APPLICANT CRITERIA HAS BEEN POPULATED...")
+        print(f"Email(populateApplicantCriteria): {self.email}")
 
 ########################################################################################################################
     def updateWeights(self):
@@ -215,6 +218,7 @@ class ManageApplicantDetails(QWidget, Ui_Form):
             financialWeight = float(self.financialWeightCombo.currentText().strip())
             docWeight = float(self.docWeightCombo.currentText().strip())
             assessmentWeight = float(self.assessmentWeightCombo.currentText().strip())
+
             response = requests.post(
                 "http://localhost/BackEnd/scholarshipManagement/applicantTracking/updateWeights.php",
                 data={
@@ -234,7 +238,8 @@ class ManageApplicantDetails(QWidget, Ui_Form):
                 )
                 print(f"Process Complete: {msg}")
                 self.getApplicantData.scoreApplicant()
-                self.populateApplicantCriteria()
+                self.getApplicantData = GetApplicantData(self.email)
+                self.goToApplicantCriteria()
 
             elif result.get("status") == "error":
                 self.regCode.msgBox(

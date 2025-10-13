@@ -225,10 +225,9 @@ class Dash(QMainWindow, Ui_MainWindow):
             if result.get("status") == "success":
                 #     get db content
                 dbContent = result.get("data", [])
-                self.scholarshipTableWidget.setRowCount(
-                    len(dbContent))  #always initialise tbl so it doesn't stack up rows
-                Sessions.scholarshipCount = len(dbContent)
 
+                Sessions.scholarshipCount = len(dbContent)
+                self.scholarshipTableWidget.setRowCount(len(dbContent))  # always initialise tbl so it doesn't stack up rows
                 self.scholarshipTableWidget.setColumnCount(13)
 
                 self.scholarshipTableWidget.setHorizontalHeaderLabels(
@@ -250,24 +249,24 @@ class Dash(QMainWindow, Ui_MainWindow):
                 )
 
                 #     populate tbl with content from db
-                for rowindx, rowData in enumerate(dbContent):
+                for rowIdx, rowData in enumerate(dbContent):
                     #         fill data for all 4 columns
-                    self.scholarshipTableWidget.setItem(rowindx, 1, QTableWidgetItem(str(rowData.get("id", ""))))
-                    self.scholarshipTableWidget.setItem(rowindx, 2,
+                    self.scholarshipTableWidget.setItem(rowIdx, 1, QTableWidgetItem(str(rowData.get("id", ""))))
+                    self.scholarshipTableWidget.setItem(rowIdx, 2,
                                                         QTableWidgetItem(rowData.get("scholarship_name", "")))
-                    self.scholarshipTableWidget.setItem(rowindx, 3, QTableWidgetItem(rowData.get("descrip", "")))
-                    self.scholarshipTableWidget.setItem(rowindx, 4, QTableWidgetItem(rowData.get("type", "")))
-                    self.scholarshipTableWidget.setItem(rowindx, 5, QTableWidgetItem(rowData.get("subject", "")))
-                    self.scholarshipTableWidget.setItem(rowindx, 6, QTableWidgetItem(rowData.get("deadline", "")))
-                    self.scholarshipTableWidget.setItem(rowindx, 7,
+                    self.scholarshipTableWidget.setItem(rowIdx, 3, QTableWidgetItem(rowData.get("descrip", "")))
+                    self.scholarshipTableWidget.setItem(rowIdx, 4, QTableWidgetItem(rowData.get("type", "")))
+                    self.scholarshipTableWidget.setItem(rowIdx, 5, QTableWidgetItem(rowData.get("subject", "")))
+                    self.scholarshipTableWidget.setItem(rowIdx, 6, QTableWidgetItem(rowData.get("deadline", "")))
+                    self.scholarshipTableWidget.setItem(rowIdx, 7,
                                                         QTableWidgetItem(rowData.get("financial_amount", "")))
-                    self.scholarshipTableWidget.setItem(rowindx, 8, QTableWidgetItem(rowData.get("provider", "")))
-                    self.scholarshipTableWidget.setItem(rowindx, 9, QTableWidgetItem(rowData.get("provider_email", "")))
-                    self.scholarshipTableWidget.setItem(rowindx, 10,
+                    self.scholarshipTableWidget.setItem(rowIdx, 8, QTableWidgetItem(rowData.get("provider", "")))
+                    self.scholarshipTableWidget.setItem(rowIdx, 9, QTableWidgetItem(rowData.get("provider_email", "")))
+                    self.scholarshipTableWidget.setItem(rowIdx, 10,
                                                         QTableWidgetItem(rowData.get("applicantion_link", "")))
-                    self.scholarshipTableWidget.setItem(rowindx, 11, QTableWidgetItem(
+                    self.scholarshipTableWidget.setItem(rowIdx, 11, QTableWidgetItem(
                         rowData.get("perks", "") or "No Benefits Available for this Scholarship"))
-                    self.scholarshipTableWidget.setItem(rowindx, 12, QTableWidgetItem(rowData.get("file_path", "")))
+                    self.scholarshipTableWidget.setItem(rowIdx, 12, QTableWidgetItem(rowData.get("file_path", "")))
 
                     #       create View & del btn
                     viewBtn = QPushButton("View")
@@ -300,7 +299,7 @@ class Dash(QMainWindow, Ui_MainWindow):
                     layout.setContentsMargins(0, 0, 0, 0)
 
                     #         add widget to tbl
-                    self.scholarshipTableWidget.setCellWidget(rowindx, 0, btnWidget)
+                    self.scholarshipTableWidget.setCellWidget(rowIdx, 0, btnWidget)
 
                 self.styleTbl()
 
@@ -585,21 +584,21 @@ class Dash(QMainWindow, Ui_MainWindow):
                 )
 
                 #     populate tbl with content from db
-                for rowindx, rowData in enumerate(dbContent):
+                for rowIdx, rowData in enumerate(dbContent):
                     #         fill data for all 4 columns
-                    self.listofApplicantsTableWidget.setItem(rowindx, 1, QTableWidgetItem(str(rowData.get("id", ""))))
-                    self.listofApplicantsTableWidget.setItem(rowindx, 2, QTableWidgetItem(rowData.get("name", "")))
-                    self.listofApplicantsTableWidget.setItem(rowindx, 3, QTableWidgetItem(rowData.get("email", "")))
-                    self.listofApplicantsTableWidget.setItem(rowindx, 4, QTableWidgetItem(
+                    self.listofApplicantsTableWidget.setItem(rowIdx, 1, QTableWidgetItem(str(rowData.get("id", ""))))
+                    self.listofApplicantsTableWidget.setItem(rowIdx, 2, QTableWidgetItem(rowData.get("name", "")))
+                    self.listofApplicantsTableWidget.setItem(rowIdx, 3, QTableWidgetItem(rowData.get("email", "")))
+                    self.listofApplicantsTableWidget.setItem(rowIdx, 4, QTableWidgetItem(
                         str(rowData.get("age", "")) or "Not specified"))
-                    self.listofApplicantsTableWidget.setItem(rowindx, 5, QTableWidgetItem(
+                    self.listofApplicantsTableWidget.setItem(rowIdx, 5, QTableWidgetItem(
                         rowData.get("gender", "") or "Not specified"))
-                    self.listofApplicantsTableWidget.setItem(rowindx, 6, QTableWidgetItem(
+                    self.listofApplicantsTableWidget.setItem(rowIdx, 6, QTableWidgetItem(
                         rowData.get("nationality", "") or "Not specified"))
-                    self.listofApplicantsTableWidget.setItem(rowindx, 7,
+                    self.listofApplicantsTableWidget.setItem(rowIdx, 7,
                                                              QTableWidgetItem(rowData.get("education_level", "")))
-                    self.listofApplicantsTableWidget.setItem(rowindx, 8, QTableWidgetItem(rowData.get("dob", "")))
-                    self.listofApplicantsTableWidget.setItem(rowindx, 9,
+                    self.listofApplicantsTableWidget.setItem(rowIdx, 8, QTableWidgetItem(rowData.get("dob", "")))
+                    self.listofApplicantsTableWidget.setItem(rowIdx, 9,
                                                              QTableWidgetItem(str(rowData.get("score", "")) or 0))
 
                     #       create View & del btn
@@ -633,7 +632,7 @@ class Dash(QMainWindow, Ui_MainWindow):
                     layout.setContentsMargins(0, 0, 0, 0)
 
                     #         add widget to tbl
-                    self.listofApplicantsTableWidget.setCellWidget(rowindx, 0, btnWidget)
+                    self.listofApplicantsTableWidget.setCellWidget(rowIdx, 0, btnWidget)
 
                     self.listofApplicantsTableWidget.setStyleSheet("QTableWidget { color: #010e1b; }")
 
@@ -780,10 +779,10 @@ class Dash(QMainWindow, Ui_MainWindow):
                 ]
             )
 
-            for rowindx, rowData in enumerate(dbContent):
-                self.applicantRankTableWidget.setItem(rowindx, 0,
+            for rowIdx, rowData in enumerate(dbContent):
+                self.applicantRankTableWidget.setItem(rowIdx, 0,
                                                       QTableWidgetItem(rowData.get("name", "Display Error")))
-                self.applicantRankTableWidget.setItem(rowindx, 1,
+                self.applicantRankTableWidget.setItem(rowIdx, 1,
                                                       QTableWidgetItem(str(rowData.get("score", "Display Error"))))
 
             # self.applicantRankTableWidget.resizeColumnsToContents()
@@ -825,9 +824,9 @@ class Dash(QMainWindow, Ui_MainWindow):
                 ]
             )
 
-            for rowindx, rowData in enumerate(dbContent):
-                self.applicantPerSubjectTableWidget.setItem(rowindx, 0, QTableWidgetItem(rowData["name"]))
-                self.applicantPerSubjectTableWidget.setItem(rowindx, 1, QTableWidgetItem(str(rowData.get("subject", "Display Error"))))
+            for rowIdx, rowData in enumerate(dbContent):
+                self.applicantPerSubjectTableWidget.setItem(rowIdx, 0, QTableWidgetItem(rowData["name"]))
+                self.applicantPerSubjectTableWidget.setItem(rowIdx, 1, QTableWidgetItem(str(rowData.get("subject", "Display Error"))))
 
         except Exception as e:
             self.msgBox(
@@ -900,10 +899,10 @@ class Dash(QMainWindow, Ui_MainWindow):
                 ]
             )
 
-            for rowindx, rowData in enumerate(dbContent):
-                self.scholarshipPerSubjectTableWidget.setItem(rowindx, 0,
+            for rowIdx, rowData in enumerate(dbContent):
+                self.scholarshipPerSubjectTableWidget.setItem(rowIdx, 0,
                                                               QTableWidgetItem(rowData.get("name", "Display Error")))
-                self.scholarshipPerSubjectTableWidget.setItem(rowindx, 1, QTableWidgetItem(
+                self.scholarshipPerSubjectTableWidget.setItem(rowIdx, 1, QTableWidgetItem(
                     str(rowData.get("subject", "Display Error"))))
         except Exception as e:
             self.msgBox(
@@ -942,25 +941,34 @@ class Dash(QMainWindow, Ui_MainWindow):
 
 
 ########################################################################################################################
+    def populateNotificationTbl(self):
+        pass
+########################################################################################################################
     def sendNotification(self):
-        result = self.admin.sendNotification(
-            self.notificationEmailTxt,
-            self.notificationTitleTxt,
-            self.notificationMsgTxt
-        )
-
-        msg = result.get("message", "Unknown Msg")
-
-        if result.get("status") == "success":
-            self.msgBox(
-                "Email sent",
-                msg
+        try:
+            result = self.admin.sendNotification(
+                self.notificationEmailTxt,
+                self.notificationTitleTxt,
+                self.notificationMsgTxt
             )
-        elif result.get("status") == "error":
+
+            msg = result.get("message", "Unknown Msg")
+
+            if result.get("status") == "success":
+                self.msgBox(
+                    "Email sent",
+                    msg
+                )
+            elif result.get("status") == "error":
+                self.msgBox(
+                    "Error",
+                    msg
+                )
+        except Exception as e:
             self.msgBox(
                 "Error",
-                msg
-            )
+                f"Exception(scholarshipFilter): {e}")
+            print(f"Exception(scholarshipFilter): {e}")
 
 ########################################################################################################################
     def changePass(self):

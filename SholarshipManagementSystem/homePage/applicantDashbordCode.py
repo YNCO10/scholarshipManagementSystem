@@ -11,9 +11,11 @@ import Sessions
 from SholarshipManagementSystem.homePage.applicantDashbord import Ui_ApplicantDash
 from SholarshipManagementSystem.authentications.regValidationPHP import RegCode
 
+
 class ApplicantDash(QMainWindow, Ui_ApplicantDash):
     def __init__(self):
         super().__init__()
+        self.notiDisplay = None
         self.regCode = RegCode()
         self.controller = None
         self.setupUi(self)
@@ -29,6 +31,7 @@ class ApplicantDash(QMainWindow, Ui_ApplicantDash):
 
         #btn clicks
         self.btnClicks()
+
 ########################################################################################################################
     def btnClicks(self):
         #home
@@ -48,7 +51,10 @@ class ApplicantDash(QMainWindow, Ui_ApplicantDash):
         self.profileIconBtn.clicked.connect(self.switchToProfile)
         self.profileBtnQuickAccess.clicked.connect(self.switchToProfile)
 
-        #apply for scholarship
+        #filter notification page
+        self.noftiFilterbtn.clicked.connect(
+            lambda : self.populateNotificationTbl(self.notiFilterCombo.currentText().strip())
+        )
 
 ########################################################################################################################
     def switchToDash(self):
@@ -63,6 +69,7 @@ class ApplicantDash(QMainWindow, Ui_ApplicantDash):
 
     def switchToNotifications(self):
         self.mainDisplayWidget.setCurrentIndex(3)
+        self.populateNotificationTbl("All")
 
     def switchToProfile(self):
         self.mainDisplayWidget.setCurrentIndex(4)
@@ -71,7 +78,8 @@ class ApplicantDash(QMainWindow, Ui_ApplicantDash):
     def populateScholarshipTbl(self):
         try:
             response = requests.get(
-                "http://localhost/BackEnd/scholarshipManagement/uploadScholarships/getScholarshipDetails.php")
+                "http://localhost/BackEnd/scholarshipManagement/uploadScholarships/getScholarshipDetails.php"
+            )
 
             print(f"RAW RESPONSE: {response.text}")
             result = json.loads(response.text)
@@ -135,11 +143,11 @@ class ApplicantDash(QMainWindow, Ui_ApplicantDash):
                                           "border-radius:3px;"
                                           "}")
                     applyBtn.setStyleSheet("QPushButton { "
-                                         "color: white;"
-                                         "padding:3px;"
-                                         "margin:0px;"
-                                         "border-radius:3px;"
-                                         "}")
+                                           "color: white;"
+                                           "padding:3px;"
+                                           "margin:0px;"
+                                           "border-radius:3px;"
+                                           "}")
 
                     viewBtn.clicked.connect(
                         lambda _, path=rowData.get("file_path"): self.displayScholarshipDoc(path)
@@ -147,7 +155,7 @@ class ApplicantDash(QMainWindow, Ui_ApplicantDash):
                     applyBtn.clicked.connect(
                         lambda _, Id=rowData.get("id"): self.showApplyScholarship(Id)
                     )
-                    
+
                     #   align horizontally
                     btnWidget = QWidget()
                     layout = QHBoxLayout(btnWidget)
@@ -158,9 +166,7 @@ class ApplicantDash(QMainWindow, Ui_ApplicantDash):
                     #         add widget to tbl
                     self.scholarshipTableWidget.setCellWidget(rowindx, 0, btnWidget)
 
-                # self.styleTbl()
-
-
+                self.styleTbl(self.scholarshipTableWidget)
 
             elif result.get("message") == "error":
                 self.regCode.msgBox("Error(ScholarTbl)", f"Error: {msg}")
@@ -204,3 +210,103 @@ class ApplicantDash(QMainWindow, Ui_ApplicantDash):
         self.controller = Controller()
 
         self.controller.showApplyScholarPage(Id)
+
+########################################################################################################################
+    def populateNotificationTbl(self, notiFilter):
+        try:
+            response = requests.post(
+                "http://localhost/BackEnd/scholarshipManagement/notifications/getNotificationData.php",
+                data={
+                    "email" : Sessions.seshEmail,
+                    "filter" : notiFilter
+                }
+            )
+            print(f"RAW RESPONSE: {response.text}")
+            result = response.json()
+            msg = result.get("message")
+
+            if result.get("status") == "error":
+                self.notificationsTableWidget.setRowCount(1)
+                self.notificationsTableWidget.setColumnCount(1)
+                self.notificationsTableWidget.setHorizontalHeaderLabels(["Message"])
+                self.notificationsTableWidget.setItem(0, 0, QTableWidgetItem("You don't have any notifications."))
+                return
+
+            dbContent = result.get("data", [])
+
+
+            self.notificationsTableWidget.setColumnCount(9)
+            self.notificationsTableWidget.setRowCount(len(dbContent))
+            self.notificationsTableWidget.setHorizontalHeaderLabels(
+                [
+                    "Actions",
+                    "ID",
+                    "title",
+                    "msg",
+                    "Sent From",
+                    "Sent to",
+                    "Status",
+                    "Date Sent",
+                    "Date Seen"
+                ]
+
+            )
+
+            for rowIdx, rowData in enumerate(dbContent):
+                self.notificationsTableWidget.setItem(rowIdx, 1, QTableWidgetItem(str(rowData.get("id")))),
+                self.notificationsTableWidget.setItem(rowIdx, 2, QTableWidgetItem(rowData.get("title"))),
+                self.notificationsTableWidget.setItem(rowIdx, 3, QTableWidgetItem(rowData.get("msg"))),
+                self.notificationsTableWidget.setItem(rowIdx, 4, QTableWidgetItem(rowData.get("sender_name"))),
+                self.notificationsTableWidget.setItem(rowIdx, 5, QTableWidgetItem(rowData.get("recipient_name"))),
+                self.notificationsTableWidget.setItem(rowIdx, 6, QTableWidgetItem(rowData.get("noti_status"))),
+                self.notificationsTableWidget.setItem(rowIdx, 7, QTableWidgetItem(rowData.get("date_sent"))),
+                self.notificationsTableWidget.setItem(rowIdx, 8, QTableWidgetItem(str(rowData.get("date_seen") or "Not Seen")))
+
+                #       create View & del btn
+                viewBtn = QPushButton("View")
+                # applyBtn = QPushButton("Apply")
+
+                viewBtn.setStyleSheet("QPushButton { "
+                                      "color: white;"
+                                      "padding:3px;"
+                                      "margin:0px;"
+                                      "border-radius:3px;"
+                                      "background-color:#010e1b;"
+                                      "}")
+
+                viewBtn.clicked.connect(
+                    lambda _, Id=rowData.get("id"): self.showNotificationsDisplay(Id)
+                )
+
+                #   align horizontally
+                btnWidget = QWidget()
+                layout = QHBoxLayout(btnWidget)
+                # layout.addWidget(applyBtn)
+                layout.addWidget(viewBtn)
+                layout.setContentsMargins(0, 0, 0, 0)
+
+                #         add widget to tbl
+                self.notificationsTableWidget.setCellWidget(rowIdx, 0, btnWidget)
+
+            self.styleTbl(self.notificationsTableWidget)
+
+        except Exception as e:
+            self.regCode.msgBox(
+                "Error",
+                f"Exception Error(populateNotificationTbl): {e}"
+            )
+            print(f"Exception Error(populateNotificationTbl):{e}")
+
+########################################################################################################################
+    def styleTbl(self, tblWidget):
+        tblWidget.setStyleSheet("QTableWidget { color: #010e1b; }")
+
+        tblWidget.verticalHeader().setDefaultSectionSize(40)
+
+        tblWidget.resizeColumnsToContents()
+
+########################################################################################################################
+    def showNotificationsDisplay(self, Id):
+        from SholarshipManagementSystem.notificationsPage.notificationsDisplayCode import NotificationDisplay
+        self.notiDisplay = NotificationDisplay(Id)
+        self.notiDisplay.show()

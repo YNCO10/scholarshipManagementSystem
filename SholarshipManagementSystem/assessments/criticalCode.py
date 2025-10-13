@@ -12,6 +12,7 @@ import requests
 class CriticalCode(QWidget, Ui_criticalReasoningForm):
     def __init__(self):
         super().__init__()
+        self.appDash = None
         self.setupUi(self)
         self.setWindowTitle("Critical Reasoning")
         self.setWindowIcon(QIcon(":icons/SMsysIcon.png"))
@@ -107,6 +108,11 @@ class CriticalCode(QWidget, Ui_criticalReasoningForm):
                         finalGrade,
                         40
                     )
+                    
+                    from SholarshipManagementSystem.homePage.applicantDashbordCode import ApplicantDash
+                    self.appDash = ApplicantDash()
+                    self.appDash.showMaximized()
+                    self.close()
 
                     print(f"final grade: {finalGrade}%")
                 except Exception as e:

@@ -53,7 +53,7 @@ class ScoreHandler:
     def assessmentScore(self, score:int, total:int)->float:
         if total == 0:
             return 0
-        return (score/total) * 100
+        return score/total
 
 ########################################################################################################################
     def applicantScore(self, applicantInfo:dict):
