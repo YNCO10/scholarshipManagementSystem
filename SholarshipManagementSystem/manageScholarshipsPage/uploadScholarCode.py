@@ -5,8 +5,6 @@ from PyQt6.QtCore import Qt
 
 from PyQt6.QtGui import QIcon
 from PyQt6.QtWidgets import QDialog, QFileDialog, QCompleter
-
-from Sessions import seshEmail
 from SholarshipManagementSystem.manageScholarshipsPage.uploadScholarships import Ui_Dialog
 from SholarshipManagementSystem.authentications.regValidationPHP import RegCode
 
@@ -23,7 +21,7 @@ class UploadingCode(QDialog, Ui_Dialog):
         self.regCode = RegCode()
 
         self.btnClicks()
-        self.subjectLiveFiltering()
+        # self.populateSchemeCombo()
 
 # BTN CLICKS############################################################################################################
     def btnClicks(self):
@@ -50,7 +48,7 @@ class UploadingCode(QDialog, Ui_Dialog):
 #     UPLOAD DOCUMENT###################################################################################################
     def uploadDocument(self):
         name = self.scholarshipNameTxt.text()
-        type = self.typeCombo.currentText()
+        scheme = self.schemeComboBox.currentText().strip()
         descrip = self.descripTxt.text()
         provider = self.providerTxt.text()
         deadline = self.deadlineDateEdit.date().toPyDate()
@@ -58,7 +56,6 @@ class UploadingCode(QDialog, Ui_Dialog):
         financialAmount = self.financialCombo.currentText()
         applicationLink = self.linkTxt.text()
         providerEmail = self.providerEmailTxt.text()
-        subject = self.subjectTxt.text()
         url = "http://localhost/BackEnd/scholarshipManagement/uploadScholarships/uploadScholarshipCode.php"
 
         selectedPerks = []
@@ -79,7 +76,7 @@ class UploadingCode(QDialog, Ui_Dialog):
 
 
 
-        if not all([name, descrip, deadline, filePath, applicationLink, providerEmail, subject]):
+        if not all([name, descrip, deadline, filePath, applicationLink, providerEmail]):
             self.regCode.msgBox(
                 "Blank Fields",
                 "Please fill in all fields"
@@ -88,7 +85,7 @@ class UploadingCode(QDialog, Ui_Dialog):
             return
 
         print(f"{name}\n"
-              f"{type}\n"
+              f"{scheme}\n"
               f"{filePath}\n"
               f"{deadline}\n"
               f"{descrip}\n"
@@ -96,22 +93,20 @@ class UploadingCode(QDialog, Ui_Dialog):
               f"{financialAmount}\n"
               f"{applicationLink}\n"
               f"{providerEmail}\n"
-              f"{subject}\n"
               f"{selectedPerks}\n"
               f"{Sessions.seshEmail}\n")
 
         try:
             scholar = Scholarships(
                 name,
-                type,
+                scheme,
                 filePath,
                 deadline,
                 descrip,
                 provider,
                 financialAmount,
                 applicationLink,
-                providerEmail,
-                subject
+                providerEmail
             )
             result = scholar.execute(
                 url,
@@ -146,27 +141,35 @@ class UploadingCode(QDialog, Ui_Dialog):
             print(f"Exception(scholarUpload): {e}")
 
 ##### filtering line edit###############################################################################################
-    def subjectLiveFiltering(self):
-        subjects = [
-            "Agriculture", "Architecture", "Arts & Humanities", "Business & Management",
-            "Communications & Media Studies", "Computer Science & IT", "Dentistry",
-            "Design & Creative Arts", "Economics", "Education", "Engineering & Technology",
-            "Environmental Science", "Finance & Accounting", "Health Sciences", "History",
-            "Hospitality & Tourism", "International Relations", "Journalism", "Law",
-            "Linguistics & Languages", "Literature", "Mathematics", "Medicine", "Music",
-            "Nursing & Midwifery", "Pharmacy", "Philosophy", "Physics", "Political Science",
-            "Psychology", "Public Health", "Social Sciences", "Sociology", "Sports Science",
-            "Theology & Religious Studies", "Veterinary Science"
+    def populateSchemeCombo(self):
+        schemes = [
+            "Merit-Based Scheme",
+            "Need-Based Scheme",
+            "STEM Scheme",
+            "Sports Scholarship Scheme",
+            "Community Service Scheme",
+            "Research and Innovation Scheme",
+            "Disability Support Scheme",
+            "Female Empowerment Scheme",
+            "Alumni-Funded Scheme",
+            "International Student Scheme",
+            "Cultural or Arts Scheme",
+            "Leadership Development Scheme",
+            "Rural or Underprivileged Scheme",
+            "Partner Organization Scheme",
+            "Government-Funded Scheme"
         ]
+        
+        self.schemeComboBox.addItems(schemes)
 
-        self.subjectTxt.setPlaceholderText("e.g. Medicine, Engineering, Business etc...")
-    #     add completer
-        completer = QCompleter(subjects, self)
-        completer.setCaseSensitivity(Qt.CaseSensitivity.CaseInsensitive)
-        completer.setFilterMode(Qt.MatchFlag.MatchContains)#live filter anywhere in the string
-        completer.setCompletionMode(QCompleter.CompletionMode.UnfilteredPopupCompletion)
-
-        self.subjectTxt.setCompleter(completer)
+    #     self.subjectTxt.setPlaceholderText("e.g. Need-Based, STEM etc...")
+    # #     add completer
+    #     completer = QCompleter(schemes, self)
+    #     completer.setCaseSensitivity(Qt.CaseSensitivity.CaseInsensitive)
+    #     completer.setFilterMode(Qt.MatchFlag.MatchContains)#live filter anywhere in the string
+    #     completer.setCompletionMode(QCompleter.CompletionMode.UnfilteredPopupCompletion)
+    # 
+    #     self.subjectTxt.setCompleter(completer)
 
 
     # CLOSE WINDOW##########################################################################################################

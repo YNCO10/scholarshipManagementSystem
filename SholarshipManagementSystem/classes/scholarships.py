@@ -7,27 +7,25 @@ import requests
 class Scholarships:
     def __init__(self,
                  name,
-                 type,
+                 scheme,
                  path,
                  deadline,
                  descrip,
                  provider,
                  financialAmount,
                  applicationLink,
-                 providerEmail,
-                 subject
+                 providerEmail
                  ):
 
         self.name = name
         self.path = path
-        self.type = type
+        self.scheme = scheme
         self.deadline = deadline
         self.descrip = descrip
         self.provider = provider
         self.financialAmount = financialAmount
         self.applicationLink = applicationLink
         self.providerEmail = providerEmail
-        self.subject = subject
 
     def execute(self, url, filepath, selectedPerks = None, email = None):
         if selectedPerks is None:
@@ -48,7 +46,7 @@ class Scholarships:
             selectedPerks = []
         return {
             "name": self.name,
-            "type": self.type,
+            "schemeName": self.scheme,
             "path": self.path,
             "deadline": self.deadline,
             "descrip": self.descrip,
@@ -56,7 +54,6 @@ class Scholarships:
             "financialAmount": self.financialAmount,
             "applicationLink": self.applicationLink,
             "providerEmail": self.providerEmail,
-            "subject": self.subject,
             "perks": json.dumps(selectedPerks),
             "email": email
         }

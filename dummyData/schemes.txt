@@ -1,0 +1,91 @@
+INSERT INTO schemes (scheme_name, description, eligibility_criteria, benefit_details)
+VALUES
+-- 1
+('Merit-Based Scheme',
+ 'Awards students for outstanding academic performance.',
+ 'Must maintain a GPA of 3.8 or higher and be enrolled full-time.',
+ 'Full tuition waiver and academic materials support.'),
+
+-- 2
+('Need-Based Scheme',
+ 'Supports students from low-income families.',
+ 'Household income must be below the university’s defined threshold and proof of financial hardship required.',
+ 'Covers 50% of tuition and provides meal allowances.'),
+
+-- 3
+('STEM Scheme',
+ 'Encourages students pursuing science, technology, engineering, and mathematics fields.',
+ 'Must be enrolled in a STEM program with a GPA of at least 3.5.',
+ 'Tuition coverage and annual equipment or lab allowance.'),
+
+-- 4
+('Sports Scholarship Scheme',
+ 'Rewards talented student athletes who represent the university.',
+ 'Must participate in official university sports and maintain a GPA above 2.8.',
+ 'Partial tuition waiver and access to sports facilities.'),
+
+-- 5
+('Community Service Scheme',
+ 'Recognizes students engaged in meaningful volunteer work.',
+ 'Must complete at least 100 hours of verified community service.',
+ 'Tuition discount and certificate of recognition.'),
+
+-- 6
+('Research and Innovation Scheme',
+ 'Promotes creativity and innovation through research projects.',
+ 'Must submit a research proposal approved by the academic board.',
+ 'Funding for project materials and publication support.'),
+
+-- 7
+('Disability Support Scheme',
+ 'Assists students with physical or learning disabilities.',
+ 'Must provide official medical documentation of disability.',
+ 'Full tuition waiver and assistive learning resources.'),
+
+-- 8
+('Female Empowerment Scheme',
+ 'Encourages female students to pursue higher education.',
+ 'Must be a female student demonstrating academic potential or leadership.',
+ 'Partial or full tuition support and mentorship opportunities.'),
+
+-- 9
+('Alumni-Funded Scheme',
+ 'Funded by university alumni to support deserving students.',
+ 'Open to all students who demonstrate commitment to academic excellence.',
+ 'Variable funding covering tuition or living expenses.'),
+
+-- 10
+('International Student Scheme',
+ 'Designed for students from other countries studying at the university.',
+ 'Must hold a valid student visa and demonstrate strong academic records.',
+ 'Covers a percentage of tuition and accommodation fees.'),
+
+-- 11
+('Cultural or Arts Scheme',
+ 'Supports students talented in performing or visual arts.',
+ 'Must provide a portfolio or proof of participation in arts-related activities.',
+ 'Tuition support and funding for materials or exhibitions.'),
+
+-- 12
+('Leadership Development Scheme',
+ 'Recognizes students who exhibit strong leadership and community engagement.',
+ 'Must hold or have held a leadership position within the university or community.',
+ 'Scholarship plus access to leadership training programs.'),
+
+-- 13
+('Rural or Underprivileged Scheme',
+ 'Helps students from rural or economically disadvantaged backgrounds.',
+ 'Must provide proof of residence in a designated rural area or financial need.',
+ 'Full or partial tuition coverage and travel allowance.'),
+
+-- 14
+('Partner Organization Scheme',
+ 'Available through partnerships with external organizations.',
+ 'Must meet the specific criteria set by the partnering organization.',
+ 'Funding level varies based on partnership terms.'),
+
+-- 15
+('Government-Funded Scheme',
+ 'Supported by government initiatives to promote education.',
+ 'Must meet government-specified eligibility and performance standards.',
+ 'Covers tuition and provides a living stipend.');

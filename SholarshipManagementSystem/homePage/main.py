@@ -6,5 +6,5 @@ from myMainDisplay import Dash
 
 app = QApplication(sys.argv)
 win = Dash()
-win.show()
+win.showMaximized()
 app.exec()

@@ -104,7 +104,7 @@ QPushButton:checked{
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="../../projectRescources.qrc">:/icons/SMsysIcon.png</pixmap>
+            <pixmap>:/icons/SMsysIcon.png</pixmap>
            </property>
            <property name="scaledContents">
             <bool>true</bool>
@@ -145,7 +145,7 @@ QPushButton:checked{
             <string>Home</string>
            </property>
            <property name="icon">
-            <iconset resource="../../projectRescources.qrc">
+            <iconset>
              <normaloff>:/icons/home.png</normaloff>
              <normalon>:/icons/whiteHomeIcon.png</normalon>:/icons/home.png</iconset>
            </property>
@@ -166,7 +166,7 @@ QPushButton:checked{
             <string>Manage Scholarships</string>
            </property>
            <property name="icon">
-            <iconset resource="../../projectRescources.qrc">
+            <iconset>
              <normaloff>:/icons/mnageApplicant.png</normaloff>
              <normalon>:/icons/manageApplicantWhite.png</normalon>:/icons/mnageApplicant.png</iconset>
            </property>
@@ -187,7 +187,7 @@ QPushButton:checked{
             <string>Manage Applicant</string>
            </property>
            <property name="icon">
-            <iconset resource="../../projectRescources.qrc">
+            <iconset>
              <normaloff>:/icons/userWithGear.png</normaloff>
              <normalon>:/icons/userWithGearWhite.png</normalon>:/icons/userWithGear.png</iconset>
            </property>
@@ -208,7 +208,7 @@ QPushButton:checked{
             <string>Manage Applications</string>
            </property>
            <property name="icon">
-            <iconset resource="../../projectRescources.qrc">
+            <iconset>
              <normaloff>:/icons/manageScholarship.png</normaloff>
              <normalon>:/icons/whiteManageScholarshipIcon.png</normalon>:/icons/manageScholarship.png</iconset>
            </property>
@@ -229,7 +229,7 @@ QPushButton:checked{
             <string>Report</string>
            </property>
            <property name="icon">
-            <iconset resource="../../projectRescources.qrc">
+            <iconset>
              <normaloff>:/icons/report.png</normaloff>
              <normalon>:/icons/graph.png</normalon>:/icons/report.png</iconset>
            </property>
@@ -250,7 +250,7 @@ QPushButton:checked{
             <string>Notifications</string>
            </property>
            <property name="icon">
-            <iconset resource="../../projectRescources.qrc">
+            <iconset>
              <normaloff>:/icons/notification.png</normaloff>
              <normalon>:/icons/alarm-bell.png</normalon>:/icons/notification.png</iconset>
            </property>
@@ -271,7 +271,7 @@ QPushButton:checked{
             <string>Profile settings</string>
            </property>
            <property name="icon">
-            <iconset resource="../../projectRescources.qrc">
+            <iconset>
              <normaloff>:/icons/gear.png</normaloff>
              <normalon>:/icons/settings (1).png</normalon>:/icons/gear.png</iconset>
            </property>
@@ -307,7 +307,7 @@ QPushButton:checked{
           <string>Logout</string>
          </property>
          <property name="icon">
-          <iconset resource="../../projectRescources.qrc">
+          <iconset>
            <normaloff>:/icons/powerBTN.png</normaloff>:/icons/powerBTN.png</iconset>
          </property>
          <property name="checkable">
@@ -365,7 +365,7 @@ QPushButton:checked{
             <string/>
            </property>
            <property name="pixmap">
-            <pixmap resource="../../projectRescources.qrc">:/icons/SMsysIcon.png</pixmap>
+            <pixmap>:/icons/SMsysIcon.png</pixmap>
            </property>
            <property name="scaledContents">
             <bool>true</bool>
@@ -388,7 +388,7 @@ QPushButton:checked{
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="../../projectRescources.qrc">
+            <iconset>
              <normaloff>:/icons/home.png</normaloff>
              <normalon>:/icons/whiteHomeIcon.png</normalon>:/icons/home.png</iconset>
            </property>
@@ -409,7 +409,7 @@ QPushButton:checked{
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="../../projectRescources.qrc">
+            <iconset>
              <normaloff>:/icons/mnageApplicant.png</normaloff>
              <normalon>:/icons/manageApplicantWhite.png</normalon>:/icons/mnageApplicant.png</iconset>
            </property>
@@ -430,7 +430,7 @@ QPushButton:checked{
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="../../projectRescources.qrc">
+            <iconset>
              <normaloff>:/icons/userWithGear.png</normaloff>
              <normalon>:/icons/userWithGearWhite.png</normalon>:/icons/userWithGear.png</iconset>
            </property>
@@ -451,7 +451,7 @@ QPushButton:checked{
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="../../projectRescources.qrc">
+            <iconset>
              <normaloff>:/icons/manageScholarship.png</normaloff>
              <normalon>:/icons/whiteManageScholarshipIcon.png</normalon>:/icons/manageScholarship.png</iconset>
            </property>
@@ -472,7 +472,7 @@ QPushButton:checked{
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="../../projectRescources.qrc">
+            <iconset>
              <normaloff>:/icons/report.png</normaloff>
              <normalon>:/icons/graph.png</normalon>:/icons/report.png</iconset>
            </property>
@@ -493,7 +493,7 @@ QPushButton:checked{
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="../../projectRescources.qrc">
+            <iconset>
              <normaloff>:/icons/notification.png</normaloff>
              <normalon>:/icons/alarm-bell.png</normalon>:/icons/notification.png</iconset>
            </property>
@@ -514,7 +514,7 @@ QPushButton:checked{
             <string/>
            </property>
            <property name="icon">
-            <iconset resource="../../projectRescources.qrc">
+            <iconset>
              <normaloff>:/icons/gear.png</normaloff>
              <normalon>:/icons/settings (1).png</normalon>:/icons/gear.png</iconset>
            </property>
@@ -550,7 +550,7 @@ QPushButton:checked{
           <string/>
          </property>
          <property name="icon">
-          <iconset resource="../../projectRescources.qrc">
+          <iconset>
            <normaloff>:/icons/powerBTN.png</normaloff>:/icons/powerBTN.png</iconset>
          </property>
          <property name="checkable">
@@ -617,7 +617,7 @@ QPushButton:checked{
              <string/>
             </property>
             <property name="icon">
-             <iconset resource="../../projectRescources.qrc">
+             <iconset>
               <normaloff>:/icons/menu.png</normaloff>:/icons/menu.png</iconset>
             </property>
             <property name="checkable">
@@ -658,7 +658,7 @@ QPushButton:checked{
                <string/>
               </property>
               <property name="icon">
-               <iconset resource="../../projectRescources.qrc">
+               <iconset>
                 <normaloff>:/icons/search.png</normaloff>:/icons/search.png</iconset>
               </property>
               <property name="checkable">
@@ -705,7 +705,7 @@ QPushButton:checked{
              <string/>
             </property>
             <property name="icon">
-             <iconset resource="../../projectRescources.qrc">
+             <iconset>
               <normaloff>:/icons/user.png</normaloff>:/icons/user.png</iconset>
             </property>
             <property name="checkable">
@@ -1058,8 +1058,8 @@ font: 12pt &quot;Segoe UI&quot;;</string>
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>686</width>
-                <height>674</height>
+                <width>98</width>
+                <height>28</height>
                </rect>
               </property>
               <layout class="QGridLayout" name="gridLayout_8"/>
@@ -1734,7 +1734,7 @@ font: 600 10pt &quot;Segoe UI&quot;;</string>
                   <string extracomment="Show Password"/>
                  </property>
                  <property name="icon">
-                  <iconset resource="../../projectRescources.qrc">
+                  <iconset>
                    <normaloff>:/icons/seeWhiteIcon.png</normaloff>:/icons/seeWhiteIcon.png</iconset>
                  </property>
                  <property name="iconSize">
@@ -1847,7 +1847,7 @@ QPushButton:checked{
                 <string/>
                </property>
                <property name="icon">
-                <iconset resource="../../projectRescources.qrc">
+                <iconset>
                  <normaloff>:/icons/search.png</normaloff>:/icons/search.png</iconset>
                </property>
                <property name="checkable">

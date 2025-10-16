@@ -35,7 +35,8 @@
    <string notr="true">QDialog{
 	
 	
-	background-color: rgb(11, 100, 197);
+	
+	background-color: rgb(20, 41, 63);
 
 }
 
@@ -149,7 +150,7 @@ QRadioButton{
    <item row="0" column="0">
     <widget class="QScrollArea" name="scrollArea">
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(11, 100, 197);</string>
+      <string notr="true">background-color: rgb(20, 41, 63);</string>
      </property>
      <property name="verticalScrollBarPolicy">
       <enum>Qt::ScrollBarPolicy::ScrollBarAlwaysOn</enum>
@@ -164,9 +165,9 @@ QRadioButton{
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>-446</y>
+        <y>0</y>
         <width>488</width>
-        <height>1037</height>
+        <height>993</height>
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout">
@@ -240,192 +241,6 @@ QRadioButton{
                </layout>
               </item>
               <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_37">
-                <item>
-                 <widget class="QLabel" name="label_44">
-                  <property name="text">
-                   <string>Type:</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="QComboBox" name="typeCombo">
-                  <property name="styleSheet">
-                   <string notr="true">QComboBox{
-	border:none;
-	border-bottom:1px solid white;
-	background-color: rgb(11, 100, 197);
-	background:transparent;
-	font: 11pt &quot;Segoe UI&quot;;
-}
-
-</string>
-                  </property>
-                  <item>
-                   <property name="text">
-                    <string>Agriculture/Environment</string>
-                   </property>
-                   <property name="icon">
-                    <iconset theme="QIcon::ThemeIcon::DocumentNew"/>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>Artistic/Creative</string>
-                   </property>
-                   <property name="icon">
-                    <iconset theme="QIcon::ThemeIcon::DocumentPageSetup"/>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>Athletic</string>
-                   </property>
-                   <property name="icon">
-                    <iconset theme="QIcon::ThemeIcon::DocumentPageSetup"/>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>Business/Entrepreneurship</string>
-                   </property>
-                   <property name="icon">
-                    <iconset theme="QIcon::ThemeIcon::DocumentNew"/>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>Community service</string>
-                   </property>
-                   <property name="icon">
-                    <iconset theme="QIcon::ThemeIcon::DocumentPageSetup"/>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>Corporate</string>
-                   </property>
-                   <property name="icon">
-                    <iconset theme="QIcon::ThemeIcon::DocumentNew"/>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>Disability</string>
-                   </property>
-                   <property name="icon">
-                    <iconset theme="QIcon::ThemeIcon::DocumentPageSetup"/>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>First-generation</string>
-                   </property>
-                   <property name="icon">
-                    <iconset theme="QIcon::ThemeIcon::DocumentPageSetup"/>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>Government</string>
-                   </property>
-                   <property name="icon">
-                    <iconset theme="QIcon::ThemeIcon::DocumentNew"/>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>International student</string>
-                   </property>
-                   <property name="icon">
-                    <iconset theme="QIcon::ThemeIcon::DocumentPageSetup"/>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>Medical/Nursing</string>
-                   </property>
-                   <property name="icon">
-                    <iconset theme="QIcon::ThemeIcon::DocumentNew"/>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>Merit-based</string>
-                   </property>
-                   <property name="icon">
-                    <iconset theme="QIcon::ThemeIcon::DocumentPageSetup"/>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>Minority</string>
-                   </property>
-                   <property name="icon">
-                    <iconset theme="QIcon::ThemeIcon::DocumentPageSetup"/>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>NGO/Foundation</string>
-                   </property>
-                   <property name="icon">
-                    <iconset theme="QIcon::ThemeIcon::DocumentNew"/>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>Need-based</string>
-                   </property>
-                   <property name="icon">
-                    <iconset theme="QIcon::ThemeIcon::DocumentPageSetup"/>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>Religious</string>
-                   </property>
-                   <property name="icon">
-                    <iconset theme="QIcon::ThemeIcon::DocumentNew"/>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>STEM</string>
-                   </property>
-                   <property name="icon">
-                    <iconset theme="QIcon::ThemeIcon::DocumentNew"/>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>Teacher education</string>
-                   </property>
-                   <property name="icon">
-                    <iconset theme="QIcon::ThemeIcon::DocumentNew"/>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>University-specific</string>
-                   </property>
-                   <property name="icon">
-                    <iconset theme="QIcon::ThemeIcon::DocumentNew"/>
-                   </property>
-                  </item>
-                  <item>
-                   <property name="text">
-                    <string>Women in STEM</string>
-                   </property>
-                   <property name="icon">
-                    <iconset theme="QIcon::ThemeIcon::DocumentPageSetup"/>
-                   </property>
-                  </item>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-              <item>
                <layout class="QHBoxLayout" name="horizontalLayout_38">
                 <item>
                  <widget class="QLabel" name="label_45">
@@ -435,25 +250,91 @@ QRadioButton{
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLineEdit" name="subjectTxt"/>
-                </item>
-                <item>
-                 <widget class="QPushButton" name="newSchemeBtn">
-                  <property name="cursor">
-                   <cursorShape>PointingHandCursor</cursorShape>
-                  </property>
+                 <widget class="QComboBox" name="schemeComboBox">
                   <property name="styleSheet">
-                   <string notr="true">margin:0px;
-padding:3px;
-background-color: rgb(1, 14, 27);
-height:20px;
-width:70px;
-font: 9pt &quot;Segoe UI&quot;;
-border-radius:5px;</string>
+                   <string notr="true"/>
                   </property>
-                  <property name="text">
-                   <string>New Scheme</string>
+                  <property name="currentText">
+                   <string/>
                   </property>
+                  <property name="placeholderText">
+                   <string>Select Scheme</string>
+                  </property>
+                  <item>
+                   <property name="text">
+                    <string>Merit-Based Scheme</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Need-Based Scheme</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>STEM Scheme</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Sports Scholarship Scheme</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Community Service Scheme</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Research and Innovation Scheme</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Disability Support Scheme</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Female Empowerment Scheme</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Alumni-Funded Scheme</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>International Student Scheme</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Cultural or Arts Scheme</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Leadership Development Scheme</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Rural or Underprivileged Scheme</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Partner Organization Scheme</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>Government-Funded Scheme</string>
+                   </property>
+                  </item>
                  </widget>
                 </item>
                </layout>
@@ -485,7 +366,8 @@ border-radius:5px;</string>
                  <widget class="QDateEdit" name="deadlineDateEdit">
                   <property name="styleSheet">
                    <string notr="true">QDateEdit{
-	background-color: rgb(11, 100, 197);
+	
+	background-color: rgb(20, 41, 63);
 	color: white;
 	font: 600 12pt &quot;Segoe UI&quot;;
 	border:none;
@@ -498,6 +380,9 @@ QDateEdit::up-button{
 QDateEdit::down-button{
 	background:transparent;
 }</string>
+                  </property>
+                  <property name="calendarPopup">
+                   <bool>true</bool>
                   </property>
                  </widget>
                 </item>
@@ -542,7 +427,7 @@ border-radius:5px;
 font: 600 9pt &quot;Segoe UI&quot;;
 margin:0px;
 padding:2px;
-background-color: rgb(11, 100, 197);
+background-color: rgb(20, 41, 63);
 color:rgb(1, 14, 27);</string>
                   </property>
                   <property name="text">

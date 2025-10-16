@@ -33,7 +33,7 @@ QPushButton{
    <item>
     <widget class="QStackedWidget" name="stackedWidget">
      <property name="currentIndex">
-      <number>0</number>
+      <number>1</number>
      </property>
      <widget class="QWidget" name="appplicantDetails">
       <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -61,9 +61,9 @@ font: 700 14pt &quot;Segoe UI&quot;;</string>
           <property name="geometry">
            <rect>
             <x>0</x>
-            <y>0</y>
+            <y>-156</y>
             <width>511</width>
-            <height>482</height>
+            <height>524</height>
            </rect>
           </property>
           <layout class="QGridLayout" name="gridLayout">
@@ -125,6 +125,13 @@ font: 700 14pt &quot;Segoe UI&quot;;</string>
               <widget class="QLabel" name="gpaLabel">
                <property name="text">
                 <string>GPA</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="schoolAttendedLabel">
+               <property name="text">
+                <string>School Attended:</string>
                </property>
               </widget>
              </item>
@@ -277,7 +284,7 @@ font: 700 14pt &quot;Segoe UI&quot;;</string>
           <property name="geometry">
            <rect>
             <x>0</x>
-            <y>-337</y>
+            <y>0</y>
             <width>511</width>
             <height>751</height>
            </rect>
@@ -301,9 +308,9 @@ font: 700 14pt &quot;Segoe UI&quot;;</string>
                 </widget>
                </item>
                <item>
-                <widget class="QLabel" name="transcriptSubmittedLabel">
+                <widget class="QLabel" name="gpaScoreLabel">
                  <property name="text">
-                  <string>Transcript: submitted or Not</string>
+                  <string>GPA</string>
                  </property>
                 </widget>
                </item>
@@ -336,9 +343,9 @@ font: 700 14pt &quot;Segoe UI&quot;;</string>
                 </widget>
                </item>
                <item>
-                <widget class="QLabel" name="proofOfNeedSubmittedLabel">
+                <widget class="QLabel" name="needLabel">
                  <property name="text">
-                  <string>Proof of Need: submitted or Not</string>
+                  <string>Need</string>
                  </property>
                 </widget>
                </item>

@@ -1,9 +1,7 @@
-from datetime import datetime
 
-from PyQt6.QtWidgets import QWidget, QTableWidgetItem
+from PyQt6.QtWidgets import QWidget
 from PyQt6.QtGui import QIcon
 import requests
-from PyQt6.QtWidgets import QPushButton, QHBoxLayout
 
 from SholarshipManagementSystem.manageApplicantl.manageApplicantDetailsPage import Ui_Form
 from SholarshipManagementSystem.authentications.regValidationPHP import RegCode
@@ -21,7 +19,6 @@ class ManageApplicantDetails(QWidget, Ui_Form):
         self.email = email
         self.getApplicantData = GetApplicantData(self.email)
         self.populateApplicantDetails()
-        self.populateTbl()
         self.btnClicks()
 
         self.stackedWidget.setCurrentIndex(0)
@@ -55,7 +52,6 @@ class ManageApplicantDetails(QWidget, Ui_Form):
     def goToApplicantDetails(self):
         self.stackedWidget.setCurrentIndex(0)
         self.populateApplicantDetails()
-        self.populateTbl()
 
 ########################################################################################################################
     def populateApplicantDetails(self):
@@ -81,20 +77,7 @@ class ManageApplicantDetails(QWidget, Ui_Form):
             dbContent = result.get("data", [])
             item = dbContent[0]
 
-            dateSubmitted = item.get("date_submitted")
-            deadline = item.get("deadline")
 
-            parsedSubmittedDated = datetime.strptime(dateSubmitted, "%Y-%m-%d")
-            parsedDeadline = datetime.strptime(deadline, "%Y-%m-%d")
-
-            if parsedSubmittedDated < parsedDeadline:
-                self.applicationSubmittedLabel.setText(f"Application was submitted on {dateSubmitted}\n"
-                                                       f"Deadline: {deadline}\n"
-                                                       f"Submitted before deadline")
-            else:
-                self.applicationSubmittedLabel.setText(f"Application was submitted on {dateSubmitted}\n"
-                                                       f"Deadline: {deadline}\n"
-                                                       f"Submitted After deadline")
 
             self.nameLabel.setText(f"NAME:  {item.get("name", "")}")
             self.ageLabel.setText(f"AGE:  {str(item.get("age", ""))}")
@@ -108,7 +91,6 @@ class ManageApplicantDetails(QWidget, Ui_Form):
             # self.applicationSubmittedLabel.setText(f"APPLICATION SUBMISSION DATE:  {item.get("date_submitted", "")}")
             self.ApplicantScoreLabel.setText(f"APPLICANT SCORE:  {str(item.get("applicant_score", "") or "0")}")
             self.AssessmentScoreLabel.setText(f"ASSESSMENT SCORE:  {str(item.get("assessment_score", "")) or "0"}")
-            self.reasonForApplicationLabel.setText(item.get("reason_for_applying", ""))
 
 
         except Exception as e:
@@ -118,96 +100,26 @@ class ManageApplicantDetails(QWidget, Ui_Form):
             )
             print(f"Exception(populateApplicantDetails): {e}")
 
-########################################################################################################################
-    def populateTbl(self):
-        response = requests.post(
-            "http://localhost/BackEnd/scholarshipManagement/documentsTbl/getDocs.php",
-            data={
-                "email" : self.email
-            }
-        )
-        result = response.json()
-        print(f"RAW RESPONSE(populateDocumentsTbl): {response.text}")
-        msg = result.get("message", "Unknown Msg")
-
-        if result.get("status") == "error":
-            self.regCode.msgBox(
-                "Error",
-                msg
-            )
-            print(f"Error: {msg}")
-            return
-
-        dbContent = result.get("data", [])
-
-        self.viewDocsTableWidget.setColumnCount(5)
-        self.viewDocsTableWidget.setRowCount(len(dbContent))
-        self.viewDocsTableWidget.setHorizontalHeaderLabels(
-            [
-                "Actions",
-                "ID",
-                "Doc Name",
-                "Date Submitted",
-                "Filepath"
-            ]
-        )
-
-        for rowIndx, rowData in enumerate(dbContent):
-            self.viewDocsTableWidget.setItem(rowIndx, 1, QTableWidgetItem(str(rowData.get("id", ""))))
-            self.viewDocsTableWidget.setItem(rowIndx, 2, QTableWidgetItem(rowData.get("doc_type", "")))
-            self.viewDocsTableWidget.setItem(rowIndx, 3, QTableWidgetItem(rowData.get("date_uploaded", "")))
-            self.viewDocsTableWidget.setItem(rowIndx, 4, QTableWidgetItem(rowData.get("file_path", "")))
-
-            #       create View & del btn
-            viewBtn = QPushButton("View")
-            delBtn = QPushButton("Delete")
-
-            viewBtn.setStyleSheet("QPushButton { "
-                                  "color: white;"
-                                  "padding:3px;"
-                                  "margin:0px;"
-                                  "border-radius:3px;"
-                                  "}")
-            delBtn.setStyleSheet("QPushButton { "
-                                 "color: white;"
-                                 "padding:3px;"
-                                 "margin:0px;"
-                                 "border-radius:3px;"
-                                 "}")
-
-            # viewBtn.clicked.connect(
-            #     lambda _, Id=rowData.get("id"): self.displayApplicantDetails(Id)
-            # )
-            # delBtn.clicked.connect(
-            #     lambda _, Id=rowData.get("id"): self.delScholarship(Id)
-            # )
-            #   align horizontally
-            btnWidget = QWidget()
-            layout = QHBoxLayout(btnWidget)
-            layout.addWidget(viewBtn)
-            layout.addWidget(delBtn)
-            layout.setContentsMargins(0, 0, 0, 0)
-            self.viewDocsTableWidget.setCellWidget(rowIndx, 0, btnWidget)
 
 ########################################################################################################################
     def populateApplicantCriteria(self):
+
         self.getApplicantData.scoreApplicant()
+        print("This page is not the problem1")
         self.getApplicantData.applicantCriteriaTemplate(
-            self.transcriptSubmittedLabel,
             self.academicScoreLabel,
-            self.proofOfNeedSubmittedLabel,
             self.incomeBracketLabel_2,
             self.financialScoreLabel,
-            self.documentsUploadedLabel,
-            self.documentScoreLabel,
             self.assessmentScoreLabel,
             self.academicWeightCombo,
             self.financialWeightCombo,
-            self.docWeightCombo,
             self.assessmentWeightCombo,
             self.finalScoreFormulaLabel,
-            self.finalScoreLabel
+            self.finalScoreLabel,
+            self.needLabel,
+            self.gpaScoreLabel
         )
+        print("This page is not the problem2")
         print("APPLICANT CRITERIA HAS BEEN POPULATED...")
         print(f"Email(populateApplicantCriteria): {self.email}")
 
@@ -216,7 +128,6 @@ class ManageApplicantDetails(QWidget, Ui_Form):
         try:
             academicWeight = float(self.academicWeightCombo.currentText().strip()),
             financialWeight = float(self.financialWeightCombo.currentText().strip())
-            docWeight = float(self.docWeightCombo.currentText().strip())
             assessmentWeight = float(self.assessmentWeightCombo.currentText().strip())
 
             response = requests.post(
@@ -224,7 +135,6 @@ class ManageApplicantDetails(QWidget, Ui_Form):
                 data={
                     "academic": academicWeight,
                     "financial": financialWeight,
-                    "doc": docWeight,
                     "assessment": assessmentWeight
                 }
             )

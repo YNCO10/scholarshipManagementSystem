@@ -19,6 +19,7 @@ from SholarshipManagementSystem.classes.admin import Admin
 class Dash(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
+        self.viewApp = None
         self.controller = None
         self.appDetails = None
         self.admin = Admin(Sessions.adminName, Sessions.seshEmail, "*********")
@@ -85,6 +86,9 @@ class Dash(QMainWindow, Ui_MainWindow):
         # noti...
         self.notificationsBtn.clicked.connect(self.switchToNotificationsPage)
         self.notificationsIconBtn.clicked.connect(self.switchToNotificationsPage)
+        #manageApplications
+        self.manageApplicationBtn.clicked.connect(self.switchToManageApplications)
+        self.manageApplicationIconBtn.clicked.connect(self.switchToManageApplications)
         #     show password
         self.showPassBtn.clicked.connect(self.togglePasswordBtn)
 
@@ -208,6 +212,11 @@ class Dash(QMainWindow, Ui_MainWindow):
         self.mainDisplayWidget.setCurrentIndex(2)
         self.showManageApplicantPage()
 
+    def switchToManageApplications(self):
+        self.mainDisplayWidget.setCurrentIndex(6)
+        self.populateApplicationsTbl()
+
+
 # PAGE SWITCHING END################################################################################################
 
 # POPULATE TABLE WIDGET#############################################################################################
@@ -228,7 +237,7 @@ class Dash(QMainWindow, Ui_MainWindow):
 
                 Sessions.scholarshipCount = len(dbContent)
                 self.scholarshipTableWidget.setRowCount(len(dbContent))  # always initialise tbl so it doesn't stack up rows
-                self.scholarshipTableWidget.setColumnCount(13)
+                self.scholarshipTableWidget.setColumnCount(12)
 
                 self.scholarshipTableWidget.setHorizontalHeaderLabels(
                     [
@@ -236,8 +245,7 @@ class Dash(QMainWindow, Ui_MainWindow):
                         "ID",
                         "Name",
                         "Descrip",
-                        "Type",
-                        "Subject",
+                        "Scheme Type",
                         "Deadline",
                         "Financial Amount",
                         "Provider",
@@ -255,18 +263,17 @@ class Dash(QMainWindow, Ui_MainWindow):
                     self.scholarshipTableWidget.setItem(rowIdx, 2,
                                                         QTableWidgetItem(rowData.get("scholarship_name", "")))
                     self.scholarshipTableWidget.setItem(rowIdx, 3, QTableWidgetItem(rowData.get("descrip", "")))
-                    self.scholarshipTableWidget.setItem(rowIdx, 4, QTableWidgetItem(rowData.get("type", "")))
-                    self.scholarshipTableWidget.setItem(rowIdx, 5, QTableWidgetItem(rowData.get("subject", "")))
-                    self.scholarshipTableWidget.setItem(rowIdx, 6, QTableWidgetItem(rowData.get("deadline", "")))
-                    self.scholarshipTableWidget.setItem(rowIdx, 7,
+                    self.scholarshipTableWidget.setItem(rowIdx, 4, QTableWidgetItem(rowData.get("scheme_type", "")))
+                    self.scholarshipTableWidget.setItem(rowIdx, 5, QTableWidgetItem(rowData.get("deadline", "")))
+                    self.scholarshipTableWidget.setItem(rowIdx, 6,
                                                         QTableWidgetItem(rowData.get("financial_amount", "")))
-                    self.scholarshipTableWidget.setItem(rowIdx, 8, QTableWidgetItem(rowData.get("provider", "")))
-                    self.scholarshipTableWidget.setItem(rowIdx, 9, QTableWidgetItem(rowData.get("provider_email", "")))
-                    self.scholarshipTableWidget.setItem(rowIdx, 10,
+                    self.scholarshipTableWidget.setItem(rowIdx, 7, QTableWidgetItem(rowData.get("provider", "")))
+                    self.scholarshipTableWidget.setItem(rowIdx, 8, QTableWidgetItem(rowData.get("provider_email", "")))
+                    self.scholarshipTableWidget.setItem(rowIdx, 9,
                                                         QTableWidgetItem(rowData.get("applicantion_link", "")))
-                    self.scholarshipTableWidget.setItem(rowIdx, 11, QTableWidgetItem(
+                    self.scholarshipTableWidget.setItem(rowIdx, 10, QTableWidgetItem(
                         rowData.get("perks", "") or "No Benefits Available for this Scholarship"))
-                    self.scholarshipTableWidget.setItem(rowIdx, 12, QTableWidgetItem(rowData.get("file_path", "")))
+                    self.scholarshipTableWidget.setItem(rowIdx, 11, QTableWidgetItem(rowData.get("file_path", "")))
 
                     #       create View & del btn
                     viewBtn = QPushButton("View")
@@ -1139,3 +1146,111 @@ class Dash(QMainWindow, Ui_MainWindow):
         except Exception as e:
             self.msgBox("Error", f"Exception: {e}")
             print(f"Exception(showManageApplicantPage): {e}")
+
+########################################################################################################################
+    def populateApplicationsTbl(self):
+        try:
+            response = requests.get(
+                "http://localhost/BackEnd/scholarshipManagement/application/applicationDataForApplicationTable.php"
+            )
+
+            print(F"RAW RESPONSE: {response.text}")
+            result = json.loads(response.text)
+            msg = result.get("message", "Unknown response")
+
+            if result.get("status") == "success":
+                #     get db content
+                dbContent = result.get("data", [])
+                # Sessions.seshEmail
+                print(dbContent)
+                self.manageApplicantTableWidget.setRowCount(
+                    len(dbContent))  # always initialise tbl so it doesn't stack up rows
+                Sessions.applicantCount = len(dbContent)
+
+                self.manageApplicantTableWidget.setColumnCount(9)
+
+                self.manageApplicantTableWidget.setHorizontalHeaderLabels(
+                    [
+                        "Actions",
+                        "Application ID",
+                        "User Id",
+                        "Scholarship Id",
+                        "Application Status",
+                        "Date Submitted",
+                        "Financial Assistance",
+                        "Reason for Applying",
+                        "Career Goals"
+                    ]
+                )
+                finAssistance = None
+
+                #     populate tbl with content from db
+                for rowIdx, rowData in enumerate(dbContent):
+                    if rowData.get("fin_assistance") == 0:
+                        finAssistance = "No financial Assistance Needed"
+                    else:
+                        finAssistance = "financial Assistance Needed"
+                    #         fill data for all 4 columns
+                    self.manageApplicantTableWidget.setItem(rowIdx, 1, QTableWidgetItem(str(rowData.get("id", ""))))
+                    self.manageApplicantTableWidget.setItem(rowIdx, 2, QTableWidgetItem(str(rowData.get("user_id", ""))))
+                    self.manageApplicantTableWidget.setItem(rowIdx, 3, QTableWidgetItem(str(rowData.get("scholarship_id", ""))))
+                    self.manageApplicantTableWidget.setItem(rowIdx, 4, QTableWidgetItem(rowData.get("application_status", "")))
+                    self.manageApplicantTableWidget.setItem(rowIdx, 5, QTableWidgetItem(rowData.get("date_submitted", "")))
+                    self.manageApplicantTableWidget.setItem(rowIdx, 6, QTableWidgetItem(finAssistance))
+                    self.manageApplicantTableWidget.setItem(rowIdx, 7, QTableWidgetItem(rowData.get("reason_for_applying", "") or "Not specified"))
+                    self.manageApplicantTableWidget.setItem(rowIdx, 8, QTableWidgetItem(rowData.get("careerGoals", "")))
+
+                    #       create View & del btn
+                    viewBtn = QPushButton("View")
+                    delBtn = QPushButton("Delete")
+
+                    viewBtn.setStyleSheet("QPushButton { "
+                                          "color: white;"
+                                          "padding:3px;"
+                                          "margin:0px;"
+                                          "border-radius:3px;"
+                                          "}")
+                    delBtn.setStyleSheet("QPushButton { "
+                                         "color: white;"
+                                         "padding:3px;"
+                                         "margin:0px;"
+                                         "border-radius:3px;"
+                                         "}")
+
+                    viewBtn.clicked.connect(
+                        lambda _, applicationId=rowData.get("id"), userID=rowData.get("user_id"): self.showApplication(userID,applicationId)
+                    )
+                    # delBtn.clicked.connect(
+                    #     lambda _, Id=rowData.get("id"): self.delApplicant(Id)
+                    # )
+                    #   align horizontally
+                    btnWidget = QWidget()
+                    layout = QHBoxLayout(btnWidget)
+                    layout.addWidget(viewBtn)
+                    layout.addWidget(delBtn)
+                    layout.setContentsMargins(0, 0, 0, 0)
+
+                    #         add widget to tbl
+                    self.manageApplicantTableWidget.setCellWidget(rowIdx, 0, btnWidget)
+
+                    self.manageApplicantTableWidget.setStyleSheet("QTableWidget { color: #010e1b; }")
+
+                    self.manageApplicantTableWidget.verticalHeader().setDefaultSectionSize(40)
+
+                    self.manageApplicantTableWidget.resizeColumnsToContents()
+
+
+            elif result.get("message") == "error":
+                self.msgBox("Error(populateApplicationsTbl)", f"Upload error: {msg}")
+                print(msg)
+
+        except Exception as e:
+            self.msgBox("Error", f"Something went wrong Populating Applicant tbl(populateApplicationsTbl): {e}")
+            print(e)
+########################################################################################################################
+    def showApplication(self, userID, applicationID):
+        from SholarshipManagementSystem.application.viewApplicationCode import ViewApplication
+        self.viewApp = ViewApplication()
+        self.viewApp.populateApplicationsDetails(applicationID, userID)
+        self.viewApp.populateDocumentTbl(userID, applicationID)
+        self.viewApp.show()

@@ -21,7 +21,7 @@ class GetApplicantData:
         # print("Checkpoint1")
         self.applicantTracker = ApplicantTracker(
             self.email,
-            "http://localhost/BackEnd/scholarshipManagement/applicantTracking/getData.php"
+            "http://localhost/BackEnd/scholarshipManagement/applicantTracking/getApplicantDataForPage.php"
         )
 
         # get weights----------------------------------------------------------------------
@@ -39,155 +39,139 @@ class GetApplicantData:
 
         self.academicWeight = weight.get("academic")
         self.assessmentWeight = weight.get("assessment")
-        self.docWeight = weight.get("doc")
         self.financialWeight = weight.get("financial")
 
         print(f"academicWeight: {self.academicWeight}")
         print(f"assessmentWeight: {self.assessmentWeight}")
-        print(f"docWeight: {self.docWeight}")
         print(f"financialWeight: {self.financialWeight}")
         #use weights
         self.scoreHandler = ScoreHandler(
             self.academicWeight,
             self.financialWeight,
-            self.docWeight,
             self.assessmentWeight,
         )
-        # print("Checkpoint4")
+        print("Checkpoint4")
         # self.scoreApplicant()
 
 
     def scoreApplicant(self):
-        result = self.applicantTracker.getApplicantData()
-        msg = result.get("message", "Unknown Msg")
+        try:
 
-        if result.get("status") == "success":
+            dbContent = self.applicantTracker.getApplicantData()
+            # msg = dbContent.get("message", "Unknown Msg")
+            allContent = dbContent.get("data")
+            result = allContent[0]
 
-            if result.get("incomeBracket") == "less than MWK150,000":
-                self.incomeBracket = "veryLow"
-            elif result.get("incomeBracket") == "Between MWK150,000 - MWK250,000":
-                self.incomeBracket = "low"
-            elif result.get("incomeBracket") == "Between MKW250,000 - MWK500,000":
-                self.incomeBracket = "average"
-            elif result.get("incomeBracket") == "Between MWK500,00 - MWK1,000,000":
-                self.incomeBracket = "aboveAverage"
-            elif result.get("incomeBracket") == "Between MWK1,000,000 - MWK2,000,000":
-                self.incomeBracket = "high"
-            elif result.get("incomeBracket") == "More than MWK2,000,000":
-                self.incomeBracket = "veryHigh"
+            if dbContent.get("status") == "success":
 
-            self.gpa = result.get("gpa")
-            self.transcript = result.get("transcript")
-            self.need = result.get("need")
-            self.financialProof = result.get("financialProof")
-            self.uploadedDocs = result.get("uploadedDocs")
-            self.requiredDocs = ["Recommendation Letter", "Proof Of Need", "National ID", "Transcript"]
-            self.assessmentScore = result.get("score")
-            self.totalQuest = 40
+                if result.get("income_bracket") == "less than MWK150,000":
+                    self.incomeBracket = "veryLow"
+                elif result.get("income_bracket") == "Between MWK150,000 - MWK250,000":
+                    self.incomeBracket = "low"
+                elif result.get("income_bracket") == "Between MKW250,000 - MWK500,000":
+                    self.incomeBracket = "average"
+                elif result.get("income_bracket") == "Between MWK500,00 - MWK1,000,000":
+                    self.incomeBracket = "aboveAverage"
+                elif result.get("income_bracket") == "Between MWK1,000,000 - MWK2,000,000":
+                    self.incomeBracket = "high"
+                elif result.get("income_bracket") == "More than MWK2,000,000":
+                    self.incomeBracket = "veryHigh"
 
+                self.gpa = result.get("gpa")
+                self.need = result.get("fin_assistance")
+                self.uploadedDocs = result.get("uploadedDocs")
+                self.requiredDocs = ["Recommendation Letter", "Proof Of Need", "National ID", "Transcript"]
+                self.assessmentScore = result.get("assessment_score")
+                self.totalQuest = 40
 
-            applicant_data = {
-                "gpa": self.gpa,
-                "transcript": self.transcript,
-                "need": self.need,
-                "financialProof": self.financialProof,
-                "incomeBracket": self.incomeBracket,
-                "uploadedDocs": self.uploadedDocs,
-                "requiredDocs": self.requiredDocs,
-                "assessmentScore": self.assessmentScore,
-                "totalQuest": 40
-            }
+                print(f"GPA: {self.gpa}")
 
-            score = self.scoreHandler.applicantScore(applicant_data)
-            print(f"Applicant overall score is {int(score)}")
-
-            response = requests.post(
-                url="http://localhost/BackEnd/scholarshipManagement/applicant/insertScore.php",
-                data={
-                    "email" : self.email,
-                    "score" : int(score)
+                applicant_data = {
+                    "gpa": self.gpa,
+                    "need": self.need,
+                    "incomeBracket": self.incomeBracket,
+                    "assessmentScore": self.assessmentScore,
+                    "totalQuest": 40
                 }
-            )
 
-            print(f"RAW RESPONSE: {response.text}")
-            result = response.json()
-            msg = result.get("message", "Unknown Msg")
+                score = self.scoreHandler.applicantScore(applicant_data)
+                print(f"Applicant overall score is {int(score)}")
 
-            if result.get("status") == "success":
-                print(f"Applicant overall score for ranking has been recorded\n{msg}")
-                return
+                response = requests.post(
+                    url="http://localhost/BackEnd/scholarshipManagement/applicant/insertScore.php",
+                    data={
+                        "email": self.email,
+                        "score": int(score)
+                    }
+                )
+
+                print(f"RAW RESPONSE: {response.text}")
+                result = response.json()
+                msg = result.get("message", "Unknown Msg")
+
+                if result.get("status") == "success":
+                    print(f"Applicant overall score for ranking has been recorded\n{msg}")
+                    return
+
+                elif result.get("status") == "error":
+                    print(f"Error(Update failed): {msg}")
+                    return
 
             elif result.get("status") == "error":
-                print(f"Error(Update failed): {msg}")
+                print(f"Error(scoreApplicant)")
+                # print(f"Error(scoreApplicant): {msg}")
                 return
 
-        elif result.get("status") == "error":
-            print(f"Error(Retrieval): {msg}")
-            return
+        except Exception as e:
+            print(f"Exception (scoreApplicant): {e}")
 
     def applicantCriteriaTemplate(self,
-                                  transcriptSubmittedLabel,
                                   academicScoreLabel,
-                                  proofOfNeedSubmittedLabel,
                                   incomeBracketLabel_2,
                                   financialScoreLabel,
-                                  documentsUploadedLabel,
-                                  documentScoreLabel,
                                   assessmentScoreLabel,
                                   academicWeightCombo,
                                   financialWeightCombo,
-                                  docLabelCombo,
                                   assessmentWeightCombo,
                                   finalScoreFormulaLabel,
-                                  finalScoreLabel):
+                                  finalScoreLabel,
+                                  needLabel,
+                                  gpaScoreLabel):
         try:
             # Academic section--------------------------------------------
-            if self.transcript:
-                transcriptSubmittedLabel.setText("Transcript was Submitted")
-            else:
-                transcriptSubmittedLabel.setText("Transcript was Not Submitted")
+            gpaScoreLabel.setText(f"{self.gpa}/5 * 100")
 
             # academic score
-            academicScore = self.scoreHandler.AcademicScore(self.gpa, self.transcript)
+            academicScore = self.scoreHandler.AcademicScore(self.gpa)
             academicScoreLabel.setText(f"Score: {academicScore} Points.")
 
             # Financial section--------------------------------------------
-            if self.financialProof:
-                proofOfNeedSubmittedLabel.setText("Proof Of Need was Submitted")
+            if self.need == 0:
+                needLabel.setText("Financial Assistance was requested")
             else:
-                proofOfNeedSubmittedLabel.setText("Proof Of Need was Not Submitted")
+                needLabel.setText("Financial Assistance was NOT requested")
 
             # income bracket
             incomeBracketLabel_2.setText(f"Income Bracket: {self.incomeBracket}")
 
             # financial score
-            financialScore = self.scoreHandler.financialScore(self.need, self.financialProof, self.incomeBracket)
+            financialScore = self.scoreHandler.financialScore(self.need, self.incomeBracket)
             financialScoreLabel.setText(f"Score: {financialScore} Points.")
-
-            # Document section--------------------------------------------
-            documentsUploadedLabel.setText(
-                f"Number of Documents uploaded: {len(self.uploadedDocs)}/{len(self.requiredDocs)}")
-
-            # doc Score
-            docScore = self.scoreHandler.documentScore(self.uploadedDocs, self.requiredDocs)
-            documentScoreLabel.setText(f"Score: {docScore} Points.")
 
             # Assessment section--------------------------------------------
             assessmentScore = self.scoreHandler.assessmentScore(self.assessmentScore, self.totalQuest)
             assessmentScoreLabel.setText(f"Score: {assessmentScore:.0f} Points.")
 
             # Weights section-----------------------------------------------
-            academicWeightCombo.setCurrentText(str(self.academicWeight))
-            assessmentWeightCombo.setCurrentText(str(self.assessmentWeight))
-            docLabelCombo.setCurrentText(str(self.docWeight))
-            financialWeightCombo.setCurrentText(str(self.financialWeight))
+            academicWeightCombo.setCurrentText(self.academicWeight)
+            assessmentWeightCombo.setCurrentText(self.assessmentWeight)
+            financialWeightCombo.setCurrentText(self.financialWeight)
 
             # Final score section--------------------------------------------
-            sumOfWeights = self.academicWeight + self.assessmentWeight + self.docWeight + self.financialWeight
+            sumOfWeights = self.academicWeight + self.assessmentWeight + self.financialWeight
             finalScoreFormulaLabel.setText(
-                f"(({academicScore}*{self.academicWeight})+({financialScore}*{self.financialWeight})+({docScore}*{self.docWeight})+({assessmentScore}*{self.assessmentWeight}))/{sumOfWeights}")
-            finalScore = ((academicScore * self.academicWeight) + (financialScore * self.financialWeight) + (
-                        docScore * self.docWeight) + (assessmentScore * self.assessmentWeight)) / sumOfWeights
+                f"(({academicScore}*{self.academicWeight})+({financialScore}*{self.financialWeight})+({assessmentScore}*{self.assessmentWeight}))/{sumOfWeights}")
+            finalScore = ((academicScore * self.academicWeight) + (financialScore * self.financialWeight) + (assessmentScore * self.assessmentWeight)) / sumOfWeights
             finalScoreLabel.setText(f"Final score: {finalScore:.0f}")
 
         except Exception as error:

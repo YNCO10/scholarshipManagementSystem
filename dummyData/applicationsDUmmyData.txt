@@ -20,3 +20,8 @@ INSERT INTO `applications`
 (18, 16, 'Pending', '2025-09-29', 'Chikwawa Secondary School', 2, 0, 'This opportunity will empower me to study without worrying about financial obstacles.', 'To become a social worker helping vulnerable groups.', 'More than MWK2,000,000'),
 (19, 18, 'Pending', '2025-09-29', 'Kasungu Secondary School', 4, 1, 'I am applying for this scholarship because it is the only chance I have to advance my studies.', 'To become a scientist researching renewable energy.', 'Between MWK150,000 - MWK250,000'),
 (20, 12, 'Pending', '2025-09-29', 'Dedza Secondary School', 5, 0, 'This scholarship will help me achieve my education goals and uplift my family from poverty.', 'To become a teacher who shapes future leaders.', 'less than MWK150,000');
+
+1,5, 18
+
+
+12,13,17,18,19

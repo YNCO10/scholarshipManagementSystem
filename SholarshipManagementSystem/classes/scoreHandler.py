@@ -8,12 +8,12 @@ class ScoreHandler:
         self.assessmentWeight = assessmentWeight
 
 ########################################################################################################################
-    def AcademicScore(self,gpa:int)-> float:
-        return (gpa / 5.0) * 100
+    def AcademicScore(self,gpa):
+        return (gpa / 5) * 100
 
 ########################################################################################################################
-    def financialScore(self, need: bool, incomeBracket= None):
-        if not need:
+    def financialScore(self, need: bool, incomeBracket = None):
+        if need == 0:
             return 0
 
         score = 50 #threshold for whether they need support or not
@@ -45,7 +45,7 @@ class ScoreHandler:
     def assessmentScore(self, score:int, total:int)->float:
         if total == 0:
             return 0
-        return score/total
+        return score/total*100
 
 ########################################################################################################################
     def applicantScore(self, applicantInfo:dict):
@@ -56,10 +56,6 @@ class ScoreHandler:
             applicantInfo["need"],
             applicantInfo["incomeBracket"]
         )
-        # documentScore = self.documentScore(
-        #     applicantInfo["uploadedDocs"],
-        #     applicantInfo["requiredDocs"]
-        # )
         assessmentScore = self.assessmentScore(
             applicantInfo["assessmentScore"],
             applicantInfo["totalQuest"]
@@ -70,7 +66,6 @@ class ScoreHandler:
         finalScore = (
             academicScore * self.academicWeight+
             financialScore * self.financialWeight+
-            # documentScore * self.documentWeight+
             assessmentScore * self.assessmentWeight
         ) / totalWeights
 
