@@ -6,6 +6,7 @@ import requests
 
 class GetApplicantData:
     def __init__(self, email):
+        self.applicantName = None
         self.assessmentScore = None
         self.totalQuest = None
         self.score = None
@@ -50,10 +51,26 @@ class GetApplicantData:
             self.financialWeight,
             self.assessmentWeight,
         )
-        print("Checkpoint4")
+        #get scores-------------------------------------------------------------------------
+        response = requests.get(
+            "http://localhost/BackEnd/scholarshipManagement/applicantTracking/getScore.php"
+        )
+
+        result = response.json()
+        msg = result.get("message", "Unknown Msg")
+        if result.get("status") == "error":
+            print(f"Error(getScores): {msg}")
+
+        scores = result.get("scores", [])
+        self.intScores = []
+        for score in scores:
+            self.intScores.append(int(score))
+
+        self.sumOfScores = sum(self.intScores)
+        # print(sumOfScores)
         # self.scoreApplicant()
 
-
+########################################################################################################################
     def scoreApplicant(self):
         try:
 
@@ -83,6 +100,7 @@ class GetApplicantData:
                 self.requiredDocs = ["Recommendation Letter", "Proof Of Need", "National ID", "Transcript"]
                 self.assessmentScore = result.get("assessment_score")
                 self.totalQuest = 40
+                self.applicantName = result.get("name")
 
                 print(f"GPA: {self.gpa}")
 
@@ -124,7 +142,7 @@ class GetApplicantData:
 
         except Exception as e:
             print(f"Exception (scoreApplicant): {e}")
-
+########################################################################################################################
     def applicantCriteriaTemplate(self,
                                   academicScoreLabel,
                                   incomeBracketLabel_2,
@@ -136,16 +154,19 @@ class GetApplicantData:
                                   finalScoreFormulaLabel,
                                   finalScoreLabel,
                                   needLabel,
-                                  gpaScoreLabel):
+                                  gpaScoreLabel,
+                                  overallAvgScoreLabel,
+                                  applicantEligibilityLabel,
+                                  successPredictionLabel):
         try:
-            # Academic section--------------------------------------------
+            # Academic section----------------------------------------------
             gpaScoreLabel.setText(f"{self.gpa}/5 * 100")
 
             # academic score
             academicScore = self.scoreHandler.AcademicScore(self.gpa)
             academicScoreLabel.setText(f"Score: {academicScore} Points.")
 
-            # Financial section--------------------------------------------
+            # Financial section---------------------------------------------
             if self.need == 0:
                 needLabel.setText("Financial Assistance was requested")
             else:
@@ -158,26 +179,37 @@ class GetApplicantData:
             financialScore = self.scoreHandler.financialScore(self.need, self.incomeBracket)
             financialScoreLabel.setText(f"Score: {financialScore} Points.")
 
-            # Assessment section--------------------------------------------
+            # Assessment section---------------------------------------------
             assessmentScore = self.scoreHandler.assessmentScore(self.assessmentScore, self.totalQuest)
             assessmentScoreLabel.setText(f"Score: {assessmentScore:.0f} Points.")
 
-            # Weights section-----------------------------------------------
-            academicWeightCombo.setCurrentText(self.academicWeight)
-            assessmentWeightCombo.setCurrentText(self.assessmentWeight)
-            financialWeightCombo.setCurrentText(self.financialWeight)
+            # Weights section------------------------------------------------
+            academicWeightCombo.setCurrentText(f"{float(self.academicWeight):.1f}")
+            assessmentWeightCombo.setCurrentText(f"{float(self.assessmentWeight):.1f}")
+            financialWeightCombo.setCurrentText(f"{float(self.financialWeight):.1f}")
 
-            # Final score section--------------------------------------------
+            # Final score section---------------------------------------------
             sumOfWeights = self.academicWeight + self.assessmentWeight + self.financialWeight
             finalScoreFormulaLabel.setText(
                 f"(({academicScore}*{self.academicWeight})+({financialScore}*{self.financialWeight})+({assessmentScore}*{self.assessmentWeight}))/{sumOfWeights}")
             finalScore = ((academicScore * self.academicWeight) + (financialScore * self.financialWeight) + (assessmentScore * self.assessmentWeight)) / sumOfWeights
-            finalScoreLabel.setText(f"Final score: {finalScore:.0f}")
+            finalScoreLabel.setText(f"Applicant score: {finalScore:.0f}")
+
+            #Average and eligibility section ---------------------------------
+            avgScore = self.scoreHandler.overallAvgScore(self.sumOfScores, len(self.intScores))
+            successPred = self.scoreHandler.calculateSuccessPrediction(finalScore)
+            eligibility = self.scoreHandler.calculateEligibility(avgScore, finalScore)
+
+            overallAvgScoreLabel.setText(f"System Threshold = {avgScore:.2f}")
+            successPredictionLabel.setText(f"{self.applicantName} is {successPred} to be accepted for a scholarship.")
+            applicantEligibilityLabel.setText(f"{self.applicantName} is {eligibility}")
 
         except Exception as error:
             print(f"Exception(applicantCriteriaTemplate): {error}")
 
-# try:
-#     exe = GetApplicantData()
-# except Exception as e:
-#     print(f"Exception(GetApplicantData): {e}")
+try:
+    exe = GetApplicantData(
+        "test9@gmail.com"
+    )
+except Exception as e:
+    print(f"Exception(GetApplicantData): {e}")

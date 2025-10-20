@@ -2,23 +2,31 @@ import json
 import os
 import subprocess
 import sys
+
+from datetime import datetime
+from apscheduler.schedulers.background import BackgroundScheduler
 import requests
-from PyQt6.QtCore import Qt, QTimer
+from PyQt6.QtWidgets import QDialog
+from PyQt6.QtCore import Qt, QTimer, pyqtSignal
 from PyQt6.QtGui import QIcon
 from PyQt6.QtWidgets import QMainWindow, QLineEdit, QMessageBox, QTableWidgetItem, QPushButton, QWidget, QHBoxLayout, \
     QVBoxLayout, QCompleter,QLabel
 from SholarshipManagementSystem.homePage.dashboard import Ui_MainWindow
 import Sessions
 from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg as FigureCanvas
-
+from SholarshipManagementSystem.reportsPage.report import Report
 from SholarshipManagementSystem.manageApplicantl.applicantCardCode import ApplicantCard
 from SholarshipManagementSystem.reportsPage.charts import Chart
 from SholarshipManagementSystem.classes.admin import Admin
 
 
 class Dash(QMainWindow, Ui_MainWindow):
+    #because the scheduler runs in the background thread and not the main thread
+    trigger = pyqtSignal()
     def __init__(self):
         super().__init__()
+        self.schedule = None
+        self.reportPage = Report()
         self.viewApp = None
         self.controller = None
         self.appDetails = None
@@ -27,6 +35,8 @@ class Dash(QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         self.setWindowTitle("Dashboard")
         self.setWindowIcon(QIcon(":icons/SMsysIcon.png"))
+        self.trigger.connect(self.printReport)
+        # self.generateAutomatedReport(10)
 
         #DISPLAY HOME SCREEN
         self.mainDisplayWidget.setCurrentIndex(0)
@@ -76,6 +86,8 @@ class Dash(QMainWindow, Ui_MainWindow):
         # report
         self.reportBtn.clicked.connect(self.switchToReportsPage)
         self.reportIconBtn.clicked.connect(self.switchToReportsPage)
+
+        self.printReportBtn.clicked.connect(self.printReport)
         #manageApplicant
         self.manageApplicantBtn.clicked.connect(self.switchToManageApplicants)
         self.manageApplicantIconBtn.clicked.connect(self.switchToManageApplicants)
@@ -92,7 +104,7 @@ class Dash(QMainWindow, Ui_MainWindow):
         #     show password
         self.showPassBtn.clicked.connect(self.togglePasswordBtn)
 
-        #     sendNotification
+        #     sendSingleNotification
         self.sendNotificationsBtn.clicked.connect(self.sendNotification)
 
         #     filterBtn(applicant)
@@ -154,6 +166,7 @@ class Dash(QMainWindow, Ui_MainWindow):
     def switchToNotificationsPage(self):
         self.mainDisplayWidget.setCurrentIndex(4)
         self.populateApplicantEmailLineEdit()
+        self.populateNotificationsTbl()
 
     def switchToProfilePage(self):
         self.mainDisplayWidget.setCurrentIndex(5)
@@ -174,24 +187,24 @@ class Dash(QMainWindow, Ui_MainWindow):
     def switchToReportsPage(self):
         try:
             self.populateApplicantRankTbl()
-            print("CHECKPOINT 1")
+            # print("CHECKPOINT 1")
             self.mainDisplayWidget.setCurrentIndex(3)
-            print("CHECKPOINT 2")
+            # print("CHECKPOINT 2")
             self.loadPlot3()
-            print("CHECKPOINT 3")
+            # print("CHECKPOINT 3")
             self.loadPlot4()
-            print("CHECKPOINT 4")
+            # print("CHECKPOINT 4")
             self.loadPlot5()
-            print("CHECKPOINT 4")
+            # print("CHECKPOINT 4")
             self.applicantsThisWeekChart.setFixedHeight(300)
             self.applicantsPerCountryChart.setFixedHeight(300)
-            self.applicantPerSubjectTableWidget.setFixedHeight(300)
-            self.scholarshipPerSubjectTableWidget.setFixedHeight(300)
+            self.applicantPerProgramTableWidget.setFixedHeight(300)
+            self.scholarshipPerSchemeTableWidget.setFixedHeight(300)
             self.applicantRankTableWidget.setFixedHeight(300)
-            print("CHECKPOINT 5")
+            # print("CHECKPOINT 5")
             self.populateApplicantFilter()
             self.populateScholarshipFilter()
-            print("CHECKPOINT 6")
+            # print("CHECKPOINT 6")
             self.populateApplicantPerSubject(
                 "http://localhost/BackEnd/scholarshipManagement/applicant/filteredApplicant.php",
                 "All"
@@ -714,7 +727,7 @@ class Dash(QMainWindow, Ui_MainWindow):
 
         self.notificationMsgTxt.setCompleter(completer)
 
-        # email populations
+        # email population
         self.notificationEmailTxt.setPlaceholderText("user@gmail.com")
 
         url = "http://localhost/BackEnd/scholarshipManagement/applicant/getApplicantEmails.php"
@@ -792,7 +805,8 @@ class Dash(QMainWindow, Ui_MainWindow):
                 self.applicantRankTableWidget.setItem(rowIdx, 1,
                                                       QTableWidgetItem(str(rowData.get("score", "Display Error"))))
 
-            # self.applicantRankTableWidget.resizeColumnsToContents()
+            self.applicantRankTableWidget.resizeColumnsToContents()
+
         except Exception as e:
             self.msgBox(
                 "Error",
@@ -821,20 +835,21 @@ class Dash(QMainWindow, Ui_MainWindow):
 
             dbContent = result.get("data", [])
 
-            self.applicantPerSubjectTableWidget.setRowCount(len(dbContent))
-            self.applicantPerSubjectTableWidget.setColumnCount(2)
+            self.applicantPerProgramTableWidget.setRowCount(len(dbContent))
+            self.applicantPerProgramTableWidget.setColumnCount(2)
 
-            self.applicantPerSubjectTableWidget.setHorizontalHeaderLabels(
+            self.applicantPerProgramTableWidget.setHorizontalHeaderLabels(
                 [
                     "Scholarship Name",
-                    "Subject"
+                    "Program"
                 ]
             )
 
             for rowIdx, rowData in enumerate(dbContent):
-                self.applicantPerSubjectTableWidget.setItem(rowIdx, 0, QTableWidgetItem(rowData["name"]))
-                self.applicantPerSubjectTableWidget.setItem(rowIdx, 1, QTableWidgetItem(str(rowData.get("subject", "Display Error"))))
+                self.applicantPerProgramTableWidget.setItem(rowIdx, 0, QTableWidgetItem(rowData["name"]))
+                self.applicantPerProgramTableWidget.setItem(rowIdx, 1, QTableWidgetItem(str(rowData.get("program", "Display Error"))))
 
+            self.applicantPerProgramTableWidget.resizeColumnsToContents()
         except Exception as e:
             self.msgBox(
                 "Error",
@@ -845,7 +860,7 @@ class Dash(QMainWindow, Ui_MainWindow):
     def populateApplicantFilter(self):
         try:
             response = requests.get(
-                "http://localhost/BackEnd/scholarshipManagement/applicant/getSubject.php"
+                "http://localhost/BackEnd/scholarshipManagement/applicant/getProgram.php"
             )
 
             result = response.json()
@@ -896,21 +911,23 @@ class Dash(QMainWindow, Ui_MainWindow):
 
             dbContent = result.get("data", [])
 
-            self.scholarshipPerSubjectTableWidget.setColumnCount(2)
-            self.scholarshipPerSubjectTableWidget.setRowCount(len(dbContent))
+            self.scholarshipPerSchemeTableWidget.setColumnCount(2)
+            self.scholarshipPerSchemeTableWidget.setRowCount(len(dbContent))
 
-            self.scholarshipPerSubjectTableWidget.setHorizontalHeaderLabels(
+            self.scholarshipPerSchemeTableWidget.setHorizontalHeaderLabels(
                 [
                     "Name",
-                    "Subject"
+                    "Scheme"
                 ]
             )
 
             for rowIdx, rowData in enumerate(dbContent):
-                self.scholarshipPerSubjectTableWidget.setItem(rowIdx, 0,
+                self.scholarshipPerSchemeTableWidget.setItem(rowIdx, 0,
                                                               QTableWidgetItem(rowData.get("name", "Display Error")))
-                self.scholarshipPerSubjectTableWidget.setItem(rowIdx, 1, QTableWidgetItem(
-                    str(rowData.get("subject", "Display Error"))))
+                self.scholarshipPerSchemeTableWidget.setItem(rowIdx, 1, QTableWidgetItem(
+                    str(rowData.get("scheme_type", "Display Error"))))
+
+            self.scholarshipPerSchemeTableWidget.resizeColumnsToContents()
         except Exception as e:
             self.msgBox(
                 "Error",
@@ -920,7 +937,7 @@ class Dash(QMainWindow, Ui_MainWindow):
 ########################################################################################################################
     def populateScholarshipFilter(self):
 
-        url = "http://localhost/BackEnd/scholarshipManagement/uploadScholarships/getSubject.php"
+        url = "http://localhost/BackEnd/scholarshipManagement/uploadScholarships/getScheme.php"
         try:
             response = requests.get(url)
 
@@ -948,15 +965,113 @@ class Dash(QMainWindow, Ui_MainWindow):
 
 
 ########################################################################################################################
-    def populateNotificationTbl(self):
-        pass
+    def populateNotificationsTbl(self):
+        try:
+            response = requests.post(
+                "http://localhost/BackEnd/scholarshipManagement/notifications/getNotificationsForAdmin.php",
+                data={
+                    "email" : Sessions.seshEmail
+                }
+            )
+
+            print(F"RAW RESPONSE: {response.text}")
+            result = json.loads(response.text)
+            msg = result.get("message", "Unknown response")
+
+            if result.get("status") == "success":
+                #     get db content
+                dbContent = result.get("data", [])
+                # Sessions.seshEmail
+                print(dbContent)
+                self.notificationsTableWidget.setRowCount(
+                    len(dbContent))  # always initialise tbl so it doesn't stack up rows
+                Sessions.applicantCount = len(dbContent)
+
+                self.notificationsTableWidget.setColumnCount(9)
+
+                self.notificationsTableWidget.setHorizontalHeaderLabels(
+                    [
+                        "Actions",
+                        "Notification ID",
+                        "Title",
+                        "Message",
+                        "Sent by",
+                        "Sent To",
+                        "Recipient Email",
+                        "Status",
+                        "Date sent",
+                        "Date seen"
+                    ]
+                )
+
+                #     populate tbl with content from db
+                for rowIdx, rowData in enumerate(dbContent):
+
+
+                    self.notificationsTableWidget.setItem(rowIdx, 1, QTableWidgetItem(str(rowData.get("id", ""))))
+                    self.notificationsTableWidget.setItem(rowIdx, 2, QTableWidgetItem(rowData.get("title", "")))
+                    self.notificationsTableWidget.setItem(rowIdx, 3, QTableWidgetItem(rowData.get("msg", "")))
+                    self.notificationsTableWidget.setItem(rowIdx, 4, QTableWidgetItem(rowData.get("sender_name", "")))
+                    self.notificationsTableWidget.setItem(rowIdx, 5, QTableWidgetItem(rowData.get("recipient_name", "")))
+                    self.notificationsTableWidget.setItem(rowIdx, 6, QTableWidgetItem(rowData.get("recipient_email", "")))
+                    self.notificationsTableWidget.setItem(rowIdx, 7, QTableWidgetItem(rowData.get("noti_status", "") or "Not specified"))
+                    self.notificationsTableWidget.setItem(rowIdx, 8, QTableWidgetItem(rowData.get("date_sent", "")))
+                    self.notificationsTableWidget.setItem(rowIdx, 9, QTableWidgetItem(rowData.get("date_seen", "")))
+
+                    #       create View & del btn
+                    viewBtn = QPushButton("View")
+                    delBtn = QPushButton("Delete")
+
+                    viewBtn.setStyleSheet("QPushButton { "
+                                          "color: white;"
+                                          "padding:3px;"
+                                          "margin:0px;"
+                                          "border-radius:3px;"
+                                          "}")
+                    delBtn.setStyleSheet("QPushButton { "
+                                         "color: white;"
+                                         "padding:3px;"
+                                         "margin:0px;"
+                                         "border-radius:3px;"
+                                         "}")
+
+                    # viewBtn.clicked.connect(
+                    #     lambda _, applicationId=rowData.get("id"), userID=rowData.get("user_id"): self.showApplication(userID,applicationId)
+                    # )
+                    # delBtn.clicked.connect(
+                    #     lambda _, Id=rowData.get("id"): self.delApplicant(Id)
+                    # )
+                    #   align horizontally
+                    btnWidget = QWidget()
+                    layout = QHBoxLayout(btnWidget)
+                    layout.addWidget(viewBtn)
+                    layout.addWidget(delBtn)
+                    layout.setContentsMargins(0, 0, 0, 0)
+
+                    #         add widget to tbl
+                    self.notificationsTableWidget.setCellWidget(rowIdx, 0, btnWidget)
+
+                    self.notificationsTableWidget.setStyleSheet("QTableWidget { color: #010e1b; }")
+
+                    self.notificationsTableWidget.verticalHeader().setDefaultSectionSize(40)
+
+                    self.notificationsTableWidget.resizeColumnsToContents()
+
+
+            elif result.get("message") == "error":
+                self.msgBox("Error(populateNotificationsTbl)", f"Upload error: {msg}")
+                print(msg)
+
+        except Exception as e:
+            self.msgBox("Error", f"Something went wrong Populating Applicant tbl(populateApplicationsTbl): {e}")
+            print(f"Exception(populateNotificationsTbl): {e}")
 ########################################################################################################################
     def sendNotification(self):
         try:
-            result = self.admin.sendNotification(
-                self.notificationEmailTxt,
-                self.notificationTitleTxt,
-                self.notificationMsgTxt
+            result = self.admin.sendSingleNotification(
+                self.notificationEmailTxt.text().strip(),
+                self.notificationTitleTxt.text().strip(),
+                self.notificationMsgTxt.text().strip()
             )
 
             msg = result.get("message", "Unknown Msg")
@@ -1254,3 +1369,80 @@ class Dash(QMainWindow, Ui_MainWindow):
         self.viewApp.populateApplicationsDetails(applicationID, userID)
         self.viewApp.populateDocumentTbl(userID, applicationID)
         self.viewApp.show()
+########################################################################################################################
+    def printReport(self):
+        try:
+            # Create dialog
+            dialog = QDialog()
+            dialog.setWindowTitle("YOUR REPORT IS READY")
+
+            layout = QVBoxLayout()
+            hbox = QHBoxLayout()
+
+            heading = QLabel("REPORT GENERATION")
+
+            label = QLabel("Report Name:")
+            hbox.addWidget(label)
+
+            # Create QLineEdit with default filename
+            current_date = datetime.now().strftime("%Y-%m-%d")
+            base_name = f"report_{current_date}"
+            report_dir = "C:/Users/Yankho/OneDrive/Desktop/PROJECT/reportLogs"
+            os.makedirs(report_dir, exist_ok=True)
+
+            # Find next number in sequence
+            existing = [f for f in os.listdir(report_dir) if f.startswith(base_name)]
+            report_number = len(existing) + 1
+            default_name = f"{base_name}_{report_number}"
+
+            reportTxt = QLineEdit(default_name)
+            hbox.addWidget(reportTxt)
+            layout.addWidget(heading)
+            layout.addLayout(hbox)
+
+            # OK and Cancel buttons
+            btnSave = QPushButton("Generate Report")
+            btnCancel = QPushButton("Cancel")
+            layout.addWidget(btnSave)
+            layout.addWidget(btnCancel)
+
+            dialog.setLayout(layout)
+
+            # Button clicks
+            btnCancel.clicked.connect(dialog.reject)
+            btnSave.clicked.connect(dialog.accept)
+
+            # Execute dialog
+            if dialog.exec():
+                report_name = reportTxt.text().strip()
+                if not report_name:
+                    QMessageBox.warning(self, "Error", "Please enter a report name.")
+                    return
+
+                self.reportPage.generateReport(self.scrollArea_2, report_name)
+                QMessageBox.information(self, "Success", f"Report '{report_name}' has been generated.")
+
+        except Exception as e:
+            self.msgBox("Error", f"Exception(printReport): {e}")
+            print(f"Exception(printReport):{e}")
+
+########################################################################################################################
+    def generateAutomatedReport(self, days):
+        try:
+            # Avoid creating many schedulers
+            if self.schedule is not None:
+                print("Scheduler already running.")
+                return
+
+            self.schedule = BackgroundScheduler()
+            self.schedule.add_job(
+            lambda : self.trigger.emit(),
+            "interval",
+            seconds=days,
+            max_instances=1
+            )
+            self.schedule.start()
+
+        except Exception as e:
+            self.msgBox("Error", f"Exception(generateAutomatedReport): {e}")
+            print(f"Exception(generateAutomatedReport):{e}")

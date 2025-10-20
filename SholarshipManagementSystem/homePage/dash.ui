@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1012</width>
+    <width>1049</width>
     <height>758</height>
    </rect>
   </property>
@@ -39,531 +39,6 @@
     <property name="spacing">
      <number>6</number>
     </property>
-    <item row="0" column="1">
-     <widget class="QWidget" name="iconNameWidget" native="true">
-      <property name="styleSheet">
-       <string notr="true">QWidget{
-	background-color: rgb(11, 100, 197);
-	width:200px;
-}
-
-QPushButton{
-	
-	color: rgb(1, 14, 27);
-	font: 12pt &quot;Yu Gothic UI&quot;;
-	text-align: left;
-	height:40px;
-	border:none;
-	padding:7px;
-}
-
-QLabel{
-	color: rgb(1, 14, 27);
-}
-
-
-QPushButton:checked{
-	
-	background-color: rgb(20, 41, 63);
-	color:white;
-	font-weight:bold;
-	border-top-left-radius:10px;
-	border-bottom-left-radius:10px;
-	border-top-right-radius:10px;
-	border-bottom-right-radius:10px;
-	padding-right:10px;
-}</string>
-      </property>
-      <layout class="QVBoxLayout" name="verticalLayout_4">
-       <item>
-        <layout class="QGridLayout" name="gridLayout_6">
-         <property name="topMargin">
-          <number>5</number>
-         </property>
-         <property name="rightMargin">
-          <number>0</number>
-         </property>
-         <property name="bottomMargin">
-          <number>17</number>
-         </property>
-         <item row="0" column="0">
-          <widget class="QLabel" name="fullNavIcon">
-           <property name="minimumSize">
-            <size>
-             <width>40</width>
-             <height>40</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>40</width>
-             <height>40</height>
-            </size>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="pixmap">
-            <pixmap>:/icons/SMsysIcon.png</pixmap>
-           </property>
-           <property name="scaledContents">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <layout class="QVBoxLayout" name="verticalLayout">
-           <property name="spacing">
-            <number>6</number>
-           </property>
-           <item>
-            <widget class="QLabel" name="welcomeLabel">
-             <property name="text">
-              <string>Welcome</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="usernameLabel">
-             <property name="text">
-              <string>Applicant/Admin</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QVBoxLayout" name="verticalLayout_2">
-         <item>
-          <widget class="QPushButton" name="homeBtn">
-           <property name="cursor">
-            <cursorShape>PointingHandCursor</cursorShape>
-           </property>
-           <property name="text">
-            <string>Home</string>
-           </property>
-           <property name="icon">
-            <iconset>
-             <normaloff>:/icons/home.png</normaloff>
-             <normalon>:/icons/whiteHomeIcon.png</normalon>:/icons/home.png</iconset>
-           </property>
-           <property name="checkable">
-            <bool>true</bool>
-           </property>
-           <property name="autoExclusive">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="scholarshipBtn">
-           <property name="cursor">
-            <cursorShape>PointingHandCursor</cursorShape>
-           </property>
-           <property name="text">
-            <string>Manage Scholarships</string>
-           </property>
-           <property name="icon">
-            <iconset>
-             <normaloff>:/icons/mnageApplicant.png</normaloff>
-             <normalon>:/icons/manageApplicantWhite.png</normalon>:/icons/mnageApplicant.png</iconset>
-           </property>
-           <property name="checkable">
-            <bool>true</bool>
-           </property>
-           <property name="autoExclusive">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="manageApplicantBtn">
-           <property name="cursor">
-            <cursorShape>PointingHandCursor</cursorShape>
-           </property>
-           <property name="text">
-            <string>Manage Applicant</string>
-           </property>
-           <property name="icon">
-            <iconset>
-             <normaloff>:/icons/userWithGear.png</normaloff>
-             <normalon>:/icons/userWithGearWhite.png</normalon>:/icons/userWithGear.png</iconset>
-           </property>
-           <property name="checkable">
-            <bool>true</bool>
-           </property>
-           <property name="autoExclusive">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="manageApplicationBtn">
-           <property name="cursor">
-            <cursorShape>PointingHandCursor</cursorShape>
-           </property>
-           <property name="text">
-            <string>Manage Applications</string>
-           </property>
-           <property name="icon">
-            <iconset>
-             <normaloff>:/icons/manageScholarship.png</normaloff>
-             <normalon>:/icons/whiteManageScholarshipIcon.png</normalon>:/icons/manageScholarship.png</iconset>
-           </property>
-           <property name="checkable">
-            <bool>true</bool>
-           </property>
-           <property name="autoExclusive">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="reportBtn">
-           <property name="cursor">
-            <cursorShape>PointingHandCursor</cursorShape>
-           </property>
-           <property name="text">
-            <string>Report</string>
-           </property>
-           <property name="icon">
-            <iconset>
-             <normaloff>:/icons/report.png</normaloff>
-             <normalon>:/icons/graph.png</normalon>:/icons/report.png</iconset>
-           </property>
-           <property name="checkable">
-            <bool>true</bool>
-           </property>
-           <property name="autoExclusive">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="notificationsBtn">
-           <property name="cursor">
-            <cursorShape>PointingHandCursor</cursorShape>
-           </property>
-           <property name="text">
-            <string>Notifications</string>
-           </property>
-           <property name="icon">
-            <iconset>
-             <normaloff>:/icons/notification.png</normaloff>
-             <normalon>:/icons/alarm-bell.png</normalon>:/icons/notification.png</iconset>
-           </property>
-           <property name="checkable">
-            <bool>true</bool>
-           </property>
-           <property name="autoExclusive">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="profileBtn">
-           <property name="cursor">
-            <cursorShape>PointingHandCursor</cursorShape>
-           </property>
-           <property name="text">
-            <string>Profile settings</string>
-           </property>
-           <property name="icon">
-            <iconset>
-             <normaloff>:/icons/gear.png</normaloff>
-             <normalon>:/icons/settings (1).png</normalon>:/icons/gear.png</iconset>
-           </property>
-           <property name="checkable">
-            <bool>true</bool>
-           </property>
-           <property name="autoExclusive">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <spacer name="verticalSpacer_2">
-         <property name="orientation">
-          <enum>Qt::Orientation::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>209</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
-        <widget class="QPushButton" name="logoutBtn">
-         <property name="cursor">
-          <cursorShape>PointingHandCursor</cursorShape>
-         </property>
-         <property name="text">
-          <string>Logout</string>
-         </property>
-         <property name="icon">
-          <iconset>
-           <normaloff>:/icons/powerBTN.png</normaloff>:/icons/powerBTN.png</iconset>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
-         </property>
-         <property name="autoExclusive">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-    </item>
-    <item row="0" column="0">
-     <widget class="QWidget" name="iconOnlyWidget" native="true">
-      <property name="styleSheet">
-       <string notr="true">QWidget{
-	background-color: rgb(11, 100, 197);
-}
-
-QPushButton{
-	
-	color: rgb(1, 14, 27);
-	height:40px;
-	border:none;
-	padding:7px;
-}
-
-
-
-QPushButton:checked{
-	border: 2px solid;
-	border-color:black;
-	border-radius:10px;
-}</string>
-      </property>
-      <layout class="QVBoxLayout" name="verticalLayout_5">
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_3">
-         <item>
-          <widget class="QLabel" name="smallNavIcon">
-           <property name="minimumSize">
-            <size>
-             <width>40</width>
-             <height>40</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>40</width>
-             <height>40</height>
-            </size>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="pixmap">
-            <pixmap>:/icons/SMsysIcon.png</pixmap>
-           </property>
-           <property name="scaledContents">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QVBoxLayout" name="verticalLayout_3">
-         <property name="topMargin">
-          <number>20</number>
-         </property>
-         <item>
-          <widget class="QPushButton" name="homeIconBtn">
-           <property name="cursor">
-            <cursorShape>PointingHandCursor</cursorShape>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="icon">
-            <iconset>
-             <normaloff>:/icons/home.png</normaloff>
-             <normalon>:/icons/whiteHomeIcon.png</normalon>:/icons/home.png</iconset>
-           </property>
-           <property name="checkable">
-            <bool>true</bool>
-           </property>
-           <property name="autoExclusive">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="scholarshipIconBtn">
-           <property name="cursor">
-            <cursorShape>PointingHandCursor</cursorShape>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="icon">
-            <iconset>
-             <normaloff>:/icons/mnageApplicant.png</normaloff>
-             <normalon>:/icons/manageApplicantWhite.png</normalon>:/icons/mnageApplicant.png</iconset>
-           </property>
-           <property name="checkable">
-            <bool>true</bool>
-           </property>
-           <property name="autoExclusive">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="manageApplicantIconBtn">
-           <property name="cursor">
-            <cursorShape>PointingHandCursor</cursorShape>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="icon">
-            <iconset>
-             <normaloff>:/icons/userWithGear.png</normaloff>
-             <normalon>:/icons/userWithGearWhite.png</normalon>:/icons/userWithGear.png</iconset>
-           </property>
-           <property name="checkable">
-            <bool>true</bool>
-           </property>
-           <property name="autoExclusive">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="manageApplicationIconBtn">
-           <property name="cursor">
-            <cursorShape>PointingHandCursor</cursorShape>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="icon">
-            <iconset>
-             <normaloff>:/icons/manageScholarship.png</normaloff>
-             <normalon>:/icons/whiteManageScholarshipIcon.png</normalon>:/icons/manageScholarship.png</iconset>
-           </property>
-           <property name="checkable">
-            <bool>true</bool>
-           </property>
-           <property name="autoExclusive">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="reportIconBtn">
-           <property name="cursor">
-            <cursorShape>PointingHandCursor</cursorShape>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="icon">
-            <iconset>
-             <normaloff>:/icons/report.png</normaloff>
-             <normalon>:/icons/graph.png</normalon>:/icons/report.png</iconset>
-           </property>
-           <property name="checkable">
-            <bool>true</bool>
-           </property>
-           <property name="autoExclusive">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="notificationsIconBtn">
-           <property name="cursor">
-            <cursorShape>PointingHandCursor</cursorShape>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="icon">
-            <iconset>
-             <normaloff>:/icons/notification.png</normaloff>
-             <normalon>:/icons/alarm-bell.png</normalon>:/icons/notification.png</iconset>
-           </property>
-           <property name="checkable">
-            <bool>true</bool>
-           </property>
-           <property name="autoExclusive">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QPushButton" name="profileIconBtn">
-           <property name="cursor">
-            <cursorShape>PointingHandCursor</cursorShape>
-           </property>
-           <property name="text">
-            <string/>
-           </property>
-           <property name="icon">
-            <iconset>
-             <normaloff>:/icons/gear.png</normaloff>
-             <normalon>:/icons/settings (1).png</normalon>:/icons/gear.png</iconset>
-           </property>
-           <property name="checkable">
-            <bool>true</bool>
-           </property>
-           <property name="autoExclusive">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <spacer name="verticalSpacer">
-         <property name="orientation">
-          <enum>Qt::Orientation::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>203</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item>
-        <widget class="QPushButton" name="logoutIconBtn">
-         <property name="cursor">
-          <cursorShape>PointingHandCursor</cursorShape>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="icon">
-          <iconset>
-           <normaloff>:/icons/powerBTN.png</normaloff>:/icons/powerBTN.png</iconset>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
-         </property>
-         <property name="autoExclusive">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-    </item>
     <item row="0" column="2">
      <widget class="QWidget" name="mainWidget" native="true">
       <layout class="QVBoxLayout" name="verticalLayout_6">
@@ -617,7 +92,7 @@ QPushButton:checked{
              <string/>
             </property>
             <property name="icon">
-             <iconset>
+             <iconset resource="../../projectRescources.qrc">
               <normaloff>:/icons/menu.png</normaloff>:/icons/menu.png</iconset>
             </property>
             <property name="checkable">
@@ -658,7 +133,7 @@ QPushButton:checked{
                <string/>
               </property>
               <property name="icon">
-               <iconset>
+               <iconset resource="../../projectRescources.qrc">
                 <normaloff>:/icons/search.png</normaloff>:/icons/search.png</iconset>
               </property>
               <property name="checkable">
@@ -705,7 +180,7 @@ QPushButton:checked{
              <string/>
             </property>
             <property name="icon">
-             <iconset>
+             <iconset resource="../../projectRescources.qrc">
               <normaloff>:/icons/user.png</normaloff>:/icons/user.png</iconset>
             </property>
             <property name="checkable">
@@ -767,7 +242,7 @@ QPushButton::hover{
 </string>
          </property>
          <property name="currentIndex">
-          <number>6</number>
+          <number>3</number>
          </property>
          <widget class="QWidget" name="home">
           <layout class="QGridLayout" name="gridLayout_2">
@@ -1058,8 +533,8 @@ font: 12pt &quot;Segoe UI&quot;;</string>
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>98</width>
-                <height>28</height>
+                <width>686</width>
+                <height>674</height>
                </rect>
               </property>
               <layout class="QGridLayout" name="gridLayout_8"/>
@@ -1072,6 +547,9 @@ font: 12pt &quot;Segoe UI&quot;;</string>
           <layout class="QVBoxLayout" name="verticalLayout_20">
            <item>
             <widget class="QScrollArea" name="scrollArea_2">
+             <property name="styleSheet">
+              <string notr="true">margin_top:40px</string>
+             </property>
              <property name="widgetResizable">
               <bool>true</bool>
              </property>
@@ -1080,8 +558,8 @@ font: 12pt &quot;Segoe UI&quot;;</string>
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>684</width>
-                <height>690</height>
+                <width>711</width>
+                <height>729</height>
                </rect>
               </property>
               <layout class="QGridLayout" name="gridLayout_5">
@@ -1095,26 +573,6 @@ font: 12pt &quot;Segoe UI&quot;;</string>
                  </property>
                 </widget>
                </item>
-               <item row="1" column="0" colspan="7">
-                <widget class="Line" name="line">
-                 <property name="orientation">
-                  <enum>Qt::Orientation::Horizontal</enum>
-                 </property>
-                </widget>
-               </item>
-               <item row="2" column="3">
-                <spacer name="verticalSpacer_4">
-                 <property name="orientation">
-                  <enum>Qt::Orientation::Vertical</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>20</width>
-                   <height>0</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
                <item row="3" column="0">
                 <spacer name="horizontalSpacer_10">
                  <property name="orientation">
@@ -1123,212 +581,6 @@ font: 12pt &quot;Segoe UI&quot;;</string>
                  <property name="sizeHint" stdset="0">
                   <size>
                    <width>246</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item row="3" column="1" colspan="5">
-                <widget class="QLabel" name="label_8">
-                 <property name="text">
-                  <string>APPLICANT DATA</string>
-                 </property>
-                 <property name="alignment">
-                  <set>Qt::AlignmentFlag::AlignCenter</set>
-                 </property>
-                </widget>
-               </item>
-               <item row="3" column="6">
-                <spacer name="horizontalSpacer_11">
-                 <property name="orientation">
-                  <enum>Qt::Orientation::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>221</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item row="4" column="0" colspan="2">
-                <layout class="QVBoxLayout" name="verticalLayout_18">
-                 <property name="spacing">
-                  <number>15</number>
-                 </property>
-                 <item>
-                  <widget class="QLabel" name="label_4">
-                   <property name="text">
-                    <string>Applicants per Country</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignmentFlag::AlignCenter</set>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QWidget" name="applicantsPerCountryChart" native="true">
-                   <property name="styleSheet">
-                    <string notr="true">border-radius: 7px;</string>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-               <item row="4" column="4" colspan="3">
-                <layout class="QVBoxLayout" name="verticalLayout_19">
-                 <property name="spacing">
-                  <number>15</number>
-                 </property>
-                 <item>
-                  <widget class="QLabel" name="label_9">
-                   <property name="text">
-                    <string>Applicant per Subject:</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignmentFlag::AlignCenter</set>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QTableWidget" name="applicantPerSubjectTableWidget">
-                   <property name="styleSheet">
-                    <string notr="true">color: Black;</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_14">
-                   <item>
-                    <widget class="QComboBox" name="subjectFilterCombo">
-                     <property name="styleSheet">
-                      <string notr="true">padding:5px;
-font: 600 10pt &quot;Segoe UI&quot;;</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QPushButton" name="filterBtn">
-                     <property name="styleSheet">
-                      <string notr="true">margin:0px;
-padding:5px;
-font: 600 10pt &quot;Segoe UI&quot;;</string>
-                     </property>
-                     <property name="text">
-                      <string>FILTER</string>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </item>
-                </layout>
-               </item>
-               <item row="5" column="0" colspan="3">
-                <layout class="QVBoxLayout" name="verticalLayout_9">
-                 <property name="spacing">
-                  <number>15</number>
-                 </property>
-                 <item>
-                  <widget class="QLabel" name="label_12">
-                   <property name="text">
-                    <string>Applicants Ranked(Top-Bottom)</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignmentFlag::AlignCenter</set>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QTableWidget" name="applicantRankTableWidget">
-                   <property name="styleSheet">
-                    <string notr="true">color:black;</string>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-               <item row="5" column="5" colspan="2">
-                <layout class="QVBoxLayout" name="verticalLayout_21">
-                 <property name="spacing">
-                  <number>15</number>
-                 </property>
-                 <item>
-                  <widget class="QLabel" name="label_11">
-                   <property name="text">
-                    <string>Applicantions this week</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignmentFlag::AlignCenter</set>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QWidget" name="applicantsThisWeekChart" native="true">
-                   <property name="styleSheet">
-                    <string notr="true">border-radius: 7px;</string>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-               <item row="6" column="0" colspan="2">
-                <widget class="QLabel" name="totalNumberOfApplicantsLabelReports">
-                 <property name="text">
-                  <string>Total Number of Applicants:</string>
-                 </property>
-                </widget>
-               </item>
-               <item row="7" column="0" colspan="7">
-                <widget class="Line" name="line_2">
-                 <property name="orientation">
-                  <enum>Qt::Orientation::Horizontal</enum>
-                 </property>
-                </widget>
-               </item>
-               <item row="8" column="3">
-                <spacer name="verticalSpacer_3">
-                 <property name="orientation">
-                  <enum>Qt::Orientation::Vertical</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>20</width>
-                   <height>0</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item row="9" column="0">
-                <spacer name="horizontalSpacer_8">
-                 <property name="orientation">
-                  <enum>Qt::Orientation::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>246</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item row="9" column="1" colspan="5">
-                <widget class="QLabel" name="label_10">
-                 <property name="text">
-                  <string>SCHOLARSHIP DATA</string>
-                 </property>
-                 <property name="alignment">
-                  <set>Qt::AlignmentFlag::AlignCenter</set>
-                 </property>
-                </widget>
-               </item>
-               <item row="9" column="6">
-                <spacer name="horizontalSpacer_9">
-                 <property name="orientation">
-                  <enum>Qt::Orientation::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>221</width>
                    <height>20</height>
                   </size>
                  </property>
@@ -1355,7 +607,7 @@ font: 600 10pt &quot;Segoe UI&quot;;</string>
                  <item>
                   <widget class="QLabel" name="label_18">
                    <property name="text">
-                    <string>Scholarships per Subject:</string>
+                    <string>Scholarships per Scheme:</string>
                    </property>
                    <property name="alignment">
                     <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -1363,7 +615,7 @@ font: 600 10pt &quot;Segoe UI&quot;;</string>
                   </widget>
                  </item>
                  <item>
-                  <widget class="QTableWidget" name="scholarshipPerSubjectTableWidget">
+                  <widget class="QTableWidget" name="scholarshipPerSchemeTableWidget">
                    <property name="styleSheet">
                     <string notr="true">color:black;</string>
                    </property>
@@ -1398,6 +650,50 @@ font: 600 10pt &quot;Segoe UI&quot;;</string>
                  </item>
                 </layout>
                </item>
+               <item row="1" column="0" colspan="7">
+                <widget class="Line" name="line">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Horizontal</enum>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="6">
+                <spacer name="horizontalSpacer_11">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>221</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item row="5" column="0" colspan="3">
+                <layout class="QVBoxLayout" name="verticalLayout_9">
+                 <property name="spacing">
+                  <number>15</number>
+                 </property>
+                 <item>
+                  <widget class="QLabel" name="label_12">
+                   <property name="text">
+                    <string>Applicants Ranked(Top-Bottom)</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignmentFlag::AlignCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QTableWidget" name="applicantRankTableWidget">
+                   <property name="styleSheet">
+                    <string notr="true">color:black;</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
                <item row="10" column="4" colspan="3">
                 <layout class="QVBoxLayout" name="verticalLayout_28">
                  <property name="spacing">
@@ -1418,8 +714,209 @@ font: 600 10pt &quot;Segoe UI&quot;;</string>
                  </item>
                 </layout>
                </item>
+               <item row="8" column="3">
+                <spacer name="verticalSpacer_3">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Vertical</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>20</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item row="4" column="0" colspan="2">
+                <layout class="QVBoxLayout" name="verticalLayout_18">
+                 <property name="spacing">
+                  <number>15</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>40</number>
+                 </property>
+                 <item>
+                  <widget class="QLabel" name="label_4">
+                   <property name="text">
+                    <string>Applicants per Country</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignmentFlag::AlignCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QWidget" name="applicantsPerCountryChart" native="true">
+                   <property name="styleSheet">
+                    <string notr="true">border-radius: 7px;</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item row="3" column="1" colspan="5">
+                <widget class="QLabel" name="label_8">
+                 <property name="text">
+                  <string>APPLICANT DATA</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignmentFlag::AlignCenter</set>
+                 </property>
+                </widget>
+               </item>
+               <item row="6" column="0" colspan="2">
+                <widget class="QLabel" name="totalNumberOfApplicantsLabelReports">
+                 <property name="styleSheet">
+                  <string notr="true">magin-top:40px</string>
+                 </property>
+                 <property name="text">
+                  <string>Total Number of Applicants:</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="3">
+                <spacer name="verticalSpacer_4">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Vertical</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>20</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item row="4" column="4" colspan="3">
+                <layout class="QVBoxLayout" name="verticalLayout_19">
+                 <property name="spacing">
+                  <number>15</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>40</number>
+                 </property>
+                 <item>
+                  <widget class="QLabel" name="label_9">
+                   <property name="text">
+                    <string>Applicant per program:</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignmentFlag::AlignCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QTableWidget" name="applicantPerProgramTableWidget">
+                   <property name="styleSheet">
+                    <string notr="true">color: Black;</string>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <layout class="QHBoxLayout" name="horizontalLayout_14">
+                   <item>
+                    <widget class="QComboBox" name="subjectFilterCombo">
+                     <property name="styleSheet">
+                      <string notr="true">padding:5px;
+font: 600 10pt &quot;Segoe UI&quot;;</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="filterBtn">
+                     <property name="styleSheet">
+                      <string notr="true">margin:0px;
+padding:5px;
+font: 600 10pt &quot;Segoe UI&quot;;</string>
+                     </property>
+                     <property name="text">
+                      <string>FILTER</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                </layout>
+               </item>
+               <item row="7" column="0" colspan="7">
+                <widget class="Line" name="line_2">
+                 <property name="styleSheet">
+                  <string notr="true"/>
+                 </property>
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Horizontal</enum>
+                 </property>
+                </widget>
+               </item>
+               <item row="9" column="1" colspan="5">
+                <widget class="QLabel" name="label_10">
+                 <property name="text">
+                  <string>SCHOLARSHIP DATA</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignmentFlag::AlignCenter</set>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="5" colspan="2">
+                <layout class="QVBoxLayout" name="verticalLayout_21">
+                 <property name="spacing">
+                  <number>15</number>
+                 </property>
+                 <item>
+                  <widget class="QLabel" name="label_11">
+                   <property name="text">
+                    <string>Applicantions this week</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignmentFlag::AlignCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QWidget" name="applicantsThisWeekChart" native="true">
+                   <property name="styleSheet">
+                    <string notr="true">border-radius: 7px;</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item row="9" column="0">
+                <spacer name="horizontalSpacer_8">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>246</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item row="9" column="6">
+                <spacer name="horizontalSpacer_9">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>221</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
               </layout>
              </widget>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="printReportBtn">
+             <property name="text">
+              <string>PRINT REPORT</string>
+             </property>
             </widget>
            </item>
           </layout>
@@ -1734,7 +1231,7 @@ font: 600 10pt &quot;Segoe UI&quot;;</string>
                   <string extracomment="Show Password"/>
                  </property>
                  <property name="icon">
-                  <iconset>
+                  <iconset resource="../../projectRescources.qrc">
                    <normaloff>:/icons/seeWhiteIcon.png</normaloff>:/icons/seeWhiteIcon.png</iconset>
                  </property>
                  <property name="iconSize">
@@ -1847,7 +1344,7 @@ QPushButton:checked{
                 <string/>
                </property>
                <property name="icon">
-                <iconset>
+                <iconset resource="../../projectRescources.qrc">
                  <normaloff>:/icons/search.png</normaloff>:/icons/search.png</iconset>
                </property>
                <property name="checkable">
@@ -1879,6 +1376,525 @@ QPushButton:checked{
            </item>
           </layout>
          </widget>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="QWidget" name="iconOnlyWidget" native="true">
+      <property name="styleSheet">
+       <string notr="true">QWidget{
+	background-color: rgb(11, 100, 197);
+}
+
+QPushButton{
+	
+	color: rgb(1, 14, 27);
+	height:40px;
+	border:none;
+	padding:7px;
+}</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_5">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <item>
+          <widget class="QLabel" name="smallNavIcon">
+           <property name="minimumSize">
+            <size>
+             <width>40</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>40</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap resource="../../projectRescources.qrc">:/icons/SMsysIcon.png</pixmap>
+           </property>
+           <property name="scaledContents">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_3">
+         <property name="topMargin">
+          <number>20</number>
+         </property>
+         <item>
+          <widget class="QPushButton" name="homeIconBtn">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="../../projectRescources.qrc">
+             <normaloff>:/icons/home.png</normaloff>
+             <normalon>:/icons/whiteHomeIcon.png</normalon>:/icons/home.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="autoExclusive">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="scholarshipIconBtn">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="../../projectRescources.qrc">
+             <normaloff>:/icons/mnageApplicant.png</normaloff>
+             <normalon>:/icons/manageApplicantWhite.png</normalon>:/icons/mnageApplicant.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="autoExclusive">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="manageApplicantIconBtn">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="../../projectRescources.qrc">
+             <normaloff>:/icons/userWithGear.png</normaloff>
+             <normalon>:/icons/userWithGearWhite.png</normalon>:/icons/userWithGear.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="autoExclusive">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="manageApplicationIconBtn">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="../../projectRescources.qrc">
+             <normaloff>:/icons/manageScholarship.png</normaloff>
+             <normalon>:/icons/whiteManageScholarshipIcon.png</normalon>:/icons/manageScholarship.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="autoExclusive">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="reportIconBtn">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="../../projectRescources.qrc">
+             <normaloff>:/icons/report.png</normaloff>
+             <normalon>:/icons/graph.png</normalon>:/icons/report.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="autoExclusive">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="notificationsIconBtn">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="../../projectRescources.qrc">
+             <normaloff>:/icons/notification.png</normaloff>
+             <normalon>:/icons/alarm-bell.png</normalon>:/icons/notification.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="autoExclusive">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="profileIconBtn">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="../../projectRescources.qrc">
+             <normaloff>:/icons/gear.png</normaloff>
+             <normalon>:/icons/settings (1).png</normalon>:/icons/gear.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="autoExclusive">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>203</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="logoutIconBtn">
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="../../projectRescources.qrc">
+           <normaloff>:/icons/powerBTN.png</normaloff>
+           <normalon>:/icons/powerWhite.png</normalon>:/icons/powerBTN.png</iconset>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="autoExclusive">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QWidget" name="iconNameWidget" native="true">
+      <property name="styleSheet">
+       <string notr="true">QWidget{
+	background-color: rgb(11, 100, 197);
+	width:200px;
+}
+
+QPushButton{
+	
+	color: rgb(1, 14, 27);
+	font: 12pt &quot;Yu Gothic UI&quot;;
+	text-align: left;
+	height:40px;
+	border:none;
+	padding:7px;
+}
+
+QLabel{
+	color: rgb(1, 14, 27);
+}
+
+
+QPushButton:checked{
+	
+	background-color: rgb(20, 41, 63);
+	color:white;
+	font-weight:bold;
+	border-top-left-radius:10px;
+	border-bottom-left-radius:10px;
+	border-top-right-radius:10px;
+	border-bottom-right-radius:10px;
+	padding-right:10px;
+}</string>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout_4">
+       <item>
+        <layout class="QGridLayout" name="gridLayout_6">
+         <property name="topMargin">
+          <number>5</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>17</number>
+         </property>
+         <item row="0" column="0">
+          <widget class="QLabel" name="fullNavIcon">
+           <property name="minimumSize">
+            <size>
+             <width>40</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>40</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap resource="../../projectRescources.qrc">:/icons/SMsysIcon.png</pixmap>
+           </property>
+           <property name="scaledContents">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <layout class="QVBoxLayout" name="verticalLayout">
+           <property name="spacing">
+            <number>6</number>
+           </property>
+           <item>
+            <widget class="QLabel" name="welcomeLabel">
+             <property name="text">
+              <string>Welcome</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="usernameLabel">
+             <property name="text">
+              <string>Applicant/Admin</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <item>
+          <widget class="QPushButton" name="homeBtn">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string>Home</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../../projectRescources.qrc">
+             <normaloff>:/icons/home.png</normaloff>
+             <normalon>:/icons/whiteHomeIcon.png</normalon>:/icons/home.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="autoExclusive">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="scholarshipBtn">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string>Manage Scholarships</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../../projectRescources.qrc">
+             <normaloff>:/icons/mnageApplicant.png</normaloff>
+             <normalon>:/icons/manageApplicantWhite.png</normalon>:/icons/mnageApplicant.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="autoExclusive">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="manageApplicantBtn">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string>Manage Applicant</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../../projectRescources.qrc">
+             <normaloff>:/icons/userWithGear.png</normaloff>
+             <normalon>:/icons/userWithGearWhite.png</normalon>:/icons/userWithGear.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="autoExclusive">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="manageApplicationBtn">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string>Manage Applications</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../../projectRescources.qrc">
+             <normaloff>:/icons/manageScholarship.png</normaloff>
+             <normalon>:/icons/whiteManageScholarshipIcon.png</normalon>:/icons/manageScholarship.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="autoExclusive">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="reportBtn">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string>Report</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../../projectRescources.qrc">
+             <normaloff>:/icons/report.png</normaloff>
+             <normalon>:/icons/graph.png</normalon>:/icons/report.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="autoExclusive">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="notificationsBtn">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string>Notifications</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../../projectRescources.qrc">
+             <normaloff>:/icons/notification.png</normaloff>
+             <normalon>:/icons/alarm-bell.png</normalon>:/icons/notification.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="autoExclusive">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="profileBtn">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="text">
+            <string>Profile settings</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../../projectRescources.qrc">
+             <normaloff>:/icons/gear.png</normaloff>
+             <normalon>:/icons/settings (1).png</normalon>:/icons/gear.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="autoExclusive">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Orientation::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>209</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="logoutBtn">
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="text">
+          <string>Logout</string>
+         </property>
+         <property name="icon">
+          <iconset resource="../../projectRescources.qrc">
+           <normaloff>:/icons/powerBTN.png</normaloff>
+           <normalon>:/icons/powerWhite.png</normalon>:/icons/powerBTN.png</iconset>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+         <property name="autoExclusive">
+          <bool>true</bool>
+         </property>
         </widget>
        </item>
       </layout>

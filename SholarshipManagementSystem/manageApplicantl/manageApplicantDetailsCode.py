@@ -21,6 +21,24 @@ class ManageApplicantDetails(QWidget, Ui_Form):
         self.populateApplicantDetails()
         self.btnClicks()
 
+        #convert values in comboBox
+        items = [
+            5.0,
+            4.5,
+            4.0,
+            3.5,
+            3.0,
+            2.5,
+            2.0,
+            1.5,
+            1.0
+        ]
+        stringItems = [f"{i:.1f}" for i in items]
+
+        self.academicWeightCombo.addItems(stringItems)
+        self.financialWeightCombo.addItems(stringItems)
+        self.assessmentWeightCombo.addItems(stringItems)
+
         self.stackedWidget.setCurrentIndex(0)
 
 ########################################################################################################################
@@ -100,12 +118,17 @@ class ManageApplicantDetails(QWidget, Ui_Form):
             )
             print(f"Exception(populateApplicantDetails): {e}")
 
+########################################################################################################################
+    def convertComboToFloats(self,comboBox):
+        items = [float(comboBox.itemText(i)) for i in range(comboBox.count())]
+        comboBox.clear()
+        for val in items:
+            comboBox.addItem(f"{val:.1f}", val)  # stores float as userData too
 
 ########################################################################################################################
     def populateApplicantCriteria(self):
-
         self.getApplicantData.scoreApplicant()
-        print("This page is not the problem1")
+
         self.getApplicantData.applicantCriteriaTemplate(
             self.academicScoreLabel,
             self.incomeBracketLabel_2,
@@ -117,9 +140,12 @@ class ManageApplicantDetails(QWidget, Ui_Form):
             self.finalScoreFormulaLabel,
             self.finalScoreLabel,
             self.needLabel,
-            self.gpaScoreLabel
+            self.gpaScoreLabel,
+            self.overallAvgScoreLabel,
+            self.applicantEligibilityLabel,
+            self.successPredictionLabel
         )
-        print("This page is not the problem2")
+
         print("APPLICANT CRITERIA HAS BEEN POPULATED...")
         print(f"Email(populateApplicantCriteria): {self.email}")
 

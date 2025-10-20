@@ -1,5 +1,7 @@
 <RCC>
   <qresource>
+    <file>icons/powerWhite.png</file>
+    <file>icons/questionMarkWhite.png</file>
     <file>icons/userWithGear.png</file>
     <file>icons/userWithGearWhite.png</file>
     <file>icons/manageApplicantWhite.png</file>

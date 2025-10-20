@@ -1,13 +1,15 @@
-import json
+import sys
+
 import requests
+from PyQt6.QtWidgets import QApplication
+
 import Sessions
-from PyQt6.QtCore import Qt
 
 from PyQt6.QtGui import QIcon
-from PyQt6.QtWidgets import QDialog, QFileDialog, QCompleter
+from PyQt6.QtWidgets import QDialog, QFileDialog
 from SholarshipManagementSystem.manageScholarshipsPage.uploadScholarships import Ui_Dialog
 from SholarshipManagementSystem.authentications.regValidationPHP import RegCode
-
+from SholarshipManagementSystem.classes.admin import Admin
 from SholarshipManagementSystem.homePage.myMainDisplay import Dash
 from SholarshipManagementSystem.classes.scholarships import Scholarships
 
@@ -19,9 +21,9 @@ class UploadingCode(QDialog, Ui_Dialog):
         self.setWindowTitle("UPLOAD SCHOLARSHIP")
         self.setWindowIcon(QIcon(":icons/SMsysIcon.png"))
         self.regCode = RegCode()
+        self.admin = Admin("Yanco Kamphandule", "yanco@gmail.com", "*********")
 
         self.btnClicks()
-        # self.populateSchemeCombo()
 
 # BTN CLICKS############################################################################################################
     def btnClicks(self):
@@ -112,7 +114,7 @@ class UploadingCode(QDialog, Ui_Dialog):
                 url,
                 filePath,
                 selectedPerks,
-                Sessions.seshEmail
+                "yanco@gmail.com"
             )
             msg = result.get("message", "Unknown Message")
 
@@ -122,8 +124,32 @@ class UploadingCode(QDialog, Ui_Dialog):
                     f"{msg}"
                 )
                 print(f"File Upload: {msg}")
+                self.closeWindow()
                 dash = Dash()
                 dash.populateTableWidget()
+                #get emails
+                emails = self.getEmails()
+                #send notifications
+                print("Sending Notifications...")
+                notifications = self.admin.bulkNotificationsForApplicants(
+                    "yanco@gmail.com",
+                    "New Scholarship has been uploaded",
+                    f"A new scholarship from {provider} has been uploaded. Check it out!",
+                    emails
+                )
+                #response
+                notiMsg = notifications.get("message")
+                if notifications.get("status") == "success":
+                    print("Notifications about scholarship update have been successfully sent to every applicant")
+
+                elif notifications.get("status") == "error":
+                    print(f"Notifications did not send\n{notiMsg}")
+
+                elif notifications.get("status") == "notVerified":
+                    print(f"Notifications did not send\n{notiMsg}")
+
+                elif notifications.get("status") == "completed":
+                    print(f"Notifications did not send\n{notiMsg}")
 
             elif result.get("status") == "error":
                 self.regCode.msgBox(
@@ -162,16 +188,38 @@ class UploadingCode(QDialog, Ui_Dialog):
         
         self.schemeComboBox.addItems(schemes)
 
-    #     self.subjectTxt.setPlaceholderText("e.g. Need-Based, STEM etc...")
-    # #     add completer
-    #     completer = QCompleter(schemes, self)
-    #     completer.setCaseSensitivity(Qt.CaseSensitivity.CaseInsensitive)
-    #     completer.setFilterMode(Qt.MatchFlag.MatchContains)#live filter anywhere in the string
-    #     completer.setCompletionMode(QCompleter.CompletionMode.UnfilteredPopupCompletion)
-    # 
-    #     self.subjectTxt.setCompleter(completer)
+########################################################################################################################
+    def getEmails(self):
+        try:
+            response = requests.get(
+                "http://localhost/BackEnd/scholarshipManagement/applicant/getApplicantEmails.php"
+            )
+            result = response.json()
+            msg = result.get("message", "Unknown Msg")
 
+            if result["status"] == "error":
+                self.regCode.msgBox(
+                    "Error",
+                    f"Something went wrong(getEmails):\n{msg}"
+                )
+                print(f"Something went wrong(getEmails):\n{msg}")
+                return
 
-    # CLOSE WINDOW##########################################################################################################
+            elif result["status"] == "success":
+                return result["data"]
+
+        except Exception as e:
+            self.regCode.msgBox(
+                "Error",
+                f"Exception Error(getEmails):\n{e}"
+            )
+            print(f"Exception Error(getEmails):\n{e}")
+
+######### CLOSE WINDOW #################################################################################################
     def closeWindow(self):
         self.close()
+
+# app = QApplication(sys.argv)
+# win = UploadingCode()
+# win.show()
+# app.exec()

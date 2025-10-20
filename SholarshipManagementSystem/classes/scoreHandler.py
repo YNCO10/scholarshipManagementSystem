@@ -8,12 +8,34 @@ class ScoreHandler:
         self.assessmentWeight = assessmentWeight
 
 ########################################################################################################################
+    def overallAvgScore(self, sumApplicantScores, applicantScoresLen):
+        return sumApplicantScores / applicantScoresLen
+
+########################################################################################################################
+    def calculateSuccessPrediction(self, applicantScore):
+        if applicantScore > 79:
+            return "Very Likely"
+        elif applicantScore > 59:
+            return "likely"
+        elif applicantScore > 39:
+            return "Unlikely"
+        else:
+            return "Very unlikely"
+
+########################################################################################################################
+    def calculateEligibility(self, avg, applicantScore):
+        if applicantScore >= avg:
+            return "Eligible"
+        else:
+            return "Not Eligible"
+
+########################################################################################################################
     def AcademicScore(self,gpa):
         return (gpa / 5) * 100
 
 ########################################################################################################################
     def financialScore(self, need: bool, incomeBracket = None):
-        if need == 0:
+        if need == 1:
             return 0
 
         score = 50 #threshold for whether they need support or not
@@ -35,17 +57,10 @@ class ScoreHandler:
         return min(score, 100)
 
 ########################################################################################################################
-    # def documentScore(self, uploadedDocs:list, requiredDocs:list)->float:
-    #     if not requiredDocs:
-    #         return 0
-    #     uploadedCount = sum(1 for d in requiredDocs if d in uploadedDocs)
-    #     return (uploadedCount/len(requiredDocs)) * 100
-
-########################################################################################################################
     def assessmentScore(self, score:int, total:int)->float:
         if total == 0:
             return 0
-        return score/total*100
+        return score/total * 100
 
 ########################################################################################################################
     def applicantScore(self, applicantInfo:dict):
@@ -61,7 +76,7 @@ class ScoreHandler:
             applicantInfo["totalQuest"]
         )
 
-        totalWeights = self.academicWeight +self.financialWeight +self.assessmentWeight #+self.documentWeight
+        totalWeights = self.academicWeight +self.financialWeight +self.assessmentWeight
 
         finalScore = (
             academicScore * self.academicWeight+

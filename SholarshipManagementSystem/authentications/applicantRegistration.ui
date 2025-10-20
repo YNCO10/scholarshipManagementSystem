@@ -74,9 +74,9 @@ font: 700 16pt &quot;Segoe UI&quot;;</string>
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>-45</y>
+        <y>0</y>
         <width>587</width>
-        <height>671</height>
+        <height>724</height>
        </rect>
       </property>
       <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -121,7 +121,11 @@ font: 700 16pt &quot;Segoe UI&quot;;</string>
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="emailTxt"/>
+            <widget class="QLineEdit" name="emailTxt">
+             <property name="placeholderText">
+              <string>example@gmail.com</string>
+             </property>
+            </widget>
            </item>
           </layout>
          </item>
@@ -149,7 +153,11 @@ font: 700 16pt &quot;Segoe UI&quot;;</string>
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="phoneNumTxt"/>
+            <widget class="QLineEdit" name="phoneNumTxt">
+             <property name="placeholderText">
+              <string>e.g. +265...</string>
+             </property>
+            </widget>
            </item>
           </layout>
          </item>
@@ -158,7 +166,7 @@ font: 700 16pt &quot;Segoe UI&quot;;</string>
            <item>
             <widget class="QLabel" name="label_14">
              <property name="text">
-              <string>Former School:      </string>
+              <string>Former School      </string>
              </property>
             </widget>
            </item>
@@ -215,7 +223,7 @@ font: 11pt &quot;Segoe UI&quot;;
            <item>
             <widget class="QLabel" name="label_4">
              <property name="text">
-              <string>Date of Birth:</string>
+              <string>Date of Birth</string>
              </property>
             </widget>
            </item>
@@ -252,7 +260,7 @@ font: 11pt &quot;Segoe UI&quot;;
            <item>
             <widget class="QLabel" name="label_6">
              <property name="text">
-              <string>Education Level:</string>
+              <string>Education Level</string>
              </property>
             </widget>
            </item>
@@ -277,16 +285,42 @@ font: 11pt &quot;Segoe UI&quot;;
           </layout>
          </item>
          <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_14">
+           <item>
+            <widget class="QLabel" name="label_15">
+             <property name="text">
+              <string>Preferred Program</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="programComboBox">
+             <property name="styleSheet">
+              <string notr="true">padding:7px;
+font: 11pt &quot;Segoe UI&quot;;
+</string>
+             </property>
+             <property name="placeholderText">
+              <string>Please Select From the List</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
           <layout class="QHBoxLayout" name="horizontalLayout_12">
            <item>
             <widget class="QLabel" name="label_13">
              <property name="text">
-              <string>GPA</string>
+              <string>GPA                            </string>
              </property>
             </widget>
            </item>
            <item>
             <widget class="QSpinBox" name="gpaSpinBox">
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
              <property name="maximum">
               <number>5</number>
              </property>
@@ -348,7 +382,7 @@ font: 11pt &quot;Segoe UI&quot;;</string>
            <item>
             <widget class="QLabel" name="label_7">
              <property name="text">
-              <string>Password:              </string>
+              <string>Password              </string>
              </property>
             </widget>
            </item>
@@ -390,7 +424,7 @@ margin-top:7px;</string>
            <item>
             <widget class="QLabel" name="label_8">
              <property name="text">
-              <string>Confirm Password:</string>
+              <string>Confirm Password</string>
              </property>
             </widget>
            </item>

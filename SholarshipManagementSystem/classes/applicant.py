@@ -14,7 +14,8 @@ class Applicant:
                  educationLevel,
                  gpa,
                  schoolAttended,
-                 incomeBracket
+                 incomeBracket,
+                 program
                  ):
         self.name = name
         self.email = email
@@ -28,6 +29,7 @@ class Applicant:
         self.gpa = gpa
         self.schoolAttended = schoolAttended
         self.incomeBracket = incomeBracket
+        self.program = program
 
 
     def toDict(self):
@@ -43,7 +45,8 @@ class Applicant:
             "education_level": self.educationLevel,
             "gpa": self.gpa,
             "schoolAttended": self.schoolAttended,
-            "incomeBracket": self.incomeBracket
+            "incomeBracket": self.incomeBracket,
+            "program" : self.program
         }
 
     def execute(self, url):

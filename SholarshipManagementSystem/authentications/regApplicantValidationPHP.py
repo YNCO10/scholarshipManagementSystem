@@ -11,6 +11,7 @@ from SholarshipManagementSystem.classes.applicant import Applicant
 class AppValCode(QWidget, Ui_applicantRegistration):
     def __init__(self):
         super().__init__()
+        self.controller = None
         self.setupUi(self)
         self.setWindowTitle("REGISTER")
         self.setWindowIcon(QIcon(":icons/SMsysIcon.png"))
@@ -48,7 +49,36 @@ class AppValCode(QWidget, Ui_applicantRegistration):
         self.ageSpinBox.setMaximum(40)
         self.ageSpinBox.setValue(18)
 
+        #add preferred program
+        programs = [
+            "Bachelor of Science (BSc)",
+            "Bachelor of Arts (BA)",
+            "Bachelor of Commerce (BCom)",
+            "Bachelor of Engineering (BEng)",
+            "Bachelor of Education (BEd)",
+            "Bachelor of Laws (LLB)",
+            "Bachelor of Medicine and Bachelor of Surgery (MBBS)",
+            "Bachelor of Computer Science (BCompSc)",
+            "Bachelor of Nursing (BNurs)",
+            "Bachelor of Social Science (BSocSci)",
+            "Master of Science (MSc)",
+            "Master of Arts (MA)",
+            "Master of Business Administration (MBA)",
+            "Master of Education (MEd)",
+            "Master of Engineering (MEng)",
+            "Master of Public Health (MPH)",
+            "Doctor of Philosophy (PhD)",
+            "Doctor of Medicine (MD)",
+            "Postgraduate Diploma",
+            "Higher National Diploma (HND)",
+            "Diploma in Information Technology",
+            "Diploma in Accounting",
+            "Diploma in Education",
+            "Certificate in Business Management",
+            "Certificate in Computer Applications"
+        ]
 
+        self.programComboBox.addItems(programs)
 
         # BTN CLICKS
         self.btnClicks()
@@ -114,7 +144,8 @@ class AppValCode(QWidget, Ui_applicantRegistration):
                 self.educationCombo.currentText(),
                 self.gpaSpinBox.text().strip(),
                 self.formerSchoolLineEdit.text().strip(),
-                self.incomeBracketComboBox.currentText().strip()
+                self.incomeBracketComboBox.currentText().strip(),
+                self.programComboBox.currentText().strip()
             )
 
             result = applicant.execute(self.url)

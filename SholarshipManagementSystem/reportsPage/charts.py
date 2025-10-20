@@ -39,8 +39,8 @@ class Chart:
                 ax.set_axis_off()  # hide x/y axes since no graph
                 return fig
 
-            categories = list(result.keys())
-            sizes = list(result.values())
+            categories = list(data.keys())
+            sizes = list(data.values())
 
             ax.plot(categories, sizes, marker="o")
 
@@ -57,7 +57,7 @@ class Chart:
         except (requests.RequestException, ValueError) as e:
             self.regCode.msgBox(
                 "Error(lineGraph)",
-                f"Exception:\n{e}"
+                f"Exception(LineGraph):\n{e}"
             )
 
 

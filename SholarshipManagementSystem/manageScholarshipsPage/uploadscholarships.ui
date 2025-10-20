@@ -32,12 +32,9 @@
    <string>Dialog</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">QDialog{
-	
-	
-	
+   <string notr="true">QDialog{	
 	background-color: rgb(20, 41, 63);
-
+	color: white;
 }
 
 QPushButton{
@@ -69,6 +66,10 @@ QLineEdit{
 
 QRadioButton{
 	font: 600 12pt &quot;Segoe UI&quot;;
+}
+
+QToolTip{
+	color: white;
 }</string>
   </property>
   <layout class="QGridLayout" name="gridLayout_2">
@@ -165,9 +166,9 @@ QRadioButton{
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>0</y>
+        <y>-589</y>
         <width>488</width>
-        <height>993</height>
+        <height>991</height>
        </rect>
       </property>
       <layout class="QGridLayout" name="gridLayout">
@@ -335,6 +336,35 @@ QRadioButton{
                     <string>Government-Funded Scheme</string>
                    </property>
                   </item>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="questionMarkIconBtn">
+                  <property name="cursor">
+                   <cursorShape>PointingHandCursor</cursorShape>
+                  </property>
+                  <property name="toolTip">
+                   <string>Scheme Information</string>
+                  </property>
+                  <property name="toolTipDuration">
+                   <number>-1</number>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">border:none;
+border-radius:5px;
+font: 600 9pt &quot;Segoe UI&quot;;
+margin:0px;
+padding:2px;
+background-color: rgb(20, 41, 63);
+color:rgb(1, 14, 27);</string>
+                  </property>
+                  <property name="text">
+                   <string/>
+                  </property>
+                  <property name="icon">
+                   <iconset resource="../../projectRescources.qrc">
+                    <normaloff>:/icons/questionMarkWhite.png</normaloff>:/icons/questionMarkWhite.png</iconset>
+                  </property>
                  </widget>
                 </item>
                </layout>

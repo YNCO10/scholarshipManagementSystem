@@ -32,15 +32,15 @@ class Admin:
         pass
 
 ########################################################################################################################
-    def sendNotification(self, recipientEmail, title, msg):
+    def sendSingleNotification(self, recipientEmail, title, msg):
         url = "http://localhost/BackEnd/scholarshipManagement/notifications/insertNotification.php"
         response = requests.post(
             url=url,
             data={
                 "email": self.email,
-                "recipientEmail": recipientEmail.text().strip(),
-                "title": title.text().strip(),
-                "msg": msg.text().strip()
+                "recipientEmail": recipientEmail,
+                "title": title,
+                "msg": msg
             }
         )
         try:
@@ -49,7 +49,7 @@ class Admin:
             print("Response was not JSON:", response.text)
             return {"status": "error", "message": "Invalid server response"}
 
-########################################################################################################################
+##################################################################################h#######################################
     def updateDetails(self, category, value):
         response = requests.post(
             "http://localhost/BackEnd/scholarshipManagement/profile/updateDetails.php",
@@ -74,6 +74,23 @@ class Admin:
             }
         )
         try:
+            return response.json()
+        except json.JSONDecodeError:
+            print("Response was not JSON:", response.text)
+            return {"status": "error", "message": "Invalid server response"}
+
+########################################################################################################################
+    def bulkNotificationsForApplicants(self, senderEmail, title, message, recipientEmails):
+        try:
+            response = requests.post(
+                "http://localhost/BackEnd/scholarshipManagement/notifications/insertNotificationsInBulk.php",
+                data={
+                    "email": senderEmail,
+                    "title": title,
+                    "msg": message,
+                    "recipientEmails": json.dumps(recipientEmails)
+                }
+            )
             return response.json()
         except json.JSONDecodeError:
             print("Response was not JSON:", response.text)

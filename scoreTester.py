@@ -1,5 +1,5 @@
 from SholarshipManagementSystem.classes.scoreHandler import ScoreHandler
-
+import requests
 scoreHandler = ScoreHandler()
 
 applicant_data = {
