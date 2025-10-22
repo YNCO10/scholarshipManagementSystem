@@ -6,5 +6,5 @@ from applicantDashbordCode import ApplicantDash
 
 app = QApplication(sys.argv)
 win = ApplicantDash()
-win.show()
+win.showMaximized()
 app.exec()

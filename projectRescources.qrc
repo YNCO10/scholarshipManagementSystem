@@ -1,5 +1,9 @@
 <RCC>
   <qresource>
+    <file>icons/history.png</file>
+    <file>icons/historyWhite.png</file>
+    <file>icons/reportLogs.png</file>
+    <file>icons/reportLogsWhite.png</file>
     <file>icons/powerWhite.png</file>
     <file>icons/questionMarkWhite.png</file>
     <file>icons/userWithGear.png</file>

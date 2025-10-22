@@ -1,7 +1,4 @@
-import sys
-
 import requests
-from PyQt6.QtWidgets import QApplication
 
 import Sessions
 
@@ -21,7 +18,7 @@ class UploadingCode(QDialog, Ui_Dialog):
         self.setWindowTitle("UPLOAD SCHOLARSHIP")
         self.setWindowIcon(QIcon(":icons/SMsysIcon.png"))
         self.regCode = RegCode()
-        self.admin = Admin("Yanco Kamphandule", "yanco@gmail.com", "*********")
+        self.admin = Admin(Sessions.adminName, Sessions.seshEmail, "*********")
 
         self.btnClicks()
 
@@ -114,7 +111,7 @@ class UploadingCode(QDialog, Ui_Dialog):
                 url,
                 filePath,
                 selectedPerks,
-                "yanco@gmail.com"
+                Sessions.seshEmail
             )
             msg = result.get("message", "Unknown Message")
 

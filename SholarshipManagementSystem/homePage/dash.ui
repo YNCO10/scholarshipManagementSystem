@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1049</width>
-    <height>758</height>
+    <width>1051</width>
+    <height>762</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -242,7 +242,7 @@ QPushButton::hover{
 </string>
          </property>
          <property name="currentIndex">
-          <number>3</number>
+          <number>7</number>
          </property>
          <widget class="QWidget" name="home">
           <layout class="QGridLayout" name="gridLayout_2">
@@ -256,8 +256,8 @@ QPushButton::hover{
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>686</width>
-                <height>674</height>
+                <width>408</width>
+                <height>374</height>
                </rect>
               </property>
               <layout class="QGridLayout" name="gridLayout_7">
@@ -533,8 +533,8 @@ font: 12pt &quot;Segoe UI&quot;;</string>
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>686</width>
-                <height>674</height>
+                <width>98</width>
+                <height>28</height>
                </rect>
               </property>
               <layout class="QGridLayout" name="gridLayout_8"/>
@@ -1098,7 +1098,7 @@ font: 600 10pt &quot;Segoe UI&quot;;</string>
                 </widget>
                </item>
                <item>
-                <widget class="QPushButton" name="changeUsernameTxt">
+                <widget class="QPushButton" name="changeUsernameBtn">
                  <property name="styleSheet">
                   <string notr="true">QPushButton{
 	
@@ -1295,6 +1295,19 @@ margin-bottom:80px;</string>
          <widget class="QWidget" name="manageApplications">
           <layout class="QVBoxLayout" name="verticalLayout_23">
            <item>
+            <widget class="QLabel" name="label_13">
+             <property name="styleSheet">
+              <string notr="true">margin-top:20px;</string>
+             </property>
+             <property name="text">
+              <string>MANAGE APPLICATIONS</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignmentFlag::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
             <layout class="QHBoxLayout" name="horizontalLayout_6">
              <property name="topMargin">
               <number>40</number>
@@ -1373,6 +1386,63 @@ QPushButton:checked{
               <string notr="true">margin:30px;</string>
              </property>
             </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="reportLogs">
+          <layout class="QVBoxLayout" name="verticalLayout_24">
+           <item>
+            <widget class="QLabel" name="label_15">
+             <property name="styleSheet">
+              <string notr="true">margin-top:30px;</string>
+             </property>
+             <property name="text">
+              <string>REPORT LOGS</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignmentFlag::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_15">
+             <item>
+              <widget class="QTableWidget" name="reportLogsTableWidget">
+               <property name="styleSheet">
+                <string notr="true">margin:30px;</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QScrollArea" name="pdfViewerScrollWidget">
+               <property name="widgetResizable">
+                <bool>true</bool>
+               </property>
+               <widget class="QWidget" name="scrollAreaWidgetContents_4">
+                <property name="geometry">
+                 <rect>
+                  <x>0</x>
+                  <y>0</y>
+                  <width>357</width>
+                  <height>612</height>
+                 </rect>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_26">
+                 <item>
+                  <widget class="QLabel" name="label_16">
+                   <property name="text">
+                    <string>NO INFORMATION</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignmentFlag::AlignCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </widget>
+              </widget>
+             </item>
+            </layout>
            </item>
           </layout>
          </widget>
@@ -1527,6 +1597,24 @@ QPushButton{
             <iconset resource="../../projectRescources.qrc">
              <normaloff>:/icons/report.png</normaloff>
              <normalon>:/icons/graph.png</normalon>:/icons/report.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="autoExclusive">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="reportLogsIconBtn">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="icon">
+            <iconset resource="../../projectRescources.qrc">
+             <normaloff>:/icons/history.png</normaloff>
+             <normalon>:/icons/historyWhite.png</normalon>:/icons/history.png</iconset>
            </property>
            <property name="checkable">
             <bool>true</bool>
@@ -1820,6 +1908,24 @@ QPushButton:checked{
           </widget>
          </item>
          <item>
+          <widget class="QPushButton" name="reportLogsBtn">
+           <property name="text">
+            <string>Report Logs</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../../projectRescources.qrc">
+             <normaloff>:/icons/history.png</normaloff>
+             <normalon>:/icons/historyWhite.png</normalon>:/icons/history.png</iconset>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="autoExclusive">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item>
           <widget class="QPushButton" name="notificationsBtn">
            <property name="cursor">
             <cursorShape>PointingHandCursor</cursorShape>
@@ -1914,8 +2020,8 @@ QPushButton:checked{
    <slot>setHidden(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>290</x>
-     <y>38</y>
+     <x>354</x>
+     <y>47</y>
     </hint>
     <hint type="destinationlabel">
      <x>59</x>
@@ -1930,8 +2036,8 @@ QPushButton:checked{
    <slot>setVisible(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>300</x>
-     <y>45</y>
+     <x>354</x>
+     <y>48</y>
     </hint>
     <hint type="destinationlabel">
      <x>243</x>

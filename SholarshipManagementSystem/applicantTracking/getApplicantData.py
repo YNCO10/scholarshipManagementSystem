@@ -194,6 +194,7 @@ class GetApplicantData:
                 f"(({academicScore}*{self.academicWeight})+({financialScore}*{self.financialWeight})+({assessmentScore}*{self.assessmentWeight}))/{sumOfWeights}")
             finalScore = ((academicScore * self.academicWeight) + (financialScore * self.financialWeight) + (assessmentScore * self.assessmentWeight)) / sumOfWeights
             finalScoreLabel.setText(f"Applicant score: {finalScore:.0f}")
+            Sessions.applicantScore = finalScore
 
             #Average and eligibility section ---------------------------------
             avgScore = self.scoreHandler.overallAvgScore(self.sumOfScores, len(self.intScores))
@@ -201,6 +202,7 @@ class GetApplicantData:
             eligibility = self.scoreHandler.calculateEligibility(avgScore, finalScore)
 
             overallAvgScoreLabel.setText(f"System Threshold = {avgScore:.2f}")
+            Sessions.overallAverageScore = avgScore
             successPredictionLabel.setText(f"{self.applicantName} is {successPred} to be accepted for a scholarship.")
             applicantEligibilityLabel.setText(f"{self.applicantName} is {eligibility}")
 

@@ -1,3 +1,4 @@
+import json
 import requests
 
 
@@ -31,7 +32,7 @@ class Applicant:
         self.incomeBracket = incomeBracket
         self.program = program
 
-
+##################################################################################h#####################################
     def toDict(self):
         return {
             "name": self.name,
@@ -49,9 +50,26 @@ class Applicant:
             "program" : self.program
         }
 
+##################################################################################h#####################################
     def execute(self, url):
         response = requests.post(
             url,
             data=self.toDict()
         )
         return response.json()
+
+##################################################################################h#####################################
+    def updateDetails(self, category, value):
+        response = requests.post(
+            "http://localhost/BackEnd/scholarshipManagement/profile/updateApplicantDetails.php",
+            data={
+                "cat": category,
+                "email": self.email,
+                "value": value
+            }
+        )
+        try:
+            return response.json()
+        except json.JSONDecodeError:
+            print("Response was not JSON:", response.text)
+            return {"status": "error", "message": "Invalid server response"}

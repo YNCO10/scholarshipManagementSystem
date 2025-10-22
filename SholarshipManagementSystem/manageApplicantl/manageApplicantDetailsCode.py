@@ -3,6 +3,7 @@ from PyQt6.QtWidgets import QWidget
 from PyQt6.QtGui import QIcon
 import requests
 
+import Sessions
 from SholarshipManagementSystem.manageApplicantl.manageApplicantDetailsPage import Ui_Form
 from SholarshipManagementSystem.authentications.regValidationPHP import RegCode
 from SholarshipManagementSystem.applicantTracking.getApplicantData import GetApplicantData
@@ -195,6 +196,14 @@ class ManageApplicantDetails(QWidget, Ui_Form):
 ########################################################################################################################
     def changeApplicantStatus(self, status):
         try:
+            if status == "ACCEPTED":
+                if Sessions.overallAverageScore > Sessions.applicantScore:
+                    self.regCode.msgBox(
+                        "Warning!",
+                        "Applicant is Not Eligible."
+                    )
+                    return
+
             response = requests.post(
                 "http://localhost/BackEnd/scholarshipManagement/manageApplicant/updateStatus.php",
                 data={
@@ -202,6 +211,7 @@ class ManageApplicantDetails(QWidget, Ui_Form):
                     "status": status
                 }
             )
+            print(f"RAW RESPONSE: {response.text}")
             result = response.json()
             msg = result.get("message", "Unknown MSG")
 
@@ -210,6 +220,7 @@ class ManageApplicantDetails(QWidget, Ui_Form):
                     "Process Complete",
                     msg
                 )
+                return
 
             elif result.get("status") == "error":
                 self.regCode.msgBox(
@@ -217,6 +228,7 @@ class ManageApplicantDetails(QWidget, Ui_Form):
                     msg
                 )
                 print(f"Error: {msg}")
+                return
 
         except Exception as e:
             self.regCode.msgBox(

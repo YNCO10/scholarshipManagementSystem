@@ -75,7 +75,7 @@ class LoginCode(QWidget, Ui_loginPage):
 
 
             elif result.get("status") == "applicant":
-                Sessions.adminName = result.get('applicantName', 'Applicant')
+                Sessions.applicantName = result.get('applicantName', 'Applicant')
                 self.msgBox("Welcome", f"Enjoy your experience, {result.get('applicantName', 'Applicant')}")
                 print("Login Successful")
 

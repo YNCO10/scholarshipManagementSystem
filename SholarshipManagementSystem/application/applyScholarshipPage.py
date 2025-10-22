@@ -22,8 +22,7 @@ class Ui_applyScholarshipForm(object):
         applyScholarshipForm.setMaximumSize(QtCore.QSize(535, 518))
         applyScholarshipForm.setStyleSheet("QWidget{\n"
 "    \n"
-"    \n"
-"    background-color: rgb(11, 100, 197);\n"
+"    background-color: rgb(20, 41, 63);\n"
 "\n"
 "}\n"
 "\n"
@@ -48,7 +47,7 @@ class Ui_applyScholarshipForm(object):
 "\n"
 "QLineEdit{\n"
 "    border:none;\n"
-"    background-color: rgb(11, 100, 197);\n"
+"background-color: rgb(20, 41, 63);\n"
 "    border-bottom: 1px solid white;\n"
 "    \n"
 "    font: 11pt \"Segoe UI\";\n"
@@ -70,7 +69,7 @@ class Ui_applyScholarshipForm(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 503, 898))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, -195, 503, 848))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.gridLayout = QtWidgets.QGridLayout(self.scrollAreaWidgetContents)
         self.gridLayout.setObjectName("gridLayout")
@@ -101,6 +100,7 @@ class Ui_applyScholarshipForm(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.formerSchoolTxt.sizePolicy().hasHeightForWidth())
         self.formerSchoolTxt.setSizePolicy(sizePolicy)
+        self.formerSchoolTxt.setStyleSheet("background-color: rgb(20, 41, 63);")
         self.formerSchoolTxt.setObjectName("formerSchoolTxt")
         self.horizontalLayout_19.addWidget(self.formerSchoolTxt)
         self.verticalLayout_2.addLayout(self.horizontalLayout_19)
@@ -109,8 +109,10 @@ class Ui_applyScholarshipForm(object):
         self.label_4 = QtWidgets.QLabel(parent=self.scrollAreaWidgetContents)
         self.label_4.setObjectName("label_4")
         self.horizontalLayout_3.addWidget(self.label_4)
-        self.gpaSpinbox = QtWidgets.QSpinBox(parent=self.scrollAreaWidgetContents)
-        self.gpaSpinbox.setMaximum(5)
+        self.gpaSpinbox = QtWidgets.QDoubleSpinBox(parent=self.scrollAreaWidgetContents)
+        self.gpaSpinbox.setDecimals(1)
+        self.gpaSpinbox.setMaximum(5.0)
+        self.gpaSpinbox.setSingleStep(0.1)
         self.gpaSpinbox.setObjectName("gpaSpinbox")
         self.horizontalLayout_3.addWidget(self.gpaSpinbox)
         self.verticalLayout_2.addLayout(self.horizontalLayout_3)
@@ -153,6 +155,7 @@ class Ui_applyScholarshipForm(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.proofOfNeedTxt.sizePolicy().hasHeightForWidth())
         self.proofOfNeedTxt.setSizePolicy(sizePolicy)
+        self.proofOfNeedTxt.setStyleSheet("background-color: rgb(20, 41, 63);")
         self.proofOfNeedTxt.setObjectName("proofOfNeedTxt")
         self.horizontalLayout_9.addWidget(self.proofOfNeedTxt)
         self.proofBrowseBtn = QtWidgets.QPushButton(parent=self.scrollAreaWidgetContents)
@@ -162,7 +165,7 @@ class Ui_applyScholarshipForm(object):
 "font: 600 9pt \"Segoe UI\";\n"
 "margin:0px;\n"
 "padding:2px;\n"
-"background-color: rgb(11, 100, 197);\n"
+"background-color: rgb(20, 41, 63);\n"
 "color:rgb(1, 14, 27);")
         self.proofBrowseBtn.setText("")
         icon = QtGui.QIcon()
@@ -172,21 +175,6 @@ class Ui_applyScholarshipForm(object):
         self.horizontalLayout_9.addWidget(self.proofBrowseBtn)
         self.verticalLayout_6.addLayout(self.horizontalLayout_9)
         self.verticalLayout_12.addLayout(self.verticalLayout_6)
-        self.horizontalLayout_18 = QtWidgets.QHBoxLayout()
-        self.horizontalLayout_18.setObjectName("horizontalLayout_18")
-        self.label_27 = QtWidgets.QLabel(parent=self.scrollAreaWidgetContents)
-        self.label_27.setObjectName("label_27")
-        self.horizontalLayout_18.addWidget(self.label_27)
-        self.incomeBracketComboBox = QtWidgets.QComboBox(parent=self.scrollAreaWidgetContents)
-        self.incomeBracketComboBox.setObjectName("incomeBracketComboBox")
-        self.incomeBracketComboBox.addItem("")
-        self.incomeBracketComboBox.addItem("")
-        self.incomeBracketComboBox.addItem("")
-        self.incomeBracketComboBox.addItem("")
-        self.incomeBracketComboBox.addItem("")
-        self.incomeBracketComboBox.addItem("")
-        self.horizontalLayout_18.addWidget(self.incomeBracketComboBox)
-        self.verticalLayout_12.addLayout(self.horizontalLayout_18)
         self.line = QtWidgets.QFrame(parent=self.scrollAreaWidgetContents)
         self.line.setFrameShape(QtWidgets.QFrame.Shape.HLine)
         self.line.setFrameShadow(QtWidgets.QFrame.Shadow.Sunken)
@@ -216,6 +204,7 @@ class Ui_applyScholarshipForm(object):
         self.label_9.setObjectName("label_9")
         self.horizontalLayout_5.addWidget(self.label_9)
         self.careerGoalsTxt = QtWidgets.QLineEdit(parent=self.scrollAreaWidgetContents)
+        self.careerGoalsTxt.setStyleSheet("background-color: rgb(20, 41, 63);")
         self.careerGoalsTxt.setObjectName("careerGoalsTxt")
         self.horizontalLayout_5.addWidget(self.careerGoalsTxt)
         self.verticalLayout_5.addLayout(self.horizontalLayout_5)
@@ -237,6 +226,7 @@ class Ui_applyScholarshipForm(object):
         self.label_11.setObjectName("label_11")
         self.horizontalLayout_6.addWidget(self.label_11)
         self.transcriptTxt = QtWidgets.QLineEdit(parent=self.scrollAreaWidgetContents)
+        self.transcriptTxt.setStyleSheet("background-color: rgb(20, 41, 63);")
         self.transcriptTxt.setObjectName("transcriptTxt")
         self.horizontalLayout_6.addWidget(self.transcriptTxt)
         self.transcriptBrowseBtn = QtWidgets.QPushButton(parent=self.scrollAreaWidgetContents)
@@ -246,7 +236,7 @@ class Ui_applyScholarshipForm(object):
 "font: 600 9pt \"Segoe UI\";\n"
 "margin:0px;\n"
 "padding:2px;\n"
-"background-color: rgb(11, 100, 197);\n"
+"background-color: rgb(20, 41, 63);\n"
 "color:rgb(1, 14, 27);")
         self.transcriptBrowseBtn.setText("")
         self.transcriptBrowseBtn.setIcon(icon)
@@ -268,7 +258,7 @@ class Ui_applyScholarshipForm(object):
 "font: 600 9pt \"Segoe UI\";\n"
 "margin:0px;\n"
 "padding:2px;\n"
-"background-color: rgb(11, 100, 197);\n"
+"background-color: rgb(20, 41, 63);\n"
 "color:rgb(1, 14, 27);")
         self.nationalBrowseBtn.setText("")
         self.nationalBrowseBtn.setIcon(icon)
@@ -290,7 +280,7 @@ class Ui_applyScholarshipForm(object):
 "font: 600 9pt \"Segoe UI\";\n"
 "margin:0px;\n"
 "padding:2px;\n"
-"background-color: rgb(11, 100, 197);\n"
+"background-color: rgb(20, 41, 63);\n"
 "color:rgb(1, 14, 27);")
         self.recommBrowseBtn.setText("")
         self.recommBrowseBtn.setIcon(icon)
@@ -344,13 +334,6 @@ class Ui_applyScholarshipForm(object):
         self.noRadioBtn.setText(_translate("applyScholarshipForm", "No"))
         self.label_3.setText(_translate("applyScholarshipForm", "If \"yes\", please provide some proof of need"))
         self.proofOfNeedTxt.setPlaceholderText(_translate("applyScholarshipForm", "e.g. Bank Statement showing Montly income"))
-        self.label_27.setText(_translate("applyScholarshipForm", "Income Bracket"))
-        self.incomeBracketComboBox.setItemText(0, _translate("applyScholarshipForm", "less than MWK150,000"))
-        self.incomeBracketComboBox.setItemText(1, _translate("applyScholarshipForm", "Between MWK150,000 - MWK250,000"))
-        self.incomeBracketComboBox.setItemText(2, _translate("applyScholarshipForm", "Between MKW250,000 - MWK500,000"))
-        self.incomeBracketComboBox.setItemText(3, _translate("applyScholarshipForm", "Between MWK500,00 - MWK1,000,000"))
-        self.incomeBracketComboBox.setItemText(4, _translate("applyScholarshipForm", "Between MWK1,000,000 - MWK2,000,000"))
-        self.incomeBracketComboBox.setItemText(5, _translate("applyScholarshipForm", "More than MWK2,000,000"))
         self.label_7.setText(_translate("applyScholarshipForm", "MOTIVATION"))
         self.label_8.setText(_translate("applyScholarshipForm", "Why are you applying to this scholarship?"))
         self.label_9.setText(_translate("applyScholarshipForm", "Career Goals                     "))

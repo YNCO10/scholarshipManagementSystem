@@ -2,22 +2,44 @@ import json
 import os
 import subprocess
 import sys
-
+from datetime import datetime
 import requests
-from PyQt6.QtWidgets import QMainWindow, QWidget, QHBoxLayout, QTableWidgetItem, QPushButton
+from PyQt6.QtWidgets import QMainWindow, QWidget, QHBoxLayout, QTableWidgetItem, QPushButton, QVBoxLayout, QMessageBox, \
+    QLineEdit, QDialog, QLabel
 from PyQt6.QtGui import QIcon
-
 import Sessions
+from matplotlib.backends.backend_qtagg import FigureCanvasQTAgg as FigureCanvas
 from SholarshipManagementSystem.homePage.applicantDashboard import Ui_ApplicantDash
 from SholarshipManagementSystem.authentications.regValidationPHP import RegCode
-
+from SholarshipManagementSystem.reportsPage.charts import Chart
+from SholarshipManagementSystem.classes.applicant import Applicant
+from SholarshipManagementSystem.reportsPage.report import Report
 
 class ApplicantDash(QMainWindow, Ui_ApplicantDash):
     def __init__(self):
         super().__init__()
+        self.login = None
+        self.scheme = None
+        self.charts = Chart()
         self.notiDisplay = None
         self.regCode = RegCode()
         self.controller = None
+        self.reportPage = Report()
+        self.applicant = Applicant(
+            f"{Sessions.applicantName}",
+            f"{Sessions.seshEmail}",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+        )
         self.setupUi(self)
         self.setWindowTitle("Dashboard")
         self.setWindowIcon(QIcon(":icons/SMsysIcon.png"))
@@ -28,6 +50,18 @@ class ApplicantDash(QMainWindow, Ui_ApplicantDash):
         self.homeIconBtn.setChecked(True)
         #HIDE SIDEBAR
         self.iconNameWidget.setVisible(False)
+
+        #display username
+        self.usernameLabel.setText(Sessions.applicantName)
+        self.homeScreenUsernameLabel.setText(f"Hello {Sessions.applicantName}")
+
+        #load plots
+        self.loadPlot1()
+        self.loadPlot2()
+        self.loadPlot8()
+        self.chartWidget.setFixedHeight(400)
+        self.chart2Widget.setFixedHeight(400)
+        self.mostCommonSchemesChart.setFixedHeight(400)
 
         #btn clicks
         self.btnClicks()
@@ -43,6 +77,9 @@ class ApplicantDash(QMainWindow, Ui_ApplicantDash):
         #reports
         self.reportBtn.clicked.connect(self.switchToReports)
         self.reportIconBtn.clicked.connect(self.switchToReports)
+
+        self.printReportBtn.clicked.connect(self.printReport)
+
         #noti...
         self.notificationsBtn.clicked.connect(self.switchToNotifications)
         self.notificationsIconBtn.clicked.connect(self.switchToNotifications)
@@ -50,6 +87,17 @@ class ApplicantDash(QMainWindow, Ui_ApplicantDash):
         self.profileBtn.clicked.connect(self.switchToProfile)
         self.profileIconBtn.clicked.connect(self.switchToProfile)
         self.profileBtnQuickAccess.clicked.connect(self.switchToProfile)
+        #------------------pass btn
+        self.showPassBtn.clicked.connect(self.togglePasswordBtn)
+
+        self.changeUsernameBtn.clicked.connect(self.changeUsername)
+        self.changePassBtn.clicked.connect(self.changePassword)
+        self.changeEmailBtn.clicked.connect(self.changeEmail)
+
+        #logout
+        self.logoutBtn.clicked.connect(self.logout)
+        self.LogoutBtn.clicked.connect(self.logout)
+        self.logoutIconBtn.clicked.connect(self.logout)
 
         #filter notification page
         self.noftiFilterbtn.clicked.connect(
@@ -67,6 +115,36 @@ class ApplicantDash(QMainWindow, Ui_ApplicantDash):
 
     def switchToReports(self):
         self.mainDisplayWidget.setCurrentIndex(2)
+        try:
+            print("1")
+            self.loadPlot3()
+            print("2")
+            self.loadPlot4()
+            print("3")
+            self.loadPlot5()
+            print("4")
+            self.loadPlot6()
+            print("5")
+            self.loadPlot7()
+
+            self.schemesAvaliableTableWidget.setFixedHeight(300)
+            self.populateSchemeTbl()
+            self.populateCommonProgramTableWidget()
+            self.schemeRatioChart.setFixedHeight(300)
+            self.applicantEducationLevelChart.setFixedHeight(300)
+            self.applicantsPerCountryChart.setFixedHeight(300)
+            self.financialAmountPerScholarshipChart.setFixedHeight(300)
+
+            #scholarship count
+            self.totalNumOfScholarshipsLabelReports.setText(f"Total Number of Scholarships: {Sessions.scholarshipCount}")
+
+        except Exception as e:
+            self.regCode.msgBox(
+                "Error",
+                f"Something went wrong(reports): {e}"
+            )
+            print(f"Exception(reports){e}")
+
 
     def switchToNotifications(self):
         self.mainDisplayWidget.setCurrentIndex(3)
@@ -424,3 +502,360 @@ class ApplicantDash(QMainWindow, Ui_ApplicantDash):
         from SholarshipManagementSystem.notificationsPage.notificationsDisplayCode import NotificationDisplay
         self.notiDisplay = NotificationDisplay(Id)
         self.notiDisplay.show()
+
+########################################################################################################################
+    def plot1(self):
+        self.chart1Label.setText("Scheme per Scholarship")
+        return self.charts.barChart(
+            "http://localhost/BackEnd/scholarshipManagement/chartData/schemeDataForChart.php",
+            "Scholarships"
+        )
+
+
+    def loadPlot1(self):
+        figure = FigureCanvas(self.plot1())
+        layout = QVBoxLayout(self.chartWidget)
+        layout.addWidget(figure)
+
+########################################################################################################################
+    def plot2(self):
+        self.chart2Label.setText("Most Applied Scholarships")
+        return self.charts.pieChart(
+            "http://localhost/BackEnd/scholarshipManagement/chartData/mostAppliedScholarship.php"
+        )
+
+    def loadPlot2(self):
+        figure = FigureCanvas(self.plot2())
+        layout = QVBoxLayout(self.chart2Widget)
+        layout.addWidget(figure)
+
+########################################################################################################################
+    def plot3(self):
+        return self.charts.barChart(
+            "http://localhost/BackEnd/scholarshipManagement/chartData/nationality.php",
+            "Number of Applicants"
+        )
+
+    def loadPlot3(self):
+        figure = FigureCanvas(self.plot3())
+        layout = QVBoxLayout(self.applicantsPerCountryChart)
+        layout.addWidget(figure)
+
+########################################################################################################################
+    def plot4(self):
+        return self.charts.pieChart(
+            "http://localhost/BackEnd/scholarshipManagement/chartData/educationLevel.php"
+        )
+
+    def loadPlot4(self):
+        figure = FigureCanvas(self.plot4())
+        layout = QVBoxLayout(self.applicantEducationLevelChart)
+        layout.addWidget(figure)
+
+########################################################################################################################
+    def plot5(self):
+        return self.charts.pieChart(
+            "http://localhost/BackEnd/scholarshipManagement/uploadScholarships/loadScholarshipCategories.php",
+        )
+
+    def loadPlot5(self):
+        figure = FigureCanvas(self.plot5())
+        layout = QVBoxLayout(self.financialAmountPerScholarshipChart)
+        layout.addWidget(figure)
+
+########################################################################################################################
+    def plot6(self):
+        return self.charts.pieChart(
+            "http://localhost/BackEnd/scholarshipManagement/chartData/schemeDataForChart.php"
+        )
+
+    def loadPlot6(self):
+        figure = FigureCanvas(self.plot6())
+        layout = QVBoxLayout(self.schemeRatioChart)
+        layout.addWidget(figure)
+
+########################################################################################################################
+    def plot7(self):
+        return self.charts.barChart(
+            "http://localhost/BackEnd/scholarshipManagement/chartData/mostAppliedScholarship.php",
+            "Applications"
+        )
+
+    def loadPlot7(self):
+        figure = FigureCanvas(self.plot7())
+        layout = QVBoxLayout(self.mostAppliedScholarshipsChart)
+        layout.addWidget(figure)
+
+########################################################################################################################
+    def plot8(self):
+        return self.charts.barChart(
+            "http://localhost/BackEnd/scholarshipManagement/chartData/nationality.php",
+            "Number of Applicants"
+        )
+
+    def loadPlot8(self):
+        figure = FigureCanvas(self.plot8())
+        layout = QVBoxLayout(self.mostCommonSchemesChart)
+        layout.addWidget(figure)
+
+########################################################################################################################
+    def populateCommonProgramTableWidget(self):
+        try:
+            response = requests.get(
+                "http://localhost/BackEnd/scholarshipManagement/applicant/getProgramForTbl.php"
+            )
+            print(f"RAW RESPONSE: {response.text}")
+            result = response.json()
+
+            if result.get("status") == "error":
+                self.commonProgramsTableWidget.setRowCount(1)
+                self.commonProgramsTableWidget.setColumnCount(1)
+                self.commonProgramsTableWidget.setHorizontalHeaderLabels(["Message"])
+                self.commonProgramsTableWidget.setItem(0, 0, QTableWidgetItem("NO INFORMATION TO DISPLAY"))
+                return
+
+            dbContent = result.get("data", [])
+
+            self.commonProgramsTableWidget.setColumnCount(1)
+            self.commonProgramsTableWidget.setRowCount(len(dbContent))
+            self.commonProgramsTableWidget.setHorizontalHeaderLabels(
+                [
+                    "Program"
+                ]
+
+            )
+
+            for rowIdx, rowData in enumerate(dbContent):
+                self.commonProgramsTableWidget.setItem(rowIdx, 0, QTableWidgetItem(rowData.get("program")))
+
+            self.styleTbl(self.commonProgramsTableWidget)
+
+        except Exception as e:
+            self.regCode.msgBox("Error", f"Exception: {e}")
+
+########################################################################################################################
+    def populateSchemeTbl(self):
+        try:
+            response = requests.get(
+                "http://localhost/BackEnd/scholarshipManagement/chartData/schemeDataForTbl.php"
+            )
+            print(f"RAW RESPONSE: {response.text}")
+            result = response.json()
+
+            if result.get("status") == "error":
+                self.schemesAvaliableTableWidget.setRowCount(1)
+                self.schemesAvaliableTableWidget.setColumnCount(1)
+                self.schemesAvaliableTableWidget.setHorizontalHeaderLabels(["Message"])
+                self.schemesAvaliableTableWidget.setItem(0, 0, QTableWidgetItem("NO INFORMATION TO DISPLAY"))
+                return
+
+            dbContent = result.get("data", [])
+
+            self.schemesAvaliableTableWidget.setColumnCount(5)
+            self.schemesAvaliableTableWidget.setRowCount(len(dbContent))
+            self.schemesAvaliableTableWidget.setHorizontalHeaderLabels(
+                [
+                    "Actions",
+                    "ID",
+                    "Scheme",
+                    "Description",
+                    "Benefit Details"
+                ]
+
+            )
+
+            for rowIdx, rowData in enumerate(dbContent):
+                self.schemesAvaliableTableWidget.setItem(rowIdx, 1, QTableWidgetItem(str(rowData.get("id"))))
+                self.schemesAvaliableTableWidget.setItem(rowIdx, 2, QTableWidgetItem(rowData.get("scheme_name")))
+                self.schemesAvaliableTableWidget.setItem(rowIdx, 3, QTableWidgetItem(rowData.get("description")))
+                self.schemesAvaliableTableWidget.setItem(rowIdx, 4, QTableWidgetItem(rowData.get("benefit_details")))
+
+                #       create View & del btn
+                viewBtn = QPushButton("View")
+
+                viewBtn.setStyleSheet("QPushButton { "
+                                      "color: white;"
+                                      "background-color: #010e1b;"
+                                      "padding:3px;"
+                                      "margin:0px;"
+                                      "border-radius:3px;"
+                                      "}")
+
+                viewBtn.clicked.connect(
+                    lambda _, Id=rowData.get("id"): self.displayScheme(Id)
+                )
+                #   align horizontally
+                btnWidget = QWidget()
+                layout = QHBoxLayout(btnWidget)
+                layout.addWidget(viewBtn)
+                layout.setContentsMargins(0, 0, 0, 0)
+
+                #         add widget to tbl
+                self.schemesAvaliableTableWidget.setCellWidget(rowIdx, 0, btnWidget)
+
+            self.styleTbl(self.schemesAvaliableTableWidget)
+
+        except Exception as e:
+            self.regCode.msgBox("Error", f"Exception(populateSchemeTbl): {e}")
+########################################################################################################################
+    def displayScheme(self,Id):
+        from SholarshipManagementSystem.schemes.schemeDisplayCode import SchemeDetails
+        self.scheme = SchemeDetails(Id)
+        self.scheme.show()
+
+########################################################################################################################
+    def changeUsername(self):
+        if self.confirmMsgBox("Confirm Action", "Do you want to change Username"):
+            result = self.applicant.updateDetails(
+                "username",
+                f"{self.usernameTxt.text().strip()}"
+            )
+            msg = result.get("message", "Unknown Msg")
+
+            if result.get("status") == "success":
+                self.regCode.msgBox(
+                    "Process Complete",
+                    msg
+                )
+
+            elif result.get("status") == "error":
+                self.regCode.msgBox(
+                    "Process Failed",
+                    msg
+                )
+        else:
+            pass
+
+########################################################################################################################
+    def changeEmail(self):
+        if self.confirmMsgBox("Confirm Action", "Do you want to change Email"):
+            result = self.applicant.updateDetails(
+                "email",
+                f"{self.emailTxt.text().strip()}"
+            )
+            msg = result.get("message", "Unknown Msg")
+
+            if result.get("status") == "success":
+                self.regCode.msgBox(
+                    "Process Complete",
+                    msg
+                )
+
+            elif result.get("status") == "error":
+                self.regCode.msgBox(
+                    "Process Failed",
+                    msg
+                )
+        else:
+            pass
+
+########################################################################################################################
+    def changePassword(self):
+        if self.confirmMsgBox("Confirm Action", "Do you want to change Password"):
+            result = self.applicant.updateDetails(
+                "pass",
+                f"{self.passTxt.text().strip()}"
+            )
+            msg = result.get("message", "Unknown Msg")
+
+            if result.get("status") == "success":
+                self.regCode.msgBox(
+                    "Process Complete",
+                    msg
+                )
+
+            elif result.get("status") == "error":
+                self.regCode.msgBox(
+                    "Process Failed",
+                    msg
+                )
+        else:
+            pass
+########################################################################################################################
+    def logout(self):
+        if self.confirmMsgBox("Confirm Action", "Do you want to Logout?"):
+            from pageController import Controller
+            controller = Controller()
+            controller.showLogin()
+            self.close()
+        else:
+            pass
+
+########################################################################################################################
+    def confirmMsgBox(self, title, msg):
+        msgBox = QMessageBox()
+        msgBox.setWindowTitle(title)
+        msgBox.setText(msg)
+        msgBox.setStandardButtons(QMessageBox.StandardButton.Ok | QMessageBox.StandardButton.Cancel)
+
+        result = msgBox.exec()
+
+        if result == QMessageBox.StandardButton.Ok:
+            return True
+        else:
+            return False
+
+    ########################################################################################################################
+    def togglePasswordBtn(self):
+        if self.passTxt.echoMode() == QLineEdit.EchoMode.Normal:
+            self.passTxt.setEchoMode(QLineEdit.EchoMode.Password)
+            self.showPassBtn.setIcon(QIcon(":icons/seeWhiteIcon.png"))
+        else:
+            self.passTxt.setEchoMode(QLineEdit.EchoMode.Normal)
+            self.showPassBtn.setIcon(QIcon(":icons/hideWhite.png"))
+
+    def printReport(self):
+        try:
+            # Create dialog
+            dialog = QDialog()
+            dialog.setWindowTitle("YOUR REPORT IS READY")
+
+            layout = QVBoxLayout()
+            hbox = QHBoxLayout()
+
+            heading = QLabel("REPORT GENERATION")
+
+            label = QLabel("Report Name:")
+            hbox.addWidget(label)
+
+            # Create QLineEdit with default filename
+            current_date = datetime.now().strftime("%Y-%m-%d")
+            base_name = f"report_{current_date}"
+            report_dir = "C:/Users/Yankho/OneDrive/Desktop/PROJECT/reportLogs/applicantReports"
+            os.makedirs(report_dir, exist_ok=True)
+
+            # Find next number in sequence
+            existing = [f for f in os.listdir(report_dir) if f.startswith(base_name)]
+            report_number = len(existing) + 1
+            default_name = f"{base_name}_{report_number}"
+
+            reportTxt = QLineEdit(default_name)
+            hbox.addWidget(reportTxt)
+            layout.addWidget(heading)
+            layout.addLayout(hbox)
+
+            # OK and Cancel buttons
+            btnSave = QPushButton("Generate Report")
+            btnCancel = QPushButton("Cancel")
+            layout.addWidget(btnSave)
+            layout.addWidget(btnCancel)
+
+            dialog.setLayout(layout)
+
+            # Button clicks
+            btnCancel.clicked.connect(dialog.reject)
+            btnSave.clicked.connect(dialog.accept)
+
+            # Execute dialog
+            if dialog.exec():
+                report_name = reportTxt.text().strip()
+                if not report_name:
+                    QMessageBox.warning(self, "Error", "Please enter a report name.")
+                    return
+
+                self.reportPage.generateReportForApplicant(self.scrollArea_2, report_name)
+                QMessageBox.information(self, "Success", f"Report '{report_name}' has been generated.")
+
+        except Exception as e:
+            self.regCode.msgBox("Error", f"Exception(printReport): {e}")
+            print(f"Exception(printReport):{e}")

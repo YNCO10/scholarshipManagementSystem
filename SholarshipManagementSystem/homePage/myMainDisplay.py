@@ -18,6 +18,7 @@ from SholarshipManagementSystem.reportsPage.report import Report
 from SholarshipManagementSystem.manageApplicantl.applicantCardCode import ApplicantCard
 from SholarshipManagementSystem.reportsPage.charts import Chart
 from SholarshipManagementSystem.classes.admin import Admin
+from PyQt6.QtWebEngineWidgets import QWebEngineView
 
 
 class Dash(QMainWindow, Ui_MainWindow):
@@ -25,6 +26,7 @@ class Dash(QMainWindow, Ui_MainWindow):
     trigger = pyqtSignal()
     def __init__(self):
         super().__init__()
+        self.web = None
         self.schedule = None
         self.reportPage = Report()
         self.viewApp = None
@@ -87,6 +89,10 @@ class Dash(QMainWindow, Ui_MainWindow):
         self.reportBtn.clicked.connect(self.switchToReportsPage)
         self.reportIconBtn.clicked.connect(self.switchToReportsPage)
 
+        #reportLogs
+        self.reportLogsBtn.clicked.connect(self.switchToReportLogs)
+        self.reportLogsIconBtn.clicked.connect(self.switchToReportLogs)
+
         self.printReportBtn.clicked.connect(self.printReport)
         #manageApplicant
         self.manageApplicantBtn.clicked.connect(self.switchToManageApplicants)
@@ -129,7 +135,7 @@ class Dash(QMainWindow, Ui_MainWindow):
 
         #     update details BTNS
         self.changeEmailBtn.clicked.connect(self.changeEmail)
-        self.changeUsernameTxt.clicked.connect(self.changeUsername)
+        self.changeUsernameBtn.clicked.connect(self.changeUsername)
         self.changePassBtn.clicked.connect(self.changePass)
 
         #changeCharts btn
@@ -220,6 +226,10 @@ class Dash(QMainWindow, Ui_MainWindow):
                 f"Exception: {e}"
             )
             print(f"Exception: {e}")
+
+    def switchToReportLogs(self):
+        self.mainDisplayWidget.setCurrentIndex(7)
+        self.populateReportLogsTbl()
 
     def switchToManageApplicants(self):
         self.mainDisplayWidget.setCurrentIndex(2)
@@ -860,7 +870,7 @@ class Dash(QMainWindow, Ui_MainWindow):
     def populateApplicantFilter(self):
         try:
             response = requests.get(
-                "http://localhost/BackEnd/scholarshipManagement/applicant/getProgram.php"
+                "http://localhost/BackEnd/scholarshipManagement/chartData/getProgram.php"
             )
 
             result = response.json()
@@ -1094,7 +1104,7 @@ class Dash(QMainWindow, Ui_MainWindow):
 
 ########################################################################################################################
     def changePass(self):
-        if self.confirmMsgBox("Confirm Action", "Do you want to continue"):
+        if self.confirmMsgBox("Confirm Action", "Do you want to change password?"):
             result = self.admin.updateDetails(
                 "pass",
                 f"{self.passTxt.text().strip()}"
@@ -1118,7 +1128,7 @@ class Dash(QMainWindow, Ui_MainWindow):
 
 ########################################################################################################################
     def changeEmail(self):
-        if self.confirmMsgBox("Confirm Action", "Do you want to continue"):
+        if self.confirmMsgBox("Confirm Action", "Do you want to change Email?"):
             result = self.admin.updateDetails(
                 "email",
                 f"{self.emailTxt.text().strip()}"
@@ -1142,7 +1152,7 @@ class Dash(QMainWindow, Ui_MainWindow):
 
 ########################################################################################################################
     def changeUsername(self):
-        if self.confirmMsgBox("Confirm Action", "Do you want to continue"):
+        if self.confirmMsgBox("Confirm Action", "Do you want to change Username?"):
             result = self.admin.updateDetails(
                 "username",
                 f"{self.usernameTxt.text().strip()}"
@@ -1165,7 +1175,7 @@ class Dash(QMainWindow, Ui_MainWindow):
 
 ########################################################################################################################
     def logout(self):
-        if self.confirmMsgBox("Confirm Action", "Do you want to continue"):
+        if self.confirmMsgBox("Confirm Action", "Do you want to Logout?"):
             from pageController import Controller
             controller = Controller()
             controller.showLogin()
@@ -1421,28 +1431,51 @@ class Dash(QMainWindow, Ui_MainWindow):
 
                 self.reportPage.generateReport(self.scrollArea_2, report_name)
                 QMessageBox.information(self, "Success", f"Report '{report_name}' has been generated.")
+                demoDir = f"{report_dir}/{report_name}.pdf"
+                print(demoDir)
+                self.insertReport(
+                    report_name,
+                    demoDir,
+                    Sessions.seshEmail,
+                    "admin"
+                )
+
 
         except Exception as e:
             self.msgBox("Error", f"Exception(printReport): {e}")
             print(f"Exception(printReport):{e}")
 
 ########################################################################################################################
-    def generateAutomatedReport(self, days):
+    def insertReport(self, name, filepath, email, role):
         try:
-            # Avoid creating many schedulers
-            if self.schedule is not None:
-                print("Scheduler already running.")
-                return
-
-            self.schedule = BackgroundScheduler()
-            self.schedule.add_job(
-            lambda : self.trigger.emit(),
-            "interval",
-            seconds=days,
-            max_instances=1
+            response = requests.post(
+                "http://localhost/BackEnd/scholarshipManagement/reports/insertReports.php",
+                data={
+                    "name": name,
+                    "filePath": filepath,
+                    "email": email,
+                    "role" : role
+                }
             )
-            self.schedule.start()
+            print(F"RAW RESPONSE: {response.text}")
+            result = response.json()
+            msg = result.get("message")
+
+            if result.get("status") == "success":
+                return msg
+
+            elif result.get("status") == "error":
+                return msg
 
         except Exception as e:
-            self.msgBox("Error", f"Exception(generateAutomatedReport): {e}")
-            print(f"Exception(generateAutomatedReport):{e}")
+            self.msgBox("Error", f"Exception(insertReport): {e}")
+            print(f"Exception(insertReport):{e}")
+
+########################################################################################################################
+    def populateReportLogsTbl(self):
+        self.reportPage.populateReportLogs(
+            "admin",
+            self.reportLogsTableWidget,
+            Sessions.seshEmail,
+            self.pdfViewerScrollWidget.widget()
+        )
