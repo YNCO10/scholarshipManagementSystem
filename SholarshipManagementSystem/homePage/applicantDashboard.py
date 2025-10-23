@@ -268,7 +268,7 @@ class Ui_ApplicantDash(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents_2 = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_2.setGeometry(QtCore.QRect(0, 0, 408, 320))
+        self.scrollAreaWidgetContents_2.setGeometry(QtCore.QRect(0, 0, 673, 633))
         self.scrollAreaWidgetContents_2.setObjectName("scrollAreaWidgetContents_2")
         self.gridLayout_7 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents_2)
         self.gridLayout_7.setObjectName("gridLayout_7")
@@ -378,7 +378,7 @@ class Ui_ApplicantDash(object):
         self.scrollArea_2.setWidgetResizable(True)
         self.scrollArea_2.setObjectName("scrollArea_2")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 709, 538))
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 709, 542))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.gridLayout_5 = QtWidgets.QGridLayout(self.scrollAreaWidgetContents)
         self.gridLayout_5.setObjectName("gridLayout_5")
@@ -703,6 +703,11 @@ class Ui_ApplicantDash(object):
         self.label_3.setAlignment(QtCore.Qt.AlignmentFlag.AlignCenter)
         self.label_3.setObjectName("label_3")
         self.verticalLayout_9.addWidget(self.label_3)
+        self.reportMsgLabel = QtWidgets.QLabel(parent=self.reportLogs)
+        self.reportMsgLabel.setStyleSheet("font: 12pt \"Segoe UI\";")
+        self.reportMsgLabel.setText("")
+        self.reportMsgLabel.setObjectName("reportMsgLabel")
+        self.verticalLayout_9.addWidget(self.reportMsgLabel)
         self.horizontalLayout_8 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_8.setObjectName("horizontalLayout_8")
         self.reportLogsTableWidget = QtWidgets.QTableWidget(parent=self.reportLogs)
@@ -715,7 +720,7 @@ class Ui_ApplicantDash(object):
         self.pdfViewerScrollWidget.setWidgetResizable(True)
         self.pdfViewerScrollWidget.setObjectName("pdfViewerScrollWidget")
         self.scrollAreaWidgetContents_3 = QtWidgets.QWidget()
-        self.scrollAreaWidgetContents_3.setGeometry(QtCore.QRect(0, 0, 331, 567))
+        self.scrollAreaWidgetContents_3.setGeometry(QtCore.QRect(0, 0, 331, 540))
         self.scrollAreaWidgetContents_3.setObjectName("scrollAreaWidgetContents_3")
         self.verticalLayout_11 = QtWidgets.QVBoxLayout(self.scrollAreaWidgetContents_3)
         self.verticalLayout_11.setObjectName("verticalLayout_11")
@@ -822,7 +827,7 @@ class Ui_ApplicantDash(object):
         ApplicantDash.setStatusBar(self.statusbar)
 
         self.retranslateUi(ApplicantDash)
-        self.mainDisplayWidget.setCurrentIndex(5)
+        self.mainDisplayWidget.setCurrentIndex(2)
         self.homeBtn.toggled['bool'].connect(self.homeIconBtn.setChecked) # type: ignore
         self.homeIconBtn.toggled['bool'].connect(self.homeBtn.setChecked) # type: ignore
         self.profileBtn.toggled['bool'].connect(self.profileIconBtn.setChecked) # type: ignore

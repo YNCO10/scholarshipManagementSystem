@@ -80,6 +80,10 @@ class ApplicantDash(QMainWindow, Ui_ApplicantDash):
 
         self.printReportBtn.clicked.connect(self.printReport)
 
+        #reportLogs
+        self.reportLogsBtn.clicked.connect(self.switchToReportLogs)
+        self.reportLogsIconBtn.clicked.connect(self.switchToReportLogs)
+
         #noti...
         self.notificationsBtn.clicked.connect(self.switchToNotifications)
         self.notificationsIconBtn.clicked.connect(self.switchToNotifications)
@@ -144,6 +148,10 @@ class ApplicantDash(QMainWindow, Ui_ApplicantDash):
                 f"Something went wrong(reports): {e}"
             )
             print(f"Exception(reports){e}")
+
+    def switchToReportLogs(self):
+        self.mainDisplayWidget.setCurrentIndex(5)
+        self.populateReportLogsTbl()
 
 
     def switchToNotifications(self):
@@ -697,6 +705,7 @@ class ApplicantDash(QMainWindow, Ui_ApplicantDash):
 
         except Exception as e:
             self.regCode.msgBox("Error", f"Exception(populateSchemeTbl): {e}")
+            print(f"Exception(populateSchemeTbl): {e}")
 ########################################################################################################################
     def displayScheme(self,Id):
         from SholarshipManagementSystem.schemes.schemeDisplayCode import SchemeDetails
@@ -855,7 +864,27 @@ class ApplicantDash(QMainWindow, Ui_ApplicantDash):
 
                 self.reportPage.generateReportForApplicant(self.scrollArea_2, report_name)
                 QMessageBox.information(self, "Success", f"Report '{report_name}' has been generated.")
+                demoDir = f"{report_dir}/{report_name}.pdf"
+
+                print(demoDir)
+
+                self.reportPage.insertReport(
+                    report_name,
+                    demoDir,
+                    Sessions.seshEmail,
+                    "applicant"
+                )
 
         except Exception as e:
-            self.regCode.msgBox("Error", f"Exception(printReport): {e}")
-            print(f"Exception(printReport):{e}")
+            self.regCode.msgBox("Error", f"Exception(printReportApplicant): {e}")
+            print(f"Exception(printReportApplicant):{e}")
+
+########################################################################################################################
+    def populateReportLogsTbl(self):
+         msg = self.reportPage.populateReportLogs(
+            "applicant",
+            self.reportLogsTableWidget,
+            Sessions.seshEmail,
+            self.pdfViewerScrollWidget.widget()
+        )
+         self.reportMsgLabel.setText(msg)

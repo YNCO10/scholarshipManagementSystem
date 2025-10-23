@@ -12,15 +12,29 @@ from SholarshipManagementSystem.authentications.regValidationPHP import RegCode
 from SholarshipManagementSystem.application.viewApplicationsPage import Ui_ViewApplicantForm
 
 class ViewApplication(QWidget, Ui_ViewApplicantForm):
-    def __init__(self):
+    def __init__(self, Id):
         super().__init__()
         self.setupUi(self)
         self.regCode = RegCode()
+        self.Id = Id
         self.setWindowIcon(QIcon(":icons/SMsysIcon.png"))
         self.setWindowTitle("Application")
         self.btnClicks()
 
     def btnClicks(self):
+        # accept
+        self.acceptBtn.clicked.connect(
+            lambda: self.changeApplicationStatus("ACCEPTED")
+        )
+        # reject
+        self.rejectBtn.clicked.connect(
+            lambda: self.changeApplicationStatus("REJECTED")
+        )
+        # mark as reviewed
+        self.markAsReviewedBtn.clicked.connect(
+            lambda: self.changeApplicationStatus("Reviwed")
+        )
+        #cancel btn
         self.cancelBtn.clicked.connect(self.closeWindow)
 
     def populateApplicationsDetails(self, applicationID, userID):
@@ -76,12 +90,41 @@ class ViewApplication(QWidget, Ui_ViewApplicantForm):
             print(f"Exception(populateApplicationsDetails): {e}")
 
 ########################################################################################################################
-    def rejectOrAccept(self):
-        pass
+    def changeApplicationStatus(self, status):
+        try:
 
-########################################################################################################################
-    def markAsReviewed(self):
-        pass
+            response = requests.post(
+                "http://localhost/BackEnd/scholarshipManagement/application/updateStatus.php",
+                data={
+                    "id": self.Id,
+                    "status": status
+                }
+            )
+            print(f"RAW RESPONSE(changeApplicantStatus): {response.text}")
+            result = response.json()
+            msg = result.get("message", "Unknown MSG")
+
+            if result.get("status") == "success":
+                self.regCode.msgBox(
+                    "Process Complete",
+                    msg
+                )
+                return
+
+            elif result.get("status") == "error":
+                self.regCode.msgBox(
+                    "Error",
+                    msg
+                )
+                print(f"Error: {msg}")
+                return
+
+        except Exception as e:
+            self.regCode.msgBox(
+                "Error",
+                f"Exception(changeApplicationStatus): {e}"
+            )
+            print(f"Exception(changeApplicationStatus): {e}")
 
 ########################################################################################################################
     def populateDocumentTbl(self,userID, applicationID):

@@ -41,7 +41,7 @@ QPushButton{
 }
 </string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
+  <layout class="QVBoxLayout" name="verticalLayout_6">
    <item>
     <widget class="QLabel" name="label_4">
      <property name="styleSheet">
@@ -66,7 +66,7 @@ font: 700 14pt &quot;Segoe UI&quot;;</string>
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>0</y>
+        <y>-307</y>
         <width>529</width>
         <height>684</height>
        </rect>
@@ -235,39 +235,63 @@ border-radius:7px;</string>
     </widget>
    </item>
    <item>
-    <layout class="QGridLayout" name="gridLayout">
-     <property name="verticalSpacing">
-      <number>15</number>
-     </property>
-     <item row="1" column="0" colspan="2">
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QPushButton" name="acceptBtn">
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: rgb(55, 244, 32);
+background-color: rgb(1, 14, 27);</string>
+         </property>
+         <property name="text">
+          <string>ACCECPT</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="rejectBtn">
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: rgb(255, 0, 0);
+background-color: rgb(1, 14, 27);</string>
+         </property>
+         <property name="text">
+          <string>REJECT</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="QPushButton" name="markAsReviewedBtn">
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(1, 14, 27);
+color: rgb(244, 115, 32);</string>
+       </property>
+       <property name="text">
+        <string>MARK AS REVIEWED</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QPushButton" name="cancelBtn">
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
        <property name="styleSheet">
         <string notr="true">background-color: rgb(1, 14, 27);</string>
        </property>
        <property name="text">
         <string>CANCEL</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="0">
-      <widget class="QPushButton" name="acceptBtn">
-       <property name="styleSheet">
-        <string notr="true">color: rgb(55, 244, 32);
-background-color: rgb(1, 14, 27);</string>
-       </property>
-       <property name="text">
-        <string>ACCECPT</string>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="1">
-      <widget class="QPushButton" name="rejectBtn">
-       <property name="styleSheet">
-        <string notr="true">color: rgb(255, 0, 0);
-background-color: rgb(1, 14, 27);</string>
-       </property>
-       <property name="text">
-        <string>REJECT</string>
        </property>
       </widget>
      </item>

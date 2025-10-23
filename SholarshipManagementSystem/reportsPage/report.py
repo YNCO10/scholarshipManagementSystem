@@ -8,7 +8,6 @@ from PyQt6.QtWidgets import QTableWidgetItem, QPushButton, QVBoxLayout, QHBoxLay
 
 from SholarshipManagementSystem.authentications.regValidationPHP import RegCode
 
-
 class Report:
 
     def __init__(self):
@@ -16,6 +15,33 @@ class Report:
         self.pdf_view = None
         self.regCode = RegCode()
 
+########################################################################################################################
+    def insertReport(self, name, filepath, email, role):
+        try:
+            response = requests.post(
+                "http://localhost/BackEnd/scholarshipManagement/reports/insertReports.php",
+                data={
+                    "name": name,
+                    "filePath": filepath,
+                    "email": email,
+                    "role" : role
+                }
+            )
+            print(F"RAW RESPONSE: {response.text}")
+            result = response.json()
+            msg = result.get("message")
+
+            if result.get("status") == "success":
+                return msg
+
+            elif result.get("status") == "error":
+                return msg
+
+        except Exception as e:
+            self.msgBox("Error", f"Exception(insertReport): {e}")
+            print(f"Exception(insertReport):{e}")
+
+########################################################################################################################
     def generateReport(self, scrollArea, fileName):
         print("checkpoint 1")
         myPath = "C:/Users/Yankho/OneDrive/Desktop/PROJECT/reportLogs"
@@ -150,6 +176,8 @@ class Report:
                 dbContent = result.get("data")
                 tblWidget.setColumnCount(5)
                 tblWidget.setRowCount(len(dbContent))
+                if len(dbContent) == 0:
+                     return "You currently haven't saved any reports"
 
                 tblWidget.setHorizontalHeaderLabels([
                     "Actions",

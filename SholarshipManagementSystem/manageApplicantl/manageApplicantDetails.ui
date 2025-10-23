@@ -33,7 +33,7 @@ QPushButton{
    <item>
     <widget class="QStackedWidget" name="stackedWidget">
      <property name="currentIndex">
-      <number>1</number>
+      <number>0</number>
      </property>
      <widget class="QWidget" name="appplicantDetails">
       <layout class="QVBoxLayout" name="verticalLayout_5">
@@ -62,7 +62,7 @@ font: 700 14pt &quot;Segoe UI&quot;;</string>
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>153</width>
+            <width>511</width>
             <height>524</height>
            </rect>
           </property>
@@ -230,7 +230,24 @@ background-color: rgb(1, 14, 27);</string>
           </layout>
          </item>
          <item>
+          <widget class="QPushButton" name="markAsReviewedBtn">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">color: rgb(244, 115, 32);
+background-color: rgb(1, 14, 27);</string>
+           </property>
+           <property name="text">
+            <string>MARK AS REVIEWED</string>
+           </property>
+          </widget>
+         </item>
+         <item>
           <widget class="QPushButton" name="goToApplicantCriteriaBtn">
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
            <property name="styleSheet">
             <string notr="true">background-color: rgb(1, 14, 27);
 font: 700 11pt &quot;Segoe UI&quot;;</string>
@@ -284,7 +301,7 @@ font: 700 14pt &quot;Segoe UI&quot;;</string>
           <property name="geometry">
            <rect>
             <x>0</x>
-            <y>-411</y>
+            <y>0</y>
             <width>511</width>
             <height>862</height>
            </rect>

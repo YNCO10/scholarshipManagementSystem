@@ -242,7 +242,7 @@ QPushButton::hover{
 </string>
          </property>
          <property name="currentIndex">
-          <number>7</number>
+          <number>3</number>
          </property>
          <widget class="QWidget" name="home">
           <layout class="QGridLayout" name="gridLayout_2">
@@ -256,8 +256,8 @@ QPushButton::hover{
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>408</width>
-                <height>374</height>
+                <width>725</width>
+                <height>678</height>
                </rect>
               </property>
               <layout class="QGridLayout" name="gridLayout_7">
@@ -533,8 +533,8 @@ font: 12pt &quot;Segoe UI&quot;;</string>
                <rect>
                 <x>0</x>
                 <y>0</y>
-                <width>98</width>
-                <height>28</height>
+                <width>725</width>
+                <height>678</height>
                </rect>
               </property>
               <layout class="QGridLayout" name="gridLayout_8"/>
@@ -557,12 +557,35 @@ font: 12pt &quot;Segoe UI&quot;;</string>
               <property name="geometry">
                <rect>
                 <x>0</x>
-                <y>0</y>
-                <width>711</width>
-                <height>729</height>
+                <y>-283</y>
+                <width>713</width>
+                <height>882</height>
                </rect>
               </property>
               <layout class="QGridLayout" name="gridLayout_5">
+               <item row="10" column="4" colspan="3">
+                <layout class="QVBoxLayout" name="verticalLayout_28">
+                 <property name="spacing">
+                  <number>15</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>40</number>
+                 </property>
+                 <item>
+                  <widget class="QLabel" name="label_21">
+                   <property name="text">
+                    <string>Financial Amount</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignmentFlag::AlignCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QWidget" name="financialAmountPerScholarshipChart" native="true"/>
+                 </item>
+                </layout>
+               </item>
                <item row="0" column="2" colspan="3">
                 <widget class="QLabel" name="label_14">
                  <property name="text">
@@ -573,23 +596,70 @@ font: 12pt &quot;Segoe UI&quot;;</string>
                  </property>
                 </widget>
                </item>
-               <item row="3" column="0">
-                <spacer name="horizontalSpacer_10">
+               <item row="8" column="3">
+                <spacer name="verticalSpacer_3">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Vertical</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>20</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item row="3" column="6">
+                <spacer name="horizontalSpacer_11">
                  <property name="orientation">
                   <enum>Qt::Orientation::Horizontal</enum>
                  </property>
                  <property name="sizeHint" stdset="0">
                   <size>
-                   <width>246</width>
+                   <width>221</width>
                    <height>20</height>
                   </size>
                  </property>
                 </spacer>
                </item>
+               <item row="9" column="1" colspan="5">
+                <widget class="QLabel" name="label_10">
+                 <property name="text">
+                  <string>SCHOLARSHIP DATA</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignmentFlag::AlignCenter</set>
+                 </property>
+                </widget>
+               </item>
+               <item row="6" column="0" colspan="2">
+                <widget class="QLabel" name="totalNumberOfApplicantsLabelReports">
+                 <property name="styleSheet">
+                  <string notr="true">magin-top:40px;
+margin-bottom:30px;</string>
+                 </property>
+                 <property name="text">
+                  <string>Total Number of Applicants:</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="1" colspan="5">
+                <widget class="QLabel" name="label_8">
+                 <property name="text">
+                  <string>APPLICANT DATA</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignmentFlag::AlignCenter</set>
+                 </property>
+                </widget>
+               </item>
                <item row="10" column="0" colspan="3">
                 <layout class="QVBoxLayout" name="verticalLayout_25">
                  <property name="spacing">
                   <number>15</number>
+                 </property>
+                 <property name="bottomMargin">
+                  <number>30</number>
                  </property>
                  <item>
                   <spacer name="verticalSpacer_7">
@@ -650,83 +720,6 @@ font: 600 10pt &quot;Segoe UI&quot;;</string>
                  </item>
                 </layout>
                </item>
-               <item row="1" column="0" colspan="7">
-                <widget class="Line" name="line">
-                 <property name="orientation">
-                  <enum>Qt::Orientation::Horizontal</enum>
-                 </property>
-                </widget>
-               </item>
-               <item row="3" column="6">
-                <spacer name="horizontalSpacer_11">
-                 <property name="orientation">
-                  <enum>Qt::Orientation::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>221</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item row="5" column="0" colspan="3">
-                <layout class="QVBoxLayout" name="verticalLayout_9">
-                 <property name="spacing">
-                  <number>15</number>
-                 </property>
-                 <item>
-                  <widget class="QLabel" name="label_12">
-                   <property name="text">
-                    <string>Applicants Ranked(Top-Bottom)</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignmentFlag::AlignCenter</set>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QTableWidget" name="applicantRankTableWidget">
-                   <property name="styleSheet">
-                    <string notr="true">color:black;</string>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-               <item row="10" column="4" colspan="3">
-                <layout class="QVBoxLayout" name="verticalLayout_28">
-                 <property name="spacing">
-                  <number>15</number>
-                 </property>
-                 <item>
-                  <widget class="QLabel" name="label_21">
-                   <property name="text">
-                    <string>Financial Amount</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignmentFlag::AlignCenter</set>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QWidget" name="financialAmountPerScholarshipChart" native="true"/>
-                 </item>
-                </layout>
-               </item>
-               <item row="8" column="3">
-                <spacer name="verticalSpacer_3">
-                 <property name="orientation">
-                  <enum>Qt::Orientation::Vertical</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>20</width>
-                   <height>0</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
                <item row="4" column="0" colspan="2">
                 <layout class="QVBoxLayout" name="verticalLayout_18">
                  <property name="spacing">
@@ -754,35 +747,96 @@ font: 600 10pt &quot;Segoe UI&quot;;</string>
                  </item>
                 </layout>
                </item>
-               <item row="3" column="1" colspan="5">
-                <widget class="QLabel" name="label_8">
-                 <property name="text">
-                  <string>APPLICANT DATA</string>
-                 </property>
-                 <property name="alignment">
-                  <set>Qt::AlignmentFlag::AlignCenter</set>
-                 </property>
-                </widget>
-               </item>
-               <item row="6" column="0" colspan="2">
-                <widget class="QLabel" name="totalNumberOfApplicantsLabelReports">
+               <item row="12" column="0">
+                <widget class="QTableWidget" name="schemesAvaliableTableWidget">
                  <property name="styleSheet">
-                  <string notr="true">magin-top:40px</string>
-                 </property>
-                 <property name="text">
-                  <string>Total Number of Applicants:</string>
+                  <string notr="true">color:black;</string>
                  </property>
                 </widget>
                </item>
-               <item row="2" column="3">
-                <spacer name="verticalSpacer_4">
+               <item row="5" column="0" colspan="3">
+                <layout class="QVBoxLayout" name="verticalLayout_9">
+                 <property name="spacing">
+                  <number>15</number>
+                 </property>
+                 <item>
+                  <widget class="QLabel" name="label_12">
+                   <property name="text">
+                    <string>Applicants Ranked(Top-Bottom)</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignmentFlag::AlignCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QTableWidget" name="applicantRankTableWidget">
+                   <property name="styleSheet">
+                    <string notr="true">color:black;</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item row="5" column="5" colspan="2">
+                <layout class="QVBoxLayout" name="verticalLayout_21">
+                 <property name="spacing">
+                  <number>15</number>
+                 </property>
+                 <item>
+                  <widget class="QLabel" name="label_11">
+                   <property name="text">
+                    <string>Applicantions this week</string>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignmentFlag::AlignCenter</set>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QWidget" name="applicantsThisWeekChart" native="true">
+                   <property name="styleSheet">
+                    <string notr="true">border-radius: 7px;</string>
+                   </property>
+                  </widget>
+                 </item>
+                </layout>
+               </item>
+               <item row="3" column="0">
+                <spacer name="horizontalSpacer_10">
                  <property name="orientation">
-                  <enum>Qt::Orientation::Vertical</enum>
+                  <enum>Qt::Orientation::Horizontal</enum>
                  </property>
                  <property name="sizeHint" stdset="0">
                   <size>
-                   <width>20</width>
-                   <height>0</height>
+                   <width>246</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item row="9" column="6">
+                <spacer name="horizontalSpacer_9">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>221</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item row="9" column="0">
+                <spacer name="horizontalSpacer_8">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>246</width>
+                   <height>20</height>
                   </size>
                  </property>
                 </spacer>
@@ -848,65 +902,35 @@ font: 600 10pt &quot;Segoe UI&quot;;</string>
                  </property>
                 </widget>
                </item>
-               <item row="9" column="1" colspan="5">
-                <widget class="QLabel" name="label_10">
+               <item row="1" column="0" colspan="7">
+                <widget class="Line" name="line">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Horizontal</enum>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="3">
+                <spacer name="verticalSpacer_4">
+                 <property name="orientation">
+                  <enum>Qt::Orientation::Vertical</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>20</width>
+                   <height>0</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item row="11" column="0">
+                <widget class="QLabel" name="label_19">
                  <property name="text">
-                  <string>SCHOLARSHIP DATA</string>
+                  <string>Schemes Available</string>
                  </property>
                  <property name="alignment">
                   <set>Qt::AlignmentFlag::AlignCenter</set>
                  </property>
                 </widget>
-               </item>
-               <item row="5" column="5" colspan="2">
-                <layout class="QVBoxLayout" name="verticalLayout_21">
-                 <property name="spacing">
-                  <number>15</number>
-                 </property>
-                 <item>
-                  <widget class="QLabel" name="label_11">
-                   <property name="text">
-                    <string>Applicantions this week</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignmentFlag::AlignCenter</set>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QWidget" name="applicantsThisWeekChart" native="true">
-                   <property name="styleSheet">
-                    <string notr="true">border-radius: 7px;</string>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </item>
-               <item row="9" column="0">
-                <spacer name="horizontalSpacer_8">
-                 <property name="orientation">
-                  <enum>Qt::Orientation::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>246</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
-               </item>
-               <item row="9" column="6">
-                <spacer name="horizontalSpacer_9">
-                 <property name="orientation">
-                  <enum>Qt::Orientation::Horizontal</enum>
-                 </property>
-                 <property name="sizeHint" stdset="0">
-                  <size>
-                   <width>221</width>
-                   <height>20</height>
-                  </size>
-                 </property>
-                </spacer>
                </item>
               </layout>
              </widget>
@@ -1418,7 +1442,7 @@ QPushButton:checked{
                <property name="widgetResizable">
                 <bool>true</bool>
                </property>
-               <widget class="QWidget" name="scrollAreaWidgetContents_4">
+               <widget class="QWidget" name="widget">
                 <property name="geometry">
                  <rect>
                   <x>0</x>

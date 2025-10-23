@@ -464,7 +464,7 @@ QPushButton::hover{
 </string>
       </property>
       <property name="currentIndex">
-       <number>5</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="home">
        <layout class="QGridLayout" name="gridLayout_2">
@@ -478,8 +478,8 @@ QPushButton::hover{
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>408</width>
-             <height>320</height>
+             <width>673</width>
+             <height>633</height>
             </rect>
            </property>
            <layout class="QGridLayout" name="gridLayout_7">
@@ -756,7 +756,7 @@ font: 12pt &quot;Segoe UI&quot;;</string>
              <x>0</x>
              <y>0</y>
              <width>709</width>
-             <height>538</height>
+             <height>542</height>
             </rect>
            </property>
            <layout class="QGridLayout" name="gridLayout_5">
@@ -1445,6 +1445,16 @@ margin-bottom:80px;</string>
          </widget>
         </item>
         <item>
+         <widget class="QLabel" name="reportMsgLabel">
+          <property name="styleSheet">
+           <string notr="true">font: 12pt &quot;Segoe UI&quot;;</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item>
          <layout class="QHBoxLayout" name="horizontalLayout_8">
           <item>
            <widget class="QTableWidget" name="reportLogsTableWidget">
@@ -1464,7 +1474,7 @@ margin-bottom:80px;</string>
                <x>0</x>
                <y>0</y>
                <width>331</width>
-               <height>567</height>
+               <height>540</height>
               </rect>
              </property>
              <layout class="QVBoxLayout" name="verticalLayout_11">

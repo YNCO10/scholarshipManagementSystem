@@ -56,6 +56,10 @@ class ManageApplicantDetails(QWidget, Ui_Form):
             lambda: self.changeApplicantStatus("REJECTED")
         )
         #mark as reviewed
+        self.markAsReviewedBtn.clicked.connect(
+            lambda: self.changeApplicantStatus("Reviewed")
+        )
+
         self.cancelBtn.clicked.connect(self.closeWindow)
         self.cancelBtn_2.clicked.connect(self.closeWindow)
 

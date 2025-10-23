@@ -26,6 +26,7 @@ class Dash(QMainWindow, Ui_MainWindow):
     trigger = pyqtSignal()
     def __init__(self):
         super().__init__()
+        self.scheme = None
         self.web = None
         self.schedule = None
         self.reportPage = Report()
@@ -207,6 +208,8 @@ class Dash(QMainWindow, Ui_MainWindow):
             self.applicantPerProgramTableWidget.setFixedHeight(300)
             self.scholarshipPerSchemeTableWidget.setFixedHeight(300)
             self.applicantRankTableWidget.setFixedHeight(300)
+            self.schemesAvaliableTableWidget.setFixedHeight(400)
+            self.schemesAvaliableTableWidget.setFixedWidth(500)
             # print("CHECKPOINT 5")
             self.populateApplicantFilter()
             self.populateScholarshipFilter()
@@ -220,6 +223,8 @@ class Dash(QMainWindow, Ui_MainWindow):
                 "http://localhost/BackEnd/scholarshipManagement/uploadScholarships/filteredScholarships.php",
                 "All"
             )
+
+            self.populateSchemeTbl()
         except Exception as e:
             self.msgBox(
                 "Error",
@@ -331,8 +336,7 @@ class Dash(QMainWindow, Ui_MainWindow):
                     #         add widget to tbl
                     self.scholarshipTableWidget.setCellWidget(rowIdx, 0, btnWidget)
 
-                self.styleTbl()
-
+                self.styleTbl(self.scholarshipTableWidget)
 
 
             elif result.get("message") == "error":
@@ -409,12 +413,12 @@ class Dash(QMainWindow, Ui_MainWindow):
         self.controller.showUploadScholarship()
 
 ####TABLE STYLESHEET####################################################################################################
-    def styleTbl(self):
-        self.scholarshipTableWidget.setStyleSheet("QTableWidget { color: #010e1b; }")
+    def styleTbl(self, tblWidget):
+        tblWidget.setStyleSheet("QTableWidget { color: #010e1b; }")
 
-        self.scholarshipTableWidget.verticalHeader().setDefaultSectionSize(40)
+        tblWidget.verticalHeader().setDefaultSectionSize(40)
 
-        self.scholarshipTableWidget.resizeColumnsToContents()
+        tblWidget.resizeColumnsToContents()
 
         # self.scholarshipTableWidget.horizontalHeader().setStretchLastSection(True)
 
@@ -1141,6 +1145,7 @@ class Dash(QMainWindow, Ui_MainWindow):
                     "Process Complete",
                     msg
                 )
+                Sessions.seshEmail = self.emailTxt.text().strip()
 
             elif result.get("status") == "error":
                 self.msgBox(
@@ -1164,6 +1169,9 @@ class Dash(QMainWindow, Ui_MainWindow):
                     "Process Complete",
                     msg
                 )
+                Sessions.adminName = self.usernameTxt.text().strip()
+                self.usernameLabel.setText(Sessions.adminName)
+                self.homeScreenUsernameLabel.setText(f"Hello {Sessions.adminName}")
 
             elif result.get("status") == "error":
                 self.msgBox(
@@ -1273,10 +1281,10 @@ class Dash(QMainWindow, Ui_MainWindow):
             print(f"Exception(showManageApplicantPage): {e}")
 
 ########################################################################################################################
-    def populateApplicationsTbl(self):
+    def     populateApplicationsTbl(self):
         try:
             response = requests.get(
-                "http://localhost/BackEnd/scholarshipManagement/application/applicationDataForApplicationTable.php"
+                "http://localhost/BackEnd/scholarshipManagement/application/applicationDataForApplicationTblWithJoin.php"
             )
 
             print(F"RAW RESPONSE: {response.text}")
@@ -1292,13 +1300,14 @@ class Dash(QMainWindow, Ui_MainWindow):
                     len(dbContent))  # always initialise tbl so it doesn't stack up rows
                 Sessions.applicantCount = len(dbContent)
 
-                self.manageApplicantTableWidget.setColumnCount(9)
+                self.manageApplicantTableWidget.setColumnCount(10)
 
                 self.manageApplicantTableWidget.setHorizontalHeaderLabels(
                     [
                         "Actions",
                         "Application ID",
                         "User Id",
+                        "Applicant Email",
                         "Scholarship Id",
                         "Application Status",
                         "Date Submitted",
@@ -1318,12 +1327,13 @@ class Dash(QMainWindow, Ui_MainWindow):
                     #         fill data for all 4 columns
                     self.manageApplicantTableWidget.setItem(rowIdx, 1, QTableWidgetItem(str(rowData.get("id", ""))))
                     self.manageApplicantTableWidget.setItem(rowIdx, 2, QTableWidgetItem(str(rowData.get("user_id", ""))))
-                    self.manageApplicantTableWidget.setItem(rowIdx, 3, QTableWidgetItem(str(rowData.get("scholarship_id", ""))))
-                    self.manageApplicantTableWidget.setItem(rowIdx, 4, QTableWidgetItem(rowData.get("application_status", "")))
-                    self.manageApplicantTableWidget.setItem(rowIdx, 5, QTableWidgetItem(rowData.get("date_submitted", "")))
-                    self.manageApplicantTableWidget.setItem(rowIdx, 6, QTableWidgetItem(finAssistance))
-                    self.manageApplicantTableWidget.setItem(rowIdx, 7, QTableWidgetItem(rowData.get("reason_for_applying", "") or "Not specified"))
-                    self.manageApplicantTableWidget.setItem(rowIdx, 8, QTableWidgetItem(rowData.get("careerGoals", "")))
+                    self.manageApplicantTableWidget.setItem(rowIdx, 3, QTableWidgetItem(str(rowData.get("applicant_email", ""))))
+                    self.manageApplicantTableWidget.setItem(rowIdx, 4, QTableWidgetItem(str(rowData.get("scholarship_id", ""))))
+                    self.manageApplicantTableWidget.setItem(rowIdx, 5, QTableWidgetItem(rowData.get("application_status", "")))
+                    self.manageApplicantTableWidget.setItem(rowIdx, 6, QTableWidgetItem(rowData.get("date_submitted", "")))
+                    self.manageApplicantTableWidget.setItem(rowIdx, 7, QTableWidgetItem(finAssistance))
+                    self.manageApplicantTableWidget.setItem(rowIdx, 8, QTableWidgetItem(rowData.get("reason_for_applying", "") or "Not specified"))
+                    self.manageApplicantTableWidget.setItem(rowIdx, 9, QTableWidgetItem(rowData.get("careerGoals", "")))
 
                     #       create View & del btn
                     viewBtn = QPushButton("View")
@@ -1375,7 +1385,7 @@ class Dash(QMainWindow, Ui_MainWindow):
 ########################################################################################################################
     def showApplication(self, userID, applicationID):
         from SholarshipManagementSystem.application.viewApplicationCode import ViewApplication
-        self.viewApp = ViewApplication()
+        self.viewApp = ViewApplication(applicationID)
         self.viewApp.populateApplicationsDetails(applicationID, userID)
         self.viewApp.populateDocumentTbl(userID, applicationID)
         self.viewApp.show()
@@ -1432,8 +1442,10 @@ class Dash(QMainWindow, Ui_MainWindow):
                 self.reportPage.generateReport(self.scrollArea_2, report_name)
                 QMessageBox.information(self, "Success", f"Report '{report_name}' has been generated.")
                 demoDir = f"{report_dir}/{report_name}.pdf"
+
                 print(demoDir)
-                self.insertReport(
+
+                self.reportPage.insertReport(
                     report_name,
                     demoDir,
                     Sessions.seshEmail,
@@ -1446,32 +1458,6 @@ class Dash(QMainWindow, Ui_MainWindow):
             print(f"Exception(printReport):{e}")
 
 ########################################################################################################################
-    def insertReport(self, name, filepath, email, role):
-        try:
-            response = requests.post(
-                "http://localhost/BackEnd/scholarshipManagement/reports/insertReports.php",
-                data={
-                    "name": name,
-                    "filePath": filepath,
-                    "email": email,
-                    "role" : role
-                }
-            )
-            print(F"RAW RESPONSE: {response.text}")
-            result = response.json()
-            msg = result.get("message")
-
-            if result.get("status") == "success":
-                return msg
-
-            elif result.get("status") == "error":
-                return msg
-
-        except Exception as e:
-            self.msgBox("Error", f"Exception(insertReport): {e}")
-            print(f"Exception(insertReport):{e}")
-
-########################################################################################################################
     def populateReportLogsTbl(self):
         self.reportPage.populateReportLogs(
             "admin",
@@ -1479,3 +1465,75 @@ class Dash(QMainWindow, Ui_MainWindow):
             Sessions.seshEmail,
             self.pdfViewerScrollWidget.widget()
         )
+
+########################################################################################################################
+    def populateSchemeTbl(self):
+        try:
+            response = requests.get(
+                "http://localhost/BackEnd/scholarshipManagement/chartData/schemeDataForTbl.php"
+            )
+            print(f"RAW RESPONSE: {response.text}")
+            result = response.json()
+
+            if result.get("status") == "error":
+                self.schemesAvaliableTableWidget.setRowCount(1)
+                self.schemesAvaliableTableWidget.setColumnCount(1)
+                self.schemesAvaliableTableWidget.setHorizontalHeaderLabels(["Message"])
+                self.schemesAvaliableTableWidget.setItem(0, 0, QTableWidgetItem("NO INFORMATION TO DISPLAY"))
+                return
+
+            dbContent = result.get("data", [])
+
+            self.schemesAvaliableTableWidget.setColumnCount(5)
+            self.schemesAvaliableTableWidget.setRowCount(len(dbContent))
+            self.schemesAvaliableTableWidget.setHorizontalHeaderLabels(
+                [
+                    "Actions",
+                    "ID",
+                    "Scheme",
+                    "Description",
+                    "Benefit Details"
+                ]
+
+            )
+
+            for rowIdx, rowData in enumerate(dbContent):
+                self.schemesAvaliableTableWidget.setItem(rowIdx, 1, QTableWidgetItem(str(rowData.get("id"))))
+                self.schemesAvaliableTableWidget.setItem(rowIdx, 2, QTableWidgetItem(rowData.get("scheme_name")))
+                self.schemesAvaliableTableWidget.setItem(rowIdx, 3, QTableWidgetItem(rowData.get("description")))
+                self.schemesAvaliableTableWidget.setItem(rowIdx, 4, QTableWidgetItem(rowData.get("benefit_details")))
+
+                #       create View & del btn
+                viewBtn = QPushButton("View")
+
+                viewBtn.setStyleSheet("QPushButton { "
+                                      "color: white;"
+                                      "background-color: #010e1b;"
+                                      "padding:3px;"
+                                      "margin:0px;"
+                                      "border-radius:3px;"
+                                      "}")
+
+                viewBtn.clicked.connect(
+                    lambda _, Id=rowData.get("id"): self.displayScheme(Id)
+                )
+                #   align horizontally
+                btnWidget = QWidget()
+                layout = QHBoxLayout(btnWidget)
+                layout.addWidget(viewBtn)
+                layout.setContentsMargins(0, 0, 0, 0)
+
+                #         add widget to tbl
+                self.schemesAvaliableTableWidget.setCellWidget(rowIdx, 0, btnWidget)
+
+            self.styleTbl(self.schemesAvaliableTableWidget)
+
+        except Exception as e:
+            self.msgBox("Error", f"Exception(populateSchemeTbl): {e}")
+            print(f"Exception(populateSchemeTbl): {e}")
+
+########################################################################################################################
+    def displayScheme(self, Id):
+        from SholarshipManagementSystem.schemes.schemeDisplayCode import SchemeDetails
+        self.scheme = SchemeDetails(Id)
+        self.scheme.show()
