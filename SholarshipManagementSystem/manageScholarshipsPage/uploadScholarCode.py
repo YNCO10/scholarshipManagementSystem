@@ -1,9 +1,11 @@
+import sys
+
 import requests
 
 import Sessions
 
 from PyQt6.QtGui import QIcon
-from PyQt6.QtWidgets import QDialog, QFileDialog
+from PyQt6.QtWidgets import QDialog, QFileDialog, QApplication
 from SholarshipManagementSystem.manageScholarshipsPage.uploadScholarships import Ui_Dialog
 from SholarshipManagementSystem.authentications.regValidationPHP import RegCode
 from SholarshipManagementSystem.classes.admin import Admin
@@ -19,6 +21,31 @@ class UploadingCode(QDialog, Ui_Dialog):
         self.setWindowIcon(QIcon(":icons/SMsysIcon.png"))
         self.regCode = RegCode()
         self.admin = Admin(Sessions.adminName, Sessions.seshEmail, "*********")
+        self.wrkShopCheckBox.setStyleSheet("QCheckBox::indicator:checked {"
+                                           "background-color: white;"
+                                           "border: 2px solid #666;"
+                                           "border-radius: 3px;"
+                                           "}")
+        self.insuranceCheckBox.setStyleSheet("QCheckBox::indicator:checked {"
+                                           "background-color: white;"
+                                           "border: 2px solid #666;"
+                                           "border-radius: 3px;"
+                                           "}")
+        self.jobOrppotunitiesCheckBox.setStyleSheet("QCheckBox::indicator:checked {"
+                                           "background-color: white;"
+                                           "border: 2px solid #666;"
+                                           "border-radius: 3px;"
+                                           "}")
+        self.travelAllawanceCheckBox.setStyleSheet("QCheckBox::indicator:checked {"
+                                           "background-color: white;"
+                                           "border: 2px solid #666;"
+                                           "border-radius: 3px;"
+                                           "}")
+        self.AccomodationCheckBox.setStyleSheet("QCheckBox::indicator:checked {"
+                                           "background-color: white;"
+                                           "border: 2px solid #666;"
+                                           "border-radius: 3px;"
+                                           "}")
 
         self.btnClicks()
 
@@ -123,7 +150,7 @@ class UploadingCode(QDialog, Ui_Dialog):
                 print(f"File Upload: {msg}")
                 self.closeWindow()
                 dash = Dash()
-                dash.populateTableWidget()
+                dash.populateTableWidget("")
                 #get emails
                 emails = self.getEmails()
                 #send notifications

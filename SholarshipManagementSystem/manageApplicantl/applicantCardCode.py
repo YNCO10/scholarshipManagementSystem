@@ -1,9 +1,10 @@
 import json
-
+import Sessions
 import requests
 from PyQt6.QtWidgets import QWidget
 from SholarshipManagementSystem.authentications.regValidationPHP import RegCode
 from SholarshipManagementSystem.manageApplicantl.applicantCardTemp import Ui_ApplicantCardForm
+from SholarshipManagementSystem.classes.admin import Admin
 
 
 
@@ -17,6 +18,11 @@ class ApplicantCard(QWidget, Ui_ApplicantCardForm):
         self.setupUi(self)
         self.nameLabel.setText(f"Applicant Name: {self.name}")
         self.emailLabel.setText(f"Applicant Email: {self.email}")
+        self.admin = Admin(
+            f"{Sessions.adminName}",
+            f"{Sessions.seshEmail}",
+            "*********"
+        )
 
         self.viewBtn.setStyleSheet("""
         border: 1px solid black;
@@ -36,6 +42,19 @@ class ApplicantCard(QWidget, Ui_ApplicantCardForm):
 
     def delApplicant(self):
         try:
+            notification = self.admin.sendSingleNotification(
+                f"{self.email}",
+                "Your profile has been REMOVED!",
+                f"You have been removed from our system by {Sessions.adminName}(ADMIN).\nCONTACT them using this email:{Sessions.seshEmail}. to get further clarification."
+            )
+            if notification.get("status") == "error":
+                self.regCode.msgBox(
+                    "Notification failed",
+                    f"{notification.get("message")}"
+                )
+                print(f"Error: {notification.get("message")}")
+                return
+
             response = requests.post(
                 "http://localhost/BackEnd/scholarshipManagement/applicant/deleteApplicant.php",
                 data={
@@ -52,6 +71,7 @@ class ApplicantCard(QWidget, Ui_ApplicantCardForm):
                     f"{msg}"
                 )
                 print(f"Delete successful: {msg}")
+
 
             elif result.get("status") == "error":
                 self.regCode.msgBox(

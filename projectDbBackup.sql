@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 23, 2025 at 01:39 PM
+-- Generation Time: Oct 26, 2025 at 08:25 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -82,7 +82,7 @@ CREATE TABLE `applicant` (
 --
 
 INSERT INTO `applicant` (`id`, `name`, `email`, `pass_word`, `age`, `phone_num`, `gender`, `reviewer_id`, `status`, `nationality`, `education_level`, `dob`, `verified`, `verify_token`, `assessment_completed`, `date_registered`, `score`, `gpa`, `school_attended`, `income_bracket`, `program`) VALUES
-(2, 'Test Applicant 3', 'test3@gmail.com', '$2y$10$wIugeGF.J5nvc7PXs5pT..Tm5k4qQcZ6bUToy/5QSPaZ.FYhNFDuK', 24, '+265881000003', 'Female', NULL, 'REJECTED', 'Zimbabwe', 'Diploma', '2001-08-09', 0, NULL, 1, '2025-09-22', 111, 4, 'Chichiri Secondary School', 'Between MWK500,00 - MWK1,000,000', 'Bachelor of Science (BSc)'),
+(2, 'Test Applicant 3', 'test3@gmail.com', '$2y$10$wIugeGF.J5nvc7PXs5pT..Tm5k4qQcZ6bUToy/5QSPaZ.FYhNFDuK', 24, '+265881000003', 'Female', NULL, 'Reviewed', 'Zimbabwe', 'Diploma', '2001-08-09', 0, NULL, 1, '2025-09-22', 111, 4, 'Chichiri Secondary School', 'Between MWK500,00 - MWK1,000,000', 'Bachelor of Science (BSc)'),
 (3, 'Test Applicant 4', 'test4@gmail.com', '$2y$10$DzcmzvIyYxjDsxnUb/iijuX0Hq3A0Tchccw5PLTmc7RgoByFGpS96', 19, '+265881000004', 'Female', NULL, 'Pending', 'Egypt', 'Secondary School', '2006-11-23', 0, NULL, 0, '2025-09-22', 76, 3, 'Ndirande Hill Secondary', 'Between MKW250,000 - MWK500,000', 'Bachelor of Laws (LLB)'),
 (4, 'Test Applicant 6', 'test6@gmail.com', '$2y$10$G0dU3IFMgCbk1DSgaF7/mexfQ.eiDz0TLGPlf6OyAwwWPH1zvsEFW', 23, '+265881000006', 'Male', NULL, 'Pending', 'Zimbabwe', 'Diploma', '2002-03-30', 0, NULL, 0, '2025-09-22', 117, 2, 'Zomba Catholic Secondary', 'Between MKW250,000 - MWK500,000', 'Postgraduate Diploma'),
 (5, 'Test Applicant 7', 'test7@gmail.com', '$2y$10$hgH6Q9exO8sqEUZcjLVVQuPpAAXN2QwUBKXzObDd7EfvXaFTBVHyW', 25, '+265881000007', 'Male', NULL, 'Pending', 'Malawian', 'Bachelors Degree', '2000-12-05', 0, NULL, 1, '2025-09-22', 61, 1, 'Ndirande Hill Secondary', 'less than MWK150,000', 'Master of Public Health (MPH)'),
@@ -123,13 +123,13 @@ CREATE TABLE `applications` (
 
 INSERT INTO `applications` (`id`, `user_id`, `scholarship_id`, `application_status`, `date_submitted`, `fin_assistance`, `reason_for_applying`, `careerGoals`) VALUES
 (2, 2, 19, 'Pending', '2025-09-02', 0, 'This scholarship will ease my financial burden.', 'To contribute to research and innovation.'),
-(3, 3, 20, 'Reviwed', '2025-09-03', 1, 'I require help to cover tuition fees.', 'To start a tech company.'),
+(3, 3, 20, 'REJECTED', '2025-09-03', 1, 'I require help to cover tuition fees.', 'To start a tech company.'),
 (5, 6, 19, 'Reviwed', '2025-09-05', 0, 'To further my academic goals.', 'To teach and inspire others.'),
 (8, 10, 19, 'Reviwed', '2025-09-08', 1, 'To support my education journey.', 'To work in cybersecurity.'),
 (9, 11, 20, 'Reviwed', '2025-09-09', 0, 'I want to study without financial strain.', 'To develop mobile applications.'),
 (11, 13, 19, 'Pending', '2025-09-11', 0, 'Need support to continue university.', 'To work in robotics.'),
 (12, 14, 20, 'REJECTED', '2025-09-12', 1, 'Financial constraints hinder my progress.', 'To specialize in machine learning.'),
-(15, 17, 20, 'Pending', '2025-09-15', 0, 'To support my final semester.', 'To build sustainable systems.'),
+(15, 17, 20, 'Reviwed', '2025-09-15', 0, 'To support my final semester.', 'To build sustainable systems.'),
 (17, 19, 18, 'Pending', '2025-10-16', 0, 'Random text', 'Tp be rich'),
 (18, 20, 25, 'Reviwed', '2025-10-19', 0, 'Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Bla', 'NOt many'),
 (19, 18, 23, 'ACCEPTED', '2025-10-19', 1, 'Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Bla', 'Not many');
@@ -271,7 +271,7 @@ INSERT INTO `notifications` (`id`, `title`, `msg`, `sender_id`, `sender_name`, `
 (4, 'Notification Successful', 'You have successfully sent your First notification.', 15, 'Yankho K', 'Dennis', 'yancokampha@gmail.com', 'seen', '2025-09-19', '2025-10-13'),
 (5, 'Information About Nacit', 'This might not be the last time you are seeing this.', 15, 'Yankho K', 'Dennis', 'yancokampha@gmail.com', 'seen', '2025-09-23', '2025-10-11'),
 (6, 'Information About Scholarship', 'We are sorry to inform you that you have NOT been accepted. Please feel free to Apply for the next scholarship', 15, 'Yankho K', 'Dennis', 'yancokampha@gmail.com', 'seen', '2025-09-23', '2025-10-11'),
-(7, 'Hey', 'Intrusion Detection Systems (IDSs) are important because they monitor network or host activities to detect malicious behavior early. A Network based IDS (NIDS) mostly placed between the router and int', 15, 'Yanco Kamphandule', 'Big Man Yanco', 'yancokampha@gmail.com', 'unseen', '2025-10-13', NULL),
+(7, 'Hey', 'Intrusion Detection Systems (IDSs) are important because they monitor network or host activities to detect malicious behavior early. A Network based IDS (NIDS) mostly placed between the router and int', 15, 'Yanco Kamphandule', 'Big Man Yanco', 'yancokampha@gmail.com', 'seen', '2025-10-13', '2025-10-26'),
 (8, 'Hello yankho', 'We are sorry to inform you that you have NOT been accepted. Please feel free to Apply for the next scholarship', 15, 'Yanco Kamphandule', 'Big Man Yanco', 'yancokampha@gmail.com', 'unseen', '2025-10-13', NULL),
 (9, 'Hello yankho', 'Intrusion Detection Systems (IDSs) are important because they monitor network or host activities to detect malicious behavior early. A Network based IDS (NIDS) mostly placed between the router and int', 15, 'Yanco Kamphandule', 'Big Man Yanco', 'yancokampha@gmail.com', 'unseen', '2025-10-13', NULL),
 (10, 'Application Accepted.', 'Congratulations, You have been accepted!', 15, 'Yanco Kamphandule', 'Big Man Yanco', 'yancokampha@gmail.com', 'seen', '2025-10-16', '2025-10-23'),
@@ -327,7 +327,7 @@ INSERT INTO `notifications` (`id`, `title`, `msg`, `sender_id`, `sender_name`, `
 (60, 'New Scholarship has been uploaded', 'A new scholarship from rgw4g4g has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 7', 'test7@gmail.com', 'unseen', '2025-10-21', NULL),
 (61, 'New Scholarship has been uploaded', 'A new scholarship from rgw4g4g has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 8', 'test8@gmail.com', 'unseen', '2025-10-21', NULL),
 (62, 'New Scholarship has been uploaded', 'A new scholarship from rgw4g4g has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 9', 'test9@gmail.com', 'unseen', '2025-10-21', NULL),
-(63, 'New Scholarship has been uploaded', 'A new scholarship from rgw4g4g has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Big Man Yanco', 'yancokampha@gmail.com', 'unseen', '2025-10-21', NULL),
+(63, 'New Scholarship has been uploaded', 'A new scholarship from rgw4g4g has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Big Man Yanco', 'yancokampha@gmail.com', 'seen', '2025-10-21', '2025-10-26'),
 (64, 'New Scholarship has been uploaded', 'A new scholarship from rgw4g4g has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Yanco Kamphandule', 'yancokamphandule@gmail.com', 'unseen', '2025-10-21', NULL),
 (65, 'New Scholarship has been uploaded', 'A new scholarship from Winston University has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 11', 'test11@gmail.com', 'unseen', '2025-10-23', NULL),
 (66, 'New Scholarship has been uploaded', 'A new scholarship from Winston University has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 12', 'test12@gmail.com', 'unseen', '2025-10-23', NULL),

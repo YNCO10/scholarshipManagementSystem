@@ -6,7 +6,7 @@ from datetime import datetime
 import requests
 from PyQt6.QtWidgets import QWidget, QPushButton, QTableWidgetItem, QHBoxLayout
 from PyQt6.QtGui import QIcon
-
+from SholarshipManagementSystem.classes.admin import Admin
 import Sessions
 from SholarshipManagementSystem.authentications.regValidationPHP import RegCode
 from SholarshipManagementSystem.application.viewApplicationsPage import Ui_ViewApplicantForm
@@ -15,6 +15,11 @@ class ViewApplication(QWidget, Ui_ViewApplicantForm):
     def __init__(self, Id):
         super().__init__()
         self.setupUi(self)
+        self.admin = Admin(
+            f"{Sessions.adminName}",
+            f"{Sessions.seshEmail}",
+            "*********"
+        )
         self.regCode = RegCode()
         self.Id = Id
         self.setWindowIcon(QIcon(":icons/SMsysIcon.png"))
@@ -64,6 +69,8 @@ class ViewApplication(QWidget, Ui_ViewApplicantForm):
             dateSubmitted = item.get("date_submitted")
             deadline = item.get("deadline")
 
+            self.applicantEmail = item.get("email")
+
             parsedSubmittedDated = datetime.strptime(dateSubmitted, "%Y-%m-%d")
             parsedDeadline = datetime.strptime(deadline, "%Y-%m-%d")
 
@@ -108,6 +115,11 @@ class ViewApplication(QWidget, Ui_ViewApplicantForm):
                 self.regCode.msgBox(
                     "Process Complete",
                     msg
+                )
+                self.admin.sendSingleNotification(
+                    f"{self.applicantEmail}",
+                    f"Application has been {status}",
+                    "Your application has been reviewed. We will keep you updated on any new activities."
                 )
                 return
 

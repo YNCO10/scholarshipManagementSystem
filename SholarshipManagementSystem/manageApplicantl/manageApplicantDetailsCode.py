@@ -7,13 +7,18 @@ import Sessions
 from SholarshipManagementSystem.manageApplicantl.manageApplicantDetailsPage import Ui_Form
 from SholarshipManagementSystem.authentications.regValidationPHP import RegCode
 from SholarshipManagementSystem.applicantTracking.getApplicantData import GetApplicantData
-
+from SholarshipManagementSystem.classes.admin import Admin
 
 
 class ManageApplicantDetails(QWidget, Ui_Form):
     def __init__(self, email):
         super().__init__()
         self.setupUi(self)
+        self.admin = Admin(
+            f"{Sessions.adminName}",
+            f"{Sessions.seshEmail}",
+            "*********"
+        )
         self.setWindowTitle("Applicant Details")
         self.setWindowIcon(QIcon(":icons/SMsysIcon.png"))
         self.regCode = RegCode()
@@ -99,7 +104,7 @@ class ManageApplicantDetails(QWidget, Ui_Form):
             #populate applicant details page
             dbContent = result.get("data", [])
             item = dbContent[0]
-
+            self.applicantEmail = item.get("email")
 
 
             self.nameLabel.setText(f"NAME:  {item.get("name", "")}")
@@ -224,7 +229,25 @@ class ManageApplicantDetails(QWidget, Ui_Form):
                     "Process Complete",
                     msg
                 )
-                return
+                if status == "ACCEPTED":
+                    self.admin.sendSingleNotification(
+                        f"{self.applicantEmail}",
+                        f"Your profile has been Accepted!",
+                        f"You have been Accepted into our system. We will keep you updated on any new activities."
+                    )
+                    return
+                elif status == "Reviewed":
+                    self.admin.sendSingleNotification(
+                        f"{self.applicantEmail}",
+                        f"Your profile has been Reviewed!",
+                        f"You have been Reviewed by {Sessions.adminName}. We will keep you updated on any new activities."
+                    )
+                elif status == "REJECTED":
+                    self.admin.sendSingleNotification(
+                        f"{self.applicantEmail}",
+                        f"Your profile has been Rejected!",
+                        f"You have been rejected from our system. Your applications will NOT be reviewed."
+                    )
 
             elif result.get("status") == "error":
                 self.regCode.msgBox(

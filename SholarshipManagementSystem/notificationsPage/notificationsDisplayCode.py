@@ -74,7 +74,7 @@ class NotificationDisplay(QWidget, Ui_NotificationDisplay):
             print(f"{msg}")
             from SholarshipManagementSystem.homePage.applicantDashbordCode import ApplicantDash
             self.appDash = ApplicantDash()
-            self.appDash.switchToNotifications()
+            self.appDash.switchToNotifications("")
             self.close()
             
         else:

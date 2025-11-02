@@ -86,7 +86,7 @@ QComboBox{
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>-195</y>
+        <y>-455</y>
         <width>503</width>
         <height>848</height>
        </rect>
@@ -166,17 +166,7 @@ margin-bottom:30px;</string>
               </widget>
              </item>
              <item>
-              <widget class="QDoubleSpinBox" name="gpaSpinbox">
-               <property name="decimals">
-                <number>1</number>
-               </property>
-               <property name="maximum">
-                <double>5.000000000000000</double>
-               </property>
-               <property name="singleStep">
-                <double>0.100000000000000</double>
-               </property>
-              </widget>
+              <widget class="QSpinBox" name="gpaSpinbox"/>
              </item>
             </layout>
            </item>

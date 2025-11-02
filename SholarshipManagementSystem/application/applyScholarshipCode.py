@@ -21,6 +21,16 @@ class ApplyScholarship(QWidget, Ui_applyScholarshipForm):
         self.url = "http://localhost/BackEnd/scholarshipManagement/application/applyScholarship.php"
         self.regCode = RegCode()
         self.uploadCode = UploadingCode()
+        self.yesRadioBtn.setStyleSheet("QRadioButton::indicator:checked {"
+                                       "background-color: white;"
+                                       "border-radius: 7px;"
+                                       "border: 2px solid white;"
+                                       "}")
+        self.noRadioBtn.setStyleSheet("QRadioButton::indicator:checked {"
+                                       "background-color: white;"
+                                       "border-radius: 7px;"
+                                       "border: 2px solid white;"
+                                       "}")
 
 
         self.btnClicks()
@@ -55,7 +65,6 @@ class ApplyScholarship(QWidget, Ui_applyScholarshipForm):
             recomLetter = self.recommedationLetterTxt.text()
             careerGoals = self.careerGoalsTxt.text()
             proofOfNeed = self.proofOfNeedTxt.text()
-            incomeBracket = self.incomeBracketComboBox.currentText()
             financialAssistance = None
             # email = "test11@gmail.com"
             email = Sessions.seshEmail
@@ -96,8 +105,7 @@ class ApplyScholarship(QWidget, Ui_applyScholarshipForm):
                 nationalID.strip(),
                 recomLetter.strip(),
                 careerGoals.strip(),
-                proofOfNeed.strip(),
-                incomeBracket.strip()
+                proofOfNeed.strip()
             )
             print("Checkpoint 3")
 
@@ -113,6 +121,7 @@ class ApplyScholarship(QWidget, Ui_applyScholarshipForm):
                 # rank applicant
                 self.getData.scoreApplicant()#make sure you replace hardcoded email with sesh email
                 self.close()
+
                 return
 
             elif result.get("status") == "error":

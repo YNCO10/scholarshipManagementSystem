@@ -13,8 +13,7 @@ class Application:
                  nationalID,
                  recommendationLetter,
                  careerGoals,
-                 proofOfNeed,
-                 incomeBracket
+                 proofOfNeed
                  ):
         super().__init__()
         self.Id = Id
@@ -28,7 +27,6 @@ class Application:
         self.recommendationLetter = recommendationLetter
         self.careerGoals = careerGoals
         self.proofOfNeed = proofOfNeed
-        self.incomeBracket = incomeBracket
 
     def apply(self, url):
         response = requests.post(

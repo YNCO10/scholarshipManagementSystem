@@ -33,7 +33,7 @@ class Controller:
         self.criticalThinking = CriticalCode()
         self.applyScholar = None
         self.applicantDetails = ApplicantDetails("")
-        self.manageApplicantDetails = ManageApplicantDetails("test11@gmail.com")
+        # self.manageApplicantDetails = ManageApplicantDetails("test11@gmail.com")
 
         # btn clicks
         self.btnClicksLogin()
