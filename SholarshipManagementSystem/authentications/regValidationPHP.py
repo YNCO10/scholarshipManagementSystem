@@ -81,11 +81,11 @@ class RegCode(QWidget, Ui_adminRegistrationPage):
 
             else:
                 self.msgBox("Error", f"Error: {msg}")
-                print(f"Something went wrong (Reg): {msg}")
+                print(f"Something went wrong (register): {msg}")
 
         except Exception as e:
-            self.msgBox("Error", f"Oops something went wrong: {e}")
-            print(f"Oops something went wrong: {e}")
+            self.msgBox("Error", f"Oops something went wrong(register): {e}")
+            print(f"Oops something went wrong(register): {e}")
 
 ########################################################################################################################
     def validateEmailField(self, email):

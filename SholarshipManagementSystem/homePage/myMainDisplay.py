@@ -1242,25 +1242,31 @@ class Dash(QMainWindow, Ui_MainWindow):
 ########################################################################################################################
     def changeUsername(self):
         if self.confirmMsgBox("Confirm Action", "Do you want to change Username?"):
-            result = self.admin.updateDetails(
-                "username",
-                f"{self.usernameTxt.text().strip()}"
-            )
-            msg = result.get("message", "Unknown Msg")
-
-            if result.get("status") == "success":
-                self.msgBox(
-                    "Process Complete",
-                    msg
+            if len(self.usernameTxt.text().strip()) <= 30:
+                result = self.admin.updateDetails(
+                    "username",
+                    f"{self.usernameTxt.text().strip()}"
                 )
-                Sessions.adminName = self.usernameTxt.text().strip()
-                self.usernameLabel.setText(Sessions.adminName)
-                self.homeScreenUsernameLabel.setText(f"Hello {Sessions.adminName}")
+                msg = result.get("message", "Unknown Msg")
 
-            elif result.get("status") == "error":
+                if result.get("status") == "success":
+                    self.msgBox(
+                        "Process Complete",
+                        msg
+                    )
+                    Sessions.adminName = self.usernameTxt.text().strip()
+                    self.usernameLabel.setText(Sessions.adminName)
+                    self.homeScreenUsernameLabel.setText(f"Hello {Sessions.adminName}")
+
+                elif result.get("status") == "error":
+                    self.msgBox(
+                        "Process Failed",
+                        msg
+                    )
+            else:
                 self.msgBox(
-                    "Process Failed",
-                    msg
+                    "Error",
+                    "Username is too long. It has to be less than 31 characters"
                 )
         else:
             pass
