@@ -66,7 +66,7 @@ class Admin:
             return {"status": "error", "message": "Invalid server response"}
 
 ########################################################################################################################
-    def getAdminDetails(self):
+    def getAdminDetailsDB(self):
         response = requests.post(
             "http://localhost/BackEnd/scholarshipManagement/admin/getDetails.php",
             data={

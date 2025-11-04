@@ -199,7 +199,7 @@ class Dash(QMainWindow, Ui_MainWindow):
     def getAdminDetails(self):
         self.usernameTxt.setText(Sessions.adminName)
         self.emailTxt.setText(Sessions.seshEmail)
-        # self.passTxt.setText("RANDOM PASSWORD")
+        self.passTxt.setPlaceholderText("*******************")
 
 ########################################################################################################################
     def maximisePage(self):
@@ -224,7 +224,7 @@ class Dash(QMainWindow, Ui_MainWindow):
         #set dateJoined
         self.getAdminDetails()
         try:
-            data = self.admin.getAdminDetails()
+            data = self.admin.getAdminDetailsDB()
             adminData = data.get("data", [])
             self.dateJoinedLabel.setText(
                 f"Date Joined: {adminData[0]["date_joined"]}"
@@ -375,7 +375,8 @@ class Dash(QMainWindow, Ui_MainWindow):
                                      "}")
 
                 viewBtn.clicked.connect(
-                    lambda _, path=rowData.get("file_path"): self.displayScholarshipDoc(path)
+                    # lambda _, path=rowData.get("file_path"): self.displayScholarshipDoc(path)
+                    lambda _, path=rowData.get("main_file_path"): self.displayScholarshipDoc(path)
                 )
                 delBtn.clicked.connect(
                     lambda _, Id=rowData.get("id"): self.delScholarship(Id)
@@ -402,11 +403,14 @@ class Dash(QMainWindow, Ui_MainWindow):
 
         print(repr(path))
         # referenceDir = "C:/XAMPP/htdocs/BackEnd/scholarshipManagement/uploadScholarships/docs/uploadedFiles"
-        xamppDir = r"C:/XAMPP/htdocs/BackEnd/scholarshipManagement/uploadScholarships/docs/uploadedFiles"
+        # xamppDir = r"C:/XAMPP/htdocs/BackEnd/scholarshipManagement/uploadScholarships/docs/uploadedFiles"
+        #
+        # fullPath = os.path.join(xamppDir, path)
 
-        fullPath = os.path.join(xamppDir, path)
+        # fullPath = os.path.normpath(fullPath)
 
-        fullPath = os.path.normpath(fullPath)
+
+        fullPath = os.path.normpath(path)
 
         print(fullPath)
         os.startfile(fullPath)

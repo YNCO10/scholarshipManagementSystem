@@ -518,7 +518,7 @@ QPushButton::hover{
 </string>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="home">
        <layout class="QGridLayout" name="gridLayout_2">
@@ -537,45 +537,34 @@ QPushButton::hover{
             </rect>
            </property>
            <layout class="QGridLayout" name="gridLayout_7">
-            <item row="0" column="0">
-             <layout class="QHBoxLayout" name="horizontalLayout_5">
-              <property name="topMargin">
-               <number>10</number>
+            <item row="2" column="0">
+             <layout class="QHBoxLayout" name="horizontalLayout_7">
+              <property name="spacing">
+               <number>30</number>
+              </property>
+              <property name="leftMargin">
+               <number>20</number>
+              </property>
+              <property name="rightMargin">
+               <number>20</number>
+              </property>
+              <property name="bottomMargin">
+               <number>20</number>
               </property>
               <item>
-               <spacer name="horizontalSpacer_3">
-                <property name="orientation">
-                 <enum>Qt::Orientation::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
+               <widget class="QWidget" name="chartWidget" native="true"/>
               </item>
               <item>
-               <widget class="QLabel" name="homeScreenUsernameLabel">
-                <property name="text">
-                 <string>HELLO &quot;nAME&quot;</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <spacer name="horizontalSpacer_4">
-                <property name="orientation">
-                 <enum>Qt::Orientation::Horizontal</enum>
-                </property>
-                <property name="sizeHint" stdset="0">
-                 <size>
-                  <width>40</width>
-                  <height>20</height>
-                 </size>
-                </property>
-               </spacer>
+               <widget class="QWidget" name="chart2Widget" native="true"/>
               </item>
              </layout>
+            </item>
+            <item row="3" column="0">
+             <widget class="QPushButton" name="changeChartBtn">
+              <property name="text">
+               <string>CHANGE</string>
+              </property>
+             </widget>
             </item>
             <item row="1" column="0">
              <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -661,36 +650,7 @@ font: 12pt &quot;Segoe UI&quot;;</string>
               </item>
              </layout>
             </item>
-            <item row="3" column="0">
-             <widget class="QPushButton" name="changeChartBtn">
-              <property name="text">
-               <string>CHANGE</string>
-              </property>
-             </widget>
-            </item>
-            <item row="2" column="0">
-             <layout class="QHBoxLayout" name="horizontalLayout_7">
-              <property name="spacing">
-               <number>30</number>
-              </property>
-              <property name="leftMargin">
-               <number>20</number>
-              </property>
-              <property name="rightMargin">
-               <number>20</number>
-              </property>
-              <property name="bottomMargin">
-               <number>20</number>
-              </property>
-              <item>
-               <widget class="QWidget" name="chartWidget" native="true"/>
-              </item>
-              <item>
-               <widget class="QWidget" name="chart2Widget" native="true"/>
-              </item>
-             </layout>
-            </item>
-            <item row="4" column="0">
+            <item row="5" column="0">
              <layout class="QVBoxLayout" name="verticalLayout_8">
               <property name="leftMargin">
                <number>20</number>
@@ -708,6 +668,59 @@ font: 12pt &quot;Segoe UI&quot;;</string>
                <widget class="QWidget" name="mostCommonSchemesChart" native="true"/>
               </item>
              </layout>
+            </item>
+            <item row="0" column="0">
+             <layout class="QHBoxLayout" name="horizontalLayout_5">
+              <property name="topMargin">
+               <number>10</number>
+              </property>
+              <item>
+               <spacer name="horizontalSpacer_3">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QLabel" name="homeScreenUsernameLabel">
+                <property name="text">
+                 <string>HELLO &quot;nAME&quot;</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="horizontalSpacer_4">
+                <property name="orientation">
+                 <enum>Qt::Orientation::Horizontal</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>40</width>
+                  <height>20</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+             </layout>
+            </item>
+            <item row="4" column="0">
+             <widget class="QLabel" name="label_17">
+              <property name="styleSheet">
+               <string notr="true">font: 12pt &quot;Segoe UI&quot;;</string>
+              </property>
+              <property name="text">
+               <string>NATIONALITIES</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignmentFlag::AlignCenter</set>
+              </property>
+             </widget>
             </item>
            </layout>
           </widget>

@@ -60,27 +60,34 @@ class NotificationDisplay(QWidget, Ui_NotificationDisplay):
 
 ########################################################################################################################
     def updateNotificationStatus(self):
-        response = requests.post(
-            "http://localhost/BackEnd/scholarshipManagement/notifications/updateNotificationStatus.php",
-            data={
-                "id": self.Id
-            }
-        )
+        try:
+            response = requests.post(
+                "http://localhost/BackEnd/scholarshipManagement/notifications/updateNotificationStatus.php",
+                data={
+                    "id": self.Id
+                }
+            )
 
-        result = response.json()
-        msg = result.get("message")
+            result = response.json()
+            msg = result.get("message")
 
-        if result.get("status") == "success":
-            print(f"{msg}")
-            from SholarshipManagementSystem.homePage.applicantDashbordCode import ApplicantDash
-            self.appDash = ApplicantDash()
-            self.appDash.switchToNotifications("")
-            self.close()
-            
-        else:
+            if result.get("status") == "success":
+                print(f"{msg}")
+                from SholarshipManagementSystem.homePage.applicantDashbordCode import ApplicantDash
+                self.appDash = ApplicantDash()
+                self.appDash.switchToNotifications("")
+                self.close()
+
+            else:
+                self.regCode.msgBox(
+                    "Error",
+                    f"{msg}"
+                )
+                print(f"Error: {msg}")
+                self.close()
+        except Exception as e:
             self.regCode.msgBox(
                 "Error",
-                f"{msg}"
+                f"Exception(updateNotificationStatus): {e}"
             )
-            print(f"Error: {msg}")
-            self.close()
+            print(f"Error(updateNotificationStatus): {e}")

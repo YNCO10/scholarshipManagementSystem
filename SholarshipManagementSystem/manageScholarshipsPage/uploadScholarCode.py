@@ -148,6 +148,7 @@ class UploadingCode(QDialog, Ui_Dialog):
                     f"{msg}"
                 )
                 print(f"File Upload: {msg}")
+                print(result.get("main_file_path"))
                 self.closeWindow()
                 dash = Dash()
                 dash.populateTableWidget("")
@@ -156,7 +157,7 @@ class UploadingCode(QDialog, Ui_Dialog):
                 #send notifications
                 print("Sending Notifications...")
                 notifications = self.admin.bulkNotificationsForApplicants(
-                    "yanco@gmail.com",
+                    f"{Sessions.seshEmail}",
                     "New Scholarship has been uploaded",
                     f"A new scholarship from {provider} has been uploaded. Check it out!",
                     emails

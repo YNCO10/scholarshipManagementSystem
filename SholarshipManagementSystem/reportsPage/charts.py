@@ -86,11 +86,19 @@ class Chart:
             )
             return
 
-        categories = list(result.keys())
-        sizes = list(result.values())
-
         fig = Figure()
         ax = fig.add_subplot(111)
+
+        data = result.get("data", {})
+        if not data:
+            ax.text(0.5, 0.5, "No data to display",
+                    ha='center', va='center', fontsize=12, color="red")
+            ax.set_axis_off()  # hide x/y axes since no graph
+            return fig
+
+        categories = list(data.keys())
+        sizes = list(data.values())
+
         ax.pie(sizes, labels=categories, autopct="%d%%", shadow=True)
 
         return fig
@@ -120,11 +128,19 @@ class Chart:
             )
             return
 
-        categories = list(result.keys())
-        sizes = list(result.values())
-
         fig = Figure()
         ax = fig.add_subplot(111)
+
+        data = result.get("data", {})
+        if not data:
+            ax.text(0.5, 0.5, "No data to display",
+                    ha='center', va='center', fontsize=12, color="red")
+            ax.set_axis_off()  # hide x/y axes since no graph
+            return fig
+
+        categories = list(data.keys())
+        sizes = list(data.values())
+
         ax.bar(categories, sizes)
         print(f"categories:\n{categories}")
 
@@ -162,11 +178,19 @@ class Chart:
             )
             return
 
-        categories = list(result.keys())
-        sizes = list(result.values())
-
         fig = Figure()
         ax = fig.add_subplot(111)
+
+        data = result.get("data", {})
+        if not data:
+            ax.text(0.5, 0.5, "No data to display",
+                    ha='center', va='center', fontsize=12, color="red")
+            ax.set_axis_off()  # hide x/y axes since no graph
+            return fig
+
+        categories = list(data.keys())
+        sizes = list(data.values())
+
         ax.hist(sizes, bins=10, color='steelblue', edgecolor='black')
         print(f"categories:\n{categories}")
 

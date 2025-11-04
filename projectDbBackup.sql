@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 26, 2025 at 08:25 PM
+-- Generation Time: Nov 03, 2025 at 10:32 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -45,7 +45,10 @@ INSERT INTO `admin` (`id`, `name`, `email`, `pass_word`, `date_joined`, `verifie
 (15, 'Yanco Kamphandule', 'yanco@gmail.com', '$2y$10$Hb8npJkLF/q.fYtKRkTvSuaeN0Q.wdn6WcRlfDHADF7cmCNJoXpiS', '2025-08-19', 0, NULL),
 (16, 'Jeff', 'kush@gmail.com', '$2y$10$SM6md.TvrA6SCBhOXZfBWO7FnYFAtRDLyvzQO10kntlhh/s4ErL1m', '2025-08-20', 0, NULL),
 (17, 'mtendere Kamphandule', 'mtende@gmail.com', '$2y$10$UGxHR/wsVqRqJacdsS9F9.tAeG8MQJ8IHkLKhBv32OnjLrLkb14Fa', '2025-08-23', 0, NULL),
-(18, 'Ipyana Applicant', 'ipyana@gmail.com', '$2y$10$MAezR2881K5H71PVOI/fkOQNgaXHj.ZfJYfSqL2drZCDQZu.FmPL2', '2025-08-23', 0, NULL);
+(18, 'Ipyana Applicant', 'ipyana@gmail.com', '$2y$10$MAezR2881K5H71PVOI/fkOQNgaXHj.ZfJYfSqL2drZCDQZu.FmPL2', '2025-08-23', 0, NULL),
+(24, 'Ipyana Mwakikunga', 'ipi@gmail.com', '$2y$10$Im.OCiBwWIMA6QTm25uDbOvM3LzkMPcGiavxQTf0uNTWOebMdMxoi', '2025-11-02', 0, '6b453332e8ab1f64d3c963960dccdee1'),
+(25, 'ipiyana Mwakiginga', 'ipiyana@gmail.com', '$2y$10$m8Vl.OtvBzI9DOjfNzKMVOE2xUxCZYoQ7tAHDmYgkPj54NsmzBIZO', '2025-11-02', 0, '5b0ccb2568d415f4f30c645dab2b0196'),
+(27, 'Kelvin Madimbo, Gringo', 'kelvin2madimbo@gmail.com', '$2y$10$G847I9uHt4tPTeHqMFVR4.msuG0NGuGrSCTkd8mV9fskM434fI5JS', '2025-11-02', 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -82,23 +85,15 @@ CREATE TABLE `applicant` (
 --
 
 INSERT INTO `applicant` (`id`, `name`, `email`, `pass_word`, `age`, `phone_num`, `gender`, `reviewer_id`, `status`, `nationality`, `education_level`, `dob`, `verified`, `verify_token`, `assessment_completed`, `date_registered`, `score`, `gpa`, `school_attended`, `income_bracket`, `program`) VALUES
-(2, 'Test Applicant 3', 'test3@gmail.com', '$2y$10$wIugeGF.J5nvc7PXs5pT..Tm5k4qQcZ6bUToy/5QSPaZ.FYhNFDuK', 24, '+265881000003', 'Female', NULL, 'Reviewed', 'Zimbabwe', 'Diploma', '2001-08-09', 0, NULL, 1, '2025-09-22', 111, 4, 'Chichiri Secondary School', 'Between MWK500,00 - MWK1,000,000', 'Bachelor of Science (BSc)'),
-(3, 'Test Applicant 4', 'test4@gmail.com', '$2y$10$DzcmzvIyYxjDsxnUb/iijuX0Hq3A0Tchccw5PLTmc7RgoByFGpS96', 19, '+265881000004', 'Female', NULL, 'Pending', 'Egypt', 'Secondary School', '2006-11-23', 0, NULL, 0, '2025-09-22', 76, 3, 'Ndirande Hill Secondary', 'Between MKW250,000 - MWK500,000', 'Bachelor of Laws (LLB)'),
-(4, 'Test Applicant 6', 'test6@gmail.com', '$2y$10$G0dU3IFMgCbk1DSgaF7/mexfQ.eiDz0TLGPlf6OyAwwWPH1zvsEFW', 23, '+265881000006', 'Male', NULL, 'Pending', 'Zimbabwe', 'Diploma', '2002-03-30', 0, NULL, 0, '2025-09-22', 117, 2, 'Zomba Catholic Secondary', 'Between MKW250,000 - MWK500,000', 'Postgraduate Diploma'),
-(5, 'Test Applicant 7', 'test7@gmail.com', '$2y$10$hgH6Q9exO8sqEUZcjLVVQuPpAAXN2QwUBKXzObDd7EfvXaFTBVHyW', 25, '+265881000007', 'Male', NULL, 'Pending', 'Malawian', 'Bachelors Degree', '2000-12-05', 0, NULL, 1, '2025-09-22', 61, 1, 'Ndirande Hill Secondary', 'less than MWK150,000', 'Master of Public Health (MPH)'),
-(6, 'Test Applicant 8', 'test8@gmail.com', '$2y$10$fBDU4gqxKh/nR8eJYsHTTubb6LGd00WHLj7dwLERGlVLINFV/z9s6', 18, '+265881000008', 'Female', NULL, 'Pending', 'Malawian', 'Secondary School', '2007-07-07', 0, NULL, 0, '2025-09-22', 141, 5, 'Chichiri Secondary School', 'less than MWK150,000', 'Diploma in Education'),
+(2, 'Test Applicant 3', 'test3@gmail.com', '$2y$10$wIugeGF.J5nvc7PXs5pT..Tm5k4qQcZ6bUToy/5QSPaZ.FYhNFDuK', 24, '+265881000003', 'Female', NULL, 'REJECTED', 'Zimbabwe', 'Diploma', '2001-08-09', 0, NULL, 1, '2025-09-22', 95, 4, 'Chichiri Secondary School', 'Between MWK500,00 - MWK1,000,000', 'Bachelor of Science (BSc)'),
+(3, 'Test Applicant 4', 'test4@gmail.com', '$2y$10$DzcmzvIyYxjDsxnUb/iijuX0Hq3A0Tchccw5PLTmc7RgoByFGpS96', 19, '+265881000004', 'Female', NULL, 'ACCEPTED', 'Egypt', 'Secondary School', '2006-11-23', 0, NULL, 0, '2025-09-22', 76, 3, 'Ndirande Hill Secondary', 'Between MKW250,000 - MWK500,000', 'Bachelor of Laws (LLB)'),
 (7, 'Test Applicant 9', 'test9@gmail.com', '$2y$10$AB7xzvP.23l2ND5fp2wlWOmucPwMcQWX8905i0v.gqPCtWZyfQlCG', 27, '+265881000009', 'Male', NULL, 'Pending', 'Tunisia', 'Masters Degree', '1998-09-02', 0, NULL, 1, '2025-09-22', 51, 4, 'Bwaila Secondary School', 'less than MWK150,000', 'Certificate in Computer Applications'),
-(9, 'Test Applicant 11', 'test11@gmail.com', '$2y$10$IKPzi4sdibyiTJqVCypKX.mXveZVJHsbIq3Zq24SPmDEQUK1/kAWS', 20, '+265881000011', 'Female', NULL, 'Pending', 'Malawian', 'Secondary School', '2005-04-01', 0, NULL, 1, '2025-09-23', 3, 2, 'Mchinji Boys Secondary', 'less than MWK150,000', 'Certificate in Business Management'),
-(10, 'Test Applicant 12', 'test12@gmail.com', '$2y$10$wTvYJG9EfJsEIl8BO0DtkeAu4VTpY4jTfOqnxQAA1kPmjKFj45wwa', 37, '+265881000012', 'Female', NULL, 'Pending', 'Malawian', 'Doctorate (PhD)', '2003-02-12', 0, NULL, 0, '2025-09-23', 118, 1, 'Kamuzu Academy', 'More than MWK2,000,000', 'Master of Engineering (MEng)'),
-(11, 'Test Applicant 13', 'test13@gmail.com', '$2y$10$wIugeGF.J5nvc7PXs5pT..Tm5k4qQcZ6bUToy/5QSPaZ.FYhNFDuK', 18, '+265881000013', 'Female', NULL, 'Pending', 'Egypt', 'Diploma', '2001-08-09', 0, NULL, 0, '2025-09-23', 84, 5, 'Mchinji Boys Secondary', 'Between MKW250,000 - MWK500,000', 'Bachelor of Computer Science (BCompSc)'),
-(12, 'Test Applicant 14', 'test14@gmail.com', '$2y$10$DzcmzvIyYxjDsxnUb/iijuX0Hq3A0Tchccw5PLTmc7RgoByFGpS96', 19, '+265881000014', 'Female', NULL, 'Pending', 'Malawian', 'Secondary School', '2006-11-23', 0, NULL, 0, '2025-09-24', 119, 4, 'Chichiri Secondary School', 'Between MKW250,000 - MWK500,000', 'Diploma in Information Technology'),
-(13, 'Test Applicant 15', 'test15@gmail.com', '$2y$10$3upKZzWQ2khWfsZkkqQ2lOqc2orqwgEq.Zxr7RmE0pv8BTBBsh.XO', 21, '+265881000015', 'Female', NULL, 'ACCEPTED', 'Malawian', 'Diploma', '2004-06-16', 0, NULL, 0, '2025-09-24', 102, 3, 'Nkhotakota Secondary School', 'Between MKW250,000 - MWK500,000', 'Diploma in Information Technology'),
-(14, 'Test Applicant 16', 'test16@gmail.com', '$2y$10$G0dU3IFMgCbk1DSgaF7/mexfQ.eiDz0TLGPlf6OyAwwWPH1zvsEFW', 23, '+265881000016', 'Male', NULL, 'Pending', 'Tunisia', 'Doctorate (PhD)', '2002-03-30', 0, NULL, 0, '2025-09-25', 99, 2, 'Mzuzu Academy', 'More than MWK2,000,000', 'Bachelor of Science (BSc)'),
-(15, 'Test Applicant 17', 'test17@gmail.com', '$2y$10$hgH6Q9exO8sqEUZcjLVVQuPpAAXN2QwUBKXzObDd7EfvXaFTBVHyW', 25, '+265881000017', 'Male', NULL, 'Pending', 'South Africa', 'Bachelors Degree', '2000-12-05', 0, NULL, 0, '2025-09-25', 89, 4, 'Mtendere Secondary School', 'Between MKW250,000 - MWK500,000', 'Master of Arts (MA)'),
-(17, 'Test Applicant 20', 'test20@gmail.com', '$2y$10$Aka/2KXQLa8OyuLgn3B6u..Q8R1rP3Vr0kMaXYBatTkD5Er8qKDze', 20, '+265881000019', 'Female', NULL, 'Pending', 'Tunisia', 'Masters Degree', '2005-02-08', 0, NULL, 0, '2025-09-25', 39, 3, 'Zomba Catholic Secondary', 'Between MKW250,000 - MWK500,000', 'Doctor of Philosophy (PhD)'),
-(18, 'Big Man Yanco', 'yancokampha@gmail.com', '$2y$10$OI/KLqdm0Qkmo0uEZLcgO.FCjTE4SPhLoZoHoDj4zrvZyB8haB.SK', 20, '+265881000001', 'Male', NULL, 'ACCEPTED', 'Malawian', 'Secondary School', '2005-02-08', 1, NULL, 1, '2025-10-10', 50, 2, 'Mtendere Secondary School', 'Between MWK150,000 - MWK250,000', 'Doctor of Medicine (MD)'),
+(11, 'Test Applicant 13', 'test13@gmail.com', '$2y$10$wIugeGF.J5nvc7PXs5pT..Tm5k4qQcZ6bUToy/5QSPaZ.FYhNFDuK', 18, '+265881000013', 'Female', NULL, 'Pending', 'Egypt', 'Diploma', '2001-08-09', 0, NULL, 1, '2025-09-23', 68, 5, 'Mchinji Boys Secondary', 'Between MKW250,000 - MWK500,000', 'Bachelor of Computer Science (BCompSc)'),
+(12, 'Test Applicant 14', 'test14@gmail.com', '$2y$10$DzcmzvIyYxjDsxnUb/iijuX0Hq3A0Tchccw5PLTmc7RgoByFGpS96', 19, '+265881000014', 'Female', NULL, 'Pending', 'Malawian', 'Secondary School', '2006-11-23', 0, NULL, 1, '2025-09-24', 68, 4, 'Chichiri Secondary School', 'Between MKW250,000 - MWK500,000', 'Diploma in Information Technology'),
+(17, 'Test Applicant 20', 'test20@gmail.com', '$2y$10$Aka/2KXQLa8OyuLgn3B6u..Q8R1rP3Vr0kMaXYBatTkD5Er8qKDze', 20, '+265881000019', 'Female', NULL, 'Pending', 'Tunisia', 'Masters Degree', '2005-02-08', 0, NULL, 0, '2025-09-25', 119, 3, 'Zomba Catholic Secondary', 'Between MKW250,000 - MWK500,000', 'Doctor of Philosophy (PhD)'),
+(18, 'Big Man Yanco', 'yancokampha@gmail.com', '$2y$10$OI/KLqdm0Qkmo0uEZLcgO.FCjTE4SPhLoZoHoDj4zrvZyB8haB.SK', 20, '+265881000001', 'Male', NULL, 'Reviewed', 'Malawian', 'Secondary School', '2005-02-08', 1, NULL, 1, '2025-10-10', 69, 2, 'Mtendere Secondary School', 'Between MWK150,000 - MWK250,000', 'Doctor of Medicine (MD)'),
 (19, 'Yanco Kamphandule', 'yancokamphandule@gmail.com', '$2y$10$xvF8.aIEzdnMzPpUKdd4WebqP4WYVmjGdzP.gkxL1ewaJRaKp0VSS', 20, '+265888873433', 'Male', NULL, 'REJECTED', 'Malawian', 'Diploma', '2005-02-08', 1, NULL, 1, '2025-10-16', 53, 0, 'Kalibu academy', 'Between MWK500,00 - MWK1,000,000', 'Postgraduate Diploma'),
-(20, 'Test Applicant 20', 'test25@gmail.com', '$2y$10$x72.Ll0NIUQRxWZhBbiB3Og2yAtO4aYQ1nU9blQRfy2E1DOb3zeEy', 20, '+265883214466', 'Male', NULL, 'Pending', 'South African', 'Diploma', '2005-02-08', 0, NULL, 1, '2025-10-18', 77, 4, 'Back High school', 'Between MKW250,000 - MWK500,000', 'Postgraduate Diploma');
+(21, 'Ipyana Mwakikunga Ipi', 'ipiyanaMwaki@gmail.com', '$2y$10$VLbcuLlyw9mvDHZ6khLh4O3BkQow.lTCP4RwoaqTci7TEN9ZE3lja', 21, '+265889342255', 'Male', NULL, NULL, 'South African', 'Bachelors Degree', '2000-01-01', 0, NULL, 1, '2025-11-02', 86, 5, 'Mzuzu Academy', 'Between MKW250,000 - MWK500,000', 'Postgraduate Diploma');
 
 -- --------------------------------------------------------
 
@@ -116,23 +111,6 @@ CREATE TABLE `applications` (
   `reason_for_applying` varchar(255) DEFAULT NULL,
   `careerGoals` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `applications`
---
-
-INSERT INTO `applications` (`id`, `user_id`, `scholarship_id`, `application_status`, `date_submitted`, `fin_assistance`, `reason_for_applying`, `careerGoals`) VALUES
-(2, 2, 19, 'Pending', '2025-09-02', 0, 'This scholarship will ease my financial burden.', 'To contribute to research and innovation.'),
-(3, 3, 20, 'REJECTED', '2025-09-03', 1, 'I require help to cover tuition fees.', 'To start a tech company.'),
-(5, 6, 19, 'Reviwed', '2025-09-05', 0, 'To further my academic goals.', 'To teach and inspire others.'),
-(8, 10, 19, 'Reviwed', '2025-09-08', 1, 'To support my education journey.', 'To work in cybersecurity.'),
-(9, 11, 20, 'Reviwed', '2025-09-09', 0, 'I want to study without financial strain.', 'To develop mobile applications.'),
-(11, 13, 19, 'Pending', '2025-09-11', 0, 'Need support to continue university.', 'To work in robotics.'),
-(12, 14, 20, 'REJECTED', '2025-09-12', 1, 'Financial constraints hinder my progress.', 'To specialize in machine learning.'),
-(15, 17, 20, 'Reviwed', '2025-09-15', 0, 'To support my final semester.', 'To build sustainable systems.'),
-(17, 19, 18, 'Pending', '2025-10-16', 0, 'Random text', 'Tp be rich'),
-(18, 20, 25, 'Reviwed', '2025-10-19', 0, 'Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Bla', 'NOt many'),
-(19, 18, 23, 'ACCEPTED', '2025-10-19', 1, 'Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Blah, Bla', 'Not many');
 
 -- --------------------------------------------------------
 
@@ -163,8 +141,8 @@ INSERT INTO `assessment` (`id`, `user_id`, `score`, `totalQuest`, `date_taken`) 
 (8, 8, 47, 40, '2025-10-03'),
 (9, 9, 40, 40, '2025-10-03'),
 (10, 10, 88, 40, '2025-10-03'),
-(11, 11, 53, 40, '2025-10-03'),
-(12, 12, 69, 40, '2025-10-03'),
+(11, 11, 15, 40, '2025-10-03'),
+(12, 12, 45, 40, '2025-10-03'),
 (13, 13, 74, 40, '2025-10-03'),
 (14, 14, 100, 40, '2025-10-03'),
 (15, 15, 61, 40, '2025-10-03'),
@@ -173,7 +151,7 @@ INSERT INTO `assessment` (`id`, `user_id`, `score`, `totalQuest`, `date_taken`) 
 (18, 18, 42, 40, '2025-10-03'),
 (19, 19, 45, 40, '2025-10-03'),
 (20, 20, 35, 40, '2025-10-03'),
-(21, 21, 40, 40, '2025-10-10');
+(21, 21, 37.5, 40, '2025-10-10');
 
 -- --------------------------------------------------------
 
@@ -189,57 +167,6 @@ CREATE TABLE `documents` (
   `date_uploaded` date DEFAULT curdate(),
   `application_ID` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `documents`
---
-
-INSERT INTO `documents` (`id`, `user_id`, `file_path`, `doc_type`, `date_uploaded`, `application_ID`) VALUES
-(133, 2, 'uploads/id_card.pdf', 'ID Card', '2025-09-02', 2),
-(134, 2, 'uploads/transcript.pdf', 'Transcript', '2025-09-02', 2),
-(135, 2, 'uploads/recommendation_letter.pdf', 'Recommendation Letter', '2025-09-02', 2),
-(136, 2, 'uploads/statement_of_purpose.pdf', 'Statement of Purpose', '2025-09-02', 2),
-(137, 3, 'uploads/id_card.pdf', 'ID Card', '2025-09-03', 3),
-(138, 3, 'uploads/transcript.pdf', 'Transcript', '2025-09-03', 3),
-(139, 3, 'uploads/recommendation_letter.pdf', 'Recommendation Letter', '2025-09-03', 3),
-(140, 3, 'uploads/statement_of_purpose.pdf', 'Statement of Purpose', '2025-09-03', 3),
-(145, 6, 'uploads/id_card.pdf', 'ID Card', '2025-09-02', 5),
-(146, 6, 'uploads/transcript.pdf', 'Transcript', '2025-09-02', 5),
-(147, 6, 'uploads/recommendation_letter.pdf', 'Recommendation Letter', '2025-09-02', 5),
-(148, 6, 'uploads/statement_of_purpose.pdf', 'Statement of Purpose', '2025-09-02', 5),
-(157, 10, 'uploads/id_card.pdf', 'ID Card', '2025-09-02', 8),
-(158, 10, 'uploads/transcript.pdf', 'Transcript', '2025-09-02', 8),
-(159, 10, 'uploads/recommendation_letter.pdf', 'Recommendation Letter', '2025-09-02', 8),
-(160, 10, 'uploads/statement_of_purpose.pdf', 'Statement of Purpose', '2025-09-02', 8),
-(161, 11, 'uploads/id_card.pdf', 'ID Card', '2025-09-01', 9),
-(162, 11, 'uploads/transcript.pdf', 'Transcript', '2025-09-01', 9),
-(163, 11, 'uploads/recommendation_letter.pdf', 'Recommendation Letter', '2025-09-01', 9),
-(164, 11, 'uploads/statement_of_purpose.pdf', 'Statement of Purpose', '2025-09-01', 9),
-(168, 12, 'uploads/statement_of_purpose.pdf', 'Statement of Purpose', '2025-09-03', 12),
-(169, 13, 'uploads/id_card.pdf', 'ID Card', '2025-09-02', 11),
-(170, 13, 'uploads/transcript.pdf', 'Transcript', '2025-09-02', 11),
-(171, 13, 'uploads/recommendation_letter.pdf', 'Recommendation Letter', '2025-09-02', 11),
-(172, 13, 'uploads/statement_of_purpose.pdf', 'Statement of Purpose', '2025-09-02', 11),
-(173, 14, 'uploads/id_card.pdf', 'ID Card', '2025-09-01', 12),
-(174, 14, 'uploads/transcript.pdf', 'Transcript', '2025-09-01', 12),
-(175, 14, 'uploads/recommendation_letter.pdf', 'Recommendation Letter', '2025-09-01', 12),
-(176, 14, 'uploads/statement_of_purpose.pdf', 'Statement of Purpose', '2025-09-01', 12),
-(185, 17, 'uploads/id_card.pdf', 'ID Card', '2025-09-03', 15),
-(186, 17, 'uploads/transcript.pdf', 'Transcript', '2025-09-03', 15),
-(187, 17, 'uploads/recommendation_letter.pdf', 'Recommendation Letter', '2025-09-03', 15),
-(188, 17, 'uploads/statement_of_purpose.pdf', 'Statement of Purpose', '2025-09-03', 15),
-(193, 19, 'C:\\XAMPP\\htdocs\\BackEnd\\scholarshipManagement\\application/docs/uploadedFiles/1760619111_myAssignment.pdf', 'Transcript', '2025-10-16', 17),
-(194, 19, 'C:\\XAMPP\\htdocs\\BackEnd\\scholarshipManagement\\application/docs/uploadedFiles/1760619111_mySignature.pdf', 'National_ID', '2025-10-16', 17),
-(195, 19, 'C:\\XAMPP\\htdocs\\BackEnd\\scholarshipManagement\\application/docs/uploadedFiles/1760619111_AD ASSIGNMENT.pdf', 'Recommendation_Letter', '2025-10-16', 17),
-(196, 19, 'C:\\XAMPP\\htdocs\\BackEnd\\scholarshipManagement\\application/docs/uploadedFiles/1760619111_myAssignment.pdf', 'Proof_Of_Need', '2025-10-16', 17),
-(197, 20, 'C:\\XAMPP\\htdocs\\BackEnd\\scholarshipManagement\\application/docs/uploadedFiles/1760893515_AD ASSIGNMENT.pdf', 'Transcript', '2025-10-19', 18),
-(198, 20, 'C:\\XAMPP\\htdocs\\BackEnd\\scholarshipManagement\\application/docs/uploadedFiles/1760893515_AD ASSIGNMENT.pdf', 'National_ID', '2025-10-19', 18),
-(199, 20, 'C:\\XAMPP\\htdocs\\BackEnd\\scholarshipManagement\\application/docs/uploadedFiles/1760893515_myAssignment.pdf', 'Recommendation_Letter', '2025-10-19', 18),
-(200, 20, 'C:\\XAMPP\\htdocs\\BackEnd\\scholarshipManagement\\application/docs/uploadedFiles/1760893515_mySignature.pdf', 'Proof_Of_Need', '2025-10-19', 18),
-(201, 18, 'C:\\XAMPP\\htdocs\\BackEnd\\scholarshipManagement\\application/docs/uploadedFiles/1760893686_AD ASSIGNMENT.pdf', 'Transcript', '2025-10-19', 19),
-(202, 18, 'C:\\XAMPP\\htdocs\\BackEnd\\scholarshipManagement\\application/docs/uploadedFiles/1760893686_mySignature.pdf', 'National_ID', '2025-10-19', 19),
-(203, 18, 'C:\\XAMPP\\htdocs\\BackEnd\\scholarshipManagement\\application/docs/uploadedFiles/1760893686_AD ASSIGNMENT.pdf', 'Recommendation_Letter', '2025-10-19', 19),
-(204, 18, 'C:\\XAMPP\\htdocs\\BackEnd\\scholarshipManagement\\application/docs/uploadedFiles/1760893686_myAssignment.pdf', 'Proof_Of_Need', '2025-10-19', 19);
 
 -- --------------------------------------------------------
 
@@ -265,87 +192,35 @@ CREATE TABLE `notifications` (
 --
 
 INSERT INTO `notifications` (`id`, `title`, `msg`, `sender_id`, `sender_name`, `recipient_name`, `recipient_email`, `noti_status`, `date_sent`, `date_seen`) VALUES
-(1, 'Application Denied', 'We are sorry to inform you that you have NOT been accepted. Please feel free to Apply for the next scholarship', 15, 'Yankho K', 'Dennis', 'yancokampha@gmail.com', 'seen', '2025-09-19', '2025-10-11'),
-(2, 'Application Accepted.', 'Congratulations, You have been accepted!', 15, 'Yankho K', 'Dennis', 'yancokampha@gmail.com', 'seen', '2025-09-19', '2025-10-11'),
-(3, 'Notification Successful', 'You have successfully sent your First notification.', 15, 'Yankho K', 'Dennis', 'yancokampha@gmail.com', 'unseen', '2025-09-19', NULL),
-(4, 'Notification Successful', 'You have successfully sent your First notification.', 15, 'Yankho K', 'Dennis', 'yancokampha@gmail.com', 'seen', '2025-09-19', '2025-10-13'),
-(5, 'Information About Nacit', 'This might not be the last time you are seeing this.', 15, 'Yankho K', 'Dennis', 'yancokampha@gmail.com', 'seen', '2025-09-23', '2025-10-11'),
-(6, 'Information About Scholarship', 'We are sorry to inform you that you have NOT been accepted. Please feel free to Apply for the next scholarship', 15, 'Yankho K', 'Dennis', 'yancokampha@gmail.com', 'seen', '2025-09-23', '2025-10-11'),
-(7, 'Hey', 'Intrusion Detection Systems (IDSs) are important because they monitor network or host activities to detect malicious behavior early. A Network based IDS (NIDS) mostly placed between the router and int', 15, 'Yanco Kamphandule', 'Big Man Yanco', 'yancokampha@gmail.com', 'seen', '2025-10-13', '2025-10-26'),
-(8, 'Hello yankho', 'We are sorry to inform you that you have NOT been accepted. Please feel free to Apply for the next scholarship', 15, 'Yanco Kamphandule', 'Big Man Yanco', 'yancokampha@gmail.com', 'unseen', '2025-10-13', NULL),
-(9, 'Hello yankho', 'Intrusion Detection Systems (IDSs) are important because they monitor network or host activities to detect malicious behavior early. A Network based IDS (NIDS) mostly placed between the router and int', 15, 'Yanco Kamphandule', 'Big Man Yanco', 'yancokampha@gmail.com', 'unseen', '2025-10-13', NULL),
-(10, 'Application Accepted.', 'Congratulations, You have been accepted!', 15, 'Yanco Kamphandule', 'Big Man Yanco', 'yancokampha@gmail.com', 'seen', '2025-10-16', '2025-10-23'),
-(11, 'Application Accepted.', 'Congratulations, You have been accepted!', 15, 'Yanco Kamphandule', 'Yanco Kamphandule', 'yancokamphandule@gmail.com', 'seen', '2025-10-16', '2025-10-21'),
-(12, 'Account Verification', 'Your account has been verified.', 15, 'Yanco Kamphandule', 'Yanco Kamphandule', 'yancokamphandule@gmail.com', 'seen', '2025-10-16', '2025-10-21'),
-(13, 'New Scholarship has been uploaded', 'A new scholarship from Nkhoma University has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 11', 'test11@gmail.com', 'unseen', '2025-10-19', NULL),
-(14, 'New Scholarship has been uploaded', 'A new scholarship from NACIT has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 11', 'test11@gmail.com', 'unseen', '2025-10-19', NULL),
-(15, 'New Scholarship has been uploaded', 'A new scholarship from NACIT has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 12', 'test12@gmail.com', 'unseen', '2025-10-19', NULL),
-(16, 'New Scholarship has been uploaded', 'A new scholarship from NACIT has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 13', 'test13@gmail.com', 'unseen', '2025-10-19', NULL),
-(17, 'New Scholarship has been uploaded', 'A new scholarship from NACIT has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 14', 'test14@gmail.com', 'unseen', '2025-10-19', NULL),
-(18, 'New Scholarship has been uploaded', 'A new scholarship from NACIT has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 15', 'test15@gmail.com', 'unseen', '2025-10-19', NULL),
-(19, 'New Scholarship has been uploaded', 'A new scholarship from NACIT has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 16', 'test16@gmail.com', 'unseen', '2025-10-19', NULL),
-(20, 'New Scholarship has been uploaded', 'A new scholarship from NACIT has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 17', 'test17@gmail.com', 'unseen', '2025-10-19', NULL),
-(21, 'New Scholarship has been uploaded', 'A new scholarship from NACIT has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 20', 'test20@gmail.com', 'unseen', '2025-10-19', NULL),
-(22, 'New Scholarship has been uploaded', 'A new scholarship from NACIT has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 20', 'test25@gmail.com', 'unseen', '2025-10-19', NULL),
-(23, 'New Scholarship has been uploaded', 'A new scholarship from NACIT has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 3', 'test3@gmail.com', 'unseen', '2025-10-19', NULL),
-(24, 'New Scholarship has been uploaded', 'A new scholarship from NACIT has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 4', 'test4@gmail.com', 'unseen', '2025-10-19', NULL),
-(25, 'New Scholarship has been uploaded', 'A new scholarship from NACIT has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 6', 'test6@gmail.com', 'unseen', '2025-10-19', NULL),
-(26, 'New Scholarship has been uploaded', 'A new scholarship from NACIT has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 7', 'test7@gmail.com', 'unseen', '2025-10-19', NULL),
-(27, 'New Scholarship has been uploaded', 'A new scholarship from NACIT has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 8', 'test8@gmail.com', 'unseen', '2025-10-19', NULL),
-(28, 'New Scholarship has been uploaded', 'A new scholarship from NACIT has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 9', 'test9@gmail.com', 'unseen', '2025-10-19', NULL),
-(29, 'New Scholarship has been uploaded', 'A new scholarship from NACIT has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Big Man Yanco', 'yancokampha@gmail.com', 'unseen', '2025-10-19', NULL),
-(30, 'New Scholarship has been uploaded', 'A new scholarship from NACIT has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Yanco Kamphandule', 'yancokamphandule@gmail.com', 'seen', '2025-10-19', '2025-10-21'),
-(31, 'New Scholarship has been uploaded', 'A new scholarship from Atlas has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 11', 'test11@gmail.com', 'seen', '2025-10-19', '2025-10-22'),
-(32, 'New Scholarship has been uploaded', 'A new scholarship from Atlas has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 12', 'test12@gmail.com', 'unseen', '2025-10-19', NULL),
-(33, 'New Scholarship has been uploaded', 'A new scholarship from Atlas has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 13', 'test13@gmail.com', 'unseen', '2025-10-19', NULL),
-(34, 'New Scholarship has been uploaded', 'A new scholarship from Atlas has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 14', 'test14@gmail.com', 'unseen', '2025-10-19', NULL),
-(35, 'New Scholarship has been uploaded', 'A new scholarship from Atlas has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 15', 'test15@gmail.com', 'unseen', '2025-10-19', NULL),
-(36, 'New Scholarship has been uploaded', 'A new scholarship from Atlas has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 16', 'test16@gmail.com', 'unseen', '2025-10-19', NULL),
-(37, 'New Scholarship has been uploaded', 'A new scholarship from Atlas has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 17', 'test17@gmail.com', 'unseen', '2025-10-19', NULL),
-(38, 'New Scholarship has been uploaded', 'A new scholarship from Atlas has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 20', 'test20@gmail.com', 'unseen', '2025-10-19', NULL),
-(39, 'New Scholarship has been uploaded', 'A new scholarship from Atlas has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 20', 'test25@gmail.com', 'unseen', '2025-10-19', NULL),
-(40, 'New Scholarship has been uploaded', 'A new scholarship from Atlas has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 3', 'test3@gmail.com', 'unseen', '2025-10-19', NULL),
-(41, 'New Scholarship has been uploaded', 'A new scholarship from Atlas has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 4', 'test4@gmail.com', 'unseen', '2025-10-19', NULL),
-(42, 'New Scholarship has been uploaded', 'A new scholarship from Atlas has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 6', 'test6@gmail.com', 'unseen', '2025-10-19', NULL),
-(43, 'New Scholarship has been uploaded', 'A new scholarship from Atlas has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 7', 'test7@gmail.com', 'unseen', '2025-10-19', NULL),
-(44, 'New Scholarship has been uploaded', 'A new scholarship from Atlas has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 8', 'test8@gmail.com', 'unseen', '2025-10-19', NULL),
-(45, 'New Scholarship has been uploaded', 'A new scholarship from Atlas has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 9', 'test9@gmail.com', 'unseen', '2025-10-19', NULL),
-(46, 'New Scholarship has been uploaded', 'A new scholarship from Atlas has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Big Man Yanco', 'yancokampha@gmail.com', 'seen', '2025-10-19', '2025-10-23'),
-(47, 'New Scholarship has been uploaded', 'A new scholarship from Atlas has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Yanco Kamphandule', 'yancokamphandule@gmail.com', 'seen', '2025-10-19', '2025-10-21'),
-(48, 'New Scholarship has been uploaded', 'A new scholarship from rgw4g4g has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 11', 'test11@gmail.com', 'seen', '2025-10-21', '2025-10-22'),
-(49, 'New Scholarship has been uploaded', 'A new scholarship from rgw4g4g has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 12', 'test12@gmail.com', 'unseen', '2025-10-21', NULL),
-(50, 'New Scholarship has been uploaded', 'A new scholarship from rgw4g4g has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 13', 'test13@gmail.com', 'unseen', '2025-10-21', NULL),
-(51, 'New Scholarship has been uploaded', 'A new scholarship from rgw4g4g has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 14', 'test14@gmail.com', 'unseen', '2025-10-21', NULL),
-(52, 'New Scholarship has been uploaded', 'A new scholarship from rgw4g4g has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 15', 'test15@gmail.com', 'unseen', '2025-10-21', NULL),
-(53, 'New Scholarship has been uploaded', 'A new scholarship from rgw4g4g has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 16', 'test16@gmail.com', 'unseen', '2025-10-21', NULL),
-(54, 'New Scholarship has been uploaded', 'A new scholarship from rgw4g4g has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 17', 'test17@gmail.com', 'unseen', '2025-10-21', NULL),
-(55, 'New Scholarship has been uploaded', 'A new scholarship from rgw4g4g has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 20', 'test20@gmail.com', 'unseen', '2025-10-21', NULL),
-(56, 'New Scholarship has been uploaded', 'A new scholarship from rgw4g4g has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 20', 'test25@gmail.com', 'unseen', '2025-10-21', NULL),
-(57, 'New Scholarship has been uploaded', 'A new scholarship from rgw4g4g has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 3', 'test3@gmail.com', 'unseen', '2025-10-21', NULL),
-(58, 'New Scholarship has been uploaded', 'A new scholarship from rgw4g4g has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 4', 'test4@gmail.com', 'unseen', '2025-10-21', NULL),
-(59, 'New Scholarship has been uploaded', 'A new scholarship from rgw4g4g has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 6', 'test6@gmail.com', 'unseen', '2025-10-21', NULL),
-(60, 'New Scholarship has been uploaded', 'A new scholarship from rgw4g4g has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 7', 'test7@gmail.com', 'unseen', '2025-10-21', NULL),
-(61, 'New Scholarship has been uploaded', 'A new scholarship from rgw4g4g has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 8', 'test8@gmail.com', 'unseen', '2025-10-21', NULL),
-(62, 'New Scholarship has been uploaded', 'A new scholarship from rgw4g4g has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 9', 'test9@gmail.com', 'unseen', '2025-10-21', NULL),
-(63, 'New Scholarship has been uploaded', 'A new scholarship from rgw4g4g has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Big Man Yanco', 'yancokampha@gmail.com', 'seen', '2025-10-21', '2025-10-26'),
-(64, 'New Scholarship has been uploaded', 'A new scholarship from rgw4g4g has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Yanco Kamphandule', 'yancokamphandule@gmail.com', 'unseen', '2025-10-21', NULL),
-(65, 'New Scholarship has been uploaded', 'A new scholarship from Winston University has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 11', 'test11@gmail.com', 'unseen', '2025-10-23', NULL),
-(66, 'New Scholarship has been uploaded', 'A new scholarship from Winston University has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 12', 'test12@gmail.com', 'unseen', '2025-10-23', NULL),
-(67, 'New Scholarship has been uploaded', 'A new scholarship from Winston University has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 13', 'test13@gmail.com', 'unseen', '2025-10-23', NULL),
-(68, 'New Scholarship has been uploaded', 'A new scholarship from Winston University has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 14', 'test14@gmail.com', 'unseen', '2025-10-23', NULL),
-(69, 'New Scholarship has been uploaded', 'A new scholarship from Winston University has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 15', 'test15@gmail.com', 'unseen', '2025-10-23', NULL),
-(70, 'New Scholarship has been uploaded', 'A new scholarship from Winston University has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 16', 'test16@gmail.com', 'unseen', '2025-10-23', NULL),
-(71, 'New Scholarship has been uploaded', 'A new scholarship from Winston University has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 17', 'test17@gmail.com', 'unseen', '2025-10-23', NULL),
-(72, 'New Scholarship has been uploaded', 'A new scholarship from Winston University has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 20', 'test20@gmail.com', 'unseen', '2025-10-23', NULL),
-(73, 'New Scholarship has been uploaded', 'A new scholarship from Winston University has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 20', 'test25@gmail.com', 'unseen', '2025-10-23', NULL),
-(74, 'New Scholarship has been uploaded', 'A new scholarship from Winston University has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 3', 'test3@gmail.com', 'unseen', '2025-10-23', NULL),
-(75, 'New Scholarship has been uploaded', 'A new scholarship from Winston University has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 4', 'test4@gmail.com', 'unseen', '2025-10-23', NULL),
-(76, 'New Scholarship has been uploaded', 'A new scholarship from Winston University has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 6', 'test6@gmail.com', 'unseen', '2025-10-23', NULL),
-(77, 'New Scholarship has been uploaded', 'A new scholarship from Winston University has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 7', 'test7@gmail.com', 'unseen', '2025-10-23', NULL),
-(78, 'New Scholarship has been uploaded', 'A new scholarship from Winston University has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 8', 'test8@gmail.com', 'unseen', '2025-10-23', NULL),
-(79, 'New Scholarship has been uploaded', 'A new scholarship from Winston University has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 9', 'test9@gmail.com', 'unseen', '2025-10-23', NULL),
-(80, 'New Scholarship has been uploaded', 'A new scholarship from Winston University has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Big Man Yanco', 'yancokampha@gmail.com', 'unseen', '2025-10-23', NULL),
-(81, 'New Scholarship has been uploaded', 'A new scholarship from Winston University has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Yanco Kamphandule', 'yancokamphandule@gmail.com', 'unseen', '2025-10-23', NULL);
+(118, 'Testing Notifications', 'Don\'t mind this message, we are just testing notifications.', 27, 'Kelvin Madimbo', 'Yanco Kamphandule', 'yancokamphandule@gmail.com', 'seen', '2025-11-02', '2025-11-02'),
+(119, 'New Scholarship has been uploaded', 'A new scholarship from Texas University has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Ipyana Mwakikunga Ipi', 'ipiyanaMwaki@gmail.com', 'unseen', '2025-11-02', NULL),
+(120, 'New Scholarship has been uploaded', 'A new scholarship from Texas University has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 13', 'test13@gmail.com', 'seen', '2025-11-02', '2025-11-03'),
+(121, 'New Scholarship has been uploaded', 'A new scholarship from Texas University has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 14', 'test14@gmail.com', 'unseen', '2025-11-02', NULL),
+(122, 'New Scholarship has been uploaded', 'A new scholarship from Texas University has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 20', 'test20@gmail.com', 'seen', '2025-11-02', '2025-11-03'),
+(123, 'New Scholarship has been uploaded', 'A new scholarship from Texas University has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 3', 'test3@gmail.com', 'unseen', '2025-11-02', NULL),
+(124, 'New Scholarship has been uploaded', 'A new scholarship from Texas University has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 4', 'test4@gmail.com', 'unseen', '2025-11-02', NULL),
+(125, 'New Scholarship has been uploaded', 'A new scholarship from Texas University has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 9', 'test9@gmail.com', 'unseen', '2025-11-02', NULL),
+(126, 'New Scholarship has been uploaded', 'A new scholarship from Texas University has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Big Man Yanco', 'yancokampha@gmail.com', 'unseen', '2025-11-02', NULL),
+(127, 'New Scholarship has been uploaded', 'A new scholarship from Texas University has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Yanco Kamphandule', 'yancokamphandule@gmail.com', 'unseen', '2025-11-02', NULL),
+(128, 'New Scholarship has been uploaded', 'A new scholarship from Random has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Ipyana Mwakikunga Ipi', 'ipiyanaMwaki@gmail.com', 'unseen', '2025-11-02', NULL),
+(129, 'New Scholarship has been uploaded', 'A new scholarship from Random has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 13', 'test13@gmail.com', 'unseen', '2025-11-02', NULL),
+(130, 'New Scholarship has been uploaded', 'A new scholarship from Random has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 14', 'test14@gmail.com', 'unseen', '2025-11-02', NULL),
+(131, 'New Scholarship has been uploaded', 'A new scholarship from Random has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 20', 'test20@gmail.com', 'unseen', '2025-11-02', NULL),
+(132, 'New Scholarship has been uploaded', 'A new scholarship from Random has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 3', 'test3@gmail.com', 'unseen', '2025-11-02', NULL),
+(133, 'New Scholarship has been uploaded', 'A new scholarship from Random has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 4', 'test4@gmail.com', 'unseen', '2025-11-02', NULL),
+(134, 'New Scholarship has been uploaded', 'A new scholarship from Random has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 9', 'test9@gmail.com', 'unseen', '2025-11-02', NULL),
+(135, 'New Scholarship has been uploaded', 'A new scholarship from Random has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Big Man Yanco', 'yancokampha@gmail.com', 'unseen', '2025-11-02', NULL),
+(136, 'New Scholarship has been uploaded', 'A new scholarship from Random has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Yanco Kamphandule', 'yancokamphandule@gmail.com', 'unseen', '2025-11-02', NULL),
+(137, 'New Scholarship has been uploaded', 'A new scholarship from Mpoto has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Ipyana Mwakikunga Ipi', 'ipiyanaMwaki@gmail.com', 'unseen', '2025-11-02', NULL),
+(138, 'New Scholarship has been uploaded', 'A new scholarship from Mpoto has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 13', 'test13@gmail.com', 'unseen', '2025-11-02', NULL),
+(139, 'New Scholarship has been uploaded', 'A new scholarship from Mpoto has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 14', 'test14@gmail.com', 'unseen', '2025-11-02', NULL),
+(140, 'New Scholarship has been uploaded', 'A new scholarship from Mpoto has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 20', 'test20@gmail.com', 'unseen', '2025-11-02', NULL),
+(141, 'New Scholarship has been uploaded', 'A new scholarship from Mpoto has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 3', 'test3@gmail.com', 'unseen', '2025-11-02', NULL),
+(142, 'New Scholarship has been uploaded', 'A new scholarship from Mpoto has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 4', 'test4@gmail.com', 'unseen', '2025-11-02', NULL),
+(143, 'New Scholarship has been uploaded', 'A new scholarship from Mpoto has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Test Applicant 9', 'test9@gmail.com', 'unseen', '2025-11-02', NULL),
+(144, 'New Scholarship has been uploaded', 'A new scholarship from Mpoto has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Big Man Yanco', 'yancokampha@gmail.com', 'unseen', '2025-11-02', NULL),
+(145, 'New Scholarship has been uploaded', 'A new scholarship from Mpoto has been uploaded. Check it out!', 15, 'Yanco Kamphandule', 'Yanco Kamphandule', 'yancokamphandule@gmail.com', 'seen', '2025-11-02', '2025-11-03'),
+(146, 'Your profile has been Rejected!', 'You have been rejected from our system. Your applications will NOT be reviewed.', 15, 'Yanco Kamphandule', 'Test Applicant 3', 'test3@gmail.com', 'unseen', '2025-11-02', NULL);
 
 -- --------------------------------------------------------
 
@@ -620,7 +495,11 @@ INSERT INTO `reports` (`id`, `name`, `user_id`, `date_created`, `filepath`, `rol
 (6, 'Weekly Report', 9, '2025-10-23', 'C:/Users/Yankho/OneDrive/Desktop/PROJECT/reportLogs/applicantReports/Weekly Report.pdf', 'applicant'),
 (7, 'Weekly report', 9, '2025-10-23', 'C:/Users/Yankho/OneDrive/Desktop/PROJECT/reportLogs/applicantReports/Weekly report.pdf', 'applicant'),
 (8, 'RandomReport', 15, '2025-10-23', 'C:/Users/Yankho/OneDrive/Desktop/PROJECT/reportLogs/RandomReport.pdf', 'admin'),
-(9, 'report_2025-10-23_1', 18, '2025-10-23', 'C:/Users/Yankho/OneDrive/Desktop/PROJECT/reportLogs/applicantReports/report_2025-10-23_1.pdf', 'applicant');
+(9, 'report_2025-10-23_1', 18, '2025-10-23', 'C:/Users/Yankho/OneDrive/Desktop/PROJECT/reportLogs/applicantReports/report_2025-10-23_1.pdf', 'applicant'),
+(10, 'report_2025-10-28_1', 18, '2025-10-28', 'C:/Users/Yankho/OneDrive/Desktop/PROJECT/reportLogs/applicantReports/report_2025-10-28_1.pdf', 'applicant'),
+(11, 'report_2025-11-01_1', 15, '2025-11-01', 'C:/Users/Yankho/OneDrive/Desktop/PROJECT/reportLogs/report_2025-11-01_1.pdf', 'admin'),
+(12, 'report_2025-11-01_1', 11, '2025-11-01', 'C:/Users/Yankho/OneDrive/Desktop/PROJECT/reportLogs/applicantReports/report_2025-11-01_1.pdf', 'applicant'),
+(13, 'report_2025-11-02_1', 27, '2025-11-02', 'C:/Users/Yankho/OneDrive/Desktop/PROJECT/reportLogs/report_2025-11-02_1.pdf', 'admin');
 
 -- --------------------------------------------------------
 
@@ -692,27 +571,9 @@ CREATE TABLE `scholarships` (
   `financial_amount` varchar(20) DEFAULT NULL,
   `applicantion_link` varchar(255) DEFAULT NULL,
   `provider_email` varchar(150) DEFAULT NULL,
-  `scheme_id` int(11) DEFAULT NULL
+  `scheme_id` int(11) DEFAULT NULL,
+  `main_file_path` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `scholarships`
---
-
-INSERT INTO `scholarships` (`id`, `name`, `scheme_type`, `file_path`, `admin_id`, `deadline`, `descrip`, `provider`, `financial_amount`, `applicantion_link`, `provider_email`, `scheme_id`) VALUES
-(13, 'wqlfblkwjb', 'Merit-Based Scheme', '1756147159_ITDSABD Topic 3 Understanding Data  Exploration.pdf', 15, '2025-10-01', 'kqwejfkqwjlbf', 'khjwflkjee', 'Lump Sum', 'kwjqnlfjne', 'qwkjbeflkj', 1),
-(17, 'qwkjfbkqer', 'Research and Innovation Scheme', '1756150845_studentGuideOld.pdf', 15, '2025-10-01', 'qkwjfblw', 'erngrgk', 'Partial', 'kejwrbfkwej', 'kqwjbfkqj', 6),
-(18, 'qwkejfnkwj', 'STEM Scheme', '1756151005_ITDSABD Topic 2 Introduction to Data.pdf', 15, '2025-10-01', 'qwkjebfjw', 'wkefbqwkef', 'Partial', 'walkjfqbwelkrjf', 'qkwjrfblkqerbf', 3),
-(19, 'NCC scholar', 'Rural or Underprivileged Scheme', '1759518981_ITDSABD Topic 11 Data Science Ethics.pdf', 15, '2025-09-30', 'extend your education studies', 'NCC', 'Stipend', 'www.Ncc.ca.za', 'ncc@gmail.com', 13),
-(20, 'Dom clean scholar', 'Female Empowerment Scheme', '1760438731_mySignature.pdf', 15, '2025-12-04', 'For the ladies', 'dom clean lim', 'Stipend', 'www.dom.co.za', 'domClean@gmail.com', 8),
-(21, 'NACIT SCHOLAR', 'STEM Scheme', '1760616710_myAssignment.pdf', 15, '2026-02-06', 'IT', 'NACIT', 'Full Tuition', 'WWW.TEST.com', 'we@gmial.com', 3),
-(22, 'Housing architecture', 'STEM Scheme', '1760864284_ITDSABD Student Guide.pdf', 15, '2026-08-04', 'This is for architecture', 'Denmark University', 'Lump Sum', 'www.deni.co.za', 'deni@gmail.com', 3),
-(23, 'Engineering Scholarship', 'Merit-Based Scheme', '1760864934_ITDSABD Student Guide.pdf', 15, '2026-03-08', 'You must have skills in physics', 'Havard Unviversity', 'Stipend', 'www.havard.co.za', 'hav@gmail.com', 1),
-(24, 'Nursing', 'STEM Scheme', '1760865359_NSC Topic 2.pdf', 15, '2025-03-09', 'University scholarship for nursin', 'Nkhoma University', 'Stipend', 'www.nhoma.co.za', 'nkhoma@gmail.com', 3),
-(25, 'Programming Scholarship', 'Rural or Underprivileged Scheme', '1760869447_myAssignment.pdf', 15, '2025-12-23', 'Programming Scholarship NACIT', 'NACIT', 'Full Tuition', 'www.nacit.co.za', 'nacit@gmail.com', 13),
-(26, 'Science Bucket', 'Community Service Scheme', '1760869706_myAssignment.pdf', 15, '2026-06-22', 'Service,Service,Service,Service,Service,Service,', 'Atlas', 'Partial', 'www.atlas.co.za', 'atlas@gmail.com', 5),
-(27, 'woifnor', 'Community Service Scheme', '1761057288_AD ASSIGNMENT.pdf', 15, '2026-01-01', 'wg42wgwrg', 'rgw4g4g', 'Full Tuition', 'werognweorg', 'ono3non', 5),
-(28, 'Winston Enginerring', 'Alumni-Funded Scheme', '1761213398_myAssignment.pdf', 15, '2026-02-08', 'Best Engineering scholarship avaliable', 'Winston University', 'Full Tuition', 'www.winstion.co.za', 'winston@gmail.com', 9);
 
 -- --------------------------------------------------------
 
@@ -724,50 +585,6 @@ CREATE TABLE `sholarship_perks` (
   `scholarship_id` int(11) NOT NULL,
   `perk_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `sholarship_perks`
---
-
-INSERT INTO `sholarship_perks` (`scholarship_id`, `perk_id`) VALUES
-(17, 2),
-(17, 3),
-(18, 2),
-(18, 3),
-(18, 4),
-(18, 5),
-(18, 6),
-(19, 2),
-(19, 4),
-(20, 2),
-(20, 4),
-(20, 6),
-(21, 3),
-(21, 4),
-(21, 5),
-(22, 2),
-(22, 3),
-(22, 4),
-(23, 2),
-(23, 4),
-(23, 5),
-(23, 6),
-(24, 3),
-(24, 4),
-(24, 5),
-(25, 2),
-(25, 3),
-(25, 4),
-(25, 6),
-(26, 2),
-(26, 4),
-(26, 5),
-(27, 2),
-(27, 4),
-(27, 5),
-(28, 3),
-(28, 4),
-(28, 5);
 
 -- --------------------------------------------------------
 
@@ -897,19 +714,19 @@ ALTER TABLE `weights`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `applicant`
 --
 ALTER TABLE `applicant`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `applications`
 --
 ALTER TABLE `applications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `assessment`
@@ -921,13 +738,13 @@ ALTER TABLE `assessment`
 -- AUTO_INCREMENT for table `documents`
 --
 ALTER TABLE `documents`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=205;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=229;
 
 --
 -- AUTO_INCREMENT for table `notifications`
 --
 ALTER TABLE `notifications`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=82;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=147;
 
 --
 -- AUTO_INCREMENT for table `perks`
@@ -951,7 +768,7 @@ ALTER TABLE `questions`
 -- AUTO_INCREMENT for table `reports`
 --
 ALTER TABLE `reports`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `schemes`
@@ -963,7 +780,7 @@ ALTER TABLE `schemes`
 -- AUTO_INCREMENT for table `scholarships`
 --
 ALTER TABLE `scholarships`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `weights`
@@ -1018,7 +835,7 @@ ALTER TABLE `scholarships`
 -- Constraints for table `sholarship_perks`
 --
 ALTER TABLE `sholarship_perks`
-  ADD CONSTRAINT `sholarship_perks_ibfk_1` FOREIGN KEY (`scholarship_id`) REFERENCES `scholarships` (`id`),
+  ADD CONSTRAINT `scholarship_id_fk` FOREIGN KEY (`scholarship_id`) REFERENCES `scholarships` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `sholarship_perks_ibfk_2` FOREIGN KEY (`perk_id`) REFERENCES `perks` (`perk_id`);
 COMMIT;
 

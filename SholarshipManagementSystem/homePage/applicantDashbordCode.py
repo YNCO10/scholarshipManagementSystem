@@ -65,6 +65,9 @@ class ApplicantDash(QMainWindow, Ui_ApplicantDash):
         self.chart2Widget.setFixedHeight(400)
         self.mostCommonSchemesChart.setFixedHeight(400)
 
+        #chart index
+        self.idx = 1
+
         #btn clicks
         self.btnClicks()
 
@@ -121,6 +124,9 @@ class ApplicantDash(QMainWindow, Ui_ApplicantDash):
         self.LogoutBtn.clicked.connect(self.logout)
         self.logoutIconBtn.clicked.connect(self.logout)
 
+        #change charts
+        self.changeChartBtn.clicked.connect(self.loadRandChart)
+
         #search(main)
         self.searchBtn.clicked.connect(
             lambda : self.performSearch(
@@ -143,6 +149,12 @@ class ApplicantDash(QMainWindow, Ui_ApplicantDash):
                 f"{self.notificationsSearchBarTxt.text().strip()}"
             )
         )
+
+########################################################################################################################
+    def getApplicantDetails(self):
+        self.usernameTxt.setText(Sessions.applicantName)
+        self.emailTxt.setText(Sessions.seshEmail)
+        self.passTxt.setPlaceholderText("*******************")
 ########################################################################################################################
     def switchToDash(self):
         self.mainDisplayWidget.setCurrentIndex(0)
@@ -194,6 +206,18 @@ class ApplicantDash(QMainWindow, Ui_ApplicantDash):
 
     def switchToProfile(self):
         self.mainDisplayWidget.setCurrentIndex(4)
+        self.getApplicantDetails()
+        try:
+            data = self.applicant.getApplicantDetailsDB()
+            applicantData = data.get("data", [])
+            self.dateJoinedLabel.setText(
+                f"Date Joined: {applicantData[0]["date_registered"]}"
+            )
+        except Exception as e:
+            self.regCode.msgBox(
+                "Error",
+                f"Exception Error(switchToProfile): {e}"
+            )
 
     def switchToApplications(self, dbContent):
         self.mainDisplayWidget.setCurrentIndex(7)
@@ -656,6 +680,70 @@ class ApplicantDash(QMainWindow, Ui_ApplicantDash):
         layout.addWidget(figure)
 
 ########################################################################################################################
+    def loadHomePageCharts1(self):
+        try:
+            self.clearLayout(self.chartWidget)
+            self.clearLayout(self.chart2Widget)
+
+            self.chart1Label.setText("Applicant Education Level")
+            figure = FigureCanvas(self.plot1())
+            layout = QVBoxLayout(self.chartWidget)
+            layout.addWidget(figure)
+            self.chartWidget.setLayout(layout)
+
+            self.chart2Label.setText("Applicant per country")
+            figure2 = FigureCanvas(self.plot2())
+            layout2 = QVBoxLayout(self.chart2Widget)
+            layout2.addWidget(figure2)
+            self.chart2Widget.setLayout(layout2)
+
+        except Exception as e:
+            print(f"Exception(loadHomePageCharts1): {e}")
+
+########################################################################################################################
+    def loadHomePageCharts2(self):
+        try:
+            self.clearLayout(self.chartWidget)
+            self.clearLayout(self.chart2Widget)
+
+            self.chart1Label.setText("Applicant Education Level")
+            figure = FigureCanvas(self.plot4())
+            layout = QVBoxLayout(self.chartWidget)
+            layout.addWidget(figure)
+            self.chartWidget.setLayout(layout)
+
+            self.chart2Label.setText("Scholarship categories")
+            figure2 = FigureCanvas(self.plot5())
+            layout2 = QVBoxLayout(self.chart2Widget)
+            layout2.addWidget(figure2)
+            self.chart2Widget.setLayout(layout2)
+
+        except Exception as e:
+            print(f"Exception(loadHomePageCharts2): {e}")
+
+########################################################################################################################
+    def clearLayout(self, widget):
+
+        layout = widget.layout()
+        if layout is not None:
+            while layout.count():
+                child = layout.takeAt(0)
+                if child.widget():
+                    child.widget().deleteLater()
+            QWidget().setLayout(layout)
+
+########################################################################################################################
+    def loadRandChart(self):
+        self.homePageCharts = [
+            self.loadHomePageCharts1,
+            self.loadHomePageCharts2
+        ]
+
+        chartFunction = self.homePageCharts[self.idx]
+        chartFunction()
+
+        self.idx = (self.idx + 1) % len(self.homePageCharts)
+
     def populateCommonProgramTableWidget(self):
         try:
             response = requests.get(
@@ -966,11 +1054,10 @@ class ApplicantDash(QMainWindow, Ui_ApplicantDash):
                 len(dbContent))  # always initialise tbl rows, so they don't stack up.
             Sessions.applicantCount = len(dbContent)
 
-            self.applicationsTableWidget.setColumnCount(10)
+            self.applicationsTableWidget.setColumnCount(9)
 
             self.applicationsTableWidget.setHorizontalHeaderLabels(
                 [
-                    "Actions",
                     "Application ID",
                     "User Id",
                     "Applicant Email",

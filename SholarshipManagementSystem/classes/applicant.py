@@ -73,3 +73,18 @@ class Applicant:
         except json.JSONDecodeError:
             print("Response was not JSON:", response.text)
             return {"status": "error", "message": "Invalid server response"}
+
+########################################################################################################################
+
+    def getApplicantDetailsDB(self):
+        response = requests.post(
+            "http://localhost/BackEnd/scholarshipManagement/applicant/allApplicantDetails.php",
+            data={
+                "email": self.email
+            }
+        )
+        try:
+            return response.json()
+        except json.JSONDecodeError:
+            print("Response was not JSON:", response.text)
+            return {"status": "error", "message": "Invalid server response"}
